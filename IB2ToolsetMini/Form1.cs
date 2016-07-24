@@ -230,9 +230,9 @@ namespace IB2ToolsetMini
             {
                 MessageBox.Show("returned a null module");
             }
-            frmAreas.lbxAreas.DataSource = null;
-            frmAreas.lbxAreas.DataSource = mod.moduleAreasObjects;
-            frmAreas.lbxAreas.DisplayMember = "Filename";
+            //frmAreas.lbxAreas.DataSource = null;
+            //frmAreas.lbxAreas.DataSource = mod.moduleAreasObjects;
+            //frmAreas.lbxAreas.DisplayMember = "Filename";
             frmAreas.refreshListBoxAreas();            
             frmConversations.refreshListBoxConvos();
             //REMOVEfrmLogicTree.refreshListBoxLogicTrees();
@@ -426,20 +426,28 @@ namespace IB2ToolsetMini
                 string filename = Path.GetFullPath(openFileDialog1.FileName);
                 string directory = Path.GetDirectoryName(openFileDialog1.FileName);
                 openModule(filename);
-                openCreatures(directory + "\\data\\creatures.json");
-                openItems(directory + "\\data\\items.json");
-                openContainers(directory + "\\data\\containers.json");
-                openShops(directory + "\\data\\shops.json");
-                openEncounters(directory + "\\data\\encounters.json");
-                openProps(directory + "\\data\\props.json");
-                openJournal(directory + "\\data\\journal.json");
-                openPlayerClasses(directory + "\\data\\playerClasses.json");
-                openRaces(directory + "\\data\\races.json");
-                openSpells(directory + "\\data\\spells.json");
-                openTraits(directory + "\\data\\traits.json");
-                openEffects(directory + "\\data\\effects.json");
+                //openCreatures(directory + "\\data\\creatures.json");
+                frmBlueprints.UpdateTreeViewCreatures();
+                loadCreatureSprites();
+                //openItems(directory + "\\data\\items.json");
+                frmBlueprints.UpdateTreeViewItems();
+                loadItemSprites();
+                //openContainers(directory + "\\data\\containers.json");
+                frmContainers.refreshListBoxContainers();
+                //openShops(directory + "\\data\\shops.json");
+                //openEncounters(directory + "\\data\\encounters.json");
+                frmEncounters.refreshListBoxEncounters();
+                //openProps(directory + "\\data\\props.json");
+                frmBlueprints.UpdateTreeViewProps();
+                loadPropSprites();
+                //openJournal(directory + "\\data\\journal.json");
+                //openPlayerClasses(directory + "\\data\\playerClasses.json");
+                //openRaces(directory + "\\data\\races.json");
+                //openSpells(directory + "\\data\\spells.json");
+                //openTraits(directory + "\\data\\traits.json");
+                //openEffects(directory + "\\data\\effects.json");
                 refreshDropDownLists();
-                this.Text = "IceBlink 2 Toolset - " + mod.moduleLabelName;
+                this.Text = "IceBlink 2 Mini Toolset - " + mod.moduleLabelName;
             }
         }
         public void refreshDropDownLists()
@@ -509,9 +517,9 @@ namespace IB2ToolsetMini
         {
             DropdownStringLists.conversationTypeStringList = new List<string>();
             DropdownStringLists.conversationTypeStringList.Add("none");
-            foreach (string conv in mod.moduleConvosList)
+            foreach (Convo conv in mod.moduleConvoList)
             {
-                DropdownStringLists.conversationTypeStringList.Add(conv);
+                DropdownStringLists.conversationTypeStringList.Add(conv.ConvoFileName);
             }            
         }
         public void loadEncounterDropdownList()

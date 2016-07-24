@@ -269,12 +269,12 @@ namespace IB2ToolsetMini
         public void CheckConvos()
         {
             //look for end points on red nodes
-            foreach (string convofilename in frm.mod.moduleConvosList)
+            foreach (Convo convo in frm.mod.moduleConvoList)
             {
-                convo = convo.GetConversation(frm._mainDirectory + "\\modules\\" + frm.mod.moduleName + "\\dialog\\", convofilename + ".json");
+                //convo = convo.GetConversation(frm._mainDirectory + "\\modules\\" + frm.mod.moduleName + "\\dialog\\", convofilename + ".json");
                 if (convo == null)
                 {
-                    frm.logText("CONVO ERROR: returned a null convo for " + convofilename + ", most likely couldn't find file" + Environment.NewLine);
+                    frm.logText("CONVO ERROR: returned a null convo for " + convo.ConvoFileName + ", most likely couldn't find file" + Environment.NewLine);
                     continue;
                 }
                 //go through all nodes recursively and look for end points that are red

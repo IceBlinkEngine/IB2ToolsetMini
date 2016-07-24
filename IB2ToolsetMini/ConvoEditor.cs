@@ -37,14 +37,23 @@ namespace IB2ToolsetMini
         public ConvoEditor(Module mod, ParentForm p)
         {
             InitializeComponent();
-            f_convo = new Convo();
+            //f_convo = new Convo();
             ce_mod = mod;
             prntForm = p;
+            f_convo = prntForm.mod.moduleConvoList[prntForm._selectedLbxConvoIndex];
         }
         private void ConvoEditor_Load(object sender, EventArgs e)
-        {            
+        {        
+            if (f_convo.subNodes[0].subNodes.Count == 0)
+            {
+                TreeNode mainNode = new TreeNode();
+                mainNode.Name = "0";
+                mainNode.Text = "root";
+                treeView1.Nodes.Add(mainNode);
+            }
+            refreshTreeView();
             // load the file that has the selected node name if it exists
-            string filenameOnly = ce_mod.moduleConvosList[prntForm._selectedLbxConvoIndex] + ".json";
+            /*string filenameOnly = ce_mod.moduleConvosList[prntForm._selectedLbxConvoIndex] + ".json";
             string dirFullPath = prntForm._mainDirectory + "\\modules\\" + ce_mod.moduleName + "\\dialog";
             if (File.Exists(dirFullPath + "\\" + filenameOnly))
             {
@@ -85,7 +94,7 @@ namespace IB2ToolsetMini
                 mainNode.Name = "0";
                 mainNode.Text = "root";
                 treeView1.Nodes.Add(mainNode);
-            }
+            }*/
             currentSelectedNode = null;
             txtImage.Text = f_convo.NpcPortraitBitmap;
             txtDefaultNpcName.Text = f_convo.DefaultNpcName;
@@ -94,7 +103,6 @@ namespace IB2ToolsetMini
             chkMainPcOnly.Checked = f_convo.SpeakToMainPcOnly;
             SortConversation(f_convo);
             ResetOrderNumBasedOnIndex(f_convo.subNodes[0]);
-            //prntForm.openConvosList.Add(f_convo);
             fillScriptList();            
         }
         private void ConvoEditor_FormClosing(object sender, FormClosingEventArgs e)

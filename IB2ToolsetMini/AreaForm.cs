@@ -24,27 +24,19 @@ namespace IB2ToolsetMini
         #region Area Stuff
         public void refreshListBoxAreas()
         {
-            //if (lbxAreas.Items.Count < 1)
-            //{
             lbxAreas.BeginUpdate();
             lbxAreas.DataSource = null;
             lbxAreas.DataSource = prntForm.mod.moduleAreasObjects;
             lbxAreas.DisplayMember = "Filename";
             lbxAreas.EndUpdate();
-            //}
         }
         private void lbxAreas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if ((lbxAreas.Items.Count > 0) && (lbxAreas.SelectedIndex >= 0))
             {
                 int index = this.lbxAreas.IndexFromPoint(e.Location);
-
                 if (index != System.Windows.Forms.ListBox.NoMatches)
                 {
-
-                    //MessageBox.Show(index.ToString());
-                    //do your stuff here
-                    //prntForm._selectedLbxAreaIndex = index;
                     EditArea();
                 }
             }

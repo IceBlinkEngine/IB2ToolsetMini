@@ -25,38 +25,37 @@ namespace IB2ToolsetMini
         #region Conversation Stuff
         public void refreshListBoxConvos()
         {
-            //if (lbxAreas.Items.Count < 1)
-            //{
             lbxConvos.BeginUpdate();
             lbxConvos.DataSource = null;
-            lbxConvos.DataSource = prntForm.mod.moduleConvosList;
+            lbxConvos.DataSource = prntForm.mod.moduleConvoList;
+            lbxConvos.DisplayMember = "ConvoFileName";
             lbxConvos.EndUpdate();
-            //}           
-            //DropdownStringLists.convoStringList = new List<string>();
-            //DropdownStringLists.convoStringList.Add("none");
-            //foreach (string s in prntForm.mod.ModuleConvosList)
-            //{
-            //    DropdownStringLists.convoStringList.Add(s);
-            //}
         }
         private void txtConvoName_TextChanged_1(object sender, EventArgs e)
         {
             try
             {
-                prntForm.mod.moduleConvosList[prntForm._selectedLbxConvoIndex] = txtConvoName.Text;
+                prntForm.mod.moduleConvoList[prntForm._selectedLbxConvoIndex].ConvoFileName = txtConvoName.Text;
                 refreshListBoxConvos();
-                //containersList.containers[_selectedLbx1Index].containerName = txtName.Text;
-                //refreshListBox1();
             }
             catch { }
         }
         private void btnAddConvo_Click_1(object sender, EventArgs e)
-        {
+        {            
             Convo newConvo = new Convo();
             newConvo.ConvoFileName = "new conversation";
-            prntForm.mod.moduleConvosList.Add(newConvo.ConvoFileName);            
+            //TODO setup first node as root
+            ContentNode contentNode = new ContentNode();
+            contentNode.idNum = newConvo.NextIdNum;
+            contentNode.conversationText = "root";
+            newConvo.AddNodeToRoot(contentNode);
+            //TreeNode mainNode = new TreeNode();
+            //mainNode.Name = "0";
+            //mainNode.Text = "root";
+            //treeView1.Nodes.Add(mainNode);
+
+            prntForm.mod.moduleConvoList.Add(newConvo);            
             refreshListBoxConvos();
-            // should I create a new file at this point?
         }
         private void btnRemoveConvo_Click_1(object sender, EventArgs e)
         {
@@ -66,7 +65,7 @@ namespace IB2ToolsetMini
                 {
                     // The Remove button was clicked.
                     int selectedIndex = lbxConvos.SelectedIndex;
-                    prntForm.mod.moduleConvosList.RemoveAt(selectedIndex);
+                    prntForm.mod.moduleConvoList.RemoveAt(selectedIndex);
                 }
                 catch { }
                 prntForm._selectedLbxConvoIndex = 0;
@@ -92,15 +91,12 @@ namespace IB2ToolsetMini
         }
         private void lbxConvos_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            //MessageBox.Show("listBox selected index changed");
             if (lbxConvos.SelectedIndex >= 0)
             {
                 prntForm._selectedLbxConvoIndex = lbxConvos.SelectedIndex;
-                txtConvoName.Text = prntForm.mod.moduleConvosList[prntForm._selectedLbxConvoIndex];
+                txtConvoName.Text = prntForm.mod.moduleConvoList[prntForm._selectedLbxConvoIndex].ConvoFileName;
                 lbxConvos.SelectedIndex = prntForm._selectedLbxConvoIndex;
             }
-            //refreshListBoxAreas();
-            //refreshLbxItems();
         }
         private void btnRename_Click(object sender, EventArgs e)
         {
@@ -110,14 +106,13 @@ namespace IB2ToolsetMini
                 DialogResult result = newName.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    /*try
+                    try
                     {
-                        prntForm.mod.ModuleConvosList[prntForm._selectedLbxConvoIndex] = newName.RenameText;
+                        prntForm.mod.moduleConvoList[prntForm._selectedLbxConvoIndex].ConvoFileName = newName.RenameText;
                         refreshListBoxConvos();
                     }
-                    catch { }
-                    */
-                    try
+                    catch { }                    
+                    /*try
                     {
                         #region New Convo
                         if (prntForm.mod.moduleConvosList[prntForm._selectedLbxConvoIndex] == "new conversation")
@@ -208,41 +203,44 @@ namespace IB2ToolsetMini
                         }
                         #endregion
                     }
-                    catch { }
+                    catch { }*/
                 }
             }
         }
         private void lbxConvos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            int index = this.lbxConvos.IndexFromPoint(e.Location);
-
-            if (index != System.Windows.Forms.ListBox.NoMatches)
+            if ((lbxConvos.Items.Count > 0) && (lbxConvos.SelectedIndex >= 0))
             {
-                //MessageBox.Show(index.ToString());
-                //do your stuff here
-                //prntForm._selectedLbxConvoIndex = index;
-                try
+                int index = this.lbxConvos.IndexFromPoint(e.Location);
+                if (index != System.Windows.Forms.ListBox.NoMatches)
                 {
-                    if ((lbxConvos.Items.Count > 0) && (lbxConvos.SelectedIndex >= 0))
-                    {
-                        EditConvo();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("failed: " + ex.ToString());
-                    //prntForm.game.errorLog("failed: " + ex.ToString());
+                    EditConvo();
                 }
             }
         }
         private void btnSort_Click(object sender, EventArgs e)
         {
-            prntForm.mod.moduleConvosList = prntForm.mod.moduleConvosList.OrderBy(o => o).ToList();
+            prntForm.mod.moduleConvoList = prntForm.mod.moduleConvoList.OrderBy(o => o.ConvoFileName).ToList();
             refreshListBoxConvos();
         }
         private void btnDuplicate_Click(object sender, EventArgs e)
         {
-            if ((lbxConvos.Items.Count > 0) && (lbxConvos.SelectedIndex >= 0))
+            //TODO will need to come up with a DeepCopy() for Convos
+            /*if ((lbxAreas.Items.Count > 0) && (lbxAreas.SelectedIndex >= 0))
+            {
+                try
+                {
+                    Area newArea = new Area();
+                    newArea = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].DeepCopy();
+                    newArea.Filename = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].Filename + "-Copy";
+                    prntForm.mod.moduleAreasObjects.Add(newArea);
+                    refreshListBoxAreas();
+                }
+                catch { }
+            }*/
+
+
+            /*if ((lbxConvos.Items.Count > 0) && (lbxConvos.SelectedIndex >= 0))
             {
                 //if file exists, rename the file
                 string filePath = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\dialog";
@@ -283,21 +281,21 @@ namespace IB2ToolsetMini
                     MessageBox.Show("File: " + filename + ".json does not exist in the dialog folder");
                 }
                 refreshListBoxConvos();
-            }
+            }*/
         }                
         #endregion 
 
         private void EditConvo()
         {
             ConvoEditor newChild = new ConvoEditor(prntForm.mod, prntForm); //add new child
-            newChild.Text = prntForm.mod.moduleConvosList[prntForm._selectedLbxConvoIndex];
+            newChild.Text = prntForm.mod.moduleConvoList[prntForm._selectedLbxConvoIndex].ConvoFileName;
             newChild.Show(prntForm.dockPanel1);  //as new form created so that corresponding tab and child form is active
             refreshListBoxConvos();
-            newChild.ce_filename = prntForm.mod.moduleConvosList[prntForm._selectedLbxConvoIndex] + ".json";
-            newChild.saveConvoFile();
+            //newChild.ce_filename = prntForm.mod.moduleConvosList[prntForm._selectedLbxConvoIndex] + ".json";
+            //newChild.saveConvoFile();
         }
 
-        private void btnLoadAllConvo_Click(object sender, EventArgs e)
+        /*private void btnLoadAllConvo_Click(object sender, EventArgs e)
         {
             string jobDir = "";
             jobDir = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\dialog";
@@ -308,6 +306,6 @@ namespace IB2ToolsetMini
                 prntForm.mod.moduleConvosList.Add(filename);
             }
             refreshListBoxConvos();
-        }
+        }*/
     }
 }

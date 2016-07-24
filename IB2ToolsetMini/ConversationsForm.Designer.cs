@@ -143,7 +143,7 @@
             this.btnLoadAllConvo.TabIndex = 91;
             this.btnLoadAllConvo.Text = "LoadAll";
             this.btnLoadAllConvo.UseVisualStyleBackColor = true;
-            this.btnLoadAllConvo.Click += new System.EventHandler(this.btnLoadAllConvo_Click);
+            //this.btnLoadAllConvo.Click += new System.EventHandler(this.btnLoadAllConvo_Click);
             // 
             // ConversationsForm
             // 

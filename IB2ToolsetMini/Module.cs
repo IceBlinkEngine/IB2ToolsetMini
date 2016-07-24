@@ -49,8 +49,9 @@ namespace IB2ToolsetMini
         public List<Spell> moduleSpellsList = new List<Spell>();
         public List<Trait> moduleTraitsList = new List<Trait>();
         public List<Effect> moduleEffectsList = new List<Effect>();
+        public List<Convo> moduleConvoList = new List<Convo>();
         //public List<string> moduleAreasList = new List<string>();
-        public List<string> moduleConvosList = new List<string>();
+        //public List<string> moduleConvosList = new List<string>();
         public List<string> moduleIBScriptsList = new List<string>();
         public List<Area> moduleAreasObjects = new List<Area>();
         public List<GlobalInt> moduleGlobalInts = new List<GlobalInt>();
@@ -337,7 +338,7 @@ namespace IB2ToolsetMini
         }
         public void saveModuleFile(string filename)
         {
-            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 sw.Write(json.ToString());
