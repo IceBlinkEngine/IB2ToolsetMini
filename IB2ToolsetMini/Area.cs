@@ -185,7 +185,84 @@ namespace IB2ToolsetMini
         public Area()
         {
         }
+        public Area DeepCopy()
+        {
+            Area copy = new Area();
+            copy = (Area)this.MemberwiseClone();
 
+            copy.Props = new List<Prop>();
+            foreach (Prop p in this.Props)
+            {
+                copy.Props.Add(p.DeepCopy());
+            }
+
+            copy.Triggers = new List<Trigger>();
+            foreach (Trigger p in this.Triggers)
+            {
+                copy.Triggers.Add(p.DeepCopy());
+            }
+                        
+            copy.Layer1Filename = new List<string>();
+            foreach (string s in this.Layer1Filename)
+            {
+                copy.Layer1Filename.Add(s);
+            }
+            copy.Layer1Mirror = new List<int>();
+            foreach (int s in this.Layer1Mirror)
+            {
+                copy.Layer1Mirror.Add(s);
+            }
+            copy.Layer1Rotate = new List<int>();
+            foreach (int s in this.Layer1Rotate)
+            {
+                copy.Layer1Rotate.Add(s);
+            }
+            copy.Layer2Filename = new List<string>();
+            foreach (string s in this.Layer2Filename)
+            {
+                copy.Layer2Filename.Add(s);
+            }
+            copy.Layer2Mirror = new List<int>();
+            foreach (int s in this.Layer2Mirror)
+            {
+                copy.Layer2Mirror.Add(s);
+            }
+            copy.Layer2Rotate = new List<int>();
+            foreach (int s in this.Layer2Rotate)
+            {
+                copy.Layer2Rotate.Add(s);
+            }
+            copy.Walkable = new List<int>();
+            foreach (int s in this.Walkable)
+            {
+                copy.Walkable.Add(s);
+            }
+            copy.LoSBlocked = new List<int>();
+            foreach (int s in this.LoSBlocked)
+            {
+                copy.LoSBlocked.Add(s);
+            }
+            copy.Visible = new List<int>();
+            foreach (int s in this.Visible)
+            {
+                copy.Visible.Add(s);
+            }
+            return copy;
+        }
+        public void SetAllToGrass()
+        {
+            for (int index = 0; index < (this.MapSizeX * this.MapSizeY); index++)
+            {
+                this.Layer1Filename.Add("t_grass");
+                this.Layer1Rotate.Add(0);
+                this.Layer1Mirror.Add(0);
+                this.Layer2Filename.Add("t_blank");
+                this.Layer2Rotate.Add(0);
+                this.Layer2Mirror.Add(0);
+                this.Walkable.Add(1);
+                this.LoSBlocked.Add(0);
+            }
+        }
         public void saveAreaFile(string path)
         {
             string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);

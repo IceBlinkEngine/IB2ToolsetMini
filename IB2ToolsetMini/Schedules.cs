@@ -27,5 +27,15 @@ namespace IB2ToolsetMini
         public Schedule()
         {
         }
+        public Schedule DeepCopy()
+        {
+            Schedule other = (Schedule)this.MemberwiseClone();
+            other.WayPointList = new List<WayPoint>();
+            foreach (WayPoint bs in this.WayPointList)
+            {
+                other.WayPointList.Add(bs.DeepCopy());
+            }
+            return other;
+        }
     }
 }

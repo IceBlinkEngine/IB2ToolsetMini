@@ -52,18 +52,14 @@ namespace IB2ToolsetMini
         public bool tileSelected = true;
         public Point currentSquareClicked = new Point(0, 0);
         public Point lastSquareClicked = new Point(0, 0);
-        public string g_filename = "";
-        public string g_directory = "";
+        //public string g_filename = "";
+        //public string g_directory = "";
         public Area area;
         public selectionStruct selectedTile;
         public Point lastSelectedCreaturePropIcon;
         public string lastSelectedObjectTag;
         public string lastSelectedObjectResRef;
         public Prop le_selectedProp = new Prop();
-        
-        public Bitmap sourceBitmap;
-        string[] args = new string[2];
-        bool firstTimeLoadingMap = true;
 
         #region Direct2D Stuff
         public bool useDirect2D = true;
@@ -77,138 +73,28 @@ namespace IB2ToolsetMini
 
         public WorldMapEditor(Module m, ParentForm p)
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
             mod = m;
             prntForm = p;
+            area = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex];
             resetTileToBePlacedSettings();            
             createTileImageButtons();
-            
-            //prntForm._mainDirectory = Directory.GetCurrentDirectory();
-            if (useDirect2D)
-            {
-                //TODO add D2D stuff                
-            }
-            else
-            {
-                /*//GDI surface = new Bitmap(mSizeW, mSizeH);
-                panelView.BackgroundImage = surface;
-                device = Graphics.FromImage(surface);
-
-                if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_pass.png"))
-                {
-                    g_walkPass = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_pass.png");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_pass.png"))
-                {
-                    g_walkPass = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_pass.png");
-                }
-                if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_block.png"))
-                {
-                    g_walkBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_block.png");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_block.png"))
-                {
-                    g_walkBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_block.png");
-                }
-                if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\los_block.png"))
-                {
-                    g_LoSBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\los_block.png");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\los_block.png"))
-                {
-                    g_LoSBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\los_block.png");
-                }
-                if ((g_walkBlock == null) || (g_walkPass == null) || (g_LoSBlock == null))
-                {
-                    try
-                    {
-                        g_walkPass = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\ui\\walk_pass.png");
-                        g_walkBlock = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\ui\\walk_block.png");
-                        g_LoSBlock = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\ui\\los_block.png");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("failed to load walk_pass, los_block, and walk_block bitmaps: " + ex.ToString());
-                        //le_game.errorLog("failed to load walkPass and walkBlock bitmaps: " + ex.ToString());
-                    }
-                }//GDI */
-            }
         }
         private void WorldMapEditor_Load(object sender, EventArgs e)
         {
-            //LoadEncounters();
             radioButton1.Checked = true;
             checkBox1.Checked = true;
             checkBox2.Checked = true;
             checkBox3.Checked = true;
             checkBox4.Checked = true;
             checkBox5.Checked = true;
-            //createTileImageButtons(); 
-
-            area = new Area();
-            area.MapSizeX = 16;
-            area.MapSizeY = 16;
-
-            // try and load the file selected if it exists
-            /*string g_filename = mod.moduleAreasList[prntForm._selectedLbxAreaIndex];
-            string g_directory = prntForm._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
-            string filenameNoExtension = Path.GetFileNameWithoutExtension(mod.moduleAreasList[prntForm._selectedLbxAreaIndex]);
-            if (File.Exists(g_directory + "\\" + g_filename + ".lvl"))
-            {
-                openLevel(g_directory, g_filename, filenameNoExtension);
-                if (area == null)
-                {
-                    createNewArea(area.MapSizeX, area.MapSizeY);
-                    area.Filename = g_filename;
-                }
-            }
-            else
-            {
-                createNewArea(area.MapSizeX, area.MapSizeY);
-                area.Filename = g_filename;
-                if (useDirect2D)
-                {
-                    //TODO add D2D stuff
-                    InitDirect2DAndDirectWrite();
-                }
-            }*/
+                        
             lblMapSizeX.Text = area.MapSizeX.ToString();
             lblMapSizeY.Text = area.MapSizeY.ToString();
-            //set up level drawing surface
-            
-            if (useDirect2D)
-            {
-                //TODO add D2D stuff
-                /*try
-                {
-                    InitDirect2DAndDirectWrite();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to use DirectX, DirectX option will not be available. Error: " + ex.ToString());
-                    prntForm.errorLog(ex.ToString());
-                }*/
-            }
-            else
-            {
-                //GDI panelView.Width = area.MapSizeX * sqr;
-                //GDI panelView.Height = area.MapSizeY * sqr;
-                //GDI surface = new Bitmap(panelView.Size.Width, panelView.Size.Height);
-                //GDI device = Graphics.FromImage(surface);
-                //GDI panelView.BackgroundImage = (Image)surface;
-            }
 
-            //refreshCmbBoxes();
-            //prntForm.openAreasList.Add(area);
             rbtnInfo.Checked = true;
             rbtnZoom1x.Checked = true;
             InitDirect2DAndDirectWrite();
-            //refreshMap(true);
-            //numBGLocX.Value = area.backgroundImageStartLocX;
-            //numBGLocY.Value = area.backgroundImageStartLocY;
-            //Set this map to be a WORLD MAP
-            //area.IsWorldMap = true;
         }
         public void resetTileToBePlacedSettings()
         {
@@ -1782,7 +1668,7 @@ namespace IB2ToolsetMini
             //GDI refreshMap(true);
             //this.Cursor = Cursors.Arrow;
         }
-        private void saveTilemapFileAs()
+        /*private void saveTilemapFileAs()
         {
             //display the open file dialog
             saveFileDialog1.DefaultExt = ".lvl";
@@ -1799,8 +1685,8 @@ namespace IB2ToolsetMini
             area.Filename = g_filename;
             //area.ImageFileName = Path.GetFileNameWithoutExtension(saveFileDialog1.FileName);
             saveTilemapFile();
-        }
-        public void saveTilemapFile()
+        }*/
+        /*public void saveTilemapFile()
         {
             if (g_filename.Length == 0)
             {
@@ -1810,7 +1696,7 @@ namespace IB2ToolsetMini
             area.Filename = g_filename;
             //area.MapFileName = Path.GetFileNameWithoutExtension(g_filename) + ".jpg";
             area.saveAreaFile(g_directory + "\\" + g_filename + ".lvl");
-        }
+        }*/
         private void createNewArea(int width, int height)
         {
             //create tilemap

@@ -424,7 +424,11 @@ namespace IB2ToolsetMini
             scriptsList = new List<string>(prntForm.scriptList);
 
             areasList.Clear();
-            areasList = new List<string>(prntForm.mod.moduleAreasList);
+            foreach (Area c in prntForm.mod.moduleAreasObjects)
+            {
+                areasList.Add(c.Filename);
+            }
+            //areasList = new List<string>(prntForm.mod.moduleAreasList);
         }
         public void refreshTriggers()
         {

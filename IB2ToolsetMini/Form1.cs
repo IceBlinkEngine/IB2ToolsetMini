@@ -231,7 +231,8 @@ namespace IB2ToolsetMini
                 MessageBox.Show("returned a null module");
             }
             frmAreas.lbxAreas.DataSource = null;
-            frmAreas.lbxAreas.DataSource = mod.moduleAreasList;
+            frmAreas.lbxAreas.DataSource = mod.moduleAreasObjects;
+            frmAreas.lbxAreas.DisplayMember = "Filename";
             frmAreas.refreshListBoxAreas();            
             frmConversations.refreshListBoxConvos();
             //REMOVEfrmLogicTree.refreshListBoxLogicTrees();
@@ -1718,13 +1719,21 @@ namespace IB2ToolsetMini
 
         private void tilesUsedInModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Area areaObj = new Area();
             List<string> tilenames = new List<string>();
             //iterate over each area and add tile names to tilenames if not already contained
-            foreach (string ar in mod.moduleAreasList)
+            foreach (Area ar in mod.moduleAreasObjects)
             {
+                foreach (string t in ar.Layer1Filename)
+                {
+                    if (!tilenames.Contains(t)) { tilenames.Add(t); }
+                }
+                foreach (string t in ar.Layer2Filename)
+                {
+                    if (!tilenames.Contains(t)) { tilenames.Add(t); }
+                }
+
                 // try and load the file selected if it exists
-                string g_directory = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
+                /*string g_directory = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
                 if (File.Exists(g_directory + "\\" + ar + ".lvl"))
                 {
                     try
@@ -1743,7 +1752,7 @@ namespace IB2ToolsetMini
                     {
                         MessageBox.Show("failed to open file: " + ex.ToString());
                     }                    
-                }                
+                }*/             
             }
             
             //iterate over each encounter and add tile names to List<string> if not already contained

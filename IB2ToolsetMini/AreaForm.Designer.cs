@@ -143,7 +143,7 @@
             this.btnLoadAllArea.TabIndex = 92;
             this.btnLoadAllArea.Text = "Load All";
             this.btnLoadAllArea.UseVisualStyleBackColor = true;
-            this.btnLoadAllArea.Click += new System.EventHandler(this.btnLoadAllArea_Click);
+            //this.btnLoadAllArea.Click += new System.EventHandler(this.btnLoadAllArea_Click);
             // 
             // AreaForm
             // 

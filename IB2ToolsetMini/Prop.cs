@@ -336,6 +336,11 @@ namespace IB2ToolsetMini
             {
                 other.WayPointList.Add(coor.DeepCopy());
             }
+            other.Schedules = new List<Schedule>();
+            foreach (Schedule s in this.Schedules)
+            {
+                other.Schedules.Add(s.DeepCopy());
+            }
             return other;
         }
     }        

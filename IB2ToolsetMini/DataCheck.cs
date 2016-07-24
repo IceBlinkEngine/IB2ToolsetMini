@@ -227,41 +227,41 @@ namespace IB2ToolsetMini
         {
             //iterate through all areas from the area list and load one at a time and check
             //if load fails report            
-            foreach (string areafilename in frm.mod.moduleAreasList)
+            foreach (Area area in frm.mod.moduleAreasObjects)
             {
-                area = area.loadAreaFile(frm._mainDirectory + "\\modules\\" + frm.mod.moduleName + "\\areas\\" + areafilename + ".lvl");
-                if (area == null)
+                //area = area.loadAreaFile(frm._mainDirectory + "\\modules\\" + frm.mod.moduleName + "\\areas\\" + areafilename + ".lvl");
+                /*if (area == null)
                 {
                     frm.logText("AREA ERROR: returned a null area for " + areafilename + ", most likely couldn't find file" + Environment.NewLine);
                     continue;
-                }
+                }*/
                 //go through all triggers and check for missing data
                 foreach (Trigger trg in area.Triggers)
                 {
                     //check if transition with no destination
                     if ((trg.Event1Type == "transition") && ((trg.Event1TransPointX == 0) && (trg.Event1TransPointY == 0)))
                     {
-                        frm.logText("TRIGGER ERROR: " + areafilename + ": trigger " + trg.TriggerTag + "event1 has a x=0 and y=0 location, is that intended?" + Environment.NewLine);
+                        frm.logText("TRIGGER ERROR: " + area.Filename + ": trigger " + trg.TriggerTag + "event1 has a x=0 and y=0 location, is that intended?" + Environment.NewLine);
                     }
                     if ((trg.Event2Type == "transition") && ((trg.Event2TransPointX == 0) && (trg.Event2TransPointY == 0)))
                     {
-                        frm.logText("TRIGGER ERROR: " + areafilename + ": trigger " + trg.TriggerTag + "event2 has a x=0 and y=0 location, is that intended?" + Environment.NewLine);
+                        frm.logText("TRIGGER ERROR: " + area.Filename + ": trigger " + trg.TriggerTag + "event2 has a x=0 and y=0 location, is that intended?" + Environment.NewLine);
                     }
                     if ((trg.Event3Type == "transition") && ((trg.Event3TransPointX == 0) && (trg.Event3TransPointY == 0)))
                     {
-                        frm.logText("TRIGGER ERROR: " + areafilename + ": trigger " + trg.TriggerTag + "event3 has a x=0 and y=0 location, is that intended?" + Environment.NewLine);
+                        frm.logText("TRIGGER ERROR: " + area.Filename + ": trigger " + trg.TriggerTag + "event3 has a x=0 and y=0 location, is that intended?" + Environment.NewLine);
                     }
                     if ((trg.Event1Type != "none") && (trg.Event1FilenameOrTag == "none"))
                     {
-                        frm.logText("TRIGGER ERROR: " + areafilename + ": trigger " + trg.TriggerTag + ": event1 has type of " +  trg.Event1Type + " but filename/tag of 'none'" + Environment.NewLine);
+                        frm.logText("TRIGGER ERROR: " + area.Filename + ": trigger " + trg.TriggerTag + ": event1 has type of " +  trg.Event1Type + " but filename/tag of 'none'" + Environment.NewLine);
                     }
                     if ((trg.Event2Type != "none") && (trg.Event2FilenameOrTag == "none"))
                     {
-                        frm.logText("TRIGGER ERROR: " + areafilename + ": trigger " + trg.TriggerTag + ": event2 has type of " + trg.Event2Type + " but filename/tag of 'none'" + Environment.NewLine);
+                        frm.logText("TRIGGER ERROR: " + area.Filename + ": trigger " + trg.TriggerTag + ": event2 has type of " + trg.Event2Type + " but filename/tag of 'none'" + Environment.NewLine);
                     }
                     if ((trg.Event3Type != "none") && (trg.Event3FilenameOrTag == "none"))
                     {
-                        frm.logText("TRIGGER ERROR: " + areafilename + ": trigger " + trg.TriggerTag + ": event3 has type of " + trg.Event3Type + " but filename/tag of 'none'" + Environment.NewLine);
+                        frm.logText("TRIGGER ERROR: " + area.Filename + ": trigger " + trg.TriggerTag + ": event3 has type of " + trg.Event3Type + " but filename/tag of 'none'" + Environment.NewLine);
                     }
                 }
             }

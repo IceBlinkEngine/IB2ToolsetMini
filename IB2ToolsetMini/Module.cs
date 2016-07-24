@@ -49,7 +49,7 @@ namespace IB2ToolsetMini
         public List<Spell> moduleSpellsList = new List<Spell>();
         public List<Trait> moduleTraitsList = new List<Trait>();
         public List<Effect> moduleEffectsList = new List<Effect>();
-        public List<string> moduleAreasList = new List<string>();
+        //public List<string> moduleAreasList = new List<string>();
         public List<string> moduleConvosList = new List<string>();
         public List<string> moduleIBScriptsList = new List<string>();
         public List<Area> moduleAreasObjects = new List<Area>();
@@ -355,7 +355,7 @@ namespace IB2ToolsetMini
             }
             return toReturn;
         }
-        public void loadAreas(string path)
+        /*public void loadAreas(string path)
         {
             Area newArea = new Area();
             foreach (string areaName in moduleAreasList)
@@ -375,6 +375,6 @@ namespace IB2ToolsetMini
                     MessageBox.Show("failed to open all files: " + ex.ToString() + ex.Message);
                 }
             }
-        }
+        }*/
     }
 }

@@ -47,7 +47,6 @@ namespace IB2ToolsetMini
             //newEncounter.passRefs(prntForm.game, prntForm);
             prntForm.mod.moduleEncountersList.Add(newEncounter);
             refreshListBoxEncounters();
-            // should I create a new file at this point?
         }
         private void btnRemoveEncounter_Click_1(object sender, EventArgs e)
         {
@@ -69,29 +68,7 @@ namespace IB2ToolsetMini
         {
             if ((lbxEncounters.Items.Count > 0) && (lbxEncounters.SelectedIndex >= 0))
             {
-                EditEncounter();
-                /*
-                Encounter enc = prntForm.encountersList.encounters[prntForm._selectedLbxEncounterIndex];
-                EncounterEditor newChild = new EncounterEditor(prntForm.mod, enc, prntForm.game, prntForm);      //add new child
-                //         TabPage childTab = new TabPage();         //create new tab page
-                //         newChild.MdiParent = this;                       //set as child of this form
-                //newChild.Name = "Child" + createdTab.ToString();
-
-                // should use the file name from selected area in lbxAreas
-                // should automatically load area image and .level file upon clicking on the edit button
-
-                newChild.Text = prntForm.encountersList.encounters[prntForm._selectedLbxEncounterIndex].EncounterName;
-                //childTab.Name = newChild.Name;           //make sure name and text are same
-                //          childTab.Text = newChild.Text;                  //this is for syncrhonize later
-                //          childTab.Tag = "EncounterEditor";
-                //               tabControl1.TabPages.Add(childTab);     //add new tab
-                //          newChild.EcounterEditorPanel.Parent = childTab;     //attach to tab
-                //             tabControl1.SelectTab(childTab);     //this is to make sure that tab page is selected in the same time
-                newChild.Show(prntForm.dockPanel1);                                 //as new form created so that corresponding tab and child form is active
-                //           prntForm.createdTab++;   //increment of course
-                //mod.ModuleAreasList.Add("New Area");
-                refreshListBoxEncounters();
-                */
+                EditEncounter();                
             }
         }
         private void lbxEncounters_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -150,7 +127,6 @@ namespace IB2ToolsetMini
                     Encounter newEncounter = new Encounter();
                     newEncounter = prntForm.mod.moduleEncountersList[prntForm._selectedLbxEncounterIndex].DeepCopy();
                     newEncounter.encounterName = prntForm.mod.moduleEncountersList[prntForm._selectedLbxEncounterIndex].encounterName + "-Copy";
-                    //newEncounter.passRefs(prntForm.game, prntForm);
                     prntForm.mod.moduleEncountersList.Add(newEncounter);
                     refreshListBoxEncounters();
                 }
@@ -161,7 +137,7 @@ namespace IB2ToolsetMini
        
         private void EditEncounter()
         {
-            Encounter enc = prntForm.mod.moduleEncountersList[prntForm._selectedLbxEncounterIndex];
+            //Encounter enc = prntForm.mod.moduleEncountersList[prntForm._selectedLbxEncounterIndex];
             EncounterEditor newChild = new EncounterEditor(prntForm.mod, prntForm); //add new child
             newChild.Text = prntForm.mod.moduleEncountersList[prntForm._selectedLbxEncounterIndex].encounterName;
             newChild.Show(prntForm.dockPanel1); //as new form created so that corresponding tab and child form is active

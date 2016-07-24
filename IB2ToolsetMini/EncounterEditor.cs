@@ -27,15 +27,15 @@ namespace IB2ToolsetMini
         //GDI private Graphics device;
         //GDI private Bitmap surface;
         //GDI private Bitmap mapBitmap;
-        public SharpDX.Direct2D1.Bitmap mapBitmapD2D;
+        //public SharpDX.Direct2D1.Bitmap mapBitmapD2D;
         private Bitmap selectedBitmap;
         public string selectedBitmapFilename = "";
         //GDI public Bitmap g_walkPass;
         //GDI public Bitmap g_walkBlock;
         //GDI public Bitmap g_LoSBlock;
         private int sqr = 25;
-        private int mSizeW = 800;
-        private int mSizeH = 800;
+        //private int mSizeW = 800;
+        //private int mSizeH = 800;
         private Point currentPoint = new Point(0, 0);
         private Point lastPoint = new Point(0, 0);
         private int gridX = 0;
@@ -83,75 +83,18 @@ namespace IB2ToolsetMini
             mod = m;
             prntForm = p;
             thisEnc = prntForm.mod.moduleEncountersList[prntForm._selectedLbxEncounterIndex];
-            createTileImageButtons();
-            /*//GDI surface = new Bitmap(mSizeW, mSizeH);
-            panelView.BackgroundImage = surface;            
-            device = Graphics.FromImage(surface);
-            if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_pass.png"))
-            {
-                g_walkPass = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_pass.png");
-            }
-            else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_pass.png"))
-            {
-                g_walkPass = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_pass.png");
-            }
-            if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_block.png"))
-            {
-                g_walkBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\walk_block.png");
-            }
-            else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_block.png"))
-            {
-                g_walkBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\walk_block.png");
-            }
-            if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\los_block.png"))
-            {
-                g_LoSBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\los_block.png");
-            }
-            else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\los_block.png"))
-            {
-                g_LoSBlock = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\los_block.png");
-            }
-            if ((g_walkBlock == null) || (g_walkPass == null) || (g_LoSBlock == null))
-            {
-                try
-                {
-                    g_walkPass = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\ui\\walk_pass.png");
-                    g_walkBlock = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\ui\\walk_block.png");
-                    g_LoSBlock = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\ui\\los_block.png");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("failed to load walk_pass, los_block, and walk_block bitmaps: " + ex.ToString());
-                    //le_game.errorLog("failed to load walkPass and walkBlock bitmaps: " + ex.ToString());
-                }
-            }*/
+            createTileImageButtons();            
             refreshCmbItems();
             refreshLbxItems();
             refreshGoldDrop();
         }        
         private void EncounterEditor_Load(object sender, EventArgs e)
         {
-            //LoadEncounters();
             radioButton1.Checked = true;
             checkBox1.Checked = true;
             checkBox2.Checked = true;
             checkBox3.Checked = true;
-            //createTileImageButtons(); 
-
-            //thisEnc = prntForm.encountersList[_selectedLbxEncounterIndex];
-            //thisEnc.MapSizeX = 7;
-            //thisEnc.MapSizeY = 7;
-
-            //createNewArea(thisEnc.MapSizeX, thisEnc.MapSizeY);
-
-            //set up level drawing surface
-            //GDI panelView.Width = thisEnc.MapSizeX * sqr;
-            //GDI panelView.Height = thisEnc.MapSizeY * sqr;           
-            //GDI surface = new Bitmap(panelView.Size.Width, panelView.Size.Height);
-            //UpdatePB();
-            //GDI device = Graphics.FromImage(surface);
-            //GDI panelView.BackgroundImage = (Image)surface;
-
+            
             rbtnInfo.Checked = true;
             rbtnZoom1x.Checked = true;
             InitDirect2DAndDirectWrite();
@@ -1365,7 +1308,7 @@ namespace IB2ToolsetMini
                 }
             }
             commonBitmapList.Clear();
-            DisposeOfBitmap(ref mapBitmapD2D);
+            //DisposeOfBitmap(ref mapBitmapD2D);
             SceneColorBrush.Dispose();
             RenderTarget2D.Dispose();
             FactoryDWrite.Dispose();

@@ -332,6 +332,19 @@ namespace IB2ToolsetMini
         public Trigger()
         {
         }
+        public Trigger DeepCopy()
+        {
+            Trigger other = (Trigger)this.MemberwiseClone();
+            other.TriggerSquaresList = new List<Coordinate>();
+            foreach (Coordinate l in this.TriggerSquaresList)
+            {
+                Coordinate newCoor = new Coordinate();
+                newCoor.X = l.X;
+                newCoor.Y = l.Y;
+                other.TriggerSquaresList.Add(newCoor);
+            }            
+            return other;
+        }
         public string getStringEnum(int value)
         {
             string returnString = "none";

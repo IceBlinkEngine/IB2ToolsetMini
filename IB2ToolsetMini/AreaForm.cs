@@ -28,7 +28,8 @@ namespace IB2ToolsetMini
             //{
             lbxAreas.BeginUpdate();
             lbxAreas.DataSource = null;
-            lbxAreas.DataSource = prntForm.mod.moduleAreasList;
+            lbxAreas.DataSource = prntForm.mod.moduleAreasObjects;
+            lbxAreas.DisplayMember = "Filename";
             lbxAreas.EndUpdate();
             //}
         }
@@ -50,21 +51,18 @@ namespace IB2ToolsetMini
         }
         private void lbxAreas_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            //MessageBox.Show("listBox selected index changed");
             if (lbxAreas.SelectedIndex >= 0)
             {
                 prntForm._selectedLbxAreaIndex = lbxAreas.SelectedIndex;
-                txtAreaName.Text = prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex];
+                txtAreaName.Text = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].Filename;
                 lbxAreas.SelectedIndex = prntForm._selectedLbxAreaIndex;                
             }
-            //refreshListBoxAreas();
-            //refreshLbxItems();
         }
         private void txtAreaName_TextChanged_1(object sender, EventArgs e)
         {
             try
             {
-                prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] = txtAreaName.Text;
+                prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].Filename = txtAreaName.Text;
                 refreshListBoxAreas();
             }
             catch { }
@@ -73,10 +71,10 @@ namespace IB2ToolsetMini
         {
             Area newArea = new Area();
             newArea.Filename = "new area";
-            prntForm.mod.moduleAreasList.Add(newArea.Filename);
+            newArea.SetAllToGrass();
+            //prntForm.mod.moduleAreasList.Add(newArea.Filename);
             prntForm.mod.moduleAreasObjects.Add(newArea);
             refreshListBoxAreas();
-            // should I create a new file at this point?
         }
         private void btnRemoveArea_Click_1(object sender, EventArgs e)
         {
@@ -86,7 +84,7 @@ namespace IB2ToolsetMini
                 {
                     // The Remove button was clicked.
                     int selectedIndex = lbxAreas.SelectedIndex;
-                    prntForm.mod.moduleAreasList.RemoveAt(selectedIndex);
+                    prntForm.mod.moduleAreasObjects.RemoveAt(selectedIndex);
                 }
                 catch { }
                 prntForm._selectedLbxAreaIndex = 0;
@@ -111,94 +109,8 @@ namespace IB2ToolsetMini
                 {
                     try
                     {
-                        #region New Area
-                        if (prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] == "new area")
-                        {
-                            //if file exists, rename the file
-                            string filePath = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\areas";
-                            if (File.Exists(filePath + "\\" + prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] + ".lvl"))
-                            {
-                                try
-                                {
-                                    //rename file
-                                    File.Move(filePath + "\\" + prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] + ".lvl", filePath + "\\" + newName.RenameText + ".lvl"); // Try to move
-                                    try
-                                    {
-                                        //load area
-                                        Area newArea = new Area();
-                                        newArea = newArea.loadAreaFile(filePath + "\\" + newName.RenameText + ".lvl");
-                                        if (newArea == null)
-                                        {
-                                            MessageBox.Show("returned a null area");
-                                        }
-                                        //change area file name in area file object properties
-                                        newArea.Filename = newName.RenameText;
-                                        newArea.saveAreaFile(filePath + "\\" + newName.RenameText + ".lvl");
-                                        prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] = newName.RenameText;
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("failed to open file: " + ex.ToString());
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.ToString()); // Write error
-                                }
-                            }
-                            else
-                            {
-                                prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] = newName.RenameText;
-                            }
-                            refreshListBoxAreas();
-                        }
-                        #endregion
-                        #region Existing Area
-                        else
-                        {
-                            DialogResult sure = MessageBox.Show("Are you sure you wish to change the area name and the area file name? (make sure to update any references to this area name such as transitions and scripts)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-                            if (sure == System.Windows.Forms.DialogResult.Yes)
-                            {
-                                //if file exists, rename the file
-                                string filePath = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\areas";
-                                if (File.Exists(filePath + "\\" + prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] + ".lvl"))
-                                {
-                                    try
-                                    {
-                                        //rename file
-                                        File.Move(filePath + "\\" + prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] + ".lvl", filePath + "\\" + newName.RenameText + ".lvl"); // Try to move
-                                        try
-                                        {
-                                            //load area
-                                            Area newArea = new Area();
-                                            newArea = newArea.loadAreaFile(filePath + "\\" + newName.RenameText + ".lvl");
-                                            if (newArea == null)
-                                            {
-                                                MessageBox.Show("returned a null area");
-                                            }
-                                            //change area file name in area file object properties
-                                            newArea.Filename = newName.RenameText;
-                                            newArea.saveAreaFile(filePath + "\\" + newName.RenameText + ".lvl");
-                                            prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] = newName.RenameText;
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show("failed to open file: " + ex.ToString());
-                                        }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show(ex.ToString()); // Write error
-                                    }
-                                }
-                                else
-                                {
-                                    prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex] = newName.RenameText;
-                                }
-                                refreshListBoxAreas();
-                            }                            
-                        }
-                        #endregion
+                        prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].Filename = newName.RenameText;
+                        refreshListBoxAreas();
                     }
                     catch { }
                 }
@@ -206,53 +118,22 @@ namespace IB2ToolsetMini
         }
         private void btnSort_Click(object sender, EventArgs e)
         {
-            prntForm.mod.moduleAreasList = prntForm.mod.moduleAreasList.OrderBy(o => o).ToList();
+            prntForm.mod.moduleAreasObjects = prntForm.mod.moduleAreasObjects.OrderBy(o => o.Filename).ToList();
             refreshListBoxAreas();
         }
         private void btnDuplicate_Click(object sender, EventArgs e)
         {
             if ((lbxAreas.Items.Count > 0) && (lbxAreas.SelectedIndex >= 0))
             {
-                //if file exists, rename the file
-                string filePath = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\areas";
-                string filename = prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex];
-                if (File.Exists(filePath + "\\" + filename + ".lvl"))
+                try
                 {
-                    try
-                    {
-                        //rename file
-                        File.Copy(filePath + "\\" + filename + ".lvl", filePath + "\\" + filename + "-Copy.lvl");
-                        try
-                        {
-                            //load area
-                            Area newArea = new Area();
-                            newArea = newArea.loadAreaFile(filePath + "\\" + filename + "-Copy.lvl");
-                            if (newArea == null)
-                            {
-                                MessageBox.Show("returned a null area");
-                            }
-                            //change area file name in area file object properties
-                            newArea.Filename = filename + "-Copy";
-                            newArea.saveAreaFile(filePath + "\\" + filename + "-Copy.lvl");
-
-                            prntForm.mod.moduleAreasList.Add(newArea.Filename);
-                            refreshListBoxAreas();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("failed to open file: " + ex.ToString());
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString()); // Write error
-                    }
+                    Area newArea = new Area();
+                    newArea = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].DeepCopy();
+                    newArea.Filename = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].Filename + "-Copy";
+                    prntForm.mod.moduleAreasObjects.Add(newArea);
+                    refreshListBoxAreas();
                 }
-                else
-                {
-                    MessageBox.Show("File: " + filename + ".lvl does not exist in the areas folder");
-                }
-                refreshListBoxAreas();
+                catch { }
             }
         }        
         #endregion
@@ -262,11 +143,11 @@ namespace IB2ToolsetMini
             //if (prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex].StartsWith("wm_"))
             //{
                 WorldMapEditor newChild = new WorldMapEditor(prntForm.mod, prntForm); //add new child
-                newChild.Text = prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex];
+                newChild.Text = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex].Filename;
                 newChild.Show(prntForm.dockPanel1); //as new form created so that corresponding tab and child form is active
                 refreshListBoxAreas();
-                newChild.g_directory = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\areas";
-                newChild.g_filename = prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex];
+                //newChild.g_directory = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\areas";
+                //newChild.g_filename = prntForm.mod.moduleAreasList[prntForm._selectedLbxAreaIndex];
             /*}
             else
             {
@@ -279,7 +160,7 @@ namespace IB2ToolsetMini
             }*/
         }
 
-        private void btnLoadAllArea_Click(object sender, EventArgs e)
+        /*private void btnLoadAllArea_Click(object sender, EventArgs e)
         {
             string jobDir = "";
             jobDir = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\areas";
@@ -290,6 +171,6 @@ namespace IB2ToolsetMini
                 prntForm.mod.moduleAreasList.Add(filename);
             }
             refreshListBoxAreas();
-        }
+        }*/
     }
 }
