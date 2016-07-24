@@ -32,7 +32,33 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IBIcon3.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.WMPLib">
+      <HintPath>..\..\..\..\..\Source\Repos_IB2Engine\IB2Engine2\IceBlink2\bin\Debug\Interop.WMPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Source\Repos\IB2Engine\IceBlink2\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET">
+      <HintPath>..\..\..\..\..\Source\Repos\IB2Toolset\IB2Toolset\bin\Debug\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>..\..\..\..\..\Source\Repos\IB2Engine\IceBlink2\bin\Debug\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1">
+      <HintPath>..\..\..\..\..\Source\Repos\IB2Engine\IceBlink2\bin\Debug\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11">
+      <HintPath>..\..\..\..\..\Source\Repos\IB2Engine\IceBlink2\bin\Debug\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>..\..\..\..\..\Source\Repos\IB2Engine\IceBlink2\bin\Debug\SharpDX.DXGI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +70,289 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\..\..\..\..\Source\Repos_IB2Toolset\IB2Toolset2\IB2Toolset\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Area.cs" />
+    <Compile Include="AreaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AreaForm.Designer.cs">
+      <DependentUpon>AreaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AreaOfEffectShape.cs" />
+    <Compile Include="BarkString.cs" />
+    <Compile Include="Blueprints.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Blueprints.Designer.cs">
+      <DependentUpon>Blueprints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Container.cs" />
+    <Compile Include="ContainerEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContainerEditor.designer.cs">
+      <DependentUpon>ContainerEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContainersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContainersForm.Designer.cs">
+      <DependentUpon>ContainersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContentNode.cs" />
+    <Compile Include="ConversationConverter.cs" />
+    <Compile Include="ConversationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConversationsForm.Designer.cs">
+      <DependentUpon>ConversationsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Convo.cs" />
+    <Compile Include="ConvoEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConvoEditor.designer.cs">
+      <DependentUpon>ConvoEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Coordinate.cs" />
+    <Compile Include="Creature.cs" />
+    <Compile Include="DataCheck.cs" />
+    <Compile Include="Effect.cs" />
+    <Compile Include="EffectEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EffectEditor.Designer.cs">
+      <DependentUpon>EffectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EffectTagForDropDownList.cs" />
+    <Compile Include="Encounter.cs" />
+    <Compile Include="EncounterEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EncounterEditor.designer.cs">
+      <DependentUpon>EncounterEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EncountersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EncountersForm.Designer.cs">
+      <DependentUpon>EncountersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileNameSelectEditor.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalInt.cs" />
+    <Compile Include="GlobalListItem.cs" />
+    <Compile Include="GlobalString.cs" />
+    <Compile Include="IBScriptEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IBScriptEditor.designer.cs">
+      <DependentUpon>IBScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IBScriptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IBScriptForm.Designer.cs">
+      <DependentUpon>IBScriptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IconSprite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IconSprite.Designer.cs">
+      <DependentUpon>IconSprite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs" />
+    <Compile Include="Journal.cs" />
+    <Compile Include="JournalEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JournalEditor.Designer.cs">
+      <DependentUpon>JournalEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalInt.cs" />
+    <Compile Include="LocalListItem.cs" />
+    <Compile Include="LocalString.cs" />
+    <Compile Include="LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MergerEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MergerEditor.Designer.cs">
+      <DependentUpon>MergerEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module.cs" />
+    <Compile Include="ModuleNameDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleNameDialog.Designer.cs">
+      <DependentUpon>ModuleNameDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MultilineStringEditor.cs" />
+    <Compile Include="ObjectCopier.cs" />
+    <Compile Include="PanelNoScrollOnFocus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerClass.cs" />
+    <Compile Include="PlayerClassEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerClassEditor.Designer.cs">
+      <DependentUpon>PlayerClassEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerEditor.Designer.cs">
+      <DependentUpon>PlayerEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Prop.cs" />
+    <Compile Include="Properties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties.Designer.cs">
+      <DependentUpon>Properties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Race.cs" />
+    <Compile Include="RacesEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RacesEditor.Designer.cs">
+      <DependentUpon>RacesEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RenameDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenameDialog.Designer.cs">
+      <DependentUpon>RenameDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RulesEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RulesEditor.Designer.cs">
+      <DependentUpon>RulesEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Schedules.cs" />
+    <Compile Include="Shop.cs" />
+    <Compile Include="ShopEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShopEditor.Designer.cs">
+      <DependentUpon>ShopEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SortableBindingList.cs" />
+    <Compile Include="Spell.cs" />
+    <Compile Include="SpellEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpellEditor.Designer.cs">
+      <DependentUpon>SpellEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tile.cs" />
+    <Compile Include="TileBitmapNamePair.cs" />
+    <Compile Include="TileEnc.cs" />
+    <Compile Include="Trait.cs" />
+    <Compile Include="TraitEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraitEditor.Designer.cs">
+      <DependentUpon>TraitEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trigger.cs" />
+    <Compile Include="TriggerEventsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEventsForm.Designer.cs">
+      <DependentUpon>TriggerEventsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VariablesEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VariablesEditor.Designer.cs">
+      <DependentUpon>VariablesEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WayPoint.cs" />
+    <Compile Include="WorldMapEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorldMapEditor.designer.cs">
+      <DependentUpon>WorldMapEditor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AreaForm.resx">
+      <DependentUpon>AreaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Blueprints.resx">
+      <DependentUpon>Blueprints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContainerEditor.resx">
+      <DependentUpon>ContainerEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContainersForm.resx">
+      <DependentUpon>ContainersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConversationsForm.resx">
+      <DependentUpon>ConversationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConvoEditor.resx">
+      <DependentUpon>ConvoEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EffectEditor.resx">
+      <DependentUpon>EffectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EncounterEditor.resx">
+      <DependentUpon>EncounterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EncountersForm.resx">
+      <DependentUpon>EncountersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IBScriptEditor.resx">
+      <DependentUpon>IBScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IBScriptForm.resx">
+      <DependentUpon>IBScriptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IconSprite.resx">
+      <DependentUpon>IconSprite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JournalEditor.resx">
+      <DependentUpon>JournalEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MergerEditor.resx">
+      <DependentUpon>MergerEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuleNameDialog.resx">
+      <DependentUpon>ModuleNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerClassEditor.resx">
+      <DependentUpon>PlayerClassEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerEditor.resx">
+      <DependentUpon>PlayerEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties.resx">
+      <DependentUpon>Properties.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +361,35 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RacesEditor.resx">
+      <DependentUpon>RacesEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RenameDialog.resx">
+      <DependentUpon>RenameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RulesEditor.resx">
+      <DependentUpon>RulesEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShopEditor.resx">
+      <DependentUpon>ShopEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpellEditor.resx">
+      <DependentUpon>SpellEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraitEditor.resx">
+      <DependentUpon>TraitEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEventsForm.resx">
+      <DependentUpon>TriggerEventsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VariablesEditor.resx">
+      <DependentUpon>VariablesEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorldMapEditor.resx">
+      <DependentUpon>WorldMapEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +402,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incrementSaveIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IBIcon3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
