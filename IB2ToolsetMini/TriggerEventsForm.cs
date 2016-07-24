@@ -416,7 +416,11 @@ namespace IB2ToolsetMini
             //convosList = new List<string>(prntForm.mod.moduleConvosList);
                         
             ibscriptsList.Clear();
-            ibscriptsList = new List<string>(prntForm.mod.moduleIBScriptsList);
+            foreach (IBScript c in prntForm.mod.moduleIBScriptList)
+            {
+                ibscriptsList.Add(c.scriptName);
+            }
+            //ibscriptsList = new List<string>(prntForm.mod.moduleIBScriptsList);
 
             encountersList.Clear();
             foreach (Encounter c in prntForm.mod.moduleEncountersList)

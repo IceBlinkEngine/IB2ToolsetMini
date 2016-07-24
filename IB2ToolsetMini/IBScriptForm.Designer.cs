@@ -142,7 +142,7 @@
             this.btnLoadAll.TabIndex = 91;
             this.btnLoadAll.Text = "LoadAll";
             this.btnLoadAll.UseVisualStyleBackColor = true;
-            this.btnLoadAll.Click += new System.EventHandler(this.btnLoadAll_Click);
+            //this.btnLoadAll.Click += new System.EventHandler(this.btnLoadAll_Click);
             // 
             // IBScriptForm
             // 

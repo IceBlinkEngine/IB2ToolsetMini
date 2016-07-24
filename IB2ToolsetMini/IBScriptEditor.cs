@@ -16,7 +16,7 @@ namespace IB2ToolsetMini
     { 
         public Module mod;
         public ParentForm prntForm;
-        public string filename = ""; //example: coolscript.ibs
+        //public string filename = ""; //example: coolscript.ibs
        
         //this is used to define keywords for the initial dropdown on starting to type in anew line
         public string keywordMain1 = "break continue else end endif for gosub goto if label msg debug next return subroutine %Mod %Area " +
@@ -129,7 +129,11 @@ namespace IB2ToolsetMini
         
         public void LoadScript()
         {
-            try
+            foreach (string s in prntForm.mod.moduleIBScriptList[prntForm._selectedLbxIBScriptIndex].codeLines)
+            {
+                scintilla1.AppendText(s);
+            }
+            /*try
             {
                 string path = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ibscript";
                 string text = File.ReadAllText(path + "\\" + filename);
@@ -138,7 +142,7 @@ namespace IB2ToolsetMini
             catch (Exception ex)
             {
                 MessageBox.Show("Error: Could not load IBScript file " + filename + " from disk. Error: " + ex.Message);
-            }
+            }*/
         }
         private void tsSaveScript_Click(object sender, EventArgs e)
         {
@@ -146,7 +150,12 @@ namespace IB2ToolsetMini
         }
         public void SaveScript()
         {
-            try
+            prntForm.mod.moduleIBScriptList[prntForm._selectedLbxIBScriptIndex].codeLines.Clear();
+            foreach (Line s in scintilla1.Lines)
+            {
+                prntForm.mod.moduleIBScriptList[prntForm._selectedLbxIBScriptIndex].codeLines.Add(s.Text);
+            }
+            /*try
             {
                 string path = prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ibscript";
                 File.WriteAllText(path + "\\" + filename, scintilla1.Text, Encoding.ASCII);
@@ -154,7 +163,7 @@ namespace IB2ToolsetMini
             catch (Exception ex)
             {
                 MessageBox.Show("Error: Could not save IBScript file " + filename + " to disk. Error: " + ex.Message);
-            }
+            }*/
         }
         
         //this calls the drop selection selction when a "." is typed in the script editor window

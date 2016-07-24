@@ -48,12 +48,13 @@ namespace IB2ToolsetMini
         public List<Race> moduleRacesList = new List<Race>();
         public List<Spell> moduleSpellsList = new List<Spell>();
         public List<Trait> moduleTraitsList = new List<Trait>();
-        public List<Effect> moduleEffectsList = new List<Effect>();
-        public List<Convo> moduleConvoList = new List<Convo>();
+        public List<Effect> moduleEffectsList = new List<Effect>();        
         //public List<string> moduleAreasList = new List<string>();
-        //public List<string> moduleConvosList = new List<string>();
-        public List<string> moduleIBScriptsList = new List<string>();
         public List<Area> moduleAreasObjects = new List<Area>();
+        //public List<string> moduleConvosList = new List<string>();
+        public List<Convo> moduleConvoList = new List<Convo>();
+        //public List<string> moduleIBScriptsList = new List<string>();
+        public List<IBScript> moduleIBScriptList = new List<IBScript>();
         public List<GlobalInt> moduleGlobalInts = new List<GlobalInt>();
         public List<GlobalString> moduleGlobalStrings = new List<GlobalString>();
         public List<ConvoSavedValues> moduleConvoSavedValuesList = new List<ConvoSavedValues>();
@@ -338,7 +339,7 @@ namespace IB2ToolsetMini
         }
         public void saveModuleFile(string filename)
         {
-            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 sw.Write(json.ToString());

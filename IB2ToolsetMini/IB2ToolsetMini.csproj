@@ -152,6 +152,7 @@
     <Compile Include="GlobalInt.cs" />
     <Compile Include="GlobalListItem.cs" />
     <Compile Include="GlobalString.cs" />
+    <Compile Include="IBScript.cs" />
     <Compile Include="IBScriptEditor.cs">
       <SubType>Form</SubType>
     </Compile>
