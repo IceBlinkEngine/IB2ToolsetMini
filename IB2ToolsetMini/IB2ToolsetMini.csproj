@@ -82,6 +82,7 @@
     <Compile Include="AreaForm.Designer.cs">
       <DependentUpon>AreaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AreaIB2.cs" />
     <Compile Include="AreaOfEffectShape.cs" />
     <Compile Include="BarkString.cs" />
     <Compile Include="Blueprints.cs">
@@ -136,6 +137,7 @@
     <Compile Include="EncounterEditor.designer.cs">
       <DependentUpon>EncounterEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="EncounterIB2.cs" />
     <Compile Include="EncountersForm.cs">
       <SubType>Form</SubType>
     </Compile>

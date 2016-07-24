@@ -46,7 +46,11 @@
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbSaveIncremental = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBtnResetDropDowns = new System.Windows.Forms.ToolStripButton();
             this.tsBtnDataCheck = new System.Windows.Forms.ToolStripButton();
@@ -81,9 +85,9 @@
             this.shopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerClassEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raceEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.traitEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spellEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.effectEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spellEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.traitEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,10 +97,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.tsbSaveIncremental = new System.Windows.Forms.ToolStripButton();
+            this.convertAnIB2ModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,10 +118,50 @@
             this.toolStrip1.Size = new System.Drawing.Size(817, 27);
             this.toolStrip1.TabIndex = 0;
             // 
+            // openToolStripButton
+            // 
+            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openToolStripButton.Image = global::IB2ToolsetMini.Properties.Resources.fileOpen;
+            this.openToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripButton.Name = "openToolStripButton";
+            this.openToolStripButton.Size = new System.Drawing.Size(23, 24);
+            this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = global::IB2ToolsetMini.Properties.Resources.saveIcon;
+            this.saveToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsbSaveIncremental
+            // 
+            this.tsbSaveIncremental.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSaveIncremental.Image = global::IB2ToolsetMini.Properties.Resources.incrementSaveIcon;
+            this.tsbSaveIncremental.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbSaveIncremental.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveIncremental.Name = "tsbSaveIncremental";
+            this.tsbSaveIncremental.Size = new System.Drawing.Size(24, 24);
+            this.tsbSaveIncremental.Text = "Incremental Save";
+            this.tsbSaveIncremental.ToolTipText = "Incremental Save:\r\nBacks up module folder\r\nfirst with an extension\r\nnumber and th" +
+    "en saves\r\nover the original folder.";
+            this.tsbSaveIncremental.Click += new System.EventHandler(this.tsbSaveIncremental_Click);
             // 
             // toolStripSeparator4
             // 
@@ -186,21 +227,21 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -208,19 +249,19 @@
             // 
             this.saveAsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -337,7 +378,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tilesUsedInModuleToolStripMenuItem});
+            this.tilesUsedInModuleToolStripMenuItem,
+            this.convertAnIB2ModuleToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -408,12 +450,12 @@
             this.raceEditorToolStripMenuItem.Text = "Races Editor";
             this.raceEditorToolStripMenuItem.Click += new System.EventHandler(this.raceEditorToolStripMenuItem_Click);
             // 
-            // traitEditorToolStripMenuItem
+            // effectEditorToolStripMenuItem
             // 
-            this.traitEditorToolStripMenuItem.Name = "traitEditorToolStripMenuItem";
-            this.traitEditorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.traitEditorToolStripMenuItem.Text = "Trait Editor";
-            this.traitEditorToolStripMenuItem.Click += new System.EventHandler(this.traitEditorToolStripMenuItem_Click);
+            this.effectEditorToolStripMenuItem.Name = "effectEditorToolStripMenuItem";
+            this.effectEditorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.effectEditorToolStripMenuItem.Text = "Effect Editor";
+            this.effectEditorToolStripMenuItem.Click += new System.EventHandler(this.effectEditorToolStripMenuItem_Click);
             // 
             // spellEditorToolStripMenuItem
             // 
@@ -422,12 +464,12 @@
             this.spellEditorToolStripMenuItem.Text = "Spell Editor";
             this.spellEditorToolStripMenuItem.Click += new System.EventHandler(this.spellEditorToolStripMenuItem_Click);
             // 
-            // effectEditorToolStripMenuItem
+            // traitEditorToolStripMenuItem
             // 
-            this.effectEditorToolStripMenuItem.Name = "effectEditorToolStripMenuItem";
-            this.effectEditorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.effectEditorToolStripMenuItem.Text = "Effect Editor";
-            this.effectEditorToolStripMenuItem.Click += new System.EventHandler(this.effectEditorToolStripMenuItem_Click);
+            this.traitEditorToolStripMenuItem.Name = "traitEditorToolStripMenuItem";
+            this.traitEditorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.traitEditorToolStripMenuItem.Text = "Trait Editor";
+            this.traitEditorToolStripMenuItem.Click += new System.EventHandler(this.traitEditorToolStripMenuItem_Click);
             // 
             // playerEditorToolStripMenuItem
             // 
@@ -521,45 +563,12 @@
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripSeparator1
+            // convertAnIB2ModuleToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // openToolStripButton
-            // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = global::IB2ToolsetMini.Properties.Resources.fileOpen;
-            this.openToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(23, 24);
-            this.openToolStripButton.Text = "&Open";
-            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Image = global::IB2ToolsetMini.Properties.Resources.saveIcon;
-            this.saveToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.saveToolStripButton.Text = "&Save";
-            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
-            // 
-            // tsbSaveIncremental
-            // 
-            this.tsbSaveIncremental.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSaveIncremental.Image = global::IB2ToolsetMini.Properties.Resources.incrementSaveIcon;
-            this.tsbSaveIncremental.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbSaveIncremental.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSaveIncremental.Name = "tsbSaveIncremental";
-            this.tsbSaveIncremental.Size = new System.Drawing.Size(24, 24);
-            this.tsbSaveIncremental.Text = "Incremental Save";
-            this.tsbSaveIncremental.ToolTipText = "Incremental Save:\r\nBacks up module folder\r\nfirst with an extension\r\nnumber and th" +
-    "en saves\r\nover the original folder.";
-            this.tsbSaveIncremental.Click += new System.EventHandler(this.tsbSaveIncremental_Click);
+            this.convertAnIB2ModuleToolStripMenuItem.Name = "convertAnIB2ModuleToolStripMenuItem";
+            this.convertAnIB2ModuleToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.convertAnIB2ModuleToolStripMenuItem.Text = "Convert an IB2 module";
+            this.convertAnIB2ModuleToolStripMenuItem.Click += new System.EventHandler(this.convertAnIB2ModuleToolStripMenuItem_Click);
             // 
             // ParentForm
             // 
@@ -640,6 +649,7 @@
         private System.Windows.Forms.ToolStripMenuItem rulesEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tilesUsedInModuleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem convertAnIB2ModuleToolStripMenuItem;
     }
 }
 

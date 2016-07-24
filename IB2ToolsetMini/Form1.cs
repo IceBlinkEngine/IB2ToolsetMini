@@ -1,5 +1,4 @@
-﻿/* IBB Toolset by Jeremy Smith, copyright 2014 */
-
+﻿/* IB2ToolsetMini by Jeremy Smith, copyright 2016 */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-//using IceBlinkCore;
 using System.IO;
 using WeifenLuo.WinFormsUI.Docking;
 using Newtonsoft.Json;
@@ -1828,6 +1826,213 @@ namespace IB2ToolsetMini
             MessageBox.Show("A list of tiles and the tile files have been copied to a folder called 'tiles_used' in your " +
                             "module's 'tiles' folder. If the 'tiles_used' folder existed before, it was deleted first and then updated " + 
                             "to the currently used tiles in your module.");
+        }
+
+        private void convertAnIB2ModuleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //LOAD all areas, convos, and encounters and convert to new format as needed
+            ImportAreas();
+            ImportConvos();
+            ImportEncounters();
+        }
+        public void ImportAreas()
+        {
+            mod.moduleAreasObjects.Clear();
+
+            AreaIB2 IB2area = new AreaIB2();
+
+            string jobDir = "";
+            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
+            foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
+            {
+                string filename = Path.GetFileName(f);
+                // deserialize JSON directly from a file
+                using (StreamReader file = File.OpenText(_mainDirectory + "\\modules\\" + mod.moduleName + "\\areas\\" + filename))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    IB2area = (AreaIB2)serializer.Deserialize(file, typeof(AreaIB2));
+                }
+                
+                Area copyEnc = new Area();
+                copyEnc.Filename = IB2area.Filename;
+                copyEnc.UseDayNightCycle = IB2area.UseDayNightCycle;
+                copyEnc.MapSizeX = IB2area.MapSizeX;
+                copyEnc.MapSizeY = IB2area.MapSizeY;
+                copyEnc.AreaVisibleDistance = IB2area.AreaVisibleDistance;
+                copyEnc.RestingAllowed = IB2area.RestingAllowed;
+                copyEnc.UseMiniMapFogOfWar = IB2area.UseMiniMapFogOfWar;
+                copyEnc.areaDark = IB2area.areaDark;
+                copyEnc.TimePerSquare = IB2area.TimePerSquare;
+
+                copyEnc.Layer1Filename = new List<string>();
+                copyEnc.Layer1Mirror = new List<int>();
+                copyEnc.Layer1Rotate = new List<int>();
+                copyEnc.Layer2Filename = new List<string>();
+                copyEnc.Layer2Mirror = new List<int>();
+                copyEnc.Layer2Rotate = new List<int>();
+                copyEnc.Walkable = new List<int>();
+                copyEnc.LoSBlocked = new List<int>();
+                foreach (Tile tile in IB2area.Tiles)
+                {
+                    copyEnc.Layer1Filename.Add(tile.Layer1Filename);
+                    copyEnc.Layer1Rotate.Add(tile.Layer1Rotate);
+                    if (tile.Layer1Mirror) { copyEnc.Layer1Mirror.Add(1); }
+                    else { copyEnc.Layer1Mirror.Add(0); }
+                    copyEnc.Layer2Filename.Add(tile.Layer2Filename);
+                    copyEnc.Layer2Rotate.Add(tile.Layer2Rotate);
+                    if (tile.Layer2Mirror) { copyEnc.Layer2Mirror.Add(1); }
+                    else { copyEnc.Layer2Mirror.Add(0); }
+                    if (tile.Walkable) { copyEnc.Walkable.Add(1); }
+                    else { copyEnc.Walkable.Add(0); }
+                    if (tile.LoSBlocked) { copyEnc.LoSBlocked.Add(1); }
+                    else { copyEnc.LoSBlocked.Add(0); }
+                    if (tile.Visible) { copyEnc.Visible.Add(1); }
+                    else { copyEnc.Visible.Add(0); }
+                }
+
+                copyEnc.Props = new List<Prop>();
+                foreach (Prop s in IB2area.Props)
+                {
+                    Prop newCrtRef = new Prop();
+                    newCrtRef = s.DeepCopy();
+                    copyEnc.Props.Add(newCrtRef);
+                }
+
+
+                copyEnc.Triggers = new List<Trigger>();
+                foreach (Trigger s in IB2area.Triggers)
+                {
+                    Trigger newItRef = new Trigger();
+                    newItRef = s.DeepCopy();
+                    copyEnc.Triggers.Add(newItRef);
+                }
+                copyEnc.NextIdNumber = IB2area.NextIdNumber;
+                copyEnc.OnHeartBeatIBScript = IB2area.OnHeartBeatIBScript;
+                copyEnc.OnHeartBeatIBScriptParms = IB2area.OnHeartBeatIBScriptParms;
+                copyEnc.inGameAreaName = IB2area.inGameAreaName;
+
+                mod.moduleAreasObjects.Add(copyEnc);
+            }
+            frmAreas.refreshListBoxAreas();
+        }
+        public void ImportConvos()
+        {
+            mod.moduleConvoList.Clear();
+
+            Convo IB2convo = new Convo();
+            string jobDir = "";
+            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\dialog";
+            foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
+            {
+                string filename = Path.GetFileName(f);
+                if (!filename.EndsWith(".json"))
+                {
+                    continue;
+                }
+                // deserialize JSON directly from a file
+                using (StreamReader file = File.OpenText(_mainDirectory + "\\modules\\" + mod.moduleName + "\\dialog\\" + filename))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    IB2convo = (Convo)serializer.Deserialize(file, typeof(Convo));
+                }
+                mod.moduleConvoList.Add(IB2convo);
+            }
+            frmConversations.refreshListBoxConvos();
+        }
+        public void ImportEncounters()
+        {
+            List<EncounterIB2> IB2encList = new List<EncounterIB2>();
+            if (File.Exists(_mainDirectory + "\\modules\\" + mod.moduleName + "\\data\\encounters.json"))
+            {
+                //mod.moduleEncountersList.Clear();
+                // deserialize JSON directly from a file
+                using (StreamReader file = File.OpenText(_mainDirectory + "\\modules\\" + mod.moduleName + "\\data\\encounters.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    IB2encList = (List<EncounterIB2>)serializer.Deserialize(file, typeof(List<EncounterIB2>));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Couldn't find encounters.json file.");
+                return;
+            }
+            //copy over important data
+            mod.moduleEncountersList.Clear();
+            foreach (EncounterIB2 encIB2 in IB2encList)
+            {
+                Encounter copyEnc = new Encounter();
+                copyEnc.encounterName = encIB2.encounterName;
+                copyEnc.UseDayNightCycle = encIB2.UseDayNightCycle;
+                copyEnc.MapSizeX = encIB2.MapSizeX;
+                copyEnc.MapSizeY = encIB2.MapSizeY;
+
+                copyEnc.Layer1Filename = new List<string>();
+                copyEnc.Layer1Mirror = new List<int>();
+                copyEnc.Layer1Rotate = new List<int>();
+                copyEnc.Layer2Filename = new List<string>();
+                copyEnc.Layer2Mirror = new List<int>();
+                copyEnc.Layer2Rotate = new List<int>();
+                copyEnc.Walkable = new List<int>();
+                copyEnc.LoSBlocked = new List<int>();
+                foreach (TileEnc tile in encIB2.encounterTiles)
+                {
+                    copyEnc.Layer1Filename.Add(tile.Layer1Filename);
+                    copyEnc.Layer1Rotate.Add(tile.Layer1Rotate);
+                    if (tile.Layer1Mirror) { copyEnc.Layer1Mirror.Add(1); }
+                    else { copyEnc.Layer1Mirror.Add(0); }
+                    copyEnc.Layer2Filename.Add(tile.Layer2Filename);
+                    copyEnc.Layer2Rotate.Add(tile.Layer2Rotate);
+                    if (tile.Layer2Mirror) { copyEnc.Layer2Mirror.Add(1); }
+                    else { copyEnc.Layer2Mirror.Add(0); }
+                    if (tile.Walkable) { copyEnc.Walkable.Add(1); }
+                    else { copyEnc.Walkable.Add(0); }
+                    if (tile.LoSBlocked) { copyEnc.LoSBlocked.Add(1); }
+                    else { copyEnc.LoSBlocked.Add(0); }
+                }
+
+                //public List<CreatureRefs> encounterCreatureRefsList = new List<CreatureRefs>();
+                copyEnc.encounterCreatureRefsList = new List<CreatureRefs>();
+                foreach (CreatureRefs s in encIB2.encounterCreatureRefsList)
+                {
+                    CreatureRefs newCrtRef = new CreatureRefs();
+                    newCrtRef.creatureResRef = s.creatureResRef;
+                    newCrtRef.creatureTag = s.creatureTag;
+                    newCrtRef.creatureStartLocationX = s.creatureStartLocationX;
+                    newCrtRef.creatureStartLocationY = s.creatureStartLocationY;
+                    copyEnc.encounterCreatureRefsList.Add(newCrtRef);
+                }
+                //public List<ItemRefs> encounterInventoryRefsList = new List<ItemRefs>();
+                copyEnc.encounterInventoryRefsList = new List<ItemRefs>();
+                foreach (ItemRefs s in encIB2.encounterInventoryRefsList)
+                {
+                    ItemRefs newItRef = new ItemRefs();
+                    newItRef = s.DeepCopy();
+                    copyEnc.encounterInventoryRefsList.Add(newItRef);
+                }
+                //public List<Coordinate> encounterPcStartLocations = new List<Coordinate>();
+                copyEnc.encounterPcStartLocations = new List<Coordinate>();
+                foreach (Coordinate s in encIB2.encounterPcStartLocations)
+                {
+                    Coordinate newCoor = new Coordinate();
+                    newCoor.X = s.X;
+                    newCoor.Y = s.Y;
+                    copyEnc.encounterPcStartLocations.Add(newCoor);
+                }
+
+                copyEnc.goldDrop = encIB2.goldDrop;
+                copyEnc.OnSetupCombatIBScript = encIB2.OnSetupCombatIBScript;
+                copyEnc.OnSetupCombatIBScriptParms = encIB2.OnSetupCombatIBScriptParms;
+                copyEnc.OnStartCombatRoundIBScript = encIB2.OnStartCombatRoundIBScript;
+                copyEnc.OnStartCombatRoundIBScriptParms = encIB2.OnStartCombatRoundIBScriptParms;
+                copyEnc.OnStartCombatTurnIBScript = encIB2.OnStartCombatTurnIBScript;
+                copyEnc.OnStartCombatTurnIBScriptParms = encIB2.OnStartCombatTurnIBScriptParms;
+                copyEnc.OnEndCombatIBScript = encIB2.OnEndCombatIBScript;
+                copyEnc.OnEndCombatIBScriptParms = encIB2.OnEndCombatIBScriptParms;
+
+                mod.moduleEncountersList.Add(copyEnc);
+            }
+            frmEncounters.refreshListBoxEncounters();
         }
     }
 }

@@ -339,7 +339,7 @@ namespace IB2ToolsetMini
         }
         public void saveModuleFile(string filename)
         {
-            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 sw.Write(json.ToString());
