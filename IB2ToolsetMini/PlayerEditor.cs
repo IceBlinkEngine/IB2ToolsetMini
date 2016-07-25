@@ -287,7 +287,8 @@ namespace IB2ToolsetMini
         }
         public void LoadPlayerToken()
         {
-            if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + pc.tokenFilename + ".png"))
+            iconBitmap = prntForm.LoadBitmapGDI(pc.tokenFilename);
+            /*if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + pc.tokenFilename + ".png"))
             {
                 iconBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + pc.tokenFilename + ".png");
             }
@@ -298,7 +299,7 @@ namespace IB2ToolsetMini
             else
             {
                 iconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
-            }
+            }*/
             refreshTokenDisplay();
         }
         public void refreshSpellsKnown()

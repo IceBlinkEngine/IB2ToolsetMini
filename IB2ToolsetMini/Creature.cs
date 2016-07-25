@@ -451,7 +451,8 @@ namespace IB2ToolsetMini
         }
         public void LoadCreatureBitmap(ParentForm prntForm)
         {
-            if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.cr_tokenFilename + ".png"))
+            this.creatureIconBitmap = prntForm.LoadBitmapGDI(this.cr_tokenFilename);
+            /*if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.cr_tokenFilename + ".png"))
             {
                 this.creatureIconBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.cr_tokenFilename + ".png");
             }
@@ -462,7 +463,7 @@ namespace IB2ToolsetMini
             else
             {
                 this.creatureIconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
-            }
+            }*/
         }
         public Creature ShallowCopy()
         {

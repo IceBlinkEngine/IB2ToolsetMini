@@ -23,7 +23,7 @@ namespace IB2ToolsetMini
         public ParentForm prntForm;
         public Module mod;
 
-        private List<TileBitmapNamePair> tileList = new List<TileBitmapNamePair>();
+        //private List<TileBitmapNamePair> tileList = new List<TileBitmapNamePair>();
         //GDI private Graphics device;
         //GDI private Bitmap surface;
         //GDI private Bitmap mapBitmap;
@@ -97,6 +97,7 @@ namespace IB2ToolsetMini
             
             rbtnInfo.Checked = true;
             rbtnZoom1x.Checked = true;
+            refreshLeftPanelInfo();
             InitDirect2DAndDirectWrite();
         }
         public void resetTileToBePlacedSettings()
@@ -184,13 +185,13 @@ namespace IB2ToolsetMini
             try
             {
                 this.flPanelTab1.Controls.Clear();
-                tileList.Clear();
-                foreach (string f in Directory.GetFiles(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\tiles\\", "*.png"))
+                //tileList.Clear();
+                foreach (string f in Directory.GetFiles(prntForm._mainDirectory + "\\override\\", "*.png"))
                 {
+                    if (!Path.GetFileName(f).StartsWith("t_")) { continue; }
                     string filename = Path.GetFullPath(f);
                     using (Bitmap bit = new Bitmap(filename))
                     {
-                        //bit = ResizeBitmap(bit, 50, 50);
                         Button btnNew = new Button();
                         btnNew.BackgroundImage = (Image)bit.Clone();
                         btnNew.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -204,19 +205,39 @@ namespace IB2ToolsetMini
                         btnNew.UseVisualStyleBackColor = true;
                         btnNew.Click += new System.EventHandler(this.btnSelectedTerrain_Click);
                         this.flPanelTab1.Controls.Add(btnNew);
-
-                        //fill tileList as well
-                        TileBitmapNamePair t = new TileBitmapNamePair((Bitmap)bit.Clone(), Path.GetFileNameWithoutExtension(f));
-                        tileList.Add(t);
                     }
                 }
+                foreach (string f in Directory.GetFiles(prntForm._mainDirectory + "\\default\\NewModule\\tiles\\", "*.png"))
+                {
+                    if (!Path.GetFileName(f).StartsWith("t_")) { continue; }
+                    string filename = Path.GetFullPath(f);
+                    using (Bitmap bit = new Bitmap(filename))
+                    {
+                        Button btnNew = new Button();
+                        btnNew.BackgroundImage = (Image)bit.Clone();
+                        btnNew.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+                        btnNew.FlatAppearance.BorderSize = 2;
+                        btnNew.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+                        btnNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+                        btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                        btnNew.Size = new System.Drawing.Size(50 + 2, 50 + 2);
+                        btnNew.BackgroundImageLayout = ImageLayout.Zoom;
+                        btnNew.Text = Path.GetFileNameWithoutExtension(f);
+                        btnNew.UseVisualStyleBackColor = true;
+                        btnNew.Click += new System.EventHandler(this.btnSelectedTerrain_Click);
+                        this.flPanelTab1.Controls.Add(btnNew);
+                        //fill tileList as well
+                        //TileBitmapNamePair t = new TileBitmapNamePair((Bitmap)bit.Clone(), Path.GetFileNameWithoutExtension(f));
+                        //tileList.Add(t);
+                    }
+                }                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("error: " + ex.ToString());
             }
         }
-        private TileBitmapNamePair getTileByName(string name)
+        /*private TileBitmapNamePair getTileByName(string name)
         {
             foreach (TileBitmapNamePair t in tileList)
             {
@@ -226,7 +247,7 @@ namespace IB2ToolsetMini
                 }
             }
             return null;
-        }        
+        }*/        
         private void refreshMap(bool refreshAll)
         {
             /*//GDI this.Cursor = Cursors.WaitCursor;
@@ -1193,63 +1214,10 @@ namespace IB2ToolsetMini
                 RenderTarget2D.DrawRectangle(rect, scb, penWidth);
             }
         }
-        public System.Drawing.Bitmap LoadBitmapGDI(string filename)
-        {
-            System.Drawing.Bitmap bm = null;
-            try
-            {
-                if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\tiles\\" + filename + ".png"))
-                {
-                    bm = new System.Drawing.Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\tiles\\" + filename + ".png");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\tiles\\" + filename))
-                {
-                    bm = new System.Drawing.Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\tiles\\" + filename);
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + filename + ".png"))
-                {
-                    bm = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + filename + ".png");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + filename + ".jpg"))
-                {
-                    bm = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + filename + ".jpg");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + filename))
-                {
-                    bm = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + filename);
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\" + filename + ".png"))
-                {
-                    bm = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\" + filename + ".png");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\" + filename + ".jpg"))
-                {
-                    bm = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\" + filename + ".jpg");
-                }
-                else if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\" + filename))
-                {
-                    bm = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\ui\\" + filename);
-                }
-                else
-                {
-                    bm = new System.Drawing.Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\missingtexture.png");
-                }
-            }
-            catch (Exception ex)
-            {
-                prntForm.errorLog(ex.ToString());
-                if (bm == null)
-                {
-                    bm = new System.Drawing.Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\missingtexture.png");
-                    return bm;
-                }
-            }
-            return bm;
-        }
         public SharpDX.Direct2D1.Bitmap LoadBitmap(string file) //change this to LoadBitmap
         {
             // Loads from file using System.Drawing.Image
-            using (var bitmap = LoadBitmapGDI(file)) //change this to LoadBitmapGDI
+            using (var bitmap = prntForm.LoadBitmapGDI(file)) //change this to LoadBitmapGDI
             {
                 var sourceArea = new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height);
                 var bitmapProperties = new BitmapProperties(new SharpDX.Direct2D1.PixelFormat(Format.R8G8B8A8_UNorm, AlphaMode.Premultiplied));

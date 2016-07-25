@@ -736,7 +736,8 @@ namespace IB2ToolsetMini
         }
         public void LoadItemBitmap(ParentForm prntForm)
         {
-            if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.itemImage + ".png"))
+            this.itemIconBitmap = prntForm.LoadBitmapGDI(this.itemImage);
+            /*if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.itemImage + ".png"))
             {
                 this.itemIconBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.itemImage + ".png");
             }
@@ -747,7 +748,7 @@ namespace IB2ToolsetMini
             else
             {
                 this.itemIconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
-            }
+            }*/
         }
         public override string ToString()
         {

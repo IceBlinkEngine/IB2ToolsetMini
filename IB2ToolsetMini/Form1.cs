@@ -59,7 +59,7 @@ namespace IB2ToolsetMini
         public Trigger currentSelectedTrigger = null;
         public Bitmap iconBitmap;
         public string lastModuleFullPath;
-        public string versionMessage = "IceBlink 2 RPG Toolset for creating adventure modules for the PC and Android.\r\n\r\n IceBlink 2 RPG Toolset ver 1.00";
+        public string versionMessage = "IceBlink 2 Mini Toolset for creating adventure modules for the PC and Android.\r\n\r\n IceBlink 2 Mini Toolset ver 1.00";
         
         private DeserializeDockContent m_deserializeDockContent;
         public IceBlinkProperties frmIceBlinkProperties;
@@ -88,7 +88,6 @@ namespace IB2ToolsetMini
             frmBlueprints = new Blueprints(this);
             frmAreas = new AreaForm(this);
             frmConversations = new ConversationsForm(this);
-            //REMOVEfrmLogicTree = new LogicTreeForm(this);
             frmIBScript = new IBScriptForm(this);
             frmEncounters = new EncountersForm(this);
             frmContainers = new ContainersForm(this);
@@ -113,21 +112,30 @@ namespace IB2ToolsetMini
                 //do nothing
             }
 
-            //game = new Game();
-            //game.mainDirectory = Directory.GetCurrentDirectory();
             openModule(_mainDirectory + "\\default\\NewModule\\NewModule.mod");
-            openCreatures(_mainDirectory + "\\default\\NewModule\\data\\creatures.json");
-            openItems(_mainDirectory + "\\default\\NewModule\\data\\items.json");
-            openProps(_mainDirectory + "\\default\\NewModule\\data\\props.json");
-            openJournal(_mainDirectory + "\\default\\NewModule\\data\\journal.json");
-            openPlayerClasses(_mainDirectory + "\\default\\NewModule\\data\\playerClasses.json");
-            openRaces(_mainDirectory + "\\default\\NewModule\\data\\races.json");
+            //openCreatures(_mainDirectory + "\\default\\NewModule\\data\\creatures.json");
+            //openItems(_mainDirectory + "\\default\\NewModule\\data\\items.json");
+            //openProps(_mainDirectory + "\\default\\NewModule\\data\\props.json");
+            //openJournal(_mainDirectory + "\\default\\NewModule\\data\\journal.json");
+            //openPlayerClasses(_mainDirectory + "\\default\\NewModule\\data\\playerClasses.json");
+            //openRaces(_mainDirectory + "\\default\\NewModule\\data\\races.json");
             //openSkills(_mainDirectory + "\\data\\NewModule\\data\\" + mod.SkillsFileName);
-            openSpells(_mainDirectory + "\\default\\NewModule\\data\\spells.json");
-            openTraits(_mainDirectory + "\\default\\NewModule\\data\\traits.json");
-            openEffects(_mainDirectory + "\\default\\NewModule\\data\\effects.json");
+            //openSpells(_mainDirectory + "\\default\\NewModule\\data\\spells.json");
+            //openTraits(_mainDirectory + "\\default\\NewModule\\data\\traits.json");
+            //openEffects(_mainDirectory + "\\default\\NewModule\\data\\effects.json");
             //game.errorLog("Starting IceBlink Toolset");
-            saveAsTemp();
+
+            frmBlueprints.UpdateTreeViewCreatures();
+            loadCreatureSprites();
+            frmBlueprints.UpdateTreeViewItems();
+            loadItemSprites();
+            frmContainers.refreshListBoxContainers();
+            frmEncounters.refreshListBoxEncounters();
+            frmBlueprints.UpdateTreeViewProps();
+            loadPropSprites();
+            refreshDropDownLists();
+
+            //saveAsTemp();
 
             //fill all lists
             DropdownStringLists.aiTypeStringList = new List<string> { "BasicAttacker", "GeneralCaster" };
@@ -136,7 +144,6 @@ namespace IB2ToolsetMini
             DropdownStringLists.useableWhenStringList = new List<string> { "InCombat", "OutOfCombat", "Always", "Passive" };
             DropdownStringLists.weaponTypeStringList = new List<string> { "Ranged", "Melee" };
             DropdownStringLists.moverTypeStringList = new List<string> { "post", "random", "patrol", "daily", "weekly", "monthly", "yearly"};
-
 
             this.WindowState = FormWindowState.Maximized;
         }
@@ -455,7 +462,7 @@ namespace IB2ToolsetMini
             loadSoundDropdownList();
             //loadLogicTreeDropdownList();
             loadIBScriptDropdownList();
-            loadMusicDropdownList();
+            //loadMusicDropdownList();
             loadConversationDropdownList();
             loadEncounterDropdownList();
             loadPlayerClassesTagsList();
@@ -468,26 +475,38 @@ namespace IB2ToolsetMini
             DropdownStringLists.spriteStringList = new List<string>();
             DropdownStringLists.spriteStringList.Add("none");
             string jobDir = "";
-            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\graphics";
+            jobDir = this._mainDirectory + "\\override";
             foreach (string f in Directory.GetFiles(jobDir, "fx_*.png"))
             {
                 string filename = Path.GetFileNameWithoutExtension(f);
                 DropdownStringLists.spriteStringList.Add(filename);
-            }            
+            }
+            jobDir = this._mainDirectory + "\\default\\NewModule\\graphics";
+            foreach (string f in Directory.GetFiles(jobDir, "fx_*.png"))
+            {
+                string filename = Path.GetFileNameWithoutExtension(f);
+                DropdownStringLists.spriteStringList.Add(filename);
+            }
         }
         public void loadSoundDropdownList()
         {
             DropdownStringLists.soundStringList = new List<string>();
             DropdownStringLists.soundStringList.Add("none");
             string jobDir = "";
-            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\sounds";
-            foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
+            jobDir = this._mainDirectory + "\\override";
+            foreach (string f in Directory.GetFiles(jobDir, "*.wav", SearchOption.AllDirectories))
             {
                 string filename = Path.GetFileNameWithoutExtension(f);
                 DropdownStringLists.soundStringList.Add(filename);
-            }            
+            }
+            jobDir = this._mainDirectory + "\\default\\NewModule\\sounds";
+            foreach (string f in Directory.GetFiles(jobDir, "*.wav", SearchOption.AllDirectories))
+            {
+                string filename = Path.GetFileNameWithoutExtension(f);
+                DropdownStringLists.soundStringList.Add(filename);
+            }
         }
-        public void loadLogicTreeDropdownList()
+        /*public void loadLogicTreeDropdownList()
         {
             DropdownStringLists.logicTreeStringList = new List<string>();
             DropdownStringLists.logicTreeStringList.Add("none");
@@ -498,17 +517,14 @@ namespace IB2ToolsetMini
                 string filename = Path.GetFileNameWithoutExtension(f);
                 DropdownStringLists.logicTreeStringList.Add(filename);
             }
-        }
+        }*/
         public void loadIBScriptDropdownList()
         {
             DropdownStringLists.ibScriptStringList = new List<string>();
             DropdownStringLists.ibScriptStringList.Add("none");
-            string jobDir = "";
-            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\ibscript";
-            foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
+            foreach (IBScript scr in this.mod.moduleIBScriptList)
             {
-                string filename = Path.GetFileNameWithoutExtension(f);
-                DropdownStringLists.ibScriptStringList.Add(filename);
+                DropdownStringLists.ibScriptStringList.Add(scr.scriptName);
             }
         }
         public void loadConversationDropdownList()
@@ -529,7 +545,7 @@ namespace IB2ToolsetMini
                 DropdownStringLists.encounterTypeStringList.Add(enc.encounterName);
             }
         }
-        public void loadMusicDropdownList()
+        /*public void loadMusicDropdownList()
         {
             DropdownStringLists.musicStringList = new List<string>();
             DropdownStringLists.musicStringList.Add("none");
@@ -540,7 +556,7 @@ namespace IB2ToolsetMini
                 string filename = Path.GetFileNameWithoutExtension(f);
                 DropdownStringLists.musicStringList.Add(filename);
             }
-        }
+        }*/
         public void loadPlayerClassesTagsList()
         {
             DropdownStringLists.playerClassTagsTypeStringList = new List<string>();
@@ -643,7 +659,19 @@ namespace IB2ToolsetMini
                 saveAsFiles();
                 return;
             }
-            string directory = _mainDirectory + "\\modules\\" + mod.moduleName;
+            string file = _mainDirectory + "\\modules\\" + mod.moduleName + ".mod";
+            try
+            {
+                createFiles(file);                
+                MessageBox.Show("Moduled saved");
+                refreshDropDownLists();
+                this.Text = "IceBlinkRPG Toolset - " + mod.moduleLabelName;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("failed to save module: " + e.ToString());
+            }            
+            /*string directory = _mainDirectory + "\\modules\\" + mod.moduleName;
             try
             {
                 if (!Directory.Exists(directory)) // if folder does not exist, create it and copy contents from previous folder
@@ -663,23 +691,10 @@ namespace IB2ToolsetMini
             catch (Exception e)
             {
                 MessageBox.Show("failed to save module: " + e.ToString());
-            }
+            }*/
         }
         private void saveAsFiles()
         {
-            if ((mod.startingArea == null) || (mod.startingArea == ""))
-            {
-                //MessageBox.Show("Starting area was not detected, please type in the starting area's name in module properties (Edit/Modules Properties). Your module will not work without a starting area defined.");
-                //return;
-            }
-            //if (mod.ModuleName != "NewModule")
-            //{
-                lastModuleFullPath = _mainDirectory + "\\modules\\" + mod.moduleName;
-            //}
-            //else
-            //{
-            //    lastModuleFullPath = _mainDirectory + "\\data\\" + mod.ModuleFolderName;
-            //}
             ModuleNameDialog mnd = new ModuleNameDialog();
             mnd.ShowDialog();
             mod.moduleName = mnd.ModText;
@@ -694,21 +709,21 @@ namespace IB2ToolsetMini
             }
             else
             {
-                // save a backup with a incremental folder name
-                string lastDir = mod.moduleName;
+                // save a backup with an incremental file name
+                //string lastDir = mod.moduleName;
                 string workingDir = _mainDirectory + "\\modules";
                 string backupDir = _mainDirectory + "\\module_backups";
                 string fileName = mod.moduleName;
-                string incrementDirName = "";
+                string incrementFileName = "";
                 for (int i = 0; i < 999; i++) // add an incremental save option (uses directoryName plus number for folder name)
                 {
-                    if (!Directory.Exists(backupDir + "\\" + fileName + "(" + i.ToString() + ")"))
+                    if (!File.Exists(backupDir + "\\" + fileName + "(" + i.ToString() + ").mod"))
                     {
-                        incrementDirName = fileName + "(" + i.ToString() + ")";
-                        createDirectory(backupDir + "\\" + incrementDirName);
-                        DirectoryCopy(workingDir + "\\" + lastDir, backupDir + "\\" + incrementDirName, true); // needs to copy contents from previous folder into new folder and overwrite files with new updates
+                        incrementFileName = fileName + "(" + i.ToString() + ").mod";
+                        //createDirectory(backupDir + "\\" + incrementFileName);
+                        //DirectoryCopy(workingDir + "\\" + lastDir, backupDir + "\\" + incrementFileName, true); // needs to copy contents from previous folder into new folder and overwrite files with new updates
                         //DirectoryInfo dir = Directory.CreateDirectory(workingDir + "\\" + incrementDirName);
-                        createFiles(backupDir + "\\" + incrementDirName);
+                        createFiles(backupDir + "\\" + incrementFileName);
                         break;
                     }
                     else
@@ -716,17 +731,13 @@ namespace IB2ToolsetMini
                         //lastDir = workingDir + "\\" + fileName + "(" + i.ToString() + ")";
                     }
                 }
-                MessageBox.Show("Moduled backup " + incrementDirName + " was saved");
+                MessageBox.Show("Moduled backup " + incrementFileName + " was saved");
 
                 // save over original module
-                string directory = _mainDirectory + "\\modules\\" + mod.moduleName;
+                string file = _mainDirectory + "\\modules\\" + mod.moduleName + ".mod";
                 try
-                {
-                    if (!Directory.Exists(directory)) // if folder exists, then overwrite all files in folder
-                    {
-                        createDirectory(directory);
-                    }
-                    createFiles(directory);
+                {                    
+                    createFiles(file);
                     MessageBox.Show("Moduled saved");
                 }
                 catch
@@ -735,7 +746,7 @@ namespace IB2ToolsetMini
                 }
             }
         }        
-        private void createFiles(string fullPathDirectory)
+        private void createFiles(string fullPathFilename)
         {
             try
             {
@@ -758,7 +769,7 @@ namespace IB2ToolsetMini
                     }
                 }
                 //mod.VersionIB = game.IBVersion;
-                mod.saveModuleFile(fullPathDirectory + "\\" + mod.moduleName + ".mod");
+                mod.saveModuleFile(fullPathFilename);
                 //saveCreaturesFile(fullPathDirectory + "\\data\\creatures.json");
                 //saveItemsFile(fullPathDirectory + "\\data\\items.json");
                 //saveContainersFile(fullPathDirectory + "\\data\\containers.json");
@@ -1095,6 +1106,95 @@ namespace IB2ToolsetMini
             }
             return "none";
         }
+
+        public System.Drawing.Bitmap LoadBitmapGDI(string filename)
+        {
+            System.Drawing.Bitmap bm = null;
+            try
+            {
+                if (File.Exists(_mainDirectory + "\\override\\" + filename + ".png"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\override\\" + filename + ".png");
+                }
+                else if (File.Exists(_mainDirectory + "\\override\\" + filename + ".jpg"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\override\\" + filename + ".jpg");
+                }
+                else if (File.Exists(_mainDirectory + "\\override\\" + filename))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\override\\" + filename);
+                }
+
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".png"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".png");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".jpg"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".jpg");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename);
+                }                
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\tiles\\" + filename + ".png"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\tiles\\" + filename + ".png");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\tiles\\" + filename + ".jpg"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\tiles\\" + filename + ".jpg");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\tiles\\" + filename))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\tiles\\" + filename);
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename + ".png"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename + ".png");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename + ".PNG"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename + ".PNG");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename + ".jpg"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename + ".jpg");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\portraits\\" + filename);
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\ui\\" + filename + ".png"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\ui\\" + filename + ".png");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\ui\\" + filename + ".jpg"))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\ui\\" + filename + ".jpg");
+                }
+                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\ui\\" + filename))
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\ui\\" + filename);
+                }
+
+                else
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\graphics\\missingtexture.png");
+                }
+            }
+            catch (Exception ex)
+            {
+                errorLog(ex.ToString());
+                if (bm == null)
+                {
+                    bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\graphics\\missingtexture.png");
+                    return bm;
+                }
+            }
+            return bm;
+        }
+
         #region Creature Stuff
         public void refreshIconCreatures()
         {

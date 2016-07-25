@@ -281,7 +281,8 @@ namespace IB2ToolsetMini
         
         public void LoadPropBitmap(ParentForm prntForm)
         {
-            if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.ImageFileName + ".png"))
+            this.propBitmap = prntForm.LoadBitmapGDI(this.ImageFileName);
+            /*if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.ImageFileName + ".png"))
             {
                 this.propBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.ImageFileName + ".png");
             }
@@ -292,7 +293,7 @@ namespace IB2ToolsetMini
             else
             {
                 this.propBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
-            }
+            }*/
         }        
         public void LoadPropSpriteStuffForTS(string moduleFolderPath)
         {
