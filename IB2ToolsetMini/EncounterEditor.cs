@@ -93,7 +93,7 @@ namespace IB2ToolsetMini
             radioButton1.Checked = true;
             checkBox1.Checked = true;
             checkBox2.Checked = true;
-            checkBox3.Checked = true;
+            //checkBox3.Checked = true;
             
             rbtnInfo.Checked = true;
             rbtnZoom1x.Checked = true;
@@ -1889,7 +1889,7 @@ namespace IB2ToolsetMini
                 //thisEnc.UseMapImage = true;
                 resetAreaTileValues(thisEnc.MapSizeX, thisEnc.MapSizeY);
                 //GDI mapSizeChangeStuff();
-                chkUseMapImage.Checked = true;
+                //chkUseMapImage.Checked = true;
                 //GDI refreshMap(true);
             }
         }
@@ -2193,7 +2193,6 @@ namespace IB2ToolsetMini
         }
         #endregion
 
-        
         private void timerRenderLoop_Tick(object sender, EventArgs e)
         {
             Render();

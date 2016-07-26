@@ -35,11 +35,9 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -89,8 +87,6 @@
             this.btnRemoveItems = new System.Windows.Forms.Button();
             this.panelNoScrollOnFocus1 = new IB2ToolsetMini.PanelNoScrollOnFocus();
             this.panelView = new System.Windows.Forms.Panel();
-            this.btnLoadMap = new System.Windows.Forms.Button();
-            this.chkUseMapImage = new System.Windows.Forms.CheckBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerRenderLoop = new System.Windows.Forms.Timer(this.components);
             this.panel3.SuspendLayout();
@@ -111,7 +107,7 @@
             // 
             // btnFillWithSelected
             // 
-            this.btnFillWithSelected.Location = new System.Drawing.Point(16, 173);
+            this.btnFillWithSelected.Location = new System.Drawing.Point(16, 142);
             this.btnFillWithSelected.Name = "btnFillWithSelected";
             this.btnFillWithSelected.Size = new System.Drawing.Size(86, 39);
             this.btnFillWithSelected.TabIndex = 17;
@@ -142,7 +138,7 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.panel1);
-            this.groupBox6.Location = new System.Drawing.Point(16, 218);
+            this.groupBox6.Location = new System.Drawing.Point(16, 187);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(86, 81);
             this.groupBox6.TabIndex = 69;
@@ -160,26 +156,14 @@
             // groupBox7
             // 
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox7.Controls.Add(this.radioButton3);
             this.groupBox7.Controls.Add(this.radioButton1);
             this.groupBox7.Controls.Add(this.radioButton2);
             this.groupBox7.Location = new System.Drawing.Point(17, 15);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(86, 75);
+            this.groupBox7.Size = new System.Drawing.Size(86, 57);
             this.groupBox7.TabIndex = 70;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Edit Layer";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(10, 51);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(60, 17);
-            this.radioButton3.TabIndex = 6;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Layer 3";
-            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -206,26 +190,14 @@
             // groupBox8
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox8.Controls.Add(this.checkBox3);
             this.groupBox8.Controls.Add(this.checkBox1);
             this.groupBox8.Controls.Add(this.checkBox2);
-            this.groupBox8.Location = new System.Drawing.Point(17, 92);
+            this.groupBox8.Location = new System.Drawing.Point(17, 75);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(86, 75);
+            this.groupBox8.Size = new System.Drawing.Size(86, 60);
             this.groupBox8.TabIndex = 71;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Show";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(10, 52);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(61, 17);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Layer 3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -258,7 +230,7 @@
             this.groupBox9.Controls.Add(this.btnFillWithSelected);
             this.groupBox9.Location = new System.Drawing.Point(136, 5);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(118, 364);
+            this.groupBox9.Size = new System.Drawing.Size(118, 337);
             this.groupBox9.TabIndex = 72;
             this.groupBox9.TabStop = false;
             // 
@@ -267,7 +239,7 @@
             this.groupBox3.Controls.Add(this.rbtnZoom5x);
             this.groupBox3.Controls.Add(this.rbtnZoom2x);
             this.groupBox3.Controls.Add(this.rbtnZoom1x);
-            this.groupBox3.Location = new System.Drawing.Point(14, 305);
+            this.groupBox3.Location = new System.Drawing.Point(14, 274);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(90, 52);
             this.groupBox3.TabIndex = 72;
@@ -358,7 +330,7 @@
             // btnProperties
             // 
             this.btnProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProperties.Location = new System.Drawing.Point(142, 513);
+            this.btnProperties.Location = new System.Drawing.Point(142, 483);
             this.btnProperties.Name = "btnProperties";
             this.btnProperties.Size = new System.Drawing.Size(106, 48);
             this.btnProperties.TabIndex = 76;
@@ -368,7 +340,7 @@
             // 
             // lblMouseInfo
             // 
-            this.lblMouseInfo.Location = new System.Drawing.Point(139, 571);
+            this.lblMouseInfo.Location = new System.Drawing.Point(139, 541);
             this.lblMouseInfo.Name = "lblMouseInfo";
             this.lblMouseInfo.Size = new System.Drawing.Size(109, 44);
             this.lblMouseInfo.TabIndex = 73;
@@ -378,7 +350,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnRemoveSelectedObject);
             this.groupBox1.Controls.Add(this.txtSelectedIconInfo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 473);
+            this.groupBox1.Location = new System.Drawing.Point(12, 420);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(118, 142);
             this.groupBox1.TabIndex = 74;
@@ -412,7 +384,7 @@
             this.groupBox2.Controls.Add(this.rbtnEditTrigger);
             this.groupBox2.Controls.Add(this.rbtnWalkable);
             this.groupBox2.Controls.Add(this.rbtnPaintTrigger);
-            this.groupBox2.Location = new System.Drawing.Point(12, 59);
+            this.groupBox2.Location = new System.Drawing.Point(12, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(118, 364);
             this.groupBox2.TabIndex = 75;
@@ -475,7 +447,7 @@
             this.chkGrid.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.chkGrid.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
             this.chkGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkGrid.Location = new System.Drawing.Point(21, 433);
+            this.chkGrid.Location = new System.Drawing.Point(21, 380);
             this.chkGrid.Margin = new System.Windows.Forms.Padding(0);
             this.chkGrid.Name = "chkGrid";
             this.chkGrid.Size = new System.Drawing.Size(103, 28);
@@ -499,7 +471,7 @@
             this.gbMapSize.Controls.Add(this.btnMinusLeftX);
             this.gbMapSize.Controls.Add(this.label2);
             this.gbMapSize.Controls.Add(this.label1);
-            this.gbMapSize.Location = new System.Drawing.Point(136, 375);
+            this.gbMapSize.Location = new System.Drawing.Point(136, 345);
             this.gbMapSize.Name = "gbMapSize";
             this.gbMapSize.Size = new System.Drawing.Size(118, 131);
             this.gbMapSize.TabIndex = 79;
@@ -793,28 +765,6 @@
             this.panelView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelView_MouseMove);
             this.panelView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panelView_PreviewKeyDown);
             // 
-            // btnLoadMap
-            // 
-            this.btnLoadMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadMap.Location = new System.Drawing.Point(21, 12);
-            this.btnLoadMap.Name = "btnLoadMap";
-            this.btnLoadMap.Size = new System.Drawing.Size(103, 29);
-            this.btnLoadMap.TabIndex = 84;
-            this.btnLoadMap.Text = "Load Map";
-            this.btnLoadMap.UseVisualStyleBackColor = true;
-            this.btnLoadMap.Click += new System.EventHandler(this.btnLoadMap_Click);
-            // 
-            // chkUseMapImage
-            // 
-            this.chkUseMapImage.AutoSize = true;
-            this.chkUseMapImage.Location = new System.Drawing.Point(21, 45);
-            this.chkUseMapImage.Name = "chkUseMapImage";
-            this.chkUseMapImage.Size = new System.Drawing.Size(101, 17);
-            this.chkUseMapImage.TabIndex = 85;
-            this.chkUseMapImage.Text = "Use Map Image";
-            this.chkUseMapImage.UseVisualStyleBackColor = true;
-            this.chkUseMapImage.CheckedChanged += new System.EventHandler(this.chkUseMapImage_CheckedChanged);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -829,8 +779,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 668);
-            this.Controls.Add(this.chkUseMapImage);
-            this.Controls.Add(this.btnLoadMap);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.gbMapSize);
@@ -869,7 +817,6 @@
             this.groupBox4.PerformLayout();
             this.panelNoScrollOnFocus1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -933,10 +880,6 @@
         private System.Windows.Forms.ListBox lbxItems;
         private System.Windows.Forms.Button btnAddItems;
         private System.Windows.Forms.Button btnRemoveItems;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Button btnLoadMap;
-        private System.Windows.Forms.CheckBox chkUseMapImage;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Timer timerRenderLoop;
     }
