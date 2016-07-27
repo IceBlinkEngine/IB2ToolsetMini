@@ -769,7 +769,7 @@ namespace IB2ToolsetMini
                     }
                 }
                 //mod.VersionIB = game.IBVersion;
-                mod.saveModuleFile(fullPathFilename);
+                mod.saveModuleFile(fullPathFilename, tsBtnJSON.Checked);
                 //saveCreaturesFile(fullPathDirectory + "\\data\\creatures.json");
                 //saveItemsFile(fullPathDirectory + "\\data\\items.json");
                 //saveContainersFile(fullPathDirectory + "\\data\\containers.json");

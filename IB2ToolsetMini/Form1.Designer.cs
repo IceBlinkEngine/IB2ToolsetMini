@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
             WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin1 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
             WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
@@ -44,7 +45,6 @@
             WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -54,6 +54,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBtnResetDropDowns = new System.Windows.Forms.ToolStripButton();
             this.tsBtnDataCheck = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnJSON = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +79,7 @@
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tilesUsedInModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertAnIB2ModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wizardsEditorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mergerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rulesEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +99,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.convertAnIB2ModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +113,8 @@
             this.tsbSaveIncremental,
             this.toolStripSeparator4,
             this.tsBtnResetDropDowns,
-            this.tsBtnDataCheck});
+            this.tsBtnDataCheck,
+            this.tsBtnJSON});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(817, 27);
@@ -193,6 +195,22 @@
     "ood idea to run this check often, especially before saving and running on androi" +
     "d device).";
             this.tsBtnDataCheck.Click += new System.EventHandler(this.tsBtnDataCheck_Click);
+            // 
+            // tsBtnJSON
+            // 
+            this.tsBtnJSON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tsBtnJSON.Checked = true;
+            this.tsBtnJSON.CheckOnClick = true;
+            this.tsBtnJSON.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsBtnJSON.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsBtnJSON.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnJSON.Image")));
+            this.tsBtnJSON.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnJSON.Name = "tsBtnJSON";
+            this.tsBtnJSON.Size = new System.Drawing.Size(115, 24);
+            this.tsBtnJSON.Text = "Indented JSON Files";
+            this.tsBtnJSON.ToolTipText = "Toggle button for setting if the\r\nmodule file should be saved using\r\nindented for" +
+    "matting in the module\'s\r\nfile (larger file) or using no formatting\r\n(small file)" +
+    ".";
             // 
             // menuStrip1
             // 
@@ -391,6 +409,13 @@
             this.tilesUsedInModuleToolStripMenuItem.Text = "List Tiles Used in Module";
             this.tilesUsedInModuleToolStripMenuItem.Click += new System.EventHandler(this.tilesUsedInModuleToolStripMenuItem_Click);
             // 
+            // convertAnIB2ModuleToolStripMenuItem
+            // 
+            this.convertAnIB2ModuleToolStripMenuItem.Name = "convertAnIB2ModuleToolStripMenuItem";
+            this.convertAnIB2ModuleToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.convertAnIB2ModuleToolStripMenuItem.Text = "Convert an IB2 module";
+            this.convertAnIB2ModuleToolStripMenuItem.Click += new System.EventHandler(this.convertAnIB2ModuleToolStripMenuItem_Click);
+            // 
             // wizardsEditorsToolStripMenuItem
             // 
             this.wizardsEditorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -563,13 +588,6 @@
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // convertAnIB2ModuleToolStripMenuItem
-            // 
-            this.convertAnIB2ModuleToolStripMenuItem.Name = "convertAnIB2ModuleToolStripMenuItem";
-            this.convertAnIB2ModuleToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.convertAnIB2ModuleToolStripMenuItem.Text = "Convert an IB2 module";
-            this.convertAnIB2ModuleToolStripMenuItem.Click += new System.EventHandler(this.convertAnIB2ModuleToolStripMenuItem_Click);
-            // 
             // ParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -650,6 +668,7 @@
         private System.Windows.Forms.ToolStripMenuItem tilesUsedInModuleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem convertAnIB2ModuleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsBtnJSON;
     }
 }
 
