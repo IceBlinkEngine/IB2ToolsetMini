@@ -15,6 +15,7 @@ namespace IB2ToolsetMini
     {
         public ParentForm prntForm;
         public bool refreshingList = false;
+        private int selectedLbxIndex = 0;
         public Bitmap iconBitmap;
         public Player pc = new Player();
         public List<ItemRefs> itemsHeadList = new List<ItemRefs>();
@@ -31,6 +32,68 @@ namespace IB2ToolsetMini
         {
             InitializeComponent();
             prntForm = pf;
+            refreshListBox();
+        }
+        private void refreshListBox()
+        {
+            lbxPlayers.BeginUpdate();
+            lbxPlayers.DataSource = null;
+            lbxPlayers.DataSource = prntForm.mod.companionPlayerList;
+            lbxPlayers.DisplayMember = "name";
+            lbxPlayers.EndUpdate();
+        }
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            prntForm.mod.companionPlayerList = prntForm.mod.companionPlayerList.OrderBy(o => o.name).ToList();
+            refreshListBox();
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Player newTS = new Player();
+            newTS.name = "newPlayer";
+            newTS.tag = "newPlayer";
+            prntForm.mod.companionPlayerList.Add(newTS);
+            refreshListBox();
+        }
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (lbxPlayers.Items.Count > 0)
+            {
+                try
+                {
+                    // The Remove button was clicked.
+                    int selectedIndex = lbxPlayers.SelectedIndex;
+                    //mod.ModuleContainersList.containers.RemoveAt(selectedIndex);
+                    prntForm.mod.companionPlayerList.RemoveAt(selectedIndex);
+                }
+                catch { }
+                selectedLbxIndex = 0;
+                lbxPlayers.SelectedIndex = 0;
+                refreshListBox();
+            }
+        }
+        private void btnDuplicate_Click(object sender, EventArgs e)
+        {
+            //TODO Need a deepcopy method on Player
+            //Player newCopy = prntForm.mod.companionPlayerList[selectedLbxIndex].DeepCopy();
+            //newCopy.tag = "newSpellTag_" + prntForm.mod.nextIdNumber.ToString();
+            //prntForm.mod.companionPlayerList.Add(newCopy);
+            //refreshListBox();
+        }
+        private void lbxPlayers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((lbxPlayers.SelectedIndex >= 0) && (prntForm.mod.companionPlayerList != null))
+            {
+                selectedLbxIndex = lbxPlayers.SelectedIndex;
+                lbxPlayers.SelectedIndex = selectedLbxIndex;
+                pc = prntForm.mod.companionPlayerList[selectedLbxIndex];
+                propertyGrid1.SelectedObject = prntForm.mod.companionPlayerList[selectedLbxIndex];
+                refreshForm();
+            }
+        }
+        private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            refreshListBox();
         }
 
         #region Event Handlers    
@@ -113,19 +176,19 @@ namespace IB2ToolsetMini
             //as all events are dispatched, side-effects are complete and the UI thread goes idle again.
             //http://stackoverflow.com/questions/4454058/no-itemchecked-event-in-a-checkedlistbox/4454594#4454594
             //
-            this.BeginInvoke((MethodInvoker)delegate
+            if (!refreshingList)
             {
-                if (!refreshingList)
+                this.BeginInvoke((MethodInvoker)delegate
                 {
+
                     pc.knownSpellsTags.Clear();
                     foreach (object itemChecked in cbxKnownSpells.CheckedItems)
                     {
                         Spell chkdSpell = (Spell)itemChecked;
                         pc.knownSpellsTags.Add(chkdSpell.tag);
                     }
-                    
-                }
-            });
+                });
+            }
         }
         private void cbxKnownTraits_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -134,19 +197,19 @@ namespace IB2ToolsetMini
             //as all events are dispatched, side-effects are complete and the UI thread goes idle again.
             //http://stackoverflow.com/questions/4454058/no-itemchecked-event-in-a-checkedlistbox/4454594#4454594
             //
-            this.BeginInvoke((MethodInvoker)delegate
+            if (!refreshingList)
             {
-                if (!refreshingList)
+                this.BeginInvoke((MethodInvoker)delegate
                 {
+
                     pc.knownTraitsTags.Clear();
                     foreach (object itemChecked in cbxKnownTraits.CheckedItems)
                     {
                         Trait chkdTrait = (Trait)itemChecked;
                         pc.knownTraitsTags.Add(chkdTrait.tag);
                     }
-
-                }
-            });
+                });
+            }
         }
         #endregion
 
@@ -277,8 +340,9 @@ namespace IB2ToolsetMini
         {
             try
             {
-                if (pc.tag != "newTag")
+                if (pc.tag != "newPlayer")
                 {
+                    if (iconBitmap == null) { LoadPlayerToken(); }
                     pbIcon.BackgroundImage = (Image)iconBitmap;
                     if (iconBitmap == null) { MessageBox.Show("returned a null icon bitmap"); }
                 }
@@ -485,5 +549,18 @@ namespace IB2ToolsetMini
             cmbAmmo.SelectedItem = pc.AmmoRefs;
         }
         #endregion
+
+        private void cmbHead_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //pc.HeadRefs = (ItemRefs)cmbHead.SelectedItem;
+        }
+        private void cmbNeck_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void cmbBody_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //pc.BodyRefs = (ItemRefs)cmbBody.SelectedItem;
+        }
     }
 }

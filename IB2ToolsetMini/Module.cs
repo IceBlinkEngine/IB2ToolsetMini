@@ -71,6 +71,7 @@ namespace IB2ToolsetMini
         public bool showPartyToken = false;
         private string _partyTokenFilename = "prp_party";
         public List<Player> playerList = new List<Player>();
+        public List<Player> companionPlayerList = new List<Player>();
         public List<ItemRefs> partyInventoryRefsList = new List<ItemRefs>();
         public List<JournalQuest> partyJournalQuests = new List<JournalQuest>();
         public List<JournalQuest> partyJournalCompleted = new List<JournalQuest>();

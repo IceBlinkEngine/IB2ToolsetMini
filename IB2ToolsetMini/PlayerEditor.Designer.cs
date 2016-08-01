@@ -31,6 +31,9 @@
             this.gbKnownSpells = new System.Windows.Forms.GroupBox();
             this.cbxKnownSpells = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbAmmo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.cmbFeet = new System.Windows.Forms.ComboBox();
             this.cmbRing2 = new System.Windows.Forms.ComboBox();
             this.cmbRing1 = new System.Windows.Forms.ComboBox();
@@ -56,21 +59,25 @@
             this.btnLoadPlayer = new System.Windows.Forms.Button();
             this.btnSavePlayer = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.cmbAmmo = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSort = new System.Windows.Forms.Button();
+            this.btnDuplicate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.lbxPlayers = new System.Windows.Forms.ListBox();
             this.gbKnownSpells.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbCreatureIconSelect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbKnownSpells
             // 
             this.gbKnownSpells.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gbKnownSpells.Controls.Add(this.cbxKnownSpells);
-            this.gbKnownSpells.Location = new System.Drawing.Point(490, 8);
+            this.gbKnownSpells.Location = new System.Drawing.Point(683, 8);
             this.gbKnownSpells.Name = "gbKnownSpells";
             this.gbKnownSpells.Size = new System.Drawing.Size(196, 305);
             this.gbKnownSpells.TabIndex = 5;
@@ -110,12 +117,39 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbHead);
-            this.groupBox2.Location = new System.Drawing.Point(261, 8);
+            this.groupBox2.Location = new System.Drawing.Point(451, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(222, 331);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Equipped Items";
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(72, 277);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(141, 46);
+            this.label10.TabIndex = 87;
+            this.label10.Text = "The default quantity of this ammo item will be added to the party equipment list." +
+    "";
+            // 
+            // cmbAmmo
+            // 
+            this.cmbAmmo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAmmo.FormattingEnabled = true;
+            this.cmbAmmo.Location = new System.Drawing.Point(75, 253);
+            this.cmbAmmo.Name = "cmbAmmo";
+            this.cmbAmmo.Size = new System.Drawing.Size(138, 21);
+            this.cmbAmmo.TabIndex = 86;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(31, 256);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 85;
+            this.label6.Text = "Ammo:";
             // 
             // cmbFeet
             // 
@@ -170,6 +204,7 @@
             this.cmbBody.Name = "cmbBody";
             this.cmbBody.Size = new System.Drawing.Size(138, 21);
             this.cmbBody.TabIndex = 79;
+            this.cmbBody.SelectedIndexChanged += new System.EventHandler(this.cmbBody_SelectedIndexChanged);
             // 
             // cmbNeck
             // 
@@ -179,6 +214,7 @@
             this.cmbNeck.Name = "cmbNeck";
             this.cmbNeck.Size = new System.Drawing.Size(138, 21);
             this.cmbNeck.TabIndex = 78;
+            this.cmbNeck.SelectedIndexChanged += new System.EventHandler(this.cmbNeck_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -260,13 +296,14 @@
             this.cmbHead.Name = "cmbHead";
             this.cmbHead.Size = new System.Drawing.Size(138, 21);
             this.cmbHead.TabIndex = 68;
+            this.cmbHead.SelectedIndexChanged += new System.EventHandler(this.cmbHead_SelectedIndexChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.cbxKnownTraits);
-            this.groupBox1.Location = new System.Drawing.Point(490, 319);
+            this.groupBox1.Location = new System.Drawing.Point(683, 319);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(196, 313);
             this.groupBox1.TabIndex = 7;
@@ -289,16 +326,17 @@
             // 
             this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.propertyGrid1.Location = new System.Drawing.Point(12, 50);
+            this.propertyGrid1.Location = new System.Drawing.Point(202, 50);
             this.propertyGrid1.Name = "propertyGrid1";
             this.propertyGrid1.Size = new System.Drawing.Size(241, 584);
             this.propertyGrid1.TabIndex = 8;
+            this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
             // gbCreatureIconSelect
             // 
             this.gbCreatureIconSelect.Controls.Add(this.pbIcon);
             this.gbCreatureIconSelect.Controls.Add(this.btnSelectIcon);
-            this.gbCreatureIconSelect.Location = new System.Drawing.Point(286, 344);
+            this.gbCreatureIconSelect.Location = new System.Drawing.Point(476, 344);
             this.gbCreatureIconSelect.Name = "gbCreatureIconSelect";
             this.gbCreatureIconSelect.Size = new System.Drawing.Size(180, 214);
             this.gbCreatureIconSelect.TabIndex = 45;
@@ -330,7 +368,7 @@
             // btnLoadPlayer
             // 
             this.btnLoadPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadPlayer.Location = new System.Drawing.Point(11, 7);
+            this.btnLoadPlayer.Location = new System.Drawing.Point(201, 7);
             this.btnLoadPlayer.Name = "btnLoadPlayer";
             this.btnLoadPlayer.Size = new System.Drawing.Size(120, 35);
             this.btnLoadPlayer.TabIndex = 46;
@@ -341,7 +379,7 @@
             // btnSavePlayer
             // 
             this.btnSavePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePlayer.Location = new System.Drawing.Point(135, 7);
+            this.btnSavePlayer.Location = new System.Drawing.Point(325, 7);
             this.btnSavePlayer.Name = "btnSavePlayer";
             this.btnSavePlayer.Size = new System.Drawing.Size(120, 35);
             this.btnSavePlayer.TabIndex = 47;
@@ -353,38 +391,79 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // cmbAmmo
+            // groupBox3
             // 
-            this.cmbAmmo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAmmo.FormattingEnabled = true;
-            this.cmbAmmo.Location = new System.Drawing.Point(75, 253);
-            this.cmbAmmo.Name = "cmbAmmo";
-            this.cmbAmmo.Size = new System.Drawing.Size(138, 21);
-            this.cmbAmmo.TabIndex = 86;
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Controls.Add(this.btnSort);
+            this.groupBox3.Controls.Add(this.btnDuplicate);
+            this.groupBox3.Controls.Add(this.btnAdd);
+            this.groupBox3.Controls.Add(this.btnRemove);
+            this.groupBox3.Controls.Add(this.lbxPlayers);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(177, 622);
+            this.groupBox3.TabIndex = 48;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Module Players/Companions";
             // 
-            // label6
+            // btnSort
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 256);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
-            this.label6.TabIndex = 85;
-            this.label6.Text = "Ammo:";
+            this.btnSort.Location = new System.Drawing.Point(8, 14);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(40, 23);
+            this.btnSort.TabIndex = 90;
+            this.btnSort.Text = "Sort";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
-            // label10
+            // btnDuplicate
             // 
-            this.label10.Location = new System.Drawing.Point(72, 277);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(141, 46);
-            this.label10.TabIndex = 87;
-            this.label10.Text = "The default quantity of this ammo item will be added to the party equipment list." +
-    "";
+            this.btnDuplicate.Location = new System.Drawing.Point(108, 14);
+            this.btnDuplicate.Name = "btnDuplicate";
+            this.btnDuplicate.Size = new System.Drawing.Size(61, 23);
+            this.btnDuplicate.TabIndex = 87;
+            this.btnDuplicate.Text = "Duplicate";
+            this.btnDuplicate.UseVisualStyleBackColor = true;
+            this.btnDuplicate.Click += new System.EventHandler(this.btnDuplicate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(8, 37);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(161, 23);
+            this.btnAdd.TabIndex = 85;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(48, 14);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(60, 23);
+            this.btnRemove.TabIndex = 86;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // lbxPlayers
+            // 
+            this.lbxPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbxPlayers.FormattingEnabled = true;
+            this.lbxPlayers.Location = new System.Drawing.Point(10, 61);
+            this.lbxPlayers.Name = "lbxPlayers";
+            this.lbxPlayers.Size = new System.Drawing.Size(157, 550);
+            this.lbxPlayers.TabIndex = 82;
+            this.lbxPlayers.SelectedIndexChanged += new System.EventHandler(this.lbxPlayers_SelectedIndexChanged);
             // 
             // PlayerEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 646);
+            this.ClientSize = new System.Drawing.Size(890, 646);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSavePlayer);
             this.Controls.Add(this.btnLoadPlayer);
             this.Controls.Add(this.gbCreatureIconSelect);
@@ -401,6 +480,7 @@
             this.groupBox1.ResumeLayout(false);
             this.gbCreatureIconSelect.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -438,5 +518,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbAmmo;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button btnDuplicate;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.ListBox lbxPlayers;
     }
 }
