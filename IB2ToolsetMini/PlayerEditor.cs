@@ -27,6 +27,15 @@ namespace IB2ToolsetMini
         public List<ItemRefs> itemsRing2List = new List<ItemRefs>();
         public List<ItemRefs> itemsFeetList = new List<ItemRefs>();
         public List<ItemRefs> itemsAmmoList = new List<ItemRefs>();
+        public bool userPressedCmbHead = false;
+        public bool userPressedCmbNeck = false;
+        public bool userPressedCmbBody = false;
+        public bool userPressedCmbMainHand = false;
+        public bool userPressedCmbOffHand = false;
+        public bool userPressedCmbRing1 = false;
+        public bool userPressedCmbRing2 = false;
+        public bool userPressedCmbFeet = false;
+        public bool userPressedCmbAmmo = false;
 
         public PlayerEditor(ParentForm pf)
         {
@@ -34,13 +43,11 @@ namespace IB2ToolsetMini
             prntForm = pf;
             refreshListBox();
         }
-        private void refreshListBox()
+        
+        #region Event Handlers    
+        private void PlayerEditor_Load(object sender, EventArgs e)
         {
-            lbxPlayers.BeginUpdate();
-            lbxPlayers.DataSource = null;
-            lbxPlayers.DataSource = prntForm.mod.companionPlayerList;
-            lbxPlayers.DisplayMember = "name";
-            lbxPlayers.EndUpdate();
+            refreshForm();
         }
         private void btnSort_Click(object sender, EventArgs e)
         {
@@ -89,17 +96,12 @@ namespace IB2ToolsetMini
                 pc = prntForm.mod.companionPlayerList[selectedLbxIndex];
                 propertyGrid1.SelectedObject = prntForm.mod.companionPlayerList[selectedLbxIndex];
                 refreshForm();
+                LoadPlayerToken();
             }
         }
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             refreshListBox();
-        }
-
-        #region Event Handlers    
-        private void PlayerEditor_Load(object sender, EventArgs e)
-        {
-            refreshForm();
         }
         private void btnLoadPlayer_Click(object sender, EventArgs e)
         {
@@ -211,6 +213,114 @@ namespace IB2ToolsetMini
                 });
             }
         }
+        private void cmbHead_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbHead)
+            {
+                pc.HeadRefs = (ItemRefs)cmbHead.SelectedItem;
+                userPressedCmbHead = false;
+            }
+        }
+        private void cmbHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbHead = true;
+        }
+        private void cmbNeck_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbNeck)
+            {
+                pc.NeckRefs = (ItemRefs)cmbNeck.SelectedItem;
+                userPressedCmbNeck = false;
+            }
+        }
+        private void cmbNeck_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbNeck = true;
+        }
+        private void cmbBody_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbBody)
+            {
+                pc.BodyRefs = (ItemRefs)cmbBody.SelectedItem;
+                userPressedCmbBody = false;
+            }
+        }
+        private void cmbBody_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbBody = true;
+        }
+        private void cmbMainHand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbMainHand)
+            {
+                pc.MainHandRefs = (ItemRefs)cmbMainHand.SelectedItem;
+                userPressedCmbMainHand = false;
+            }
+        }
+        private void cmbMainHand_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbMainHand = true;
+        }
+        private void cmbOffHand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbOffHand)
+            {
+                pc.OffHandRefs = (ItemRefs)cmbOffHand.SelectedItem;
+                userPressedCmbOffHand = false;
+            }
+        }
+        private void cmbOffHand_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbOffHand = true;
+        }
+        private void cmbRing1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbRing1)
+            {
+                pc.RingRefs = (ItemRefs)cmbRing1.SelectedItem;
+                userPressedCmbRing1 = false;
+            }
+        }
+        private void cmbRing1_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbRing1 = true;
+        }
+        private void cmbRing2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbRing2)
+            {
+                pc.Ring2Refs = (ItemRefs)cmbRing2.SelectedItem;
+                userPressedCmbRing2 = false;
+            }
+        }
+        private void cmbRing2_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbRing2 = true;
+        }
+        private void cmbFeet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbFeet)
+            {
+                pc.FeetRefs = (ItemRefs)cmbFeet.SelectedItem;
+                userPressedCmbFeet = false;
+            }
+        }
+        private void cmbFeet_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbFeet = true;
+        }
+        private void cmbAmmo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (userPressedCmbAmmo)
+            {
+                pc.AmmoRefs = (ItemRefs)cmbAmmo.SelectedItem;
+                userPressedCmbAmmo = false;
+            }
+        }
+        private void cmbAmmo_MouseDown(object sender, MouseEventArgs e)
+        {
+            userPressedCmbAmmo = true;
+        }
         #endregion
 
         #region Methods
@@ -316,6 +426,14 @@ namespace IB2ToolsetMini
             refreshCmbItems();
             refreshCmbSelected();
         }
+        private void refreshListBox()
+        {
+            lbxPlayers.BeginUpdate();
+            lbxPlayers.DataSource = null;
+            lbxPlayers.DataSource = prntForm.mod.companionPlayerList;
+            lbxPlayers.DisplayMember = "name";
+            lbxPlayers.EndUpdate();
+        }
         public void savePlayerFile(string filename)
         {
             string json = JsonConvert.SerializeObject(pc, Newtonsoft.Json.Formatting.Indented);
@@ -340,9 +458,8 @@ namespace IB2ToolsetMini
         {
             try
             {
-                if (pc.tag != "newPlayer")
+                if ((pc.tag != "newPlayer") && (iconBitmap != null))
                 {
-                    if (iconBitmap == null) { LoadPlayerToken(); }
                     pbIcon.BackgroundImage = (Image)iconBitmap;
                     if (iconBitmap == null) { MessageBox.Show("returned a null icon bitmap"); }
                 }
@@ -549,18 +666,5 @@ namespace IB2ToolsetMini
             cmbAmmo.SelectedItem = pc.AmmoRefs;
         }
         #endregion
-
-        private void cmbHead_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //pc.HeadRefs = (ItemRefs)cmbHead.SelectedItem;
-        }
-        private void cmbNeck_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void cmbBody_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //pc.BodyRefs = (ItemRefs)cmbBody.SelectedItem;
-        }
     }
 }

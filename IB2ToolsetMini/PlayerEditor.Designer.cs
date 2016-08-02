@@ -56,8 +56,6 @@
             this.gbCreatureIconSelect = new System.Windows.Forms.GroupBox();
             this.pbIcon = new System.Windows.Forms.PictureBox();
             this.btnSelectIcon = new System.Windows.Forms.Button();
-            this.btnLoadPlayer = new System.Windows.Forms.Button();
-            this.btnSavePlayer = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSort = new System.Windows.Forms.Button();
@@ -141,6 +139,8 @@
             this.cmbAmmo.Name = "cmbAmmo";
             this.cmbAmmo.Size = new System.Drawing.Size(138, 21);
             this.cmbAmmo.TabIndex = 86;
+            this.cmbAmmo.SelectedIndexChanged += new System.EventHandler(this.cmbAmmo_SelectedIndexChanged);
+            this.cmbAmmo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbAmmo_MouseDown);
             // 
             // label6
             // 
@@ -159,6 +159,8 @@
             this.cmbFeet.Name = "cmbFeet";
             this.cmbFeet.Size = new System.Drawing.Size(138, 21);
             this.cmbFeet.TabIndex = 84;
+            this.cmbFeet.SelectedIndexChanged += new System.EventHandler(this.cmbFeet_SelectedIndexChanged);
+            this.cmbFeet.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbFeet_MouseDown);
             // 
             // cmbRing2
             // 
@@ -168,6 +170,8 @@
             this.cmbRing2.Name = "cmbRing2";
             this.cmbRing2.Size = new System.Drawing.Size(138, 21);
             this.cmbRing2.TabIndex = 83;
+            this.cmbRing2.SelectedIndexChanged += new System.EventHandler(this.cmbRing2_SelectedIndexChanged);
+            this.cmbRing2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbRing2_MouseDown);
             // 
             // cmbRing1
             // 
@@ -177,6 +181,8 @@
             this.cmbRing1.Name = "cmbRing1";
             this.cmbRing1.Size = new System.Drawing.Size(138, 21);
             this.cmbRing1.TabIndex = 82;
+            this.cmbRing1.SelectedIndexChanged += new System.EventHandler(this.cmbRing1_SelectedIndexChanged);
+            this.cmbRing1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbRing1_MouseDown);
             // 
             // cmbOffHand
             // 
@@ -186,6 +192,8 @@
             this.cmbOffHand.Name = "cmbOffHand";
             this.cmbOffHand.Size = new System.Drawing.Size(138, 21);
             this.cmbOffHand.TabIndex = 81;
+            this.cmbOffHand.SelectedIndexChanged += new System.EventHandler(this.cmbOffHand_SelectedIndexChanged);
+            this.cmbOffHand.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbOffHand_MouseDown);
             // 
             // cmbMainHand
             // 
@@ -195,6 +203,8 @@
             this.cmbMainHand.Name = "cmbMainHand";
             this.cmbMainHand.Size = new System.Drawing.Size(138, 21);
             this.cmbMainHand.TabIndex = 80;
+            this.cmbMainHand.SelectedIndexChanged += new System.EventHandler(this.cmbMainHand_SelectedIndexChanged);
+            this.cmbMainHand.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbMainHand_MouseDown);
             // 
             // cmbBody
             // 
@@ -205,6 +215,7 @@
             this.cmbBody.Size = new System.Drawing.Size(138, 21);
             this.cmbBody.TabIndex = 79;
             this.cmbBody.SelectedIndexChanged += new System.EventHandler(this.cmbBody_SelectedIndexChanged);
+            this.cmbBody.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbBody_MouseDown);
             // 
             // cmbNeck
             // 
@@ -215,6 +226,7 @@
             this.cmbNeck.Size = new System.Drawing.Size(138, 21);
             this.cmbNeck.TabIndex = 78;
             this.cmbNeck.SelectedIndexChanged += new System.EventHandler(this.cmbNeck_SelectedIndexChanged);
+            this.cmbNeck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbNeck_MouseDown);
             // 
             // label9
             // 
@@ -297,6 +309,7 @@
             this.cmbHead.Size = new System.Drawing.Size(138, 21);
             this.cmbHead.TabIndex = 68;
             this.cmbHead.SelectedIndexChanged += new System.EventHandler(this.cmbHead_SelectedIndexChanged);
+            this.cmbHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbHead_MouseDown);
             // 
             // groupBox1
             // 
@@ -326,9 +339,9 @@
             // 
             this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.propertyGrid1.Location = new System.Drawing.Point(202, 50);
+            this.propertyGrid1.Location = new System.Drawing.Point(202, 12);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(241, 584);
+            this.propertyGrid1.Size = new System.Drawing.Size(241, 622);
             this.propertyGrid1.TabIndex = 8;
             this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
@@ -364,28 +377,6 @@
             this.btnSelectIcon.Text = "Select";
             this.btnSelectIcon.UseVisualStyleBackColor = true;
             this.btnSelectIcon.Click += new System.EventHandler(this.btnSelectIcon_Click);
-            // 
-            // btnLoadPlayer
-            // 
-            this.btnLoadPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadPlayer.Location = new System.Drawing.Point(201, 7);
-            this.btnLoadPlayer.Name = "btnLoadPlayer";
-            this.btnLoadPlayer.Size = new System.Drawing.Size(120, 35);
-            this.btnLoadPlayer.TabIndex = 46;
-            this.btnLoadPlayer.Text = "Load Player";
-            this.btnLoadPlayer.UseVisualStyleBackColor = true;
-            this.btnLoadPlayer.Click += new System.EventHandler(this.btnLoadPlayer_Click);
-            // 
-            // btnSavePlayer
-            // 
-            this.btnSavePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePlayer.Location = new System.Drawing.Point(325, 7);
-            this.btnSavePlayer.Name = "btnSavePlayer";
-            this.btnSavePlayer.Size = new System.Drawing.Size(120, 35);
-            this.btnSavePlayer.TabIndex = 47;
-            this.btnSavePlayer.Text = "Save Player";
-            this.btnSavePlayer.UseVisualStyleBackColor = true;
-            this.btnSavePlayer.Click += new System.EventHandler(this.btnSavePlayer_Click);
             // 
             // openFileDialog1
             // 
@@ -464,8 +455,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 646);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnSavePlayer);
-            this.Controls.Add(this.btnLoadPlayer);
             this.Controls.Add(this.gbCreatureIconSelect);
             this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.groupBox1);
@@ -505,8 +494,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLoadPlayer;
-        private System.Windows.Forms.Button btnSavePlayer;
         private System.Windows.Forms.ComboBox cmbFeet;
         private System.Windows.Forms.ComboBox cmbRing2;
         private System.Windows.Forms.ComboBox cmbRing1;
