@@ -38,7 +38,7 @@ namespace IB2ToolsetMini
         public bool use3d6 = false;
         public bool ArmorClassAscending = true;
         public List<Item> moduleItemsList = new List<Item>();
-        public List<Encounter> moduleEncountersList = new List<Encounter>();
+        
         public List<Container> moduleContainersList = new List<Container>();
         public List<Shop> moduleShopsList = new List<Shop>();
         public List<Creature> moduleCreaturesList = new List<Creature>();
@@ -48,13 +48,16 @@ namespace IB2ToolsetMini
         public List<Race> moduleRacesList = new List<Race>();
         public List<Spell> moduleSpellsList = new List<Spell>();
         public List<Trait> moduleTraitsList = new List<Trait>();
-        public List<Effect> moduleEffectsList = new List<Effect>();        
-        //public List<string> moduleAreasList = new List<string>();
-        public List<Area> moduleAreasObjects = new List<Area>();
-        //public List<string> moduleConvosList = new List<string>();
-        public List<Convo> moduleConvoList = new List<Convo>();
-        //public List<string> moduleIBScriptsList = new List<string>();
+        public List<Effect> moduleEffectsList = new List<Effect>();
         public List<IBScript> moduleIBScriptList = new List<IBScript>();
+
+        [JsonIgnore]
+        public List<Area> moduleAreasObjects = new List<Area>();
+        [JsonIgnore]
+        public List<Encounter> moduleEncountersList = new List<Encounter>();
+        [JsonIgnore]
+        public List<Convo> moduleConvoList = new List<Convo>();
+        
         public List<GlobalInt> moduleGlobalInts = new List<GlobalInt>();
         public List<GlobalString> moduleGlobalStrings = new List<GlobalString>();
         public List<ConvoSavedValues> moduleConvoSavedValuesList = new List<ConvoSavedValues>();

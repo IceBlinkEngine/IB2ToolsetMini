@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace IB2ToolsetMini
 {
@@ -19,6 +20,7 @@ namespace IB2ToolsetMini
         private string portraitBitmap = "";
         private string defaultNpcName = "";
         private int f_nextIdNum = 0;
+        private List<ContentNode> _subNodes = new List<ContentNode>();
 
         public string ConvoFileName
         {
@@ -85,8 +87,7 @@ namespace IB2ToolsetMini
             {
                 defaultNpcName = value;
             }
-        }
-        public List<ContentNode> subNodes = new List<ContentNode>();
+        }       
         public int NextIdNum
         {
             get
@@ -97,6 +98,11 @@ namespace IB2ToolsetMini
             {
                 f_nextIdNum = value;
             }
+        }
+        public List<ContentNode> subNodes
+        {
+            get { return _subNodes; }
+            set { _subNodes = value; }
         }
 
         public Convo()

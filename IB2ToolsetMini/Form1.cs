@@ -230,11 +230,73 @@ namespace IB2ToolsetMini
         #region File Handling
         private void openModule(string filename)
         {            
-            mod = mod.loadModuleFile(filename);
-            if (mod == null)
+            //mod = mod.loadModuleFile(filename);
+            //if (mod == null)
+            //{
+            //    MessageBox.Show("returned a null module");
+            //}
+
+            //new method
+            using (StreamReader sr = File.OpenText(filename))
             {
-                MessageBox.Show("returned a null module");
+                string s = "";
+                s = sr.ReadLine();
+                if (!s.Equals("MODULE"))
+                {
+                    MessageBox.Show("module file did not have 'MODULE' on first line, aborting...");
+                    return;
+                }
+                //Read in the module file line
+                for (int i = 0; i < 99; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("AREAS")))
+                    {
+                        break;
+                    }
+                    mod = (Module)JsonConvert.DeserializeObject(s, typeof(Module));
+                }
+                //Read in the areas
+                mod.moduleAreasObjects.Clear();
+                Area ar;
+                for (int i = 0; i < 9999; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("ENCOUNTERS")))
+                    {
+                        break;
+                    }
+                    ar = (Area)JsonConvert.DeserializeObject(s, typeof(Area));
+                    mod.moduleAreasObjects.Add(ar);
+                }
+                //Read in the encounters
+                mod.moduleEncountersList.Clear();
+                Encounter enc;
+                for (int i = 0; i < 9999; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("CONVOS")))
+                    {
+                        break;
+                    }
+                    enc = (Encounter)JsonConvert.DeserializeObject(s, typeof(Encounter));
+                    mod.moduleEncountersList.Add(enc);
+                }
+                //Read in the areas
+                mod.moduleConvoList.Clear();
+                Convo cnv;
+                for (int i = 0; i < 9999; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("IMAGES")) || (s.Equals("END")))
+                    {
+                        break;
+                    }
+                    cnv = (Convo)JsonConvert.DeserializeObject(s, typeof(Convo));
+                    mod.moduleConvoList.Add(cnv);
+                }
             }
+
             //frmAreas.lbxAreas.DataSource = null;
             //frmAreas.lbxAreas.DataSource = mod.moduleAreasObjects;
             //frmAreas.lbxAreas.DisplayMember = "Filename";
@@ -769,7 +831,15 @@ namespace IB2ToolsetMini
                     }
                 }
                 //mod.VersionIB = game.IBVersion;
-                mod.saveModuleFile(fullPathFilename, tsBtnJSON.Checked);
+                //mod.saveModuleFile(fullPathFilename, tsBtnJSON.Checked);
+                saveModule(fullPathFilename);
+                //save areas
+                saveAreas(fullPathFilename);
+                //save encounters
+                saveEncounters(fullPathFilename);
+                //save convos
+                saveConvos(fullPathFilename);
+                //save images
                 //saveCreaturesFile(fullPathDirectory + "\\data\\creatures.json");
                 //saveItemsFile(fullPathDirectory + "\\data\\items.json");
                 //saveContainersFile(fullPathDirectory + "\\data\\containers.json");
@@ -821,12 +891,46 @@ namespace IB2ToolsetMini
             }
             catch { MessageBox.Show("failed to createFiles"); }
         }
-        private void newModule()
+        private void saveModule(string moduleFullPathFilename)
+        {
+            File.WriteAllText(moduleFullPathFilename, "MODULE" + Environment.NewLine);
+            string output = JsonConvert.SerializeObject(mod, Formatting.None);
+            File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);            
+        }
+        private void saveAreas(string moduleFullPathFilename)
+        {
+            File.AppendAllText(moduleFullPathFilename, "AREAS" + Environment.NewLine);
+            foreach (Area a in mod.moduleAreasObjects)
+            {
+                string output = JsonConvert.SerializeObject(a, Formatting.None);
+                File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
+            }
+        }
+        private void saveEncounters(string moduleFullPathFilename)
+        {
+            File.AppendAllText(moduleFullPathFilename, "ENCOUNTERS" + Environment.NewLine);
+            foreach (Encounter enc in mod.moduleEncountersList)
+            {
+                string output = JsonConvert.SerializeObject(enc, Formatting.None);
+                File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
+            }
+        }
+        private void saveConvos(string moduleFullPathFilename)
+        {
+            File.AppendAllText(moduleFullPathFilename, "CONVOS" + Environment.NewLine);
+            foreach (Convo c in mod.moduleConvoList)
+            {
+                string output = JsonConvert.SerializeObject(c, Formatting.None);
+                File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
+            }
+        }
+
+        /*private void newModule()
         {
             openModule(_mainDirectory + "\\default\\NewModule\\NewModule.mod");
             openCreatures(_mainDirectory + "\\default\\NewModule\\data\\creatures.json");
             openItems(_mainDirectory + "\\default\\NewModule\\data\\items.json");
-        }
+        }*/
         private void createDirectory(string fullPath)
         {
             try
