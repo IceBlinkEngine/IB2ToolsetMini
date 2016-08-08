@@ -34,7 +34,7 @@ namespace IB2ToolsetMini
         public int TimePerRound = 6;
         public bool debugMode = true;
         public float diagonalMoveCost = 1.5f;
-        public bool useLuck = false;
+        //public bool useLuck = false;
         public bool use3d6 = false;
         public bool ArmorClassAscending = true;
         public List<Item> moduleItemsList = new List<Item>();
@@ -98,14 +98,14 @@ namespace IB2ToolsetMini
         public int combatAnimationSpeed = 25;
         private string onHeartBeatIBScript = "none";
         private string onHeartBeatIBScriptParms = "";
-        private bool _useRealTimeTimer = false;
-        private int _realTimeTimerLengthInMilliSeconds = 1500;
+        //private bool _useRealTimeTimer = false;
+        //private int _realTimeTimerLengthInMilliSeconds = 1500;
         public int attackFromBehindToHitModifier = 2;
         public int attackFromBehindDamageModifier = 0;
         private bool _useUIBackground = false;
-        private string _fontName = "Metamorphous";
-        private string _fontFilename = "Metamorphous-Regular.ttf";
-        private float _fontD2DScaleMultiplier = 1.0f;
+        //private string _fontName = "Metamorphous";
+        //private string _fontFilename = "Metamorphous-Regular.ttf";
+        //private float _fontD2DScaleMultiplier = 1.0f;
         private int _logNumberOfLines = 20;
         private string _spellLabelSingular = "Spell";
         private string _spellLabelPlural = "Spells";
@@ -145,12 +145,12 @@ namespace IB2ToolsetMini
             set { _mustUsePreMadePC = value; }
         }
 
-        [CategoryAttribute("07 - PLW"), DescriptionAttribute("This flag activates the realTime timer. It will make a new turn on main map happen after a number of realtime milliseconds defined in realTimeTimerLengthInMilliSecond. Its main purpose is to have moving NPC and creatures who even move when the party just stands idly. It does not affect combat which never has a real time component")]
+        /*[CategoryAttribute("07 - PLW"), DescriptionAttribute("This flag activates the realTime timer. It will make a new turn on main map happen after a number of realtime milliseconds defined in realTimeTimerLengthInMilliSecond. Its main purpose is to have moving NPC and creatures who even move when the party just stands idly. It does not affect combat which never has a real time component")]
         public bool useRealTimeTimer
         {
             get { return _useRealTimeTimer; }
             set { _useRealTimeTimer = value; }
-        }
+        }*/
 
         [CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("This flag activates using UI background graphics.")]
         public bool useUIBackground
@@ -158,24 +158,24 @@ namespace IB2ToolsetMini
             get { return _useUIBackground; }
             set { _useUIBackground = value; }
         }
-        [CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("The file name of the font including extension (ex. Metamorphous-Regular.ttf)")]
+        /*[CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("The file name of the font including extension (ex. Metamorphous-Regular.ttf)")]
         public string fontFilename
         {
             get { return _fontFilename; }
             set { _fontFilename = value; }
-        }
-        [CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("The font name. Often is different from the file name. To find out your font's name: find the font file in your modules 'fonts' folder (assuming you already placed the font there), right click on it and select 'preview', the font name is under 'Font name:' (ex. Metamorphous)")]
+        }*/
+        /*[CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("The font name. Often is different from the file name. To find out your font's name: find the font file in your modules 'fonts' folder (assuming you already placed the font there), right click on it and select 'preview', the font name is under 'Font name:' (ex. Metamorphous)")]
         public string fontName
         {
             get { return _fontName; }
             set { _fontName = value; }
-        }
-        [CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("A multiplier used to adjust the font size so that your custom font will fit well with the UI...keep trying different values until everything works well. This is a float value type so you can use a decimal value. (ex: 1.015 or 0.97 or 0.8 etc.)")]
+        }*/
+        /*[CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("A multiplier used to adjust the font size so that your custom font will fit well with the UI...keep trying different values until everything works well. This is a float value type so you can use a decimal value. (ex: 1.015 or 0.97 or 0.8 etc.)")]
         public float fontD2DScaleMultiplier
         {
             get { return _fontD2DScaleMultiplier; }
             set { _fontD2DScaleMultiplier = value; }
-        }
+        }*/
         [CategoryAttribute("04 - Fonts and UI"), DescriptionAttribute("This sets the number of lines of text that will be shown in the main map and combat log box. Best way to determine the appropriate vaule is to first pick the font size multipler (see fontD2DScaleMultiplier) and then run the game and click on some of the toggle buttons until you fill the log box and then count the number of lines that are displayed. Use that number for this property.")]
         public int logNumberOfLines
         {
@@ -274,12 +274,12 @@ namespace IB2ToolsetMini
             set { _nextIdNumber = value; }
         }
 
-        [CategoryAttribute("07 - PLW"), DescriptionAttribute("The duration in real time milliseconds after which a new turn on main map takes place. Default is 1500, which 1.5 seconds.")]
+        /*[CategoryAttribute("07 - PLW"), DescriptionAttribute("The duration in real time milliseconds after which a new turn on main map takes place. Default is 1500, which 1.5 seconds.")]
         public int realTimeTimerLengthInMilliSeconds
         {
             get { return _realTimeTimerLengthInMilliSeconds; }
             set { _realTimeTimerLengthInMilliSeconds = value; }
-        }
+        }*/
 
         [CategoryAttribute("02 - Starting Conditions"), DescriptionAttribute("Current value for World Time in generic units")]
         public int WorldTime

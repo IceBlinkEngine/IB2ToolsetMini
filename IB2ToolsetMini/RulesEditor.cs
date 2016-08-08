@@ -67,14 +67,14 @@ namespace IB2ToolsetMini
             }
 
             //use Luck attribute
-            if (mod.useLuck)
+            /*if (mod.useLuck)
             {
                 rbtnUseLuck.Checked = true;
             }
             else
             {
                 rbtnDoNotUseLuck.Checked = true;
-            }
+            }*/
 
             // decide for attribute rolling system
             if (mod.use3d6)
@@ -184,15 +184,6 @@ namespace IB2ToolsetMini
         {
             rtxtInfo.Text = useLuckInfo;
         }
-        private void rbtnUseLuck_CheckedChanged(object sender, EventArgs e)
-        {
-            mod.useLuck = true;
-        }
-        private void rbtnDoNotUseLuck_CheckedChanged(object sender, EventArgs e)
-        {
-            mod.useLuck = false;
-        }
-
         #endregion
 
         #region Decide for attribute rolling system
