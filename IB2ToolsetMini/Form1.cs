@@ -1941,6 +1941,10 @@ namespace IB2ToolsetMini
                 {
                     if (!tilenames.Contains(t)) { tilenames.Add(t); }
                 }
+                foreach (string t in ar.Layer3Filename)
+                {
+                    if (!tilenames.Contains(t)) { tilenames.Add(t); }
+                }
 
                 // try and load the file selected if it exists
                 /*string g_directory = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
@@ -1962,7 +1966,7 @@ namespace IB2ToolsetMini
                     {
                         MessageBox.Show("failed to open file: " + ex.ToString());
                     }                    
-                }*/             
+                }*/
             }
             
             //iterate over each encounter and add tile names to List<string> if not already contained
@@ -1973,6 +1977,10 @@ namespace IB2ToolsetMini
                     if (!tilenames.Contains(t)) { tilenames.Add(t); }
                 }
                 foreach (string t in enc.Layer2Filename)
+                {
+                    if (!tilenames.Contains(t)) { tilenames.Add(t); }
+                }
+                foreach (string t in enc.Layer3Filename)
                 {
                     if (!tilenames.Contains(t)) { tilenames.Add(t); }
                 }
@@ -2074,6 +2082,9 @@ namespace IB2ToolsetMini
                 copyEnc.Layer2Filename = new List<string>();
                 copyEnc.Layer2Mirror = new List<int>();
                 copyEnc.Layer2Rotate = new List<int>();
+                copyEnc.Layer3Filename = new List<string>();
+                copyEnc.Layer3Mirror = new List<int>();
+                copyEnc.Layer3Rotate = new List<int>();
                 copyEnc.Walkable = new List<int>();
                 copyEnc.LoSBlocked = new List<int>();
                 foreach (Tile tile in IB2area.Tiles)
@@ -2082,10 +2093,17 @@ namespace IB2ToolsetMini
                     copyEnc.Layer1Rotate.Add(tile.Layer1Rotate);
                     if (tile.Layer1Mirror) { copyEnc.Layer1Mirror.Add(1); }
                     else { copyEnc.Layer1Mirror.Add(0); }
+
                     copyEnc.Layer2Filename.Add(tile.Layer2Filename);
                     copyEnc.Layer2Rotate.Add(tile.Layer2Rotate);
                     if (tile.Layer2Mirror) { copyEnc.Layer2Mirror.Add(1); }
                     else { copyEnc.Layer2Mirror.Add(0); }
+
+                    copyEnc.Layer3Filename.Add(tile.Layer3Filename);
+                    copyEnc.Layer3Rotate.Add(tile.Layer3Rotate);
+                    if (tile.Layer3Mirror) { copyEnc.Layer3Mirror.Add(1); }
+                    else { copyEnc.Layer3Mirror.Add(0); }
+
                     if (tile.Walkable) { copyEnc.Walkable.Add(1); }
                     else { copyEnc.Walkable.Add(0); }
                     if (tile.LoSBlocked) { copyEnc.LoSBlocked.Add(1); }
@@ -2177,6 +2195,9 @@ namespace IB2ToolsetMini
                 copyEnc.Layer2Filename = new List<string>();
                 copyEnc.Layer2Mirror = new List<int>();
                 copyEnc.Layer2Rotate = new List<int>();
+                copyEnc.Layer3Filename = new List<string>();
+                copyEnc.Layer3Mirror = new List<int>();
+                copyEnc.Layer3Rotate = new List<int>();
                 copyEnc.Walkable = new List<int>();
                 copyEnc.LoSBlocked = new List<int>();
                 foreach (TileEnc tile in encIB2.encounterTiles)
@@ -2185,10 +2206,17 @@ namespace IB2ToolsetMini
                     copyEnc.Layer1Rotate.Add(tile.Layer1Rotate);
                     if (tile.Layer1Mirror) { copyEnc.Layer1Mirror.Add(1); }
                     else { copyEnc.Layer1Mirror.Add(0); }
+
                     copyEnc.Layer2Filename.Add(tile.Layer2Filename);
                     copyEnc.Layer2Rotate.Add(tile.Layer2Rotate);
                     if (tile.Layer2Mirror) { copyEnc.Layer2Mirror.Add(1); }
                     else { copyEnc.Layer2Mirror.Add(0); }
+
+                    copyEnc.Layer3Filename.Add(tile.Layer3Filename);
+                    copyEnc.Layer3Rotate.Add(tile.Layer3Rotate);
+                    if (tile.Layer3Mirror) { copyEnc.Layer3Mirror.Add(1); }
+                    else { copyEnc.Layer3Mirror.Add(0); }
+
                     if (tile.Walkable) { copyEnc.Walkable.Add(1); }
                     else { copyEnc.Walkable.Add(0); }
                     if (tile.LoSBlocked) { copyEnc.LoSBlocked.Add(1); }

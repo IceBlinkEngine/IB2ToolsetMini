@@ -39,6 +39,9 @@ namespace IB2ToolsetMini
         public List<string> Layer2Filename = new List<string>();
         public List<int> Layer2Rotate = new List<int>();
         public List<int> Layer2Mirror = new List<int>();
+        public List<string> Layer3Filename = new List<string>();
+        public List<int> Layer3Rotate = new List<int>();
+        public List<int> Layer3Mirror = new List<int>();
         public List<int> Walkable = new List<int>();
         public List<int> LoSBlocked = new List<int>();
         public List<int> Visible = new List<int>();
@@ -232,6 +235,21 @@ namespace IB2ToolsetMini
             {
                 copy.Layer2Rotate.Add(s);
             }
+            copy.Layer3Filename = new List<string>();
+            foreach (string s in this.Layer3Filename)
+            {
+                copy.Layer3Filename.Add(s);
+            }
+            copy.Layer3Mirror = new List<int>();
+            foreach (int s in this.Layer3Mirror)
+            {
+                copy.Layer3Mirror.Add(s);
+            }
+            copy.Layer3Rotate = new List<int>();
+            foreach (int s in this.Layer3Rotate)
+            {
+                copy.Layer3Rotate.Add(s);
+            }
             copy.Walkable = new List<int>();
             foreach (int s in this.Walkable)
             {
@@ -259,6 +277,9 @@ namespace IB2ToolsetMini
                 this.Layer2Filename.Add("t_blank");
                 this.Layer2Rotate.Add(0);
                 this.Layer2Mirror.Add(0);
+                this.Layer3Filename.Add("t_blank");
+                this.Layer3Rotate.Add(0);
+                this.Layer3Mirror.Add(0);
                 this.Walkable.Add(1);
                 this.LoSBlocked.Add(0);
             }

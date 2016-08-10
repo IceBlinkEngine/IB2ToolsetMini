@@ -841,6 +841,42 @@ namespace IB2ToolsetMini
                                 }
                             }
                         }
+                        else if (radioButton3.Checked)
+                        {
+                            thisEnc.Layer3Filename[selectedTile.index] = currentTileFilename;
+                            thisEnc.Layer3Rotate[selectedTile.index] = tileToBePlaced.angle;
+                            thisEnc.Layer3Mirror[selectedTile.index] = tileToBePlaced.mirror;
+                            if (Control.ModifierKeys == Keys.Shift)
+                            {
+                                Point cSqr = new Point(currentSquareClicked.X, currentSquareClicked.Y);
+                                Point lSqr = new Point(lastSquareClicked.X, lastSquareClicked.Y);
+                                int startX = lSqr.X;
+                                int startY = lSqr.Y;
+                                int endX = cSqr.X;
+                                int endY = cSqr.Y;
+                                if (lSqr.X >= cSqr.X)
+                                {
+                                    startX = cSqr.X;
+                                    endX = lSqr.X;
+                                }
+                                if (lSqr.Y >= cSqr.Y)
+                                {
+                                    startY = cSqr.Y;
+                                    endY = lSqr.Y;
+                                }
+                                for (int x = startX; x <= endX; x++)
+                                {
+                                    for (int y = startY; y <= endY; y++)
+                                    {
+                                        thisEnc.Layer3Filename[y * thisEnc.MapSizeX + x] = currentTileFilename;
+                                        thisEnc.Layer3Rotate[y * thisEnc.MapSizeX + x] = tileToBePlaced.angle;
+                                        thisEnc.Layer3Mirror[y * thisEnc.MapSizeX + x] = tileToBePlaced.mirror;
+                                        currentSquareClicked = new Point(x, y);
+                                        //GDI refreshMap(false);
+                                    }
+                                }
+                            }
+                        }
                         //GDI refreshMap(false);
                     }
                     #endregion
@@ -1129,6 +1165,10 @@ namespace IB2ToolsetMini
                     {
                         thisEnc.Layer2Filename[selectedTile.index] = currentTileFilename;
                     }
+                    else if (radioButton3.Checked)
+                    {
+                        thisEnc.Layer3Filename[selectedTile.index] = currentTileFilename;
+                    }
                 }
             }
             refreshMap(true);
@@ -1348,6 +1388,27 @@ namespace IB2ToolsetMini
                 }
             }
             #endregion
+            #region Draw Layer 3
+            if (checkBox3.Checked)
+            {
+                for (int y = 0; y < thisEnc.MapSizeY; y++)
+                {
+                    for (int x = 0; x < thisEnc.MapSizeX; x++)
+                    {
+                        //TileEnc tile = thisEnc.encounterTiles[y * thisEnc.MapSizeX + x];
+                        string tile = thisEnc.Layer3Filename[y * thisEnc.MapSizeX + x];
+                        if (!tile.Equals("t_blank"))
+                        {
+                            float scalerX = GetFromBitmapList(tile).PixelSize.Width / 100;
+                            float scalerY = GetFromBitmapList(tile).PixelSize.Height / 100;
+                            SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(tile).PixelSize.Width, GetFromBitmapList(tile).PixelSize.Height);
+                            SharpDX.RectangleF dst = new SharpDX.RectangleF(x * sqr, y * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
+                            DrawD2DBitmap(GetFromBitmapList(tile), src, dst, thisEnc.Layer3Rotate[y * thisEnc.MapSizeX + x], thisEnc.Layer3Mirror[y * thisEnc.MapSizeX + x]);
+                        }
+                    }
+                }
+            }
+            #endregion
 
             #region Draw Grid
             for (int y = 0; y < thisEnc.MapSizeY; y++)
@@ -1561,6 +1622,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.Add("t_blank");
                 thisEnc.Layer2Rotate.Add(0);
                 thisEnc.Layer2Mirror.Add(0);
+                thisEnc.Layer3Filename.Add("t_blank");
+                thisEnc.Layer3Rotate.Add(0);
+                thisEnc.Layer3Mirror.Add(0);
                 thisEnc.Walkable.Add(1);
                 thisEnc.LoSBlocked.Add(0);
             }
@@ -1586,6 +1650,9 @@ namespace IB2ToolsetMini
             thisEnc.Layer2Filename.Clear();
             thisEnc.Layer2Rotate.Clear();
             thisEnc.Layer2Mirror.Clear();
+            thisEnc.Layer3Filename.Clear();
+            thisEnc.Layer3Rotate.Clear();
+            thisEnc.Layer3Mirror.Clear();
             thisEnc.Walkable.Clear();
             thisEnc.LoSBlocked.Clear();
             for (int index = 0; index < (width * height); index++)
@@ -1596,6 +1663,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.Add("t_blank");
                 thisEnc.Layer2Rotate.Add(0);
                 thisEnc.Layer2Mirror.Add(0);
+                thisEnc.Layer3Filename.Add("t_blank");
+                thisEnc.Layer3Rotate.Add(0);
+                thisEnc.Layer3Mirror.Add(0);
                 thisEnc.Walkable.Add(1);
                 thisEnc.LoSBlocked.Add(0);
             }
@@ -1912,6 +1982,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.Insert(i, "t_blank");
                 thisEnc.Layer2Rotate.Insert(i, 0);
                 thisEnc.Layer2Mirror.Insert(i, 0);
+                thisEnc.Layer3Filename.Insert(i, "t_blank");
+                thisEnc.Layer3Rotate.Insert(i, 0);
+                thisEnc.Layer3Mirror.Insert(i, 0);
                 thisEnc.Walkable.Insert(i, 1);
                 thisEnc.LoSBlocked.Insert(i, 0);
             }
@@ -1942,6 +2015,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.RemoveAt(i);
                 thisEnc.Layer2Rotate.RemoveAt(i);
                 thisEnc.Layer2Mirror.RemoveAt(i);
+                thisEnc.Layer3Filename.RemoveAt(i);
+                thisEnc.Layer3Rotate.RemoveAt(i);
+                thisEnc.Layer3Mirror.RemoveAt(i);
                 thisEnc.Walkable.RemoveAt(i);
                 thisEnc.LoSBlocked.RemoveAt(i);
             }
@@ -1973,6 +2049,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.Insert(i + 1, "t_blank");
                 thisEnc.Layer2Rotate.Insert(i + 1, 0);
                 thisEnc.Layer2Mirror.Insert(i + 1, 0);
+                thisEnc.Layer3Filename.Insert(i + 1, "t_blank");
+                thisEnc.Layer3Rotate.Insert(i + 1, 0);
+                thisEnc.Layer3Mirror.Insert(i + 1, 0);
                 thisEnc.Walkable.Insert(i + 1, 1);
                 thisEnc.LoSBlocked.Insert(i + 1, 0);
             }
@@ -1992,6 +2071,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.RemoveAt(i);
                 thisEnc.Layer2Rotate.RemoveAt(i);
                 thisEnc.Layer2Mirror.RemoveAt(i);
+                thisEnc.Layer3Filename.RemoveAt(i);
+                thisEnc.Layer3Rotate.RemoveAt(i);
+                thisEnc.Layer3Mirror.RemoveAt(i);
                 thisEnc.Walkable.RemoveAt(i);
                 thisEnc.LoSBlocked.RemoveAt(i);
             }
@@ -2011,6 +2093,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.Insert(0, "t_blank");
                 thisEnc.Layer2Rotate.Insert(0, 0);
                 thisEnc.Layer2Mirror.Insert(0, 0);
+                thisEnc.Layer3Filename.Insert(0, "t_blank");
+                thisEnc.Layer3Rotate.Insert(0, 0);
+                thisEnc.Layer3Mirror.Insert(0, 0);
                 thisEnc.Walkable.Insert(0, 1);
                 thisEnc.LoSBlocked.Insert(0, 0);
             }
@@ -2040,6 +2125,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.RemoveAt(0);
                 thisEnc.Layer2Rotate.RemoveAt(0);
                 thisEnc.Layer2Mirror.RemoveAt(0);
+                thisEnc.Layer3Filename.RemoveAt(0);
+                thisEnc.Layer3Rotate.RemoveAt(0);
+                thisEnc.Layer3Mirror.RemoveAt(0);
                 thisEnc.Walkable.RemoveAt(0);
                 thisEnc.LoSBlocked.RemoveAt(0);
             }
@@ -2070,6 +2158,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.Add("t_blank");
                 thisEnc.Layer2Rotate.Add(0);
                 thisEnc.Layer2Mirror.Add(0);
+                thisEnc.Layer3Filename.Add("t_blank");
+                thisEnc.Layer3Rotate.Add(0);
+                thisEnc.Layer3Mirror.Add(0);
                 thisEnc.Walkable.Add(1);
                 thisEnc.LoSBlocked.Add(0);
             }
@@ -2089,6 +2180,9 @@ namespace IB2ToolsetMini
                 thisEnc.Layer2Filename.RemoveAt(total - 1);
                 thisEnc.Layer2Rotate.RemoveAt(total - 1);
                 thisEnc.Layer2Mirror.RemoveAt(total - 1);
+                thisEnc.Layer3Filename.RemoveAt(total - 1);
+                thisEnc.Layer3Rotate.RemoveAt(total - 1);
+                thisEnc.Layer3Mirror.RemoveAt(total - 1);
                 thisEnc.Walkable.RemoveAt(total - 1);
                 thisEnc.LoSBlocked.RemoveAt(total - 1);
             }
