@@ -832,13 +832,13 @@ namespace IB2ToolsetMini
                 }
                 //mod.VersionIB = game.IBVersion;
                 //mod.saveModuleFile(fullPathFilename, tsBtnJSON.Checked);
-                saveModule(fullPathFilename);
+                saveModule(mod, fullPathFilename);
                 //save areas
-                saveAreas(fullPathFilename);
+                saveAreas(mod, fullPathFilename);
                 //save encounters
-                saveEncounters(fullPathFilename);
+                saveEncounters(mod, fullPathFilename);
                 //save convos
-                saveConvos(fullPathFilename);
+                saveConvos(mod, fullPathFilename);
                 //save images
                 //saveCreaturesFile(fullPathDirectory + "\\data\\creatures.json");
                 //saveItemsFile(fullPathDirectory + "\\data\\items.json");
@@ -891,13 +891,13 @@ namespace IB2ToolsetMini
             }
             catch { MessageBox.Show("failed to createFiles"); }
         }
-        private void saveModule(string moduleFullPathFilename)
+        private void saveModule(Module mod, string moduleFullPathFilename)
         {
             File.WriteAllText(moduleFullPathFilename, "MODULE" + Environment.NewLine);
             string output = JsonConvert.SerializeObject(mod, Formatting.None);
             File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);            
         }
-        private void saveAreas(string moduleFullPathFilename)
+        private void saveAreas(Module mod, string moduleFullPathFilename)
         {
             File.AppendAllText(moduleFullPathFilename, "AREAS" + Environment.NewLine);
             foreach (Area a in mod.moduleAreasObjects)
@@ -906,7 +906,7 @@ namespace IB2ToolsetMini
                 File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
             }
         }
-        private void saveEncounters(string moduleFullPathFilename)
+        private void saveEncounters(Module mod, string moduleFullPathFilename)
         {
             File.AppendAllText(moduleFullPathFilename, "ENCOUNTERS" + Environment.NewLine);
             foreach (Encounter enc in mod.moduleEncountersList)
@@ -915,7 +915,7 @@ namespace IB2ToolsetMini
                 File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
             }
         }
-        private void saveConvos(string moduleFullPathFilename)
+        private void saveConvos(Module mod, string moduleFullPathFilename)
         {
             File.AppendAllText(moduleFullPathFilename, "CONVOS" + Environment.NewLine);
             foreach (Convo c in mod.moduleConvoList)
@@ -1506,7 +1506,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Creature> loadCreaturesFile(string filename)
+        public List<Creature> loadCreaturesFile(string filename)
         {
             List<Creature> toReturn = null;
 
@@ -1517,7 +1517,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Creature>)serializer.Deserialize(file, typeof(List<Creature>));
             }
             return toReturn;
-        }*/
+        }
         public Creature getCreature(string name)
         {
             foreach (Creature cr in mod.moduleCreaturesList)
@@ -1551,7 +1551,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Item> loadItemsFile(string filename)
+        public List<Item> loadItemsFile(string filename)
         {
             List<Item> toReturn = null;
 
@@ -1562,7 +1562,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Item>)serializer.Deserialize(file, typeof(List<Item>));
             }
             return toReturn;
-        }*/
+        }
         public Item getItem(string name)
         {
             foreach (Item it in mod.moduleItemsList)
@@ -1588,7 +1588,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Container> loadContainersFile(string filename)
+        public List<Container> loadContainersFile(string filename)
         {
             List<Container> toReturn = null;
 
@@ -1599,7 +1599,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Container>)serializer.Deserialize(file, typeof(List<Container>));
             }
             return toReturn;
-        }*/
+        }
         public Container getContainer(string tag)
         {
             foreach (Container cont in mod.moduleContainersList)
@@ -1617,7 +1617,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Shop> loadShopsFile(string filename)
+        public List<Shop> loadShopsFile(string filename)
         {
             List<Shop> toReturn = null;
 
@@ -1628,7 +1628,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Shop>)serializer.Deserialize(file, typeof(List<Shop>));
             }
             return toReturn;
-        }*/
+        }
         public Shop getShopByTag(string tag)
         {
             foreach (Shop shp in mod.moduleShopsList)
@@ -1678,7 +1678,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Prop> loadPropsFile(string filename)
+        public List<Prop> loadPropsFile(string filename)
         {
             List<Prop> toReturn = null;
 
@@ -1689,7 +1689,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Prop>)serializer.Deserialize(file, typeof(List<Prop>));
             }
             return toReturn;
-        }*/
+        }
         public Prop getPropByTag(string tag)
         {
             foreach (Prop it in mod.modulePropsList)
@@ -1707,7 +1707,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<JournalQuest> loadJournalFile(string filename)
+        public List<JournalQuest> loadJournalFile(string filename)
         {
             List<JournalQuest> toReturn = null;
 
@@ -1718,7 +1718,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<JournalQuest>)serializer.Deserialize(file, typeof(List<JournalQuest>));
             }
             return toReturn;
-        }*/
+        }
         public JournalQuest getJournalCategoryByName(string name)
         {
             foreach (JournalQuest it in mod.moduleJournal)
@@ -1744,7 +1744,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<PlayerClass> loadPlayerClassesFile(string filename)
+        public List<PlayerClass> loadPlayerClassesFile(string filename)
         {
             List<PlayerClass> toReturn = null;
 
@@ -1755,7 +1755,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<PlayerClass>)serializer.Deserialize(file, typeof(List<PlayerClass>));
             }
             return toReturn;
-        }*/
+        }
         public PlayerClass getPlayerClassByTag(string tag)
         {
             foreach (PlayerClass ts in mod.modulePlayerClassList)
@@ -1773,7 +1773,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Race> loadRacesFile(string filename)
+        public List<Race> loadRacesFile(string filename)
         {
             List<Race> toReturn = null;
 
@@ -1784,7 +1784,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Race>)serializer.Deserialize(file, typeof(List<Race>));
             }
             return toReturn;
-        }*/
+        }
         public Race getRaceByTag(string tag)
         {
             foreach (Race ts in mod.moduleRacesList)
@@ -1802,7 +1802,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Spell> loadSpellsFile(string filename)
+        public List<Spell> loadSpellsFile(string filename)
         {
             List<Spell> toReturn = null;
 
@@ -1813,7 +1813,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Spell>)serializer.Deserialize(file, typeof(List<Spell>));
             }
             return toReturn;
-        }*/
+        }
         public Spell getSpellByTag(string tag)
         {
             foreach (Spell s in mod.moduleSpellsList)
@@ -1839,7 +1839,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Trait> loadTraitsFile(string filename)
+        public List<Trait> loadTraitsFile(string filename)
         {
             List<Trait> toReturn = null;
 
@@ -1850,7 +1850,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Trait>)serializer.Deserialize(file, typeof(List<Trait>));
             }
             return toReturn;
-        }*/
+        }
         public Trait getTraitByTag(string tag)
         {
             foreach (Trait ts in mod.moduleTraitsList)
@@ -1876,7 +1876,7 @@ namespace IB2ToolsetMini
                 sw.Write(json.ToString());
             }
         }*/
-        /*public List<Effect> loadEffectsFile(string filename)
+        public List<Effect> loadEffectsFile(string filename)
         {
             List<Effect> toReturn = null;
 
@@ -1887,7 +1887,7 @@ namespace IB2ToolsetMini
                 toReturn = (List<Effect>)serializer.Deserialize(file, typeof(List<Effect>));
             }
             return toReturn;
-        }*/
+        }
         public Effect getEffectByTag(string tag)
         {
             foreach (Effect ef in mod.moduleEffectsList)
@@ -1902,31 +1902,26 @@ namespace IB2ToolsetMini
         {
             refreshDropDownLists();
         }
-
         private void tsBtnDataCheck_Click(object sender, EventArgs e)
         {
             DataCheck dc = new DataCheck(mod, this);
             dc.CheckAllData();
             dc = null;
         }
-
         private void mergerEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MergerEditor mergerEdit = new MergerEditor(mod, this);
             mergerEdit.ShowDialog();
         }
-
         private void tsBtnIBScriptEditor_Click(object sender, EventArgs e)
         {
 
         }
-
         private void rulesEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RulesEditor rulesEdit = new RulesEditor(mod, this);
             rulesEdit.ShowDialog();
         }
-
         private void tilesUsedInModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> tilenames = new List<string>();
@@ -2042,24 +2037,97 @@ namespace IB2ToolsetMini
 
         private void convertAnIB2ModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //LOAD all areas, convos, and encounters and convert to new format as needed
-            ImportAreas();
-            ImportConvos();
-            ImportEncounters();
+            //Ask for a module file/folder location
+            openFileDialog1.InitialDirectory = Environment.CurrentDirectory + "\\modules";
+            //Empty the FileName text box of the dialog
+            openFileDialog1.FileName = String.Empty;
+            openFileDialog1.Filter = "Module files (*.mod)|*.mod|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                try
+                {
+                    //LOAD module file and copy over information
+                    string filename = Path.GetFullPath(openFileDialog1.FileName);
+                    string directory = Path.GetDirectoryName(openFileDialog1.FileName);
+                    Module modIBmini = new Module();
+                    modIBmini = modIBmini.loadModuleFile(filename);
+                    if (modIBmini == null)
+                    {
+                        MessageBox.Show("returned a null module");
+                    }
+                    //LOAD all data (creatures, items, spells, races, player classes, etc.) and convert as needed (move distance, attack range, etc.)
+                    modIBmini.moduleCreaturesList = loadCreaturesFile(directory + "\\data\\creatures.json");
+                    foreach (Creature crt in modIBmini.moduleCreaturesList)
+                    {
+                        crt.moveDistance = (int)Math.Round(((double)crt.moveDistance / 2f), MidpointRounding.AwayFromZero);
+                        crt.cr_attRange = (int)Math.Round(((double)crt.cr_attRange / 2f), MidpointRounding.AwayFromZero);
+                    }
+                    modIBmini.moduleContainersList = loadContainersFile(directory + "\\data\\containers.json");
+                    modIBmini.moduleItemsList = loadItemsFile(directory + "\\data\\items.json");
+                    foreach (Item it in modIBmini.moduleItemsList)
+                    {
+                        it.attackRange = (int)Math.Round((double)(it.attackRange / 2), MidpointRounding.AwayFromZero);
+                    }
+                    modIBmini.moduleShopsList = loadShopsFile(directory + "\\data\\shops.json");
+                    modIBmini.modulePropsList = loadPropsFile(directory + "\\data\\props.json");
+                    modIBmini.moduleJournal = loadJournalFile(directory + "\\data\\journal.json");
+                    modIBmini.modulePlayerClassList = loadPlayerClassesFile(directory + "\\data\\playerClasses.json");
+                    modIBmini.moduleRacesList = loadRacesFile(directory + "\\data\\races.json");
+                    foreach (Race rce in modIBmini.moduleRacesList)
+                    {
+                        rce.MoveDistanceLightArmor = (int)Math.Round((double)(rce.MoveDistanceLightArmor / 2), MidpointRounding.AwayFromZero);
+                        rce.MoveDistanceMediumHeavyArmor = (int)Math.Round((double)(rce.MoveDistanceMediumHeavyArmor / 2), MidpointRounding.AwayFromZero);
+                    }
+                    modIBmini.moduleSpellsList = loadSpellsFile(directory + "\\data\\spells.json");
+                    foreach (Spell sp in modIBmini.moduleSpellsList)
+                    {
+                        sp.range = (int)Math.Round((double)(sp.range / 2), MidpointRounding.AwayFromZero);
+                    }
+                    modIBmini.moduleTraitsList = loadTraitsFile(directory + "\\data\\traits.json");
+                    foreach (Trait tr in modIBmini.moduleTraitsList)
+                    {
+                        tr.range = (int)Math.Round((double)(tr.range / 2), MidpointRounding.AwayFromZero);
+                    }
+                    modIBmini.moduleEffectsList = loadEffectsFile(directory + "\\data\\effects.json");
+
+                    //LOAD all areas, convos, and encounters and convert to new format as needed
+                    ImportAreas(modIBmini, directory);
+                    ImportConvos(modIBmini, directory);
+                    ImportEncounters(modIBmini, directory);
+                    //make a list of images that need to be copied over to the hak folder (images that do not exist in default/NewModule/graphics folder)      
+                    //SAVE out the module file   
+                    string fullPathFilename = _mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
+                    saveModule(modIBmini, fullPathFilename);
+                    //save areas
+                    saveAreas(modIBmini, fullPathFilename);
+                    //save encounters
+                    saveEncounters(modIBmini, fullPathFilename);
+                    //save convos
+                    saveConvos(modIBmini, fullPathFilename);
+                    //save images
+                    MessageBox.Show("Moduled saved as: " + modIBmini.moduleName + ".mod in the module folder.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("failed to create IBmini module: " + ex.ToString());
+                }
+            }
         }
-        public void ImportAreas()
+        public void ImportAreas(Module mod, string directory)
         {
             mod.moduleAreasObjects.Clear();
 
             AreaIB2 IB2area = new AreaIB2();
 
             string jobDir = "";
-            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
+            jobDir = directory + "\\areas";
             foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
             {
                 string filename = Path.GetFileName(f);
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(_mainDirectory + "\\modules\\" + mod.moduleName + "\\areas\\" + filename))
+                using (StreamReader file = File.OpenText(directory + "\\areas\\" + filename))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     IB2area = (AreaIB2)serializer.Deserialize(file, typeof(AreaIB2));
@@ -2135,15 +2203,14 @@ namespace IB2ToolsetMini
 
                 mod.moduleAreasObjects.Add(copyEnc);
             }
-            frmAreas.refreshListBoxAreas();
         }
-        public void ImportConvos()
+        public void ImportConvos(Module mod, string directory)
         {
             mod.moduleConvoList.Clear();
 
             Convo IB2convo = new Convo();
             string jobDir = "";
-            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\dialog";
+            jobDir = directory + "\\dialog";
             foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
             {
                 string filename = Path.GetFileName(f);
@@ -2152,23 +2219,22 @@ namespace IB2ToolsetMini
                     continue;
                 }
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(_mainDirectory + "\\modules\\" + mod.moduleName + "\\dialog\\" + filename))
+                using (StreamReader file = File.OpenText(directory + "\\dialog\\" + filename))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     IB2convo = (Convo)serializer.Deserialize(file, typeof(Convo));
                 }
                 mod.moduleConvoList.Add(IB2convo);
             }
-            frmConversations.refreshListBoxConvos();
         }
-        public void ImportEncounters()
+        public void ImportEncounters(Module mod, string directory)
         {
             List<EncounterIB2> IB2encList = new List<EncounterIB2>();
-            if (File.Exists(_mainDirectory + "\\modules\\" + mod.moduleName + "\\data\\encounters.json"))
+            if (File.Exists(directory + "\\data\\encounters.json"))
             {
                 //mod.moduleEncountersList.Clear();
                 // deserialize JSON directly from a file
-                using (StreamReader file = File.OpenText(_mainDirectory + "\\modules\\" + mod.moduleName + "\\data\\encounters.json"))
+                using (StreamReader file = File.OpenText(directory + "\\data\\encounters.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     IB2encList = (List<EncounterIB2>)serializer.Deserialize(file, typeof(List<EncounterIB2>));
@@ -2264,7 +2330,6 @@ namespace IB2ToolsetMini
 
                 mod.moduleEncountersList.Add(copyEnc);
             }
-            frmEncounters.refreshListBoxEncounters();
         }
     }
 }
