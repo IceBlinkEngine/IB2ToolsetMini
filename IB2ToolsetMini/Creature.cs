@@ -500,13 +500,13 @@ namespace IB2ToolsetMini
             get { return _creatureTag; }
             set { _creatureTag = value; }
         }        
-        [CategoryAttribute("01 - Main"), ReadOnly(true)]
+        [CategoryAttribute("01 - Main")]
         public int creatureStartLocationX
         {
             get { return _creatureStartLocationX; }
             set { _creatureStartLocationX = value; }
         }
-        [CategoryAttribute("01 - Main"), ReadOnly(true)]
+        [CategoryAttribute("01 - Main")]
         public int creatureStartLocationY
         {
             get { return _creatureStartLocationY; }

@@ -33,7 +33,7 @@ namespace IB2ToolsetMini
         //GDI public Bitmap g_walkPass;
         //GDI public Bitmap g_walkBlock;
         //GDI public Bitmap g_LoSBlock;
-        private int sqr = 25;
+        private int sqr = 50;
         //private int mSizeW = 800;
         //private int mSizeH = 800;
         private Point currentPoint = new Point(0, 0);
@@ -96,7 +96,7 @@ namespace IB2ToolsetMini
             //checkBox3.Checked = true;
             
             rbtnInfo.Checked = true;
-            rbtnZoom1x.Checked = true;
+            //rbtnZoom1x.Checked = true;
             refreshLeftPanelInfo();
             InitDirect2DAndDirectWrite();
         }
@@ -1357,8 +1357,8 @@ namespace IB2ToolsetMini
                         string tile = thisEnc.Layer1Filename[y * thisEnc.MapSizeX + x];
                         if (!tile.Equals("t_blank"))
                         {
-                            float scalerX = GetFromBitmapList(tile).PixelSize.Width / 100;
-                            float scalerY = GetFromBitmapList(tile).PixelSize.Height / 100;
+                            float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
+                            float scalerY = GetFromBitmapList(tile).PixelSize.Height / prntForm.tileSizeInPixels;
                             SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(tile).PixelSize.Width, GetFromBitmapList(tile).PixelSize.Height);
                             SharpDX.RectangleF dst = new SharpDX.RectangleF(x * sqr, y * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
                             DrawD2DBitmap(GetFromBitmapList(tile), src, dst, thisEnc.Layer1Rotate[y * thisEnc.MapSizeX + x], thisEnc.Layer1Mirror[y * thisEnc.MapSizeX + x]);
@@ -1378,8 +1378,8 @@ namespace IB2ToolsetMini
                         string tile = thisEnc.Layer2Filename[y * thisEnc.MapSizeX + x];
                         if (!tile.Equals("t_blank"))
                         {
-                            float scalerX = GetFromBitmapList(tile).PixelSize.Width / 100;
-                            float scalerY = GetFromBitmapList(tile).PixelSize.Height / 100;
+                            float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
+                            float scalerY = GetFromBitmapList(tile).PixelSize.Height / prntForm.tileSizeInPixels;
                             SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(tile).PixelSize.Width, GetFromBitmapList(tile).PixelSize.Height);
                             SharpDX.RectangleF dst = new SharpDX.RectangleF(x * sqr, y * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
                             DrawD2DBitmap(GetFromBitmapList(tile), src, dst, thisEnc.Layer2Rotate[y * thisEnc.MapSizeX + x], thisEnc.Layer2Mirror[y * thisEnc.MapSizeX + x]);
@@ -1399,8 +1399,8 @@ namespace IB2ToolsetMini
                         string tile = thisEnc.Layer3Filename[y * thisEnc.MapSizeX + x];
                         if (!tile.Equals("t_blank"))
                         {
-                            float scalerX = GetFromBitmapList(tile).PixelSize.Width / 100;
-                            float scalerY = GetFromBitmapList(tile).PixelSize.Height / 100;
+                            float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
+                            float scalerY = GetFromBitmapList(tile).PixelSize.Height / prntForm.tileSizeInPixels;
                             SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(tile).PixelSize.Width, GetFromBitmapList(tile).PixelSize.Height);
                             SharpDX.RectangleF dst = new SharpDX.RectangleF(x * sqr, y * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
                             DrawD2DBitmap(GetFromBitmapList(tile), src, dst, thisEnc.Layer3Rotate[y * thisEnc.MapSizeX + x], thisEnc.Layer3Mirror[y * thisEnc.MapSizeX + x]);
@@ -1674,6 +1674,14 @@ namespace IB2ToolsetMini
         {
             lblMapSizeX.Text = thisEnc.MapSizeX.ToString();
             lblMapSizeY.Text = thisEnc.MapSizeY.ToString();
+            if ((thisEnc.MapSizeX != 11) || (thisEnc.MapSizeY != 11))
+            {
+                lblMapSizeError.Visible = true;
+            }
+            else
+            {
+                lblMapSizeError.Visible = false;
+            }
             selectedTile.x = gridX;
             selectedTile.y = gridY;
             selectedTile.index = gridY * thisEnc.MapSizeX + gridX;
@@ -1684,6 +1692,7 @@ namespace IB2ToolsetMini
         {
             lblMapSizeX.Text = thisEnc.MapSizeX.ToString();
             lblMapSizeY.Text = thisEnc.MapSizeY.ToString();
+            refreshLeftPanelInfo();
             //GDI resetPanelAndDeviceSize();
         }
         public void ResetAllToFalse()
@@ -1911,24 +1920,6 @@ namespace IB2ToolsetMini
                     return;
                 }
             }*/
-        }
-        private void rbtnZoom1x_CheckedChanged(object sender, EventArgs e)
-        {
-            sqr = 50;
-            resetPanelAndDeviceSize();
-            //GDI refreshMap(true);
-        }
-        private void rbtnZoom2x_CheckedChanged(object sender, EventArgs e)
-        {
-            sqr = 25;
-            resetPanelAndDeviceSize();
-            //GDI refreshMap(true);
-        }
-        private void rbtnZoom5x_CheckedChanged(object sender, EventArgs e)
-        {
-            sqr = 10;
-            resetPanelAndDeviceSize();
-            //GDI refreshMap(true);
         }
         private void btnLoadMap_Click(object sender, EventArgs e)
         {

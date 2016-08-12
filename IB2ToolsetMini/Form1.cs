@@ -17,6 +17,8 @@ namespace IB2ToolsetMini
     {
         public string _mainDirectory;
         public Module mod = new Module();
+        public BitmapStringConversion bsc;
+        public int tileSizeInPixels = 48;
         //public List<JournalQuest> journal = new List<JournalQuest>();
         //public List<Creature> creaturesList = new List<Creature>();
         //public List<Container> containersList = new List<Container>();
@@ -59,7 +61,7 @@ namespace IB2ToolsetMini
         public Trigger currentSelectedTrigger = null;
         public Bitmap iconBitmap;
         public string lastModuleFullPath;
-        public string versionMessage = "IceBlink 2 Mini Toolset for creating adventure modules for the PC and Android.\r\n\r\n IceBlink 2 Mini Toolset ver 1.00";
+        public string versionMessage = "IceBlink 2 Mini Toolset for creating adventure modules for the PC and Android.\r\n\r\n IceBlink 2 Mini Toolset ver 0.90";
         
         private DeserializeDockContent m_deserializeDockContent;
         public IceBlinkProperties frmIceBlinkProperties;
@@ -79,6 +81,7 @@ namespace IB2ToolsetMini
         {
             InitializeComponent();
             _mainDirectory = Directory.GetCurrentDirectory();
+            bsc = new BitmapStringConversion();
             dockPanel1.Dock = DockStyle.Fill;
             dockPanel1.BackColor = Color.Beige;
             dockPanel1.BringToFront();
@@ -840,6 +843,7 @@ namespace IB2ToolsetMini
                 //save convos
                 saveConvos(mod, fullPathFilename);
                 //save images
+                saveImages(mod, fullPathFilename);
                 //saveCreaturesFile(fullPathDirectory + "\\data\\creatures.json");
                 //saveItemsFile(fullPathDirectory + "\\data\\items.json");
                 //saveContainersFile(fullPathDirectory + "\\data\\containers.json");
@@ -921,6 +925,28 @@ namespace IB2ToolsetMini
             foreach (Convo c in mod.moduleConvoList)
             {
                 string output = JsonConvert.SerializeObject(c, Formatting.None);
+                File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
+            }
+        }
+        private void saveImages(Module mod, string moduleFullPathFilename)
+        {
+            //file listImages
+            bsc.listImages.Clear();
+            ImageData imd = new ImageData();
+            foreach (string str in Directory.GetFiles(_mainDirectory + "\\override"))
+            {
+                if ((str.EndsWith(".png")) || (str.EndsWith(".PNG")) || (str.EndsWith(".jpg")) || (str.EndsWith(".JPG")))
+                {
+                    string filenameNoExt = Path.GetFileNameWithoutExtension(str);
+                    imd = bsc.ConvertBitmapToImageData(filenameNoExt, str);
+                    bsc.listImages.Add(imd);
+                }
+            }
+            //save them out
+            File.AppendAllText(moduleFullPathFilename, "IMAGES" + Environment.NewLine);
+            foreach (ImageData imd2 in bsc.listImages)
+            {
+                string output = JsonConvert.SerializeObject(imd2, Formatting.None);
                 File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
             }
         }

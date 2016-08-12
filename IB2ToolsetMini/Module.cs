@@ -38,7 +38,6 @@ namespace IB2ToolsetMini
         public bool use3d6 = false;
         public bool ArmorClassAscending = true;
         public List<Item> moduleItemsList = new List<Item>();
-        
         public List<Container> moduleContainersList = new List<Container>();
         public List<Shop> moduleShopsList = new List<Shop>();
         public List<Creature> moduleCreaturesList = new List<Creature>();

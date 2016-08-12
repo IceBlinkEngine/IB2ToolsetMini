@@ -85,6 +85,7 @@
     <Compile Include="AreaIB2.cs" />
     <Compile Include="AreaOfEffectShape.cs" />
     <Compile Include="BarkString.cs" />
+    <Compile Include="BitmapStringConversion.cs" />
     <Compile Include="Blueprints.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +174,7 @@
     <Compile Include="IconSprite.Designer.cs">
       <DependentUpon>IconSprite.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageData.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Journal.cs" />
     <Compile Include="JournalEditor.cs">
