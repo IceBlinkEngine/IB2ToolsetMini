@@ -19,6 +19,7 @@ namespace IB2ToolsetMini
         public Module mod = new Module();
         public BitmapStringConversion bsc;
         public int tileSizeInPixels = 48;
+        public Dictionary<string, Bitmap> resourcesBitmapList = new Dictionary<string, Bitmap>();
         //public List<JournalQuest> journal = new List<JournalQuest>();
         //public List<Creature> creaturesList = new List<Creature>();
         //public List<Container> containersList = new List<Container>();
@@ -285,7 +286,7 @@ namespace IB2ToolsetMini
                     enc = (Encounter)JsonConvert.DeserializeObject(s, typeof(Encounter));
                     mod.moduleEncountersList.Add(enc);
                 }
-                //Read in the areas
+                //Read in the convos
                 mod.moduleConvoList.Clear();
                 Convo cnv;
                 for (int i = 0; i < 9999; i++)
@@ -297,6 +298,21 @@ namespace IB2ToolsetMini
                     }
                     cnv = (Convo)JsonConvert.DeserializeObject(s, typeof(Convo));
                     mod.moduleConvoList.Add(cnv);
+                }
+                //Read in the images
+                mod.moduleImageDataList.Clear();
+                resourcesBitmapList.Clear();
+                ImageData imd;
+                for (int i = 0; i < 9999; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("END")))
+                    {
+                        break;
+                    }
+                    imd = (ImageData)JsonConvert.DeserializeObject(s, typeof(ImageData));
+                    mod.moduleImageDataList.Add(imd);
+                    resourcesBitmapList.Add(imd.name, bsc.ConvertImageDataToBitmap(imd));
                 }
             }
 
@@ -931,7 +947,7 @@ namespace IB2ToolsetMini
         private void saveImages(Module mod, string moduleFullPathFilename)
         {
             //file listImages
-            bsc.listImages.Clear();
+            /*bsc.listImages.Clear();
             ImageData imd = new ImageData();
             foreach (string str in Directory.GetFiles(_mainDirectory + "\\override"))
             {
@@ -941,12 +957,12 @@ namespace IB2ToolsetMini
                     imd = bsc.ConvertBitmapToImageData(filenameNoExt, str);
                     bsc.listImages.Add(imd);
                 }
-            }
+            }*/
             //save them out
             File.AppendAllText(moduleFullPathFilename, "IMAGES" + Environment.NewLine);
-            foreach (ImageData imd2 in bsc.listImages)
+            foreach (ImageData imd in mod.moduleImageDataList)
             {
-                string output = JsonConvert.SerializeObject(imd2, Formatting.None);
+                string output = JsonConvert.SerializeObject(imd, Formatting.None);
                 File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
             }
         }
@@ -1104,7 +1120,9 @@ namespace IB2ToolsetMini
         }
         private void modulePropertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           frmIceBlinkProperties.propertyGrid1.SelectedObject = mod;
+            //frmIceBlinkProperties.propertyGrid1.SelectedObject = mod;
+            ModuleEditor modEdit = new ModuleEditor(mod, this);
+            modEdit.ShowDialog();
         }
         private void journalEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2356,6 +2374,12 @@ namespace IB2ToolsetMini
 
                 mod.moduleEncountersList.Add(copyEnc);
             }
+        }
+
+        private void moduleEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModuleEditor modEdit = new ModuleEditor(mod, this);
+            modEdit.ShowDialog();
         }
     }
 }

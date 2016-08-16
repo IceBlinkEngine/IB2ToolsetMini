@@ -51,6 +51,8 @@ namespace IB2ToolsetMini
         public List<IBScript> moduleIBScriptList = new List<IBScript>();
 
         [JsonIgnore]
+        public List<ImageData> moduleImageDataList = new List<ImageData>();
+        [JsonIgnore]
         public List<Area> moduleAreasObjects = new List<Area>();
         [JsonIgnore]
         public List<Encounter> moduleEncountersList = new List<Encounter>();

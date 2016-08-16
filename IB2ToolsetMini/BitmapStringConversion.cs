@@ -16,7 +16,7 @@ namespace IB2ToolsetMini
         Dictionary<char, int> B64ToInt = new Dictionary<char, int>();
         Bitmap bitmap;
         public string workingDir = "";
-        public List<ImageData> listImages = new List<ImageData>();
+        //public List<ImageData> listImages = new List<ImageData>();
         
         public BitmapStringConversion()
         {
@@ -157,7 +157,7 @@ namespace IB2ToolsetMini
             B64ToInt.Add('+', 62);
             B64ToInt.Add('/', 63);
         }
-        public void LoadAllImageFromFolder(string path)
+        /*public void LoadAllImageFromFolder(string path)
         {
             listImages.Clear();
             ImageData imd = new ImageData();
@@ -167,7 +167,7 @@ namespace IB2ToolsetMini
                 imd = ConvertBitmapToImageData(filenameNoExt, str);
                 listImages.Add(imd);
             }
-        }
+        }*/
         public ImageData ConvertBitmapToImageData(string filenameNoExt, string pathandfile)
         {
             bitmap = new Bitmap(pathandfile);
