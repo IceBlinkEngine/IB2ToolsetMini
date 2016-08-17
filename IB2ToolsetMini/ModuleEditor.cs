@@ -42,6 +42,7 @@ namespace IB2ToolsetMini
             {
                 rbtnOnePointFiveSquares.Checked = true;
             }
+
             //Armor Class Diplay
             if (mod.ArmorClassAscending)
             {
@@ -51,6 +52,7 @@ namespace IB2ToolsetMini
             {
                 rbtnDescendingAC.Checked = true;
             }
+
             //to hit bonus from behind
             if (mod.attackFromBehindToHitModifier == 1)
             {
@@ -77,6 +79,34 @@ namespace IB2ToolsetMini
             else
             {
                 rbtnUse6Plusd12.Checked = true;
+            }
+
+            resetImageDataFlowPanel();
+
+            //load up title image if one exists in the imagelist
+            if (prntForm.resourcesBitmapList.ContainsKey(prntForm.mod.titleImageName))
+            {
+                pbModuleTitleImage.BackgroundImage = prntForm.resourcesBitmapList[prntForm.mod.titleImageName];
+            }
+        }
+        public void resetImageDataFlowPanel()
+        {
+            //repopulate the flow panel with updated imageDictionary
+            this.flwArtResources.Controls.Clear();
+            foreach (KeyValuePair<string, Bitmap> kvp in prntForm.resourcesBitmapList)
+            {
+                ToolTip newTP = new ToolTip();
+                RadioButton btnNew = new RadioButton();
+                btnNew.Appearance = System.Windows.Forms.Appearance.Button;
+                btnNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                btnNew.BackgroundImage = kvp.Value;
+                btnNew.Name = kvp.Key;
+                newTP.SetToolTip(btnNew, kvp.Key);
+                btnNew.Size = new System.Drawing.Size(kvp.Value.Width + 6, kvp.Value.Height + 6);
+                btnNew.Text = kvp.Key;
+                btnNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+                btnNew.UseVisualStyleBackColor = true;
+                this.flwArtResources.Controls.Add(btnNew);
             }
         }
 
@@ -198,7 +228,37 @@ namespace IB2ToolsetMini
 
         private void btnLoadTitleImage_Click(object sender, EventArgs e)
         {
-            
+            //load file dialog and multiselect images to load
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = prntForm._mainDirectory;
+            ofd.FileName = String.Empty;
+            ofd.Filter = "Image file (*.png)|*.png|All files (*.*)|*.*";
+            ofd.FilterIndex = 1;
+            ofd.Multiselect = false;
+
+            DialogResult result = ofd.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string filename = ofd.FileName;
+                string directory = Path.GetDirectoryName(ofd.FileName);
+                //convert this image to ImageData and add to the Module list List<ImageData>
+                //also add image to imageDictionary Dictionary<string, Bitmap>   
+                string name = Path.GetFileNameWithoutExtension(filename);
+                if (prntForm.resourcesBitmapList.ContainsKey(name))
+                {
+                    //already in the modules imagedata list so just present
+                    pbModuleTitleImage.BackgroundImage = prntForm.resourcesBitmapList[name];
+                    prntForm.mod.titleImageName = name;
+                }
+                else
+                {
+                    prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, filename));
+                    prntForm.resourcesBitmapList.Add(name, new Bitmap(filename));
+                    pbModuleTitleImage.BackgroundImage = prntForm.resourcesBitmapList[name];
+                    prntForm.mod.titleImageName = name;
+                }
+                resetImageDataFlowPanel();
+            }
         }
 
         private void btnLoadArtResources_Click(object sender, EventArgs e)
@@ -221,30 +281,34 @@ namespace IB2ToolsetMini
                 foreach (string s in filenames)
                 {
                     string name = Path.GetFileNameWithoutExtension(s);
-                    prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, s));
-                    prntForm.resourcesBitmapList.Add(name, new Bitmap(s));
+                    if (!prntForm.resourcesBitmapList.ContainsKey(name))
+                    {
+                        prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, s));
+                        prntForm.resourcesBitmapList.Add(name, new Bitmap(s));
+                    }                        
                 }
-                //repopulate the flow panel with updated imageDictionary
-                this.flwArtResources.Controls.Clear();
-                foreach (KeyValuePair<string, Bitmap> kvp in prntForm.resourcesBitmapList)
-                {
-                    RadioButton btnNew = new RadioButton();
-                    btnNew.Appearance = System.Windows.Forms.Appearance.Button;
-                    btnNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-                    btnNew.BackgroundImage = kvp.Value;
-                    btnNew.Name = kvp.Key;
-                    btnNew.Size = new System.Drawing.Size(kvp.Value.Width + 6, kvp.Value.Height + 6);
-                    btnNew.Text = kvp.Key;
-                    btnNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-                    btnNew.UseVisualStyleBackColor = true;
-                    this.flwArtResources.Controls.Add(btnNew);
-                }
+                resetImageDataFlowPanel();
             }            
         }
 
         private void btnRemoveSelectedArtResource_Click(object sender, EventArgs e)
         {
-
+            var checkedButton = flwArtResources.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            if (checkedButton != null)
+            {
+                ImageData imd = new ImageData();
+                foreach (ImageData i in prntForm.mod.moduleImageDataList)
+                {
+                    if (i.name == checkedButton.Name)
+                    {
+                        imd = i;
+                    }
+                }
+                prntForm.resourcesBitmapList.Remove(checkedButton.Name);
+                prntForm.mod.moduleImageDataList.Remove(imd);
+                this.flwArtResources.Controls.Remove(checkedButton);
+                resetImageDataFlowPanel();
+            }
         }
     }
 }

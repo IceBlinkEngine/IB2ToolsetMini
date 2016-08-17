@@ -61,6 +61,7 @@ namespace IB2ToolsetMini
         public string lastSelectedPropNodeName = "";
         public Trigger currentSelectedTrigger = null;
         public Bitmap iconBitmap;
+        public string returnImageFilenameFromImageSelector = "";
         public string lastModuleFullPath;
         public string versionMessage = "IceBlink 2 Mini Toolset for creating adventure modules for the PC and Android.\r\n\r\n IceBlink 2 Mini Toolset ver 0.90";
         
@@ -1234,7 +1235,7 @@ namespace IB2ToolsetMini
 
         public string GetImageFilename(string filter)
         {
-            if (mod.moduleName != "NewModule")
+            /*if (mod.moduleName != "NewModule")
             {
                 openFileDialog2.InitialDirectory = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\graphics";
             }
@@ -1251,8 +1252,21 @@ namespace IB2ToolsetMini
             if (result == DialogResult.OK) // Test result.
             {
                 return Path.GetFileNameWithoutExtension(openFileDialog2.FileName);
+            }*/
+            //return "none";
+
+            using (var sel = new ImageSelector(mod, this, filter))
+            {                
+                var result = sel.ShowDialog();
+                if (result == DialogResult.OK) // Test result.
+                {
+                    return returnImageFilenameFromImageSelector;
+                }
+                else
+                {
+                    return "none";
+                }
             }
-            return "none";
         }
 
         public System.Drawing.Bitmap LoadBitmapGDI(string filename)

@@ -16,6 +16,7 @@ namespace IB2ToolsetMini
         #region Fields
         private string _moduleName = "";
         private string _moduleLabelName = "";
+        public string titleImageName = "title";
         private int _moduleVersion = 1;
         public string saveName = "empty";
         private string _defaultPlayerFilename = "drin.json";

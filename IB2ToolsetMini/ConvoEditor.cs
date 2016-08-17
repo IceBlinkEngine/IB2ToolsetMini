@@ -248,7 +248,7 @@ namespace IB2ToolsetMini
         }
         private void btnOpenImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            /*OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.InitialDirectory = prntForm._mainDirectory + "\\modules\\" + ce_mod.moduleName + "\\graphics";
             //Empty the FileName text box of the dialog
             openFileDialog1.FileName = String.Empty;
@@ -261,6 +261,13 @@ namespace IB2ToolsetMini
                 string filename = Path.GetFileName(openFileDialog1.FileName);
                 f_convo.NpcPortraitBitmap = filename;
                 txtImage.Text = filename;
+            }*/
+
+            string name = prntForm.GetImageFilename("ptr_");
+            if (name != "none")
+            {
+                f_convo.NpcPortraitBitmap = name;
+                txtImage.Text = name;
             }
         }
         private void btnClearImage_Click(object sender, EventArgs e)
@@ -270,7 +277,7 @@ namespace IB2ToolsetMini
         }
         private void btnOpenNodeImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            /*OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.InitialDirectory = prntForm._mainDirectory + "\\modules\\" + ce_mod.moduleName + "\\graphics";
             //Empty the FileName text box of the dialog
             openFileDialog1.FileName = String.Empty;
@@ -286,6 +293,16 @@ namespace IB2ToolsetMini
                 chdnod = f_convo.GetContentNodeById(cnod);
                 chdnod.NodePortraitBitmap = filename;
                 txtNodeImage.Text = filename;
+            }*/
+
+            string name = prntForm.GetImageFilename("ptr_");
+            if (name != "none")
+            {
+                int cnod = Convert.ToInt32(treeView1.SelectedNode.Name);
+                ContentNode chdnod = new ContentNode();
+                chdnod = f_convo.GetContentNodeById(cnod);
+                chdnod.NodePortraitBitmap = name;
+                txtNodeImage.Text = name;
             }
         }
         private void btnClearNodeImage_Click(object sender, EventArgs e)

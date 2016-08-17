@@ -175,6 +175,12 @@
       <DependentUpon>IconSprite.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageData.cs" />
+    <Compile Include="ImageSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageSelector.Designer.cs">
+      <DependentUpon>ImageSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="Journal.cs" />
     <Compile Include="JournalEditor.cs">
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IconSprite.resx">
       <DependentUpon>IconSprite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageSelector.resx">
+      <DependentUpon>ImageSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JournalEditor.resx">
       <DependentUpon>JournalEditor.cs</DependentUpon>
