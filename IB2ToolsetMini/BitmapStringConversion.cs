@@ -168,9 +168,9 @@ namespace IB2ToolsetMini
                 listImages.Add(imd);
             }
         }*/
-        public ImageData ConvertBitmapToImageData(string filenameNoExt, string pathandfile)
+        public ImageData ConvertBitmapToImageData(string filenameNoExt, Bitmap bitmap)
         {
-            bitmap = new Bitmap(pathandfile);
+            //bitmap = new Bitmap(pathandfile);
             ImageData imd = new ImageData();
             imd.name = filenameNoExt;
             imd.width = bitmap.Width;
@@ -184,6 +184,11 @@ namespace IB2ToolsetMini
                 }
             }
             return imd;
+        }
+        public ImageData ConvertBitmapToImageData(string filenameNoExt, string pathandfile)
+        {
+            bitmap = new Bitmap(pathandfile);
+            return ConvertBitmapToImageData(filenameNoExt, bitmap);
         }
         public Bitmap ConvertImageDataToBitmap(ImageData imd)
         {

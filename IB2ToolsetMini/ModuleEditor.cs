@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -252,8 +254,8 @@ namespace IB2ToolsetMini
                 }
                 else
                 {
-                    prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, filename));
-                    prntForm.resourcesBitmapList.Add(name, new Bitmap(filename));
+                    prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, ResizeToIBminiIfNeeded(new Bitmap(filename))));
+                    prntForm.resourcesBitmapList.Add(name, ResizeToIBminiIfNeeded(new Bitmap(filename)));
                     pbModuleTitleImage.BackgroundImage = prntForm.resourcesBitmapList[name];
                     prntForm.mod.titleImageName = name;
                 }
@@ -283,12 +285,78 @@ namespace IB2ToolsetMini
                     string name = Path.GetFileNameWithoutExtension(s);
                     if (!prntForm.resourcesBitmapList.ContainsKey(name))
                     {
-                        prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, s));
-                        prntForm.resourcesBitmapList.Add(name, new Bitmap(s));
+                        prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, ResizeToIBminiIfNeeded(new Bitmap(s))));
+                        prntForm.resourcesBitmapList.Add(name, ResizeToIBminiIfNeeded(new Bitmap(s)));
+                        //prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, s));
+                        //prntForm.resourcesBitmapList.Add(name, new Bitmap(s));
                     }                        
                 }
                 resetImageDataFlowPanel();
             }            
+        }
+        public Bitmap ResizeToIBminiIfNeeded(Bitmap b)
+        {
+            Bitmap returnBitmap = new Bitmap(24, 24);
+            Rectangle source = new Rectangle(0, 0, b.Width, b.Height);
+            Rectangle target = new Rectangle(0, 0, 24, 24);
+            //50x50 (24x24), 100x100 (24x24), 100x200 (24x48), 110x170 (55x85), 200x50 (96x24), 200x200 (48x48), 200x400(48x96), 400x200 (200x100)
+            if ((b.Width == 100) && (b.Height == 100))
+            {
+                returnBitmap = new Bitmap(24, 24);
+                target = new Rectangle(0, 0, 24, 24);
+            }
+            else if ((b.Width == 50) && (b.Height == 50))
+            {
+                returnBitmap = new Bitmap(24, 24);
+                target = new Rectangle(0, 0, 24, 24);
+            }
+            else if ((b.Width == 100) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(24, 48);
+                target = new Rectangle(0, 0, 24, 48);
+            }
+            else if ((b.Width == 110) && (b.Height == 170))
+            {
+                returnBitmap = new Bitmap(55, 85);
+                target = new Rectangle(0, 0, 55, 85);
+            }
+            else if ((b.Width == 200) && (b.Height == 50))
+            {
+                returnBitmap = new Bitmap(96, 24);
+                target = new Rectangle(0, 0, 96, 24);
+            }
+            else if ((b.Width == 200) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(48, 48);
+                target = new Rectangle(0, 0, 48, 48);
+            }
+            else if ((b.Width == 200) && (b.Height == 400))
+            {
+                returnBitmap = new Bitmap(48, 96);
+                target = new Rectangle(0, 0, 48, 96);
+            }
+            else if ((b.Width == 400) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(200, 100);
+                target = new Rectangle(0, 0, 200, 100);
+            }
+            else if ((b.Width == 800) && (b.Height == 400))
+            {
+                returnBitmap = new Bitmap(200, 100);
+                target = new Rectangle(0, 0, 200, 100);
+            }
+            else //odd size or already IBmini size
+            {
+                return b;
+            }
+
+            using (Graphics g = Graphics.FromImage(returnBitmap))
+            {
+                g.InterpolationMode = InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = PixelOffsetMode.Half;
+                g.DrawImage((Image)b, target, source, GraphicsUnit.Pixel);
+            }
+            return returnBitmap;
         }
 
         private void btnRemoveSelectedArtResource_Click(object sender, EventArgs e)
