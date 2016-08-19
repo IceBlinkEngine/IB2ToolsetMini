@@ -19,6 +19,7 @@ namespace IB2ToolsetMini
         public Module mod = new Module();
         public BitmapStringConversion bsc;
         public int tileSizeInPixels = 48;
+        public int standardTokenSize = 24;
         public Dictionary<string, Bitmap> resourcesBitmapList = new Dictionary<string, Bitmap>();
         //public List<JournalQuest> journal = new List<JournalQuest>();
         //public List<Creature> creaturesList = new List<Creature>();
@@ -557,12 +558,6 @@ namespace IB2ToolsetMini
             DropdownStringLists.spriteStringList = new List<string>();
             DropdownStringLists.spriteStringList.Add("none");
             string jobDir = "";
-            jobDir = this._mainDirectory + "\\override";
-            foreach (string f in Directory.GetFiles(jobDir, "fx_*.png"))
-            {
-                string filename = Path.GetFileNameWithoutExtension(f);
-                DropdownStringLists.spriteStringList.Add(filename);
-            }
             jobDir = this._mainDirectory + "\\default\\NewModule\\graphics";
             foreach (string f in Directory.GetFiles(jobDir, "fx_*.png"))
             {
@@ -575,12 +570,6 @@ namespace IB2ToolsetMini
             DropdownStringLists.soundStringList = new List<string>();
             DropdownStringLists.soundStringList.Add("none");
             string jobDir = "";
-            jobDir = this._mainDirectory + "\\override";
-            foreach (string f in Directory.GetFiles(jobDir, "*.wav", SearchOption.AllDirectories))
-            {
-                string filename = Path.GetFileNameWithoutExtension(f);
-                DropdownStringLists.soundStringList.Add(filename);
-            }
             jobDir = this._mainDirectory + "\\default\\NewModule\\sounds";
             foreach (string f in Directory.GetFiles(jobDir, "*.wav", SearchOption.AllDirectories))
             {
@@ -1274,20 +1263,7 @@ namespace IB2ToolsetMini
             System.Drawing.Bitmap bm = null;
             try
             {
-                if (File.Exists(_mainDirectory + "\\override\\" + filename + ".png"))
-                {
-                    bm = new Bitmap(_mainDirectory + "\\override\\" + filename + ".png");
-                }
-                else if (File.Exists(_mainDirectory + "\\override\\" + filename + ".jpg"))
-                {
-                    bm = new Bitmap(_mainDirectory + "\\override\\" + filename + ".jpg");
-                }
-                else if (File.Exists(_mainDirectory + "\\override\\" + filename))
-                {
-                    bm = new Bitmap(_mainDirectory + "\\override\\" + filename);
-                }
-
-                else if (File.Exists(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".png"))
+                if (File.Exists(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".png"))
                 {
                     bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".png");
                 }

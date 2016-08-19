@@ -15,6 +15,7 @@ using SharpDX.Direct2D1;
 using Bitmap = System.Drawing.Bitmap;
 using SharpDX.DXGI;
 using SharpDX.DirectWrite;
+using System.Runtime.InteropServices;
 
 namespace IB2ToolsetMini
 {
@@ -99,6 +100,7 @@ namespace IB2ToolsetMini
             //rbtnZoom1x.Checked = true;
             refreshLeftPanelInfo();
             InitDirect2DAndDirectWrite();
+            loadAllModuleImageData();
         }
         public void resetTileToBePlacedSettings()
         {
@@ -180,17 +182,26 @@ namespace IB2ToolsetMini
             //GDI surface = new Bitmap(thisEnc.MapSizeX * sqr, thisEnc.MapSizeY * sqr);
             //GDI device = Graphics.FromImage(surface);
         }
+        public void loadAllModuleImageData()
+        {
+            foreach (ImageData imd in mod.moduleImageDataList)
+            {
+                commonBitmapList.Add(imd.name, ConvertGDIBitmapToD2D(prntForm.bsc.ConvertImageDataToBitmap(imd)));
+            }
+        }
         private void createTileImageButtons()
         {
             try
             {
                 this.flPanelTab1.Controls.Clear();
                 //tileList.Clear();
-                foreach (string f in Directory.GetFiles(prntForm._mainDirectory + "\\override\\", "*.png"))
+                foreach (ImageData imd in mod.moduleImageDataList)
                 {
-                    if (!Path.GetFileName(f).StartsWith("t_")) { continue; }
-                    string filename = Path.GetFullPath(f);
-                    using (Bitmap bit = new Bitmap(filename))
+                    if (!imd.name.StartsWith("t_"))
+                    {
+                        continue;
+                    }
+                    using (Bitmap bit = prntForm.bsc.ConvertImageDataToBitmap(imd))
                     {
                         Button btnNew = new Button();
                         btnNew.BackgroundImage = (Image)bit.Clone();
@@ -201,7 +212,7 @@ namespace IB2ToolsetMini
                         btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                         btnNew.Size = new System.Drawing.Size(50 + 2, 50 + 2);
                         btnNew.BackgroundImageLayout = ImageLayout.Zoom;
-                        btnNew.Text = Path.GetFileNameWithoutExtension(f);
+                        btnNew.Text = imd.name;
                         btnNew.UseVisualStyleBackColor = true;
                         btnNew.Click += new System.EventHandler(this.btnSelectedTerrain_Click);
                         this.flPanelTab1.Controls.Add(btnNew);
@@ -1244,7 +1255,7 @@ namespace IB2ToolsetMini
             RenderTarget2D.Transform = SharpDX.Matrix.Transformation2D(center, 0, new SharpDX.Vector2(mir, 1.0f), center, angle, new SharpDX.Vector2(0, 0));
             SharpDX.RectangleF trg = new SharpDX.RectangleF(target.Left, target.Top, target.Width, target.Height);
             SharpDX.RectangleF src = new SharpDX.RectangleF(source.Left, source.Top, source.Width, source.Height);
-            RenderTarget2D.DrawBitmap(bitmap, trg, 1.0f, BitmapInterpolationMode.Linear, src);
+            RenderTarget2D.DrawBitmap(bitmap, trg, 1.0f, BitmapInterpolationMode.NearestNeighbor, src);
             RenderTarget2D.Transform = SharpDX.Matrix3x2.Identity;
         }
         public void DrawRectangle(SharpDX.RectangleF rect, SharpDX.Color penColor, int penWidth)
@@ -1252,6 +1263,39 @@ namespace IB2ToolsetMini
             using (SolidColorBrush scb = new SolidColorBrush(RenderTarget2D, penColor))
             {
                 RenderTarget2D.DrawRectangle(rect, scb, penWidth);
+            }
+        }
+        public SharpDX.Direct2D1.Bitmap ConvertGDIBitmapToD2D(System.Drawing.Bitmap gdibitmap)
+        {
+            var sourceArea = new System.Drawing.Rectangle(0, 0, gdibitmap.Width, gdibitmap.Height);
+            var bitmapProperties = new BitmapProperties(new SharpDX.Direct2D1.PixelFormat(Format.R8G8B8A8_UNorm, AlphaMode.Premultiplied));
+            var size = new SharpDX.Size2(gdibitmap.Width, gdibitmap.Height);
+
+            // Transform pixels from BGRA to RGBA
+            int stride = gdibitmap.Width * sizeof(int);
+            using (var tempStream = new SharpDX.DataStream(gdibitmap.Height * stride, true, true))
+            {
+                // Lock System.Drawing.Bitmap
+                var bitmapData = gdibitmap.LockBits(sourceArea, ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+
+                // Convert all pixels 
+                for (int y = 0; y < gdibitmap.Height; y++)
+                {
+                    int offset = bitmapData.Stride * y;
+                    for (int x = 0; x < gdibitmap.Width; x++)
+                    {
+                        // Not optimized 
+                        byte B = Marshal.ReadByte(bitmapData.Scan0, offset++);
+                        byte G = Marshal.ReadByte(bitmapData.Scan0, offset++);
+                        byte R = Marshal.ReadByte(bitmapData.Scan0, offset++);
+                        byte A = Marshal.ReadByte(bitmapData.Scan0, offset++);
+                        int rgba = R | (G << 8) | (B << 16) | (A << 24);
+                        tempStream.Write(rgba);
+                    }
+                }
+                gdibitmap.UnlockBits(bitmapData);
+                tempStream.Position = 0;
+                return new SharpDX.Direct2D1.Bitmap(RenderTarget2D, size, tempStream, stride, bitmapProperties);
             }
         }
         public SharpDX.Direct2D1.Bitmap LoadBitmap(string file) //change this to LoadBitmap
