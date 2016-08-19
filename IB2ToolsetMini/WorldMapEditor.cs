@@ -1093,6 +1093,8 @@ namespace IB2ToolsetMini
                                 newCoor.Y = newPoint.Y;
                                 newTrigger.TriggerSquaresList.Add(newCoor);
                             }
+                            prntForm.currentSelectedTrigger = newTrigger;
+                            prntForm.frmTriggerEvents.refreshTriggers();
                         }
                         catch
                         {
