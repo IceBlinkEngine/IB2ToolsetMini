@@ -22,6 +22,8 @@ namespace IB2ToolsetMini
         public List<ContentNode> subNodes = new List<ContentNode>();
         public List<Action> actions = new List<Action>();
         public List<Condition> conditions = new List<Condition>();
+        public List<int> subnodePointer = new List<int>();
+        public List<DlgSyncStruct> syncStructs = new List<DlgSyncStruct>();
         public bool isLink
         {
             get
@@ -99,6 +101,41 @@ namespace IB2ToolsetMini
                 }
             }
             return null;
+        }
+        public ContentNode DeepCopy()
+        {
+            ContentNode copy = new ContentNode();
+
+            copy.idNum = this.idNum;
+            copy.pcNode = this.pcNode;
+            copy.linkTo = this.linkTo;
+            copy.ShowOnlyOnce = this.ShowOnlyOnce;
+            copy.NodeIsActive = this.NodeIsActive;
+            copy.NodePortraitBitmap = this.NodePortraitBitmap;
+            copy.NodeNpcName = this.NodeNpcName;
+            copy.conversationText = this.conversationText;
+            copy.IsExpanded = this.IsExpanded;
+            
+            copy.syncStructs.Clear();
+            foreach (DlgSyncStruct s in this.syncStructs)
+            {
+                copy.syncStructs.Add(s.DeepCopy());
+            }
+
+            copy.actions.Clear();
+            foreach (Action a in this.actions)
+            {
+                copy.actions.Add(a.DeepCopy());
+            }
+
+            copy.conditions.Clear();
+            foreach (Condition c in this.conditions)
+            {
+                copy.conditions.Add(c.DeepCopy());
+            }
+            //do not copy subnodes or pointers
+
+            return copy;
         }
         public ContentNode DuplicateContentNode(int nextIdNum)
         {

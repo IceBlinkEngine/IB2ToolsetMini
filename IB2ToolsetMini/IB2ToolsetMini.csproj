@@ -123,6 +123,7 @@
     <Compile Include="Coordinate.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="DataCheck.cs" />
+    <Compile Include="DlgSyncStruct.cs" />
     <Compile Include="Effect.cs" />
     <Compile Include="EffectEditor.cs">
       <SubType>Form</SubType>
@@ -145,6 +146,10 @@
     <Compile Include="EncountersForm.Designer.cs">
       <DependentUpon>EncountersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErfFile.cs" />
+    <Compile Include="ErfHeader.cs" />
+    <Compile Include="ErfKeyStruct.cs" />
+    <Compile Include="ErfResourceStruct.cs" />
     <Compile Include="FileNameSelectEditor.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -152,6 +157,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GffField.cs" />
+    <Compile Include="GffFile.cs" />
+    <Compile Include="GffHeader.cs" />
+    <Compile Include="GffList.cs" />
+    <Compile Include="GffStruct.cs" />
     <Compile Include="GlobalInt.cs" />
     <Compile Include="GlobalListItem.cs" />
     <Compile Include="GlobalString.cs" />
@@ -218,6 +228,12 @@
       <DependentUpon>ModuleNameDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="MultilineStringEditor.cs" />
+    <Compile Include="NWNtoIBmini.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NWNtoIBmini.Designer.cs">
+      <DependentUpon>NWNtoIBmini.cs</DependentUpon>
+    </Compile>
     <Compile Include="ObjectCopier.cs" />
     <Compile Include="PanelNoScrollOnFocus.cs">
       <SubType>Component</SubType>
@@ -258,6 +274,7 @@
     <Compile Include="RenameDialog.Designer.cs">
       <DependentUpon>RenameDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResourceType.cs" />
     <Compile Include="RulesEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuleNameDialog.resx">
       <DependentUpon>ModuleNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NWNtoIBmini.resx">
+      <DependentUpon>NWNtoIBmini.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerClassEditor.resx">
       <DependentUpon>PlayerClassEditor.cs</DependentUpon>

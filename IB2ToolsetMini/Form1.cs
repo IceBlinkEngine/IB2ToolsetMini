@@ -901,13 +901,13 @@ namespace IB2ToolsetMini
             }
             catch { MessageBox.Show("failed to createFiles"); }
         }
-        private void saveModule(Module mod, string moduleFullPathFilename)
+        public void saveModule(Module mod, string moduleFullPathFilename)
         {
             File.WriteAllText(moduleFullPathFilename, "MODULE" + Environment.NewLine);
             string output = JsonConvert.SerializeObject(mod, Formatting.None);
             File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);            
         }
-        private void saveAreas(Module mod, string moduleFullPathFilename)
+        public void saveAreas(Module mod, string moduleFullPathFilename)
         {
             File.AppendAllText(moduleFullPathFilename, "AREAS" + Environment.NewLine);
             foreach (Area a in mod.moduleAreasObjects)
@@ -916,7 +916,7 @@ namespace IB2ToolsetMini
                 File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
             }
         }
-        private void saveEncounters(Module mod, string moduleFullPathFilename)
+        public void saveEncounters(Module mod, string moduleFullPathFilename)
         {
             File.AppendAllText(moduleFullPathFilename, "ENCOUNTERS" + Environment.NewLine);
             foreach (Encounter enc in mod.moduleEncountersList)
@@ -925,7 +925,7 @@ namespace IB2ToolsetMini
                 File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
             }
         }
-        private void saveConvos(Module mod, string moduleFullPathFilename)
+        public void saveConvos(Module mod, string moduleFullPathFilename)
         {
             File.AppendAllText(moduleFullPathFilename, "CONVOS" + Environment.NewLine);
             foreach (Convo c in mod.moduleConvoList)
@@ -934,7 +934,7 @@ namespace IB2ToolsetMini
                 File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
             }
         }
-        private void saveImages(Module mod, string moduleFullPathFilename)
+        public void saveImages(Module mod, string moduleFullPathFilename)
         {
             //file listImages
             /*bsc.listImages.Clear();
@@ -2370,6 +2370,12 @@ namespace IB2ToolsetMini
         {
             ModuleEditor modEdit = new ModuleEditor(mod, this);
             modEdit.ShowDialog();
+        }
+
+        private void convertANWNModuleToIBminiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NWNtoIBmini convertNWN = new NWNtoIBmini(this);
+            convertNWN.ShowDialog();
         }
     }
 }

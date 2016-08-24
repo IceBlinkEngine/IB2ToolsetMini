@@ -80,6 +80,7 @@
             this.tilesUsedInModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertAnIB2ModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wizardsEditorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moduleEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mergerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rulesEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.journalEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +99,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.moduleEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertANWNModuleToIBminiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -380,7 +381,8 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesUsedInModuleToolStripMenuItem,
-            this.convertAnIB2ModuleToolStripMenuItem});
+            this.convertAnIB2ModuleToolStripMenuItem,
+            this.convertANWNModuleToIBminiToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -388,14 +390,14 @@
             // tilesUsedInModuleToolStripMenuItem
             // 
             this.tilesUsedInModuleToolStripMenuItem.Name = "tilesUsedInModuleToolStripMenuItem";
-            this.tilesUsedInModuleToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.tilesUsedInModuleToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.tilesUsedInModuleToolStripMenuItem.Text = "List Tiles Used in Module";
             this.tilesUsedInModuleToolStripMenuItem.Click += new System.EventHandler(this.tilesUsedInModuleToolStripMenuItem_Click);
             // 
             // convertAnIB2ModuleToolStripMenuItem
             // 
             this.convertAnIB2ModuleToolStripMenuItem.Name = "convertAnIB2ModuleToolStripMenuItem";
-            this.convertAnIB2ModuleToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.convertAnIB2ModuleToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.convertAnIB2ModuleToolStripMenuItem.Text = "Convert an IB2 module";
             this.convertAnIB2ModuleToolStripMenuItem.Click += new System.EventHandler(this.convertAnIB2ModuleToolStripMenuItem_Click);
             // 
@@ -416,6 +418,13 @@
             this.wizardsEditorsToolStripMenuItem.Name = "wizardsEditorsToolStripMenuItem";
             this.wizardsEditorsToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
             this.wizardsEditorsToolStripMenuItem.Text = "Wizards/Editors";
+            // 
+            // moduleEditorToolStripMenuItem
+            // 
+            this.moduleEditorToolStripMenuItem.Name = "moduleEditorToolStripMenuItem";
+            this.moduleEditorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.moduleEditorToolStripMenuItem.Text = "Module Editor";
+            this.moduleEditorToolStripMenuItem.Click += new System.EventHandler(this.moduleEditorToolStripMenuItem_Click);
             // 
             // mergerEditorToolStripMenuItem
             // 
@@ -572,12 +581,12 @@
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // moduleEditorToolStripMenuItem
+            // convertANWNModuleToIBminiToolStripMenuItem
             // 
-            this.moduleEditorToolStripMenuItem.Name = "moduleEditorToolStripMenuItem";
-            this.moduleEditorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.moduleEditorToolStripMenuItem.Text = "Module Editor";
-            this.moduleEditorToolStripMenuItem.Click += new System.EventHandler(this.moduleEditorToolStripMenuItem_Click);
+            this.convertANWNModuleToIBminiToolStripMenuItem.Name = "convertANWNModuleToIBminiToolStripMenuItem";
+            this.convertANWNModuleToIBminiToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.convertANWNModuleToIBminiToolStripMenuItem.Text = "Convert a NWN module to IBmini";
+            this.convertANWNModuleToIBminiToolStripMenuItem.Click += new System.EventHandler(this.convertANWNModuleToIBminiToolStripMenuItem_Click);
             // 
             // ParentForm
             // 
@@ -660,6 +669,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem convertAnIB2ModuleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moduleEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem convertANWNModuleToIBminiToolStripMenuItem;
     }
 }
 
