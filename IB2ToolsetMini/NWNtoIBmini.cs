@@ -1,13 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IB2ToolsetMini
@@ -19,6 +13,7 @@ namespace IB2ToolsetMini
         
         //Conversation conversion stuff
         public List<string> portraits_needed = new List<string>();
+        public List<string> scripts_needed = new List<string>();
         public int nextIndex = 100000;
         public int nextLinkIdNumber = 100000;
         public List<DlgSyncStruct> dlgStartingnodeList = new List<DlgSyncStruct>();
@@ -60,12 +55,31 @@ namespace IB2ToolsetMini
                 for (int i = 0; i < erf.thisHeader.EntryCount; i++)
                 {
                     byte[] newArray = new byte[erf.ResourceList[i].ResourceSize];
-                    Array.Copy(erf.fileBytes, erf.ResourceList[i].OffsetToResource, newArray, 0, erf.ResourceList[i].ResourceSize);                    
-                    File.WriteAllBytes(prntForm._mainDirectory + "\\temp\\" + erf.KeyList[i].ResRef + "." + ((ResourceType)erf.KeyList[i].ResType).ToString(), newArray);
+                    Array.Copy(erf.fileBytes, erf.ResourceList[i].OffsetToResource, newArray, 0, erf.ResourceList[i].ResourceSize);
+                    try
+                    {
+                        File.WriteAllBytes(prntForm._mainDirectory + "\\temp\\" + erf.KeyList[i].ResRef + "." + ((ResourceType)erf.KeyList[i].ResType).ToString(), newArray);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 }
                 processFiles(prntForm._mainDirectory + "\\temp");
-                //delete 'temp' directory
-                Directory.Delete(prntForm._mainDirectory + "\\temp", true);
+                //print a list of portraits need for the conversion and the nameTags used in convos
+                try
+                {
+                    File.Delete(prntForm._mainDirectory + "\\modules\\portraits_needed.txt");
+                }
+                catch { }
+                File.AppendAllLines(prntForm._mainDirectory + "\\modules\\portraits_needed.txt", portraits_needed);
+                //print a list of portraits need for the conversion and the nameTags used in convos
+                try
+                {
+                    File.Delete(prntForm._mainDirectory + "\\modules\\scripts_needed.txt");
+                }
+                catch { }
+                File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scripts_needed.txt", scripts_needed);
                 //SAVE out the module file   
                 string fullPathFilename = prntForm._mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
                 //save module data
@@ -78,6 +92,12 @@ namespace IB2ToolsetMini
                 prntForm.saveConvos(modIBmini, fullPathFilename);
                 //finished
                 MessageBox.Show("Moduled saved as: " + modIBmini.moduleName + ".mod in the module folder.");
+                //delete 'temp' directory
+                try
+                {
+                    Directory.Delete(prntForm._mainDirectory + "\\temp", true);
+                }
+                catch { }
             }
         }
 
@@ -777,36 +797,30 @@ namespace IB2ToolsetMini
                         //these nodes will only have pointers (any data in SyncStruct actually) added at this time, later 
                         //we'll get the actual node data once the EntryList is populated with nodes
                         DlgSyncStruct newSyncStruct = new DlgSyncStruct();
-                        foreach (GffField ifld in istr.Fields)
+                        newSyncStruct.Index = GetFieldByLabel(istr, "Index").ValueDword;
+                        newSyncStruct.ShowOnce = false;
+                        if (GetFieldByLabel(istr, "ShowOnce").ValueInt != 0)
                         {
-                            #region all the SyncStruct data                      
-                            if (ifld.Label.Equals("Index"))
+                            newSyncStruct.ShowOnce = true;
+                        }
+                        newSyncStruct.IsChild = false;
+                        if (GetFieldByLabel(istr, "IsChild").ValueInt != 0)
+                        {
+                            newSyncStruct.IsChild = true;
+                        }
+                        GffList conditionalList = (GffList)GetFieldByLabel(istr, "ActiveConditiona").Data;
+                        foreach (GffStruct irepstr2 in conditionalList.StructList)
+                        {
+                            Condition newCondition = GetCondition(irepstr2, gff.Filename, newSyncStruct);
+                            if (newCondition != null)
                             {
-                                //this is the index of an EntryList Dialog Struct node
-                                newSyncStruct.Index = ifld.ValueDword;
+                                newSyncStruct.conditions.Add(newCondition);
                             }
-                            else if (ifld.Label.Equals("ShowOnce"))
-                            {
-                                newSyncStruct.ShowOnce = false;
-                                if (ifld.ValueInt != 0)
-                                {
-                                    newSyncStruct.ShowOnce = true;
-                                }
-                            }
-                            else if (ifld.Label.Equals("IsChild"))
-                            {
-                                newSyncStruct.IsChild = false;
-                                if (ifld.ValueInt != 0)
-                                {
-                                    newSyncStruct.IsChild = true;
-                                }
-                            }
-                            #endregion
                         }
                         dlgStartingnodeList.Add(newSyncStruct);
                     }
                 }
-                if (ibf.Label.Equals("EntryList")) //these are all NPC nodes
+                else if (ibf.Label.Equals("EntryList")) //these are all NPC nodes
                 {
                     GffList thisList = (GffList)ibf.Data;
                     foreach (GffStruct istr in thisList.StructList)
@@ -816,84 +830,68 @@ namespace IB2ToolsetMini
                         newEntryNode.pcNode = false;
                         newEntryNode.idNum = nextIdNumber;
                         nextIdNumber++;
-                        foreach (GffField ifld in istr.Fields)
+                        newEntryNode.conversationText = GetFieldByLabel(istr, "Text").Data.ToString();
+                        if ((newEntryNode.conversationText.Equals("")) || (newEntryNode.conversationText.Equals("||")))
                         {
-                            #region all the DialogStruct data    
-
-                            if (ifld.Label.Equals("Text"))
-                            {
-                                newEntryNode.conversationText = ifld.Data.ToString();
-                                if ((newEntryNode.conversationText.Equals("")) || (newEntryNode.conversationText.Equals("||")))
-                                {
-                                    newEntryNode.conversationText = "Continue";
-                                }
-                            }
-                            if ((ifld.Label.Equals("Speaker")) && (!ifld.Data.ToString().Equals("")))
-                            {
-                                newEntryNode.NodePortraitBitmap = "ptr_" + ifld.Data.ToString();
-                                if (!portraits_needed.Contains(newEntryNode.NodePortraitBitmap))
-                                {
-                                    portraits_needed.Add(newEntryNode.NodePortraitBitmap);
-                                }
-                                newEntryNode.NodeNpcName = char.ToUpper(ifld.Data.ToString()[0]) + ifld.Data.ToString().Substring(1);
-                            }
-                            if (ifld.Label.Equals("RepliesList"))
-                            {
-                                GffList replyIndexList = (GffList)ifld.Data;
-                                foreach (GffStruct irepstr in replyIndexList.StructList)
-                                {
-                                    ContentNode subNodeOnEntryNode = new ContentNode();
-                                    DlgSyncStruct newSyncStruct = new DlgSyncStruct();
-                                    foreach (GffField irepfld in irepstr.Fields)
-                                    {
-                                        // these nodes will only have pointers(any data in SyncStruct actually) added at this time, later
-                                        // we'll get the actual node data from the pointed to ReplyList DialogStruct
-                                        #region all the SyncStruct data
-                                        if (irepfld.Label.Equals("Index"))
-                                        {
-                                            newSyncStruct.Index = irepfld.ValueDword;
-                                        }
-                                        else if (irepfld.Label.Equals("ShowOnce"))
-                                        {
-                                            newSyncStruct.ShowOnce = false;
-                                            if (irepfld.ValueInt != 0)
-                                            {
-                                                newSyncStruct.ShowOnce = true;
-                                            }
-                                        }
-                                        else if (irepfld.Label.Equals("IsChild"))
-                                        {
-                                            newSyncStruct.IsChild = false;
-                                            if (irepfld.ValueInt != 0)
-                                            {
-                                                newSyncStruct.IsChild = true;
-                                            }
-                                        }
-                                        #endregion
-                                    }
-                                    newEntryNode.syncStructs.Add(newSyncStruct);
-                                }
-                            }
-                            if (ifld.Label.Equals("ScriptList"))
-                            {
-                                GffList scriptList = (GffList)ifld.Data;
-                                foreach (GffStruct irepstr in scriptList.StructList)
-                                {
-                                    foreach (GffField irepfld in irepstr.Fields)
-                                    {
-                                        if (irepfld.Label.Equals("Script"))
-                                        {
-                                            //this is the index of EntryList Dialog Struct
-                                        }
-                                    }
-                                }
-                            }
-                            #endregion
+                            newEntryNode.conversationText = "Continue";
                         }
+                        if (!GetFieldByLabel(istr, "Speaker").Data.ToString().Equals(""))
+                        {
+                            string speaker = GetFieldByLabel(istr, "Speaker").Data.ToString();
+                            newEntryNode.NodePortraitBitmap = "ptr_" + speaker;
+                            if (!portraits_needed.Contains(newEntryNode.NodePortraitBitmap))
+                            {
+                                portraits_needed.Add(newEntryNode.NodePortraitBitmap);
+                            }
+                            newEntryNode.NodeNpcName = char.ToUpper(speaker[0]) + speaker.Substring(1);
+                        }
+                        
+                        #region ScriptList
+                        GffList scriptList = (GffList)GetFieldByLabel(istr, "ScriptList").Data;
+                        foreach (GffStruct irepstr in scriptList.StructList)
+                        {
+                            Action newAction = GetAction(irepstr, gff.Filename, newEntryNode);
+                            if (newAction != null)
+                            {
+                                newEntryNode.actions.Add(newAction);
+                            }
+                        }
+                        #endregion
+                        
+                        #region RepliesList
+                        GffList replyIndexList = (GffList)GetFieldByLabel(istr, "RepliesList").Data;
+                        foreach (GffStruct irepstr in replyIndexList.StructList)
+                        {
+                            //ContentNode subNodeOnEntryNode = new ContentNode();
+                            DlgSyncStruct newSyncStruct = new DlgSyncStruct();
+                            newSyncStruct.Index = GetFieldByLabel(irepstr, "Index").ValueDword;
+                            newSyncStruct.ShowOnce = false;
+                            if (GetFieldByLabel(irepstr, "ShowOnce").ValueInt != 0)
+                            {
+                                newSyncStruct.ShowOnce = true;
+                            }
+                            newSyncStruct.IsChild = false;
+                            if (GetFieldByLabel(irepstr, "IsChild").ValueInt != 0)
+                            {
+                                newSyncStruct.IsChild = true;
+                            }
+                            GffList conditionalList = (GffList)GetFieldByLabel(irepstr, "ActiveConditiona").Data;
+                            foreach (GffStruct irepstr2 in conditionalList.StructList)
+                            {
+                                Condition newCondition = GetCondition(irepstr2, gff.Filename, newSyncStruct);
+                                if (newCondition != null)
+                                {
+                                    newSyncStruct.conditions.Add(newCondition);
+                                }
+                            }
+                            newEntryNode.syncStructs.Add(newSyncStruct);
+                        }
+                        #endregion
+                        
                         dlgEntrynodeList.Add(newEntryNode);
                     }
                 }
-                if (ibf.Label.Equals("ReplyList")) //These are all PC nodes
+                else if (ibf.Label.Equals("ReplyList")) //These are all PC nodes
                 {
                     GffList thisList = (GffList)ibf.Data;
                     foreach (GffStruct istr in thisList.StructList)
@@ -903,84 +901,244 @@ namespace IB2ToolsetMini
                         newReplyNode.pcNode = true;
                         newReplyNode.idNum = nextIdNumber;
                         nextIdNumber++;
-                        foreach (GffField ifld in istr.Fields)
+                        newReplyNode.conversationText = GetFieldByLabel(istr, "Text").Data.ToString();
+                        if ((newReplyNode.conversationText.Equals("")) || (newReplyNode.conversationText.Equals("||")))
                         {
-                            #region all the DialogStruct data
-                            if (ifld.Label.Equals("Text"))
-                            {
-                                newReplyNode.conversationText = ifld.Data.ToString();
-                                if ((newReplyNode.conversationText.Equals("")) || (newReplyNode.conversationText.Equals("||")))
-                                {
-                                    newReplyNode.conversationText = "Continue";
-                                }
-                            }
-                            if ((ifld.Label.Equals("Speaker")) && (!ifld.Data.ToString().Equals("")))
-                            {
-                                newReplyNode.NodePortraitBitmap = "ptr_" + ifld.Data.ToString();
-                                if (!portraits_needed.Contains(newReplyNode.NodePortraitBitmap))
-                                {
-                                    portraits_needed.Add(newReplyNode.NodePortraitBitmap);
-                                }
-                                newReplyNode.NodeNpcName = char.ToUpper(ifld.Data.ToString()[0]) + ifld.Data.ToString().Substring(1);
-                            }
-                            if (ifld.Label.Equals("EntriesList"))
-                            {
-                                //this is the index of EntryList Dialog Struct
-                                GffList replyIndexList = (GffList)ifld.Data;
-                                foreach (GffStruct irepstr in replyIndexList.StructList)
-                                {
-                                    ContentNode subNodeOnReplyNode = new ContentNode();
-                                    DlgSyncStruct newSyncStruct = new DlgSyncStruct();
-                                    foreach (GffField irepfld in irepstr.Fields)
-                                    {
-                                        // these nodes will only have pointers(any data in SyncStruct actually) added at this time, later
-                                        // we'll get the actual node data from the pointed to EntryList DialogStruct
-                                        #region all the SyncStruct data
-                                        if (irepfld.Label.Equals("Index"))
-                                        {
-                                            newSyncStruct.Index = irepfld.ValueDword;
-                                        }
-                                        else if (irepfld.Label.Equals("ShowOnce"))
-                                        {
-                                            newSyncStruct.ShowOnce = false;
-                                            if (irepfld.ValueInt != 0)
-                                            {
-                                                newSyncStruct.ShowOnce = true;
-                                            }
-                                        }
-                                        else if (irepfld.Label.Equals("IsChild"))
-                                        {
-                                            newSyncStruct.IsChild = false;
-                                            if (irepfld.ValueInt != 0)
-                                            {
-                                                newSyncStruct.IsChild = true;
-                                            }
-                                        }
-                                        #endregion
-                                    }
-                                    newReplyNode.syncStructs.Add(newSyncStruct);
-                                }
-                            }
-                            if (ifld.Label.Equals("ScriptList"))
-                            {
-                                GffList scriptList = (GffList)ifld.Data;
-                                foreach (GffStruct irepstr in scriptList.StructList)
-                                {
-                                    foreach (GffField irepfld in irepstr.Fields)
-                                    {
-                                        if (irepfld.Label.Equals("Script"))
-                                        {
-                                            //this is the index of EntryList Dialog Struct
-                                        }
-                                    }
-                                }
-                            }
-                            #endregion
+                            newReplyNode.conversationText = "Continue";
                         }
+
+                        #region ScriptList
+                        GffList scriptList = (GffList)GetFieldByLabel(istr, "ScriptList").Data;
+                        foreach (GffStruct irepstr in scriptList.StructList)
+                        {
+                            Action newAction = GetAction(irepstr, gff.Filename, newReplyNode);
+                            if (newAction != null)
+                            {
+                                newReplyNode.actions.Add(newAction);
+                            }
+                        }
+                        #endregion
+
+                        #region EntriesList
+                        //this is the index of EntryList Dialog Struct
+                        GffList replyIndexList = (GffList)GetFieldByLabel(istr, "EntriesList").Data;
+                        foreach (GffStruct irepstr in replyIndexList.StructList)
+                        {
+                            //ContentNode subNodeOnReplyNode = new ContentNode();
+                            DlgSyncStruct newSyncStruct = new DlgSyncStruct();
+                            newSyncStruct.Index = GetFieldByLabel(irepstr, "Index").ValueDword;
+                            newSyncStruct.ShowOnce = false;
+                            if (GetFieldByLabel(irepstr, "ShowOnce").ValueInt != 0)
+                            {
+                                newSyncStruct.ShowOnce = true;
+                            }
+                            newSyncStruct.IsChild = false;
+                            if (GetFieldByLabel(irepstr, "IsChild").ValueInt != 0)
+                            {
+                                newSyncStruct.IsChild = true;
+                            }
+                            GffList conditionalList = (GffList)GetFieldByLabel(irepstr, "ActiveConditiona").Data;
+                            foreach (GffStruct irepstr2 in conditionalList.StructList)
+                            {
+                                Condition newCondition = GetCondition(irepstr2, gff.Filename, newSyncStruct);
+                                if (newCondition != null)
+                                {
+                                    newSyncStruct.conditions.Add(newCondition);
+                                }
+                            }
+                            newReplyNode.syncStructs.Add(newSyncStruct);
+                        }
+                        #endregion
+
                         dlgReplynodeList.Add(newReplyNode);
                     }
                 }
             }
+        }
+        public Action GetAction(GffStruct thisStruct, string filename, ContentNode newEntryNode)
+        {
+            Action newAction = new Action();
+            string scriptName = GetFieldByLabel(thisStruct, "Script").Data.ToString();
+            if (scriptName.Equals(""))
+            {
+                return null;
+            }
+            if (scriptName.Equals("ga_global_int"))
+            {
+                newAction.a_script = "gaSetGlobalInt.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_give_xp"))
+            {
+                newAction.a_script = "gaGiveXP.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_give_gold"))
+            {
+                newAction.a_script = "gaGiveGold.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_open_store"))
+            {
+                newAction.a_script = "gaOpenShopByTag.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_give_item"))
+            {
+                newAction.a_script = "gaGiveItem.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_journal"))
+            {
+                newAction.a_script = "gaAddJournalEntryByTag.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+            }
+            else
+            {
+                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
+                scriptInfo += "::p1::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "-->";
+                scriptInfo += "::p2::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "-->";
+                scriptInfo += "::p3::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "-->";
+                scriptInfo += "::p4::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "-->";
+                scripts_needed.Add("|" + filename + scriptInfo);
+                newEntryNode.conversationText += scriptInfo;
+                return null;
+            }
+            return newAction;
+        }
+        public Condition GetCondition(GffStruct thisStruct, string filename, DlgSyncStruct newSyncStruct)
+        {
+            Condition newCondition = new Condition();
+            newCondition.c_not = false;
+            if (GetFieldByLabel(thisStruct, "Not").ValueInt != 0)
+            {
+                newCondition.c_not = true;
+            }
+            newCondition.c_and = false;
+            if (GetFieldByLabel(thisStruct, "And").ValueInt != 0)
+            {
+                newCondition.c_and = true;
+            }
+            #region Script Conditionals
+            string scriptName = GetFieldByLabel(thisStruct, "Script").Data.ToString();
+            if (scriptName.Equals(""))
+            {
+                return null;
+            }
+            if (scriptName.Equals("gc_global_int"))
+            {
+                newCondition.c_script = "gcCheckGlobalInt.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_check_class"))
+            {
+                newCondition.c_script = "gcCheckIsClassLevel.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_check_gold"))
+            {
+                newCondition.c_script = "gcCheckForGold.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_check_item"))
+            {
+                newCondition.c_script = "gcCheckForItem.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_journal_entry"))
+            {
+                newCondition.c_script = "gcCheckJournalEntryByTag.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                string parm2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                if (parm2.StartsWith("="))
+                {
+                    newCondition.c_parameter_2 = "=";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith("<"))
+                {
+                    newCondition.c_parameter_2 = "<";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith(">"))
+                {
+                    newCondition.c_parameter_2 = ">";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith("!"))
+                {
+                    newCondition.c_parameter_2 = "!";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else
+                {
+                    newCondition.c_parameter_2 = "=";
+                    newCondition.c_parameter_3 = parm2;
+                }
+            }
+            else
+            {
+                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
+                scriptInfo += "::p1::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "-->";
+                scriptInfo += "::p2::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "-->";
+                scriptInfo += "::p3::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "-->";
+                scriptInfo += "::p4::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "-->";
+                scripts_needed.Add("|" + filename + scriptInfo);
+                newSyncStruct.scriptInfoForEndOfText += scriptInfo;
+                return null;
+            }
+            #endregion
+            return newCondition;
+        }
+        public GffField GetFieldByLabel(GffStruct thisStruct, string label)
+        {
+            foreach (GffField ifld in thisStruct.Fields)
+            {
+                if (ifld.Label.Equals(label))
+                {
+                    return ifld;
+                }
+            }
+            MessageBox.Show("Couldn't find label: " + label + "in GffField");
+            return null;
+        }
+        public string GetParameterDataByFieldLabelAndNumber(GffStruct thisStruct, int number)
+        {            
+            GffList parameterList = (GffList)GetFieldByLabel(thisStruct, "Parameters").Data;
+            if (number <= parameterList.StructList.Count)
+            {
+                return GetFieldByLabel(parameterList.StructList[number - 1], "Parameter").Data.ToString();
+            }
+            //MessageBox.Show("Couldn't find parameter number: " + number + "in GffList of size: " + parameterList.StructList.Count);
+            return "";
         }
         public Convo makeIbCon(string filename)
         {
@@ -1004,7 +1162,12 @@ namespace IB2ToolsetMini
                 //add syncstruct data to this node
                 //subNodeOfRootNode.isLink = startingListSync.IsChild;
                 subNodeOfRootNode.ShowOnlyOnce = startingListSync.ShowOnce;
+                subNodeOfRootNode.conversationText += startingListSync.scriptInfoForEndOfText;
                 //TODO add all conditionals in sync to this above node as well
+                foreach (Condition cond in startingListSync.conditions)
+                {
+                    subNodeOfRootNode.conditions.Add(cond.DeepCopy());
+                }
 
                 if (!startingListSync.IsChild) //node is NOT a link so add all subNodes
                 {
@@ -1020,6 +1183,7 @@ namespace IB2ToolsetMini
                     //add syncstruct data to this node
                     //subNodeOfRootNode.isLink = startingListSync.IsChild;
                     subNodeOfRootNode.ShowOnlyOnce = startingListSync.ShowOnce;
+                    subNodeOfRootNode.conversationText += startingListSync.scriptInfoForEndOfText;
                     //assign LinkIdNumber
                     subNodeOfRootNode.idNum = nextLinkIdNumber;
                     nextLinkIdNumber++;
@@ -1045,7 +1209,47 @@ namespace IB2ToolsetMini
             //need to add sync stuff to this newNode
             //newNode.isLink = thisSync.IsChild;
             newNode.ShowOnlyOnce = thisSync.ShowOnce;
-
+            newNode.conversationText += thisSync.scriptInfoForEndOfText;
+            foreach (Condition cond in thisSync.conditions)
+            {
+                newNode.conditions.Add(cond.DeepCopy());
+            }
+            if (thisSync.IsChild)
+            {
+                if (newNode.pcNode) //PC node
+                {
+                    //assign LinkIdNumber
+                    newNode.idNum = nextLinkIdNumber;
+                    nextLinkIdNumber++;
+                    //assign linkTo
+                    if (thisSync.Index < dlgEntrynodeList.Count)
+                    {
+                        newNode.linkTo = dlgEntrynodeList[(int)thisSync.Index].idNum;
+                    }
+                    else //broken or bad link so comment
+                    {
+                        newNode.linkTo = -1;
+                        newNode.conversationText += "[BROKEN LINK:]";
+                    }
+                }
+                else //NPC node
+                {
+                    //assign LinkIdNumber
+                    newNode.idNum = nextLinkIdNumber;
+                    nextLinkIdNumber++;
+                    //assign linkTo
+                    if (thisSync.Index < dlgReplynodeList.Count)
+                    {
+                        newNode.linkTo = dlgReplynodeList[(int)thisSync.Index].idNum;
+                    }
+                    else //broken or bad link so comment
+                    {
+                        newNode.linkTo = -1;
+                        newNode.conversationText += "[BROKEN LINK:]";
+                    }
+                }
+                return newNode;
+            }
             foreach (DlgSyncStruct s in newNode.syncStructs)
             {
                 if (newNode.pcNode) //PC node
@@ -1057,6 +1261,7 @@ namespace IB2ToolsetMini
                         //add syncstruct data to this node
                         //subNodeOfNewNode.isLink = s.IsChild;
                         subNodeOfNewNode.ShowOnlyOnce = s.ShowOnce;
+                        subNodeOfNewNode.conversationText += s.scriptInfoForEndOfText;
                         //assign LinkIdNumber
                         subNodeOfNewNode.idNum = nextLinkIdNumber;
                         nextLinkIdNumber++;
@@ -1086,6 +1291,7 @@ namespace IB2ToolsetMini
                         //add syncstruct data to this node
                         //subNodeOfNewNode.isLink = s.IsChild;
                         subNodeOfNewNode.ShowOnlyOnce = s.ShowOnce;
+                        subNodeOfNewNode.conversationText += s.scriptInfoForEndOfText;
                         //assign LinkIdNumber
                         subNodeOfNewNode.idNum = nextLinkIdNumber;
                         nextLinkIdNumber++;

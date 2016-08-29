@@ -13,6 +13,7 @@ namespace IB2ToolsetMini
         public bool ShowOnce = false;
         public bool IsChild = false;
         public List<Condition> conditions = new List<Condition>();
+        public string scriptInfoForEndOfText = "";
 
         public DlgSyncStruct()
         {
@@ -24,6 +25,7 @@ namespace IB2ToolsetMini
             copy.Index = this.Index;
             copy.ShowOnce = this.ShowOnce;
             copy.IsChild = this.IsChild;
+            copy.scriptInfoForEndOfText = this.scriptInfoForEndOfText;
             copy.conditions.Clear();
             foreach (Condition c in this.conditions)
             {

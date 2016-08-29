@@ -68,8 +68,8 @@ namespace IB2ToolsetMini
             for (int i = 0; i < thisHeader.EntryCount; i++)
             {
                 ErfKeyStruct newKeyStruct = new ErfKeyStruct();
-                newKeyStruct.ResRef = readString(fileBytes, offset += 2, 16);
-                newKeyStruct.ResID = readInt(fileBytes, offset += 16, 4);
+                newKeyStruct.ResRef = readString(fileBytes, offset += 2, 32);
+                newKeyStruct.ResID = readInt(fileBytes, offset += 32, 4);
                 newKeyStruct.ResType = (ResourceType)readShort(fileBytes, offset += 4, 2);
                 newKeyStruct.Unused = readShort(fileBytes, offset += 2, 2);
                 KeyList.Add(newKeyStruct);
