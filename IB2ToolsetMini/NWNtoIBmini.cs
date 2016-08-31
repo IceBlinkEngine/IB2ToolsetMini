@@ -14,6 +14,7 @@ namespace IB2ToolsetMini
         //Conversation conversion stuff
         public List<string> portraits_needed = new List<string>();
         public List<string> scripts_needed = new List<string>();
+        public List<string> scriptTypesNeeded = new List<string>();
         public int nextIndex = 100000;
         public int nextLinkIdNumber = 100000;
         public List<DlgSyncStruct> dlgStartingnodeList = new List<DlgSyncStruct>();
@@ -80,6 +81,12 @@ namespace IB2ToolsetMini
                 }
                 catch { }
                 File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scripts_needed.txt", scripts_needed);
+                try
+                {
+                    File.Delete(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt");
+                }
+                catch { }
+                File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt", scriptTypesNeeded);
                 //SAVE out the module file   
                 string fullPathFilename = prntForm._mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
                 //save module data
@@ -955,191 +962,6 @@ namespace IB2ToolsetMini
                 }
             }
         }
-        public Action GetAction(GffStruct thisStruct, string filename, ContentNode newEntryNode)
-        {
-            Action newAction = new Action();
-            string scriptName = GetFieldByLabel(thisStruct, "Script").Data.ToString();
-            if (scriptName.Equals(""))
-            {
-                return null;
-            }
-            if (scriptName.Equals("ga_global_int"))
-            {
-                newAction.a_script = "gaSetGlobalInt.cs";
-                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("ga_give_xp"))
-            {
-                newAction.a_script = "gaGiveXP.cs";
-                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("ga_give_gold"))
-            {
-                newAction.a_script = "gaGiveGold.cs";
-                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("ga_open_store"))
-            {
-                newAction.a_script = "gaOpenShopByTag.cs";
-                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("ga_give_item"))
-            {
-                newAction.a_script = "gaGiveItem.cs";
-                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("ga_journal"))
-            {
-                newAction.a_script = "gaAddJournalEntryByTag.cs";
-                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-            }
-            else
-            {
-                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
-                scriptInfo += "::p1::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "-->";
-                scriptInfo += "::p2::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "-->";
-                scriptInfo += "::p3::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "-->";
-                scriptInfo += "::p4::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "-->";
-                scripts_needed.Add("|" + filename + scriptInfo);
-                newEntryNode.conversationText += scriptInfo;
-                return null;
-            }
-            return newAction;
-        }
-        public Condition GetCondition(GffStruct thisStruct, string filename, DlgSyncStruct newSyncStruct)
-        {
-            Condition newCondition = new Condition();
-            newCondition.c_not = false;
-            if (GetFieldByLabel(thisStruct, "Not").ValueInt != 0)
-            {
-                newCondition.c_not = true;
-            }
-            newCondition.c_and = false;
-            if (GetFieldByLabel(thisStruct, "And").ValueInt != 0)
-            {
-                newCondition.c_and = true;
-            }
-            #region Script Conditionals
-            string scriptName = GetFieldByLabel(thisStruct, "Script").Data.ToString();
-            if (scriptName.Equals(""))
-            {
-                return null;
-            }
-            if (scriptName.Equals("gc_global_int"))
-            {
-                newCondition.c_script = "gcCheckGlobalInt.cs";
-                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("gc_check_class"))
-            {
-                newCondition.c_script = "gcCheckIsClassLevel.cs";
-                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("gc_check_gold"))
-            {
-                newCondition.c_script = "gcCheckForGold.cs";
-                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("gc_check_item"))
-            {
-                newCondition.c_script = "gcCheckForItem.cs";
-                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
-            }
-            else if (scriptName.Equals("gc_journal_entry"))
-            {
-                newCondition.c_script = "gcCheckJournalEntryByTag.cs";
-                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                string parm2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                if (parm2.StartsWith("="))
-                {
-                    newCondition.c_parameter_2 = "=";
-                    newCondition.c_parameter_3 = parm2.Substring(1);
-                }
-                else if (parm2.StartsWith("<"))
-                {
-                    newCondition.c_parameter_2 = "<";
-                    newCondition.c_parameter_3 = parm2.Substring(1);
-                }
-                else if (parm2.StartsWith(">"))
-                {
-                    newCondition.c_parameter_2 = ">";
-                    newCondition.c_parameter_3 = parm2.Substring(1);
-                }
-                else if (parm2.StartsWith("!"))
-                {
-                    newCondition.c_parameter_2 = "!";
-                    newCondition.c_parameter_3 = parm2.Substring(1);
-                }
-                else
-                {
-                    newCondition.c_parameter_2 = "=";
-                    newCondition.c_parameter_3 = parm2;
-                }
-            }
-            else
-            {
-                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
-                scriptInfo += "::p1::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "-->";
-                scriptInfo += "::p2::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "-->";
-                scriptInfo += "::p3::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "-->";
-                scriptInfo += "::p4::" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "-->";
-                scripts_needed.Add("|" + filename + scriptInfo);
-                newSyncStruct.scriptInfoForEndOfText += scriptInfo;
-                return null;
-            }
-            #endregion
-            return newCondition;
-        }
-        public GffField GetFieldByLabel(GffStruct thisStruct, string label)
-        {
-            foreach (GffField ifld in thisStruct.Fields)
-            {
-                if (ifld.Label.Equals(label))
-                {
-                    return ifld;
-                }
-            }
-            MessageBox.Show("Couldn't find label: " + label + "in GffField");
-            return null;
-        }
-        public string GetParameterDataByFieldLabelAndNumber(GffStruct thisStruct, int number)
-        {            
-            GffList parameterList = (GffList)GetFieldByLabel(thisStruct, "Parameters").Data;
-            if (number <= parameterList.StructList.Count)
-            {
-                return GetFieldByLabel(parameterList.StructList[number - 1], "Parameter").Data.ToString();
-            }
-            //MessageBox.Show("Couldn't find parameter number: " + number + "in GffList of size: " + parameterList.StructList.Count);
-            return "";
-        }
         public Convo makeIbCon(string filename)
         {
             //THE BASICS
@@ -1314,6 +1136,276 @@ namespace IB2ToolsetMini
                 }
             }
             return newNode;
+        }
+        public Action GetAction(GffStruct thisStruct, string filename, ContentNode newEntryNode)
+        {
+            Action newAction = new Action();
+            string scriptName = GetFieldByLabel(thisStruct, "Script").Data.ToString();
+            if (scriptName.Equals(""))
+            {
+                return null;
+            }
+            if (scriptName.Equals("ga_global_int"))
+            {
+                newAction.a_script = "gaSetGlobalInt.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+            }
+            else if (scriptName.Equals("ga_local_int"))
+            {
+                newAction.a_script = "gaSetLocalInt.cs";
+                string parm1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                if ((parm1.Equals("")) || (parm1.Equals("OBJECT_SELF")))
+                {
+                    newAction.a_parameter_1 = "thisprop";
+                }
+                else
+                {
+                    newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                }
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                string parm3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                if (parm3.StartsWith("="))
+                {
+                    newAction.a_parameter_3 = parm3.Substring(1);
+                }
+                else
+                {
+                    newAction.a_parameter_3 = parm3;
+                }
+            }
+            else if (scriptName.Equals("ga_give_xp"))
+            {
+                newAction.a_script = "gaGiveXP.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_give_gold"))
+            {
+                newAction.a_script = "gaGiveGold.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_open_store"))
+            {
+                newAction.a_script = "gaOpenShopByTag.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_give_item"))
+            {
+                newAction.a_script = "gaGiveItem.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_journal"))
+            {
+                newAction.a_script = "gaAddJournalEntryByTag.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+            }
+            else
+            {
+                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
+                scriptInfo += "::p1=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "---";
+                scriptInfo += "::p2=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "---";
+                scriptInfo += "::p3=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "---";
+                scriptInfo += "::p4=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "---";
+                scripts_needed.Add("|" + filename + scriptInfo);
+                if (!scriptTypesNeeded.Contains(scriptName)) { scriptTypesNeeded.Add(scriptName); }
+                newEntryNode.conversationText += scriptInfo;
+                return null;
+            }
+            return newAction;
+        }
+        public Condition GetCondition(GffStruct thisStruct, string filename, DlgSyncStruct newSyncStruct)
+        {
+            Condition newCondition = new Condition();
+            newCondition.c_not = false;
+            if (GetFieldByLabel(thisStruct, "Not").ValueInt != 0)
+            {
+                newCondition.c_not = true;
+            }
+            newCondition.c_and = false;
+            if (GetFieldByLabel(thisStruct, "And").ValueInt != 0)
+            {
+                newCondition.c_and = true;
+            }
+            
+            string scriptName = GetFieldByLabel(thisStruct, "Script").Data.ToString();
+            if (scriptName.Equals(""))
+            {
+                return null;
+            }
+            if (scriptName.Equals("gc_global_int"))
+            {
+                newCondition.c_script = "gcCheckGlobalInt.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                string parm2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                if (parm2.StartsWith("="))
+                {
+                    newCondition.c_parameter_2 = "=";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith("<"))
+                {
+                    newCondition.c_parameter_2 = "<";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith(">"))
+                {
+                    newCondition.c_parameter_2 = ">";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith("!"))
+                {
+                    newCondition.c_parameter_2 = "!";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else
+                {
+                    newCondition.c_parameter_2 = "=";
+                    newCondition.c_parameter_3 = parm2;
+                }
+            }
+            else if (scriptName.Equals("gc_local_int"))
+            {
+                newCondition.c_script = "gcCheckLocalInt.cs";
+                string parm1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                if ((parm1.Equals("")) || (parm1.Equals("OBJECT_SELF")))
+                {
+                    newCondition.c_parameter_1 = "thisprop";
+                }
+                else
+                {
+                    newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                }
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);                
+                string parm3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                if (parm3.StartsWith("="))
+                {
+                    newCondition.c_parameter_3 = "=";
+                    newCondition.c_parameter_4 = parm3.Substring(1);
+                }
+                else if (parm3.StartsWith("<"))
+                {
+                    newCondition.c_parameter_3 = "<";
+                    newCondition.c_parameter_4 = parm3.Substring(1);
+                }
+                else if (parm3.StartsWith(">"))
+                {
+                    newCondition.c_parameter_3 = ">";
+                    newCondition.c_parameter_4 = parm3.Substring(1);
+                }
+                else if (parm3.StartsWith("!"))
+                {
+                    newCondition.c_parameter_3 = "!";
+                    newCondition.c_parameter_4 = parm3.Substring(1);
+                }
+                else
+                {
+                    newCondition.c_parameter_3 = "=";
+                    newCondition.c_parameter_4 = parm3;
+                }
+            }
+            else if (scriptName.Equals("gc_check_class"))
+            {
+                newCondition.c_script = "gcCheckIsClassLevel.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_check_gold"))
+            {
+                newCondition.c_script = "gcCheckForGold.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_check_item"))
+            {
+                newCondition.c_script = "gcCheckForItem.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_journal_entry"))
+            {
+                newCondition.c_script = "gcCheckJournalEntryByTag.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                string parm2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                if (parm2.StartsWith("="))
+                {
+                    newCondition.c_parameter_2 = "=";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith("<"))
+                {
+                    newCondition.c_parameter_2 = "<";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith(">"))
+                {
+                    newCondition.c_parameter_2 = ">";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else if (parm2.StartsWith("!"))
+                {
+                    newCondition.c_parameter_2 = "!";
+                    newCondition.c_parameter_3 = parm2.Substring(1);
+                }
+                else
+                {
+                    newCondition.c_parameter_2 = "=";
+                    newCondition.c_parameter_3 = parm2;
+                }
+            }
+            else
+            {
+                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
+                scriptInfo += "::p1=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "---";
+                scriptInfo += "::p2=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "---";
+                scriptInfo += "::p3=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "---";
+                scriptInfo += "::p4=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "---";
+                scripts_needed.Add("|" + filename + scriptInfo);
+                if (!scriptTypesNeeded.Contains(scriptName)) { scriptTypesNeeded.Add(scriptName); }
+                newSyncStruct.scriptInfoForEndOfText += scriptInfo;
+                return null;
+            }            
+            return newCondition;
+        }
+        public GffField GetFieldByLabel(GffStruct thisStruct, string label)
+        {
+            foreach (GffField ifld in thisStruct.Fields)
+            {
+                if (ifld.Label.Equals(label))
+                {
+                    return ifld;
+                }
+            }
+            MessageBox.Show("Couldn't find label: " + label + "in GffField");
+            return null;
+        }
+        public string GetParameterDataByFieldLabelAndNumber(GffStruct thisStruct, int number)
+        {            
+            GffList parameterList = (GffList)GetFieldByLabel(thisStruct, "Parameters").Data;
+            if (number <= parameterList.StructList.Count)
+            {
+                return GetFieldByLabel(parameterList.StructList[number - 1], "Parameter").Data.ToString();
+            }
+            //MessageBox.Show("Couldn't find parameter number: " + number + "in GffList of size: " + parameterList.StructList.Count);
+            return "";
         }
     }
 }

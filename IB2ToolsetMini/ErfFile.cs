@@ -25,12 +25,12 @@ namespace IB2ToolsetMini
             ReadLocalizedString();
             LoadKeyList();
             LoadResourceList();
-            File.Delete("keylist.txt");
+            /*File.Delete("keylist.txt");
             File.AppendAllText("keylist.txt", "ResRef" + ":" + "ResID" + ":" + "ResType" + ":" + "Unused" + Environment.NewLine);
             foreach (ErfKeyStruct ks in KeyList)
             {
                 File.AppendAllText("keylist.txt", ks.ResRef + ":" + ks.ResID.ToString() + ":" + ((ResourceType)ks.ResType).ToString() + ":" + ks.Unused.ToString() + Environment.NewLine);
-            }
+            }*/
             for (int i = 0; i < thisHeader.EntryCount; i++)
             {
                 byte[] newArray = new byte[ResourceList[i].ResourceSize];

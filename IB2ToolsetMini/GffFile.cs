@@ -27,6 +27,7 @@ namespace IB2ToolsetMini
         public GffFile(string filename)
         {
             fileBytes = File.ReadAllBytes(filename);
+            Filename = Path.GetFileName(filename);
             LoadUpData();
         }
         /*public GffFile(byte[] bytes)
@@ -91,10 +92,10 @@ namespace IB2ToolsetMini
             }
 
             //try processing all the structs
-            File.Delete("dump.txt");
+            //File.Delete("dump.txt");
             TopLevelStruct = BuildStructEntry(structList[0]);
             // serialize JSON directly to a file
-            using (StreamWriter file = File.CreateText("test.json"))
+            /*using (StreamWriter file = File.CreateText("test.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.None;
@@ -103,7 +104,7 @@ namespace IB2ToolsetMini
             foreach (GffField fld in TopLevelStruct.Fields)
             {
                 File.AppendAllText("dump.txt", fld.Label + ":" + fld.Type.ToString() + ":" + fld.Data.ToString() + Environment.NewLine);
-            }
+            }*/
             //fillDlgLists(topStruct);
             //IbNode root = makeIbCon();
         }
