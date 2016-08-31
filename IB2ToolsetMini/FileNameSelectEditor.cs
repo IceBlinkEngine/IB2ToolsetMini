@@ -18,7 +18,16 @@ namespace IB2ToolsetMini
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            using (FileDialog dlg = new OpenFileDialog())
+            Prop p = (Prop)context.Instance;
+            using (var sel = new ImageSelector(p.prntForm.mod, p.prntForm, "prp_"))
+            {                
+                var result = sel.ShowDialog();
+                if (result == DialogResult.OK) // Test result.
+                {
+                    return p.prntForm.returnImageFilenameFromImageSelector;
+                }
+            }
+            /*using (FileDialog dlg = new OpenFileDialog())
             {
                 //dlg.InitialDirectory = (string)value;
                 dlg.FileName = "prp_*";
@@ -28,7 +37,7 @@ namespace IB2ToolsetMini
                 {
                     return Path.GetFileNameWithoutExtension(dlg.FileName);                    
                 }
-            }
+            }*/
             return base.EditValue(context, provider, value);
         }
     }

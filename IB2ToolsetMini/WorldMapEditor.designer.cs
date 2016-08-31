@@ -35,9 +35,11 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -77,8 +79,11 @@
             this.timerRenderLoop = new System.Windows.Forms.Timer(this.components);
             this.panelNoScrollOnFocus1 = new IB2ToolsetMini.PanelNoScrollOnFocus();
             this.panelView = new System.Windows.Forms.Panel();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.gbMoveProp = new System.Windows.Forms.GroupBox();
+            this.btnMovePropDown = new System.Windows.Forms.Button();
+            this.btnMovePropUp = new System.Windows.Forms.Button();
+            this.btnMovePropLeft = new System.Windows.Forms.Button();
+            this.btnMovePropRight = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -89,6 +94,7 @@
             this.groupBox2.SuspendLayout();
             this.gbMapSize.SuspendLayout();
             this.panelNoScrollOnFocus1.SuspendLayout();
+            this.gbMoveProp.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFillWithSelected
@@ -151,6 +157,17 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Edit Layer";
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(11, 48);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(60, 17);
+            this.radioButton3.TabIndex = 6;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Layer 3";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -185,6 +202,16 @@
             this.groupBox8.TabIndex = 71;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Show";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(10, 50);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(61, 17);
+            this.checkBox3.TabIndex = 4;
+            this.checkBox3.Text = "Layer 3";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -620,32 +647,65 @@
             this.panelView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelView_MouseMove);
             this.panelView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panelView_PreviewKeyDown);
             // 
-            // radioButton3
+            // gbMoveProp
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(11, 48);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(60, 17);
-            this.radioButton3.TabIndex = 6;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Layer 3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.gbMoveProp.Controls.Add(this.btnMovePropDown);
+            this.gbMoveProp.Controls.Add(this.btnMovePropUp);
+            this.gbMoveProp.Controls.Add(this.btnMovePropLeft);
+            this.gbMoveProp.Controls.Add(this.btnMovePropRight);
+            this.gbMoveProp.Location = new System.Drawing.Point(12, 572);
+            this.gbMoveProp.Name = "gbMoveProp";
+            this.gbMoveProp.Size = new System.Drawing.Size(118, 131);
+            this.gbMoveProp.TabIndex = 80;
+            this.gbMoveProp.TabStop = false;
+            this.gbMoveProp.Text = "Move Selected Prop";
             // 
-            // checkBox3
+            // btnMovePropDown
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(10, 50);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(61, 17);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Layer 3";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.btnMovePropDown.Location = new System.Drawing.Point(44, 85);
+            this.btnMovePropDown.Name = "btnMovePropDown";
+            this.btnMovePropDown.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropDown.TabIndex = 12;
+            this.btnMovePropDown.Text = "\\/";
+            this.btnMovePropDown.UseVisualStyleBackColor = true;
+            this.btnMovePropDown.Click += new System.EventHandler(this.btnMovePropDown_Click);
+            // 
+            // btnMovePropUp
+            // 
+            this.btnMovePropUp.Location = new System.Drawing.Point(43, 19);
+            this.btnMovePropUp.Name = "btnMovePropUp";
+            this.btnMovePropUp.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropUp.TabIndex = 10;
+            this.btnMovePropUp.Text = "/\\";
+            this.btnMovePropUp.UseVisualStyleBackColor = true;
+            this.btnMovePropUp.Click += new System.EventHandler(this.btnMovePropUp_Click);
+            // 
+            // btnMovePropLeft
+            // 
+            this.btnMovePropLeft.Location = new System.Drawing.Point(11, 51);
+            this.btnMovePropLeft.Name = "btnMovePropLeft";
+            this.btnMovePropLeft.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropLeft.TabIndex = 7;
+            this.btnMovePropLeft.Text = "<";
+            this.btnMovePropLeft.UseVisualStyleBackColor = true;
+            this.btnMovePropLeft.Click += new System.EventHandler(this.btnMovePropLeft_Click);
+            // 
+            // btnMovePropRight
+            // 
+            this.btnMovePropRight.Location = new System.Drawing.Point(77, 51);
+            this.btnMovePropRight.Name = "btnMovePropRight";
+            this.btnMovePropRight.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropRight.TabIndex = 6;
+            this.btnMovePropRight.Text = ">";
+            this.btnMovePropRight.UseVisualStyleBackColor = true;
+            this.btnMovePropRight.Click += new System.EventHandler(this.btnMovePropRight_Click);
             // 
             // WorldMapEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 737);
+            this.Controls.Add(this.gbMoveProp);
             this.Controls.Add(this.panelNoScrollOnFocus1);
             this.Controls.Add(this.gbMapSize);
             this.Controls.Add(this.chkGrid);
@@ -676,6 +736,7 @@
             this.gbMapSize.ResumeLayout(false);
             this.gbMapSize.PerformLayout();
             this.panelNoScrollOnFocus1.ResumeLayout(false);
+            this.gbMoveProp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -732,6 +793,11 @@
         private System.Windows.Forms.Timer timerRenderLoop;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.GroupBox gbMoveProp;
+        private System.Windows.Forms.Button btnMovePropDown;
+        private System.Windows.Forms.Button btnMovePropUp;
+        private System.Windows.Forms.Button btnMovePropLeft;
+        private System.Windows.Forms.Button btnMovePropRight;
     }
 }
 

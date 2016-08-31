@@ -18,6 +18,8 @@ namespace IB2ToolsetMini
         #region Fields
         [JsonIgnore]
         public Bitmap propBitmap;
+        [JsonIgnore]
+        public ParentForm prntForm;
 
         private int _LocationX = 0;
         private int _LocationY = 0;
@@ -277,6 +279,10 @@ namespace IB2ToolsetMini
 
         public Prop()
         {
+        }
+        public void PassInParentForm(ParentForm p)
+        {
+            prntForm = p;
         }
         
         public void LoadPropBitmap(ParentForm prntForm)

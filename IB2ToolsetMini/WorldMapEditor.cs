@@ -1203,6 +1203,7 @@ namespace IB2ToolsetMini
                                 lastSelectedObjectTag = prp.PropTag;
                                 //prntForm.selectedLevelMapPropTag = prp.PropTag;
                                 panelView.ContextMenuStrip.Items.Add(prp.PropTag, null, handler); //string, image, handler
+                                prp.PassInParentForm(prntForm);
                                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = prp;
                             }
                         }
@@ -2031,6 +2032,7 @@ namespace IB2ToolsetMini
                     txtSelectedIconInfo.Text = "name: " + prp.PropName + Environment.NewLine + "tag: " + prp.PropTag;
                     lastSelectedObjectTag = prp.PropTag;
                     //prntForm.selectedLevelMapPropTag = prp.PropTag;
+                    prp.PassInParentForm(prntForm);
                     prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = prp;
                     return;
                 }
@@ -2377,6 +2379,58 @@ namespace IB2ToolsetMini
                 }
             }
             panelView.Focus();
+        }
+        private void btnMovePropUp_Click(object sender, EventArgs e)
+        {
+            foreach (Prop prp in area.Props)
+            {
+                if (prp.PropTag == lastSelectedObjectTag)
+                {
+                    if (prp.LocationY > 0)
+                    {
+                        prp.LocationY--;
+                    }
+                }
+            }
+        }
+        private void btnMovePropDown_Click(object sender, EventArgs e)
+        {
+            foreach (Prop prp in area.Props)
+            {
+                if (prp.PropTag == lastSelectedObjectTag)
+                {
+                    if (prp.LocationY < area.MapSizeY - 1)
+                    {
+                        prp.LocationY++;
+                    }
+                }
+            }
+        }
+        private void btnMovePropRight_Click(object sender, EventArgs e)
+        {
+            foreach (Prop prp in area.Props)
+            {
+                if (prp.PropTag == lastSelectedObjectTag)
+                {
+                    if (prp.LocationX < area.MapSizeX - 1)
+                    {
+                        prp.LocationX++;
+                    }
+                }
+            }
+        }
+        private void btnMovePropLeft_Click(object sender, EventArgs e)
+        {
+            foreach (Prop prp in area.Props)
+            {
+                if (prp.PropTag == lastSelectedObjectTag)
+                {
+                    if (prp.LocationX > 0)
+                    {
+                        prp.LocationX--;
+                    }
+                }
+            }
         }
         #endregion
 
