@@ -261,7 +261,7 @@ namespace IB2ToolsetMini
                         {
                             Area newArea = createNewArea(gffArea);
                             //go through GIT and find all creatures and place in .lvl file
-                            addPropsToArea(gff, newArea);
+                            addPropsToArea(gff, gffArea, newArea);
                             modIBmini.moduleAreasObjects.Add(newArea);
                         }
                     }
@@ -589,8 +589,9 @@ namespace IB2ToolsetMini
             newItem.ImageFileName = "prp_captive";
             return newItem;
         }
-        public void addPropsToArea(GffFile gff, Area area)
+        public void addPropsToArea(GffFile gff, GffFile gffARE, Area area)
         {
+            GffList tileList = (GffList)GetFieldByLabel(gffARE.TopLevelStruct, "TileList").Data;
             //go through list of creatures and create Props
             foreach (GffField field in gff.TopLevelStruct.Fields)
             {
@@ -631,17 +632,34 @@ namespace IB2ToolsetMini
                             //Xposition
                             else if (key2.Equals("XPosition"))
                             {
-                                int xLoc = (int)(((field2.ValueFloat + 0.5f) / 1.5f) - 6);
-                                newItem.LocationX = xLoc;
+                                if (tileList.StructList.Count > 0) //indoors
+                                {
+                                    int xLoc = (int)(((field2.ValueFloat + 0.5f) / 1.5f) - 6);
+                                    newItem.LocationX = xLoc;
+                                }
+                                else //outdoors
+                                {
+                                    int xLoc = (int)(((field2.ValueFloat + 0.5f) / 5f) - 16);
+                                    newItem.LocationX = xLoc;
+                                }
                                 //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
                                 //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2
                             }
                             //Yposition
                             else if (key2.Equals("YPosition"))
                             {
-                                int yLoc = (int)(((field2.ValueFloat + 0.5f) / 1.5f) - 6);
-                                //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
-                                newItem.LocationY = area.MapSizeY - yLoc;
+                                if (tileList.StructList.Count > 0) //indoors
+                                {
+                                    int yLoc = (int)(((field2.ValueFloat + 0.5f) / 1.5f) - 6);
+                                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                                    newItem.LocationY = area.MapSizeY - yLoc;
+                                }
+                                else //outdoors
+                                {
+                                    int yLoc = (int)(((field2.ValueFloat + 0.5f) / 5f) - 16);
+                                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                                    newItem.LocationY = area.MapSizeY - yLoc;
+                                }
                                 //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
                                 //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2
                             }
@@ -685,26 +703,28 @@ namespace IB2ToolsetMini
                 //width
                 else if (key.Equals("Width"))
                 {
-                    if (GetFieldByLabel(gffARE.TopLevelStruct, "DayNightCycle").ValueByte == 0) //indoors
+                    GffList tileList = (GffList)GetFieldByLabel(gffARE.TopLevelStruct, "TileList").Data;
+                    if (tileList.StructList.Count > 0) //indoors
                     {
                         area.MapSizeX = (int)((field.ValueInt * 6) - 12);
                     }
                     else //outdoors
                     {
-                        area.MapSizeX = (int)((field.ValueInt * 6) - 12);
+                        area.MapSizeX = (int)(field.ValueInt * 2);
                     }
                     
                 }
                 //height
                 else if (key.Equals("Height"))
                 {
-                    if (GetFieldByLabel(gffARE.TopLevelStruct, "DayNightCycle").ValueByte == 0) //indoors
+                    GffList tileList = (GffList)GetFieldByLabel(gffARE.TopLevelStruct, "TileList").Data;
+                    if (tileList.StructList.Count > 0) //indoors
                     {
                         area.MapSizeY = (int)((field.ValueInt * 6) - 12);
                     }
                     else //outdoors
                     {
-                        area.MapSizeY = (int)((field.ValueInt * 6) - 12);
+                        area.MapSizeY = (int)(field.ValueInt * 2);
                     }                    
                 }
             }
