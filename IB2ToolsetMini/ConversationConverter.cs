@@ -219,6 +219,23 @@ namespace IB2ToolsetMini
             return new StandardValuesCollection(DropdownStringLists.encounterTypeStringList);
         }
     }
+    public class AreaTypeConverter : StringConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            //true means show a combobox
+            return true;
+        }
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            //true will limit to list. false will show the list, but allow free-form entry
+            return true;
+        }
+        public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            return new StandardValuesCollection(DropdownStringLists.areaTypeStringList);
+        }
+    }
     public class MoverTypeConverter : StringConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
@@ -371,6 +388,7 @@ namespace IB2ToolsetMini
         public static List<string> itemTypeStringList; //catergory type (Armor, Ranged, Melee, General, Ring, Shield)
         public static List<string> conversationTypeStringList; //all conversations in module's conversation list
         public static List<string> encounterTypeStringList; //all encounters in module's encounter list
+        public static List<string> areaTypeStringList; //all encounters in module's encounter list
         public static List<string> moverTypeStringList; //none, random, patrol, daily, weekly, monthly, yearly
         public static List<string> playerClassTagsTypeStringList; //all tags in module's Player Classes list
         public static List<string> raceTagsTypeStringList; //all tags in module's races list

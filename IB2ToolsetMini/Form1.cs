@@ -548,6 +548,7 @@ namespace IB2ToolsetMini
             //loadMusicDropdownList();
             loadConversationDropdownList();
             loadEncounterDropdownList();
+            loadAreaDropdownList();
             loadPlayerClassesTagsList();
             loadRacesTagsList();
             loadSpellTagsList();
@@ -614,6 +615,15 @@ namespace IB2ToolsetMini
             foreach (Encounter enc in this.mod.moduleEncountersList)
             {
                 DropdownStringLists.encounterTypeStringList.Add(enc.encounterName);
+            }
+        }
+        public void loadAreaDropdownList()
+        {
+            DropdownStringLists.areaTypeStringList = new List<string>();
+            DropdownStringLists.areaTypeStringList.Add("none");
+            foreach (Area a in this.mod.moduleAreasObjects)
+            {
+                DropdownStringLists.areaTypeStringList.Add(a.Filename);
             }
         }
         /*public void loadMusicDropdownList()

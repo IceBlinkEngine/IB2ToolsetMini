@@ -1,13 +1,7 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.ComponentModel;
-using System.Drawing;
 using Newtonsoft.Json;
-//using IceBlink;
 
 namespace IB2ToolsetMini
 {
@@ -290,7 +284,8 @@ namespace IB2ToolsetMini
             set { worldTime = value; }
         }
 
-        [CategoryAttribute("02 - Starting Conditions"), DescriptionAttribute("Filename of starting Area (DO NOT include \".lvl\" extension)")]
+        [Browsable(true), TypeConverter(typeof(AreaTypeConverter))]
+        [CategoryAttribute("02 - Starting Conditions"), DescriptionAttribute("Filename of starting Area (no extension)")]
         public string startingArea
         {
             get { return _startingArea; }
@@ -371,26 +366,5 @@ namespace IB2ToolsetMini
             }
             return toReturn;
         }
-        /*public void loadAreas(string path)
-        {
-            Area newArea = new Area();
-            foreach (string areaName in moduleAreasList)
-            {
-                try
-                {
-                    newArea = newArea.loadAreaFile(path + areaName + ".level");
-                    if (newArea == null)
-                    {
-                        MessageBox.Show("returned a null area filling areaList");
-                    }
-                    moduleAreasObjects.Add(newArea);
-                    //MessageBox.Show("open file success");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("failed to open all files: " + ex.ToString() + ex.Message);
-                }
-            }
-        }*/
     }
 }

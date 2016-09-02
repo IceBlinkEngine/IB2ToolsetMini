@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -13,17 +15,9 @@ namespace IB2ToolsetMini
     public partial class MergerEditor : Form
     {
         private Module mod = new Module();
+        private Module mergeMod = new Module();
         private ParentForm prntForm;
-
-        private List<PlayerClass> classListImport = new List<PlayerClass>();
-        private List<Race> raceListImport = new List<Race>();
-        private List<Spell> spellListImport = new List<Spell>();
-        private List<Trait> traitListImport = new List<Trait>();
-        private List<Effect> effectListImport = new List<Effect>();
-        private List<Creature> creatureListImport = new List<Creature>();
-        private List<Item> itemListImport = new List<Item>();
-        //private Props propListImport = new Props();
-
+                
         public MergerEditor(Module m, ParentForm pf)
         {
             InitializeComponent();
@@ -38,158 +32,108 @@ namespace IB2ToolsetMini
             {
                 if (cmbDataType.SelectedIndex == 0) //Class
                 {
-                    if (!classExists(classListImport[lbxImport.SelectedIndex]))
+                    if (!classExists(mergeMod.modulePlayerClassList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.modulePlayerClassList.Add(classListImport[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.mod.modulePlayerClassList.Add(mergeMod.modulePlayerClassList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
                 }
                 else if (cmbDataType.SelectedIndex == 1) //Race
                 {
-                    if (!raceExists(raceListImport[lbxImport.SelectedIndex]))
+                    if (!raceExists(mergeMod.moduleRacesList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleRacesList.Add(raceListImport[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.mod.moduleRacesList.Add(mergeMod.moduleRacesList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
                 }
                 else if (cmbDataType.SelectedIndex == 2) //Spell
                 {
-                    if (!spellExists(spellListImport[lbxImport.SelectedIndex]))
+                    if (!spellExists(mergeMod.moduleSpellsList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleSpellsList.Add(spellListImport[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.mod.moduleSpellsList.Add(mergeMod.moduleSpellsList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
                 }
                 else if (cmbDataType.SelectedIndex == 3) //Trait
                 {
-                    if (!traitExists(traitListImport[lbxImport.SelectedIndex]))
+                    if (!traitExists(mergeMod.moduleTraitsList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleTraitsList.Add(traitListImport[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.mod.moduleTraitsList.Add(mergeMod.moduleTraitsList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
                 }
                 else if (cmbDataType.SelectedIndex == 4) //Effect
                 {
-                    if (!effectExists(effectListImport[lbxImport.SelectedIndex]))
+                    if (!effectExists(mergeMod.moduleEffectsList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleEffectsList.Add(effectListImport[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.mod.moduleEffectsList.Add(mergeMod.moduleEffectsList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
                 }
                 else if (cmbDataType.SelectedIndex == 5) //Creature
                 {
-                    if (!creatureExists(creatureListImport[lbxImport.SelectedIndex]))
+                    if (!creatureExists(mergeMod.moduleCreaturesList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleCreaturesList.Add(creatureListImport[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.mod.moduleCreaturesList.Add(mergeMod.moduleCreaturesList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
                 }
                 else if (cmbDataType.SelectedIndex == 6) //Item
                 {
-                    if (!itemExists(itemListImport[lbxImport.SelectedIndex]))
+                    if (!itemExists(mergeMod.moduleItemsList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleItemsList.Add(itemListImport[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.mod.moduleItemsList.Add(mergeMod.moduleItemsList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
                 }
-                /*else if (cmbDataType.SelectedIndex == 7) //Prop
+                else if (cmbDataType.SelectedIndex == 7) //Area
                 {
-                    if (!propExists(propListImport.propsList[lbxImport.SelectedIndex]))
+                    if (!areaExists(mergeMod.moduleAreasObjects[lbxImport.SelectedIndex]))
                     {
-                        prntForm.propsList.propsList.Add(propListImport.propsList[lbxImport.SelectedIndex]);
+                        prntForm.mod.moduleAreasObjects.Add(mergeMod.moduleAreasObjects[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
-                }*/                
+                }
+                else if (cmbDataType.SelectedIndex == 8) //Convo
+                {
+                    if (!convoExists(mergeMod.moduleConvoList[lbxImport.SelectedIndex]))
+                    {
+                        prntForm.mod.moduleConvoList.Add(mergeMod.moduleConvoList[lbxImport.SelectedIndex].Clone());
+                        refreshImportListBox();
+                        refreshMainListBox();
+                    }
+                }
+                else if (cmbDataType.SelectedIndex == 9) //Encounter
+                {
+                    if (!encExists(mergeMod.moduleEncountersList[lbxImport.SelectedIndex]))
+                    {
+                        prntForm.mod.moduleEncountersList.Add(mergeMod.moduleEncountersList[lbxImport.SelectedIndex].DeepCopy());
+                        refreshImportListBox();
+                        refreshMainListBox();
+                    }
+                }
             }
         }
         private void btnFolderImport_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory;
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+            openFileDialog1.InitialDirectory = Environment.CurrentDirectory + "\\modules";
+            //Empty the FileName text box of the dialog
+            openFileDialog1.FileName = String.Empty;
+            openFileDialog1.Filter = "Module files (*.mod)|*.mod|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
             {
-                if (folderBrowserDialog1.SelectedPath != "")
-                {
-                    string folder = folderBrowserDialog1.SelectedPath;
-                    txtFolderImport.Text = folder;
-                    loadAllData(folder);
-                }
+                loadMergeModule(Path.GetFullPath(openFileDialog1.FileName));
             }            
-        }
-        private void loadAllData(string folderpath)
-        {
-            /*try
-            {
-                classListImport = prntForm.loadPlayerClassesFile(folderpath + "\\playerClasses.json");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import classes file: " + ex.ToString());
-            }
-            try
-            {
-                raceListImport = prntForm.loadRacesFile(folderpath + "\\races.json");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import races file: " + ex.ToString());
-            }
-            try
-            {
-                spellListImport = prntForm.loadSpellsFile(folderpath + "\\spells.json");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import spells file: " + ex.ToString());
-            }
-            try
-            {
-                traitListImport = prntForm.loadTraitsFile(folderpath + "\\traits.json");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import traits file: " + ex.ToString());
-            }
-            try
-            {
-                effectListImport = prntForm.loadEffectsFile(folderpath + "\\effects.json");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import effects file: " + ex.ToString());
-            }
-            try
-            {
-                creatureListImport = prntForm.loadCreaturesFile(folderpath + "\\creatures.json");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import classes file: " + ex.ToString());
-            }*/
-            /*try
-            {
-                propListImport = prntForm.loadPropsFile(folderpath + "\\props.prp");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import props file: " + ex.ToString());
-            }*/
-            /*try
-            {
-                itemListImport = prntForm.loadItemsFile(folderpath + "\\items.json");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("failed to open import items file: " + ex.ToString());
-            }*/
         }
         private void cmbDataType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -238,10 +182,18 @@ namespace IB2ToolsetMini
                 {
                     pgMain.SelectedObject = prntForm.mod.moduleItemsList[lbxMain.SelectedIndex];
                 }
-                /*else if (cmbDataType.SelectedIndex == 7) //Prop
+                else if (cmbDataType.SelectedIndex == 7) //Areas
                 {
-                    pgMain.SelectedObject = prntForm.propsList[lbxMain.SelectedIndex];
-                }*/   
+                    pgMain.SelectedObject = prntForm.mod.moduleAreasObjects[lbxMain.SelectedIndex];
+                }
+                else if (cmbDataType.SelectedIndex == 8) //Convos
+                {
+                    pgMain.SelectedObject = prntForm.mod.moduleConvoList[lbxMain.SelectedIndex];
+                }
+                else if (cmbDataType.SelectedIndex == 9) //Encounters
+                {
+                    pgMain.SelectedObject = prntForm.mod.moduleEncountersList[lbxMain.SelectedIndex];
+                }
             }
         }
         private void lbxImport_SelectedIndexChanged(object sender, EventArgs e)
@@ -250,41 +202,113 @@ namespace IB2ToolsetMini
             {
                 if (cmbDataType.SelectedIndex == 0) //Class
                 {
-                    pgImport.SelectedObject = classListImport[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergeMod.modulePlayerClassList[lbxImport.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 1) //Race
                 {
-                    pgImport.SelectedObject = raceListImport[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergeMod.moduleRacesList[lbxImport.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 2) //Spell
                 {
-                    pgImport.SelectedObject = spellListImport[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergeMod.moduleSpellsList[lbxImport.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 3) //Trait
                 {
-                    pgImport.SelectedObject = traitListImport[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergeMod.moduleTraitsList[lbxImport.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 4) //Effect
                 {
-                    pgImport.SelectedObject = effectListImport[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergeMod.moduleEffectsList[lbxImport.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 5) //Creature
                 {
-                    pgImport.SelectedObject = creatureListImport[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergeMod.moduleCreaturesList[lbxImport.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 6) //Item
                 {
-                    pgImport.SelectedObject = itemListImport[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergeMod.moduleItemsList[lbxImport.SelectedIndex];
                 }
-                /*else if (cmbDataType.SelectedIndex == 7) //Prop
+                else if (cmbDataType.SelectedIndex == 7) //Areas
                 {
-                    pgImport.SelectedObject = propListImport.propsList[lbxImport.SelectedIndex];
-                }*/ 
+                    pgImport.SelectedObject = mergeMod.moduleAreasObjects[lbxImport.SelectedIndex];
+                }
+                else if (cmbDataType.SelectedIndex == 8) //Convos
+                {
+                    pgImport.SelectedObject = mergeMod.moduleConvoList[lbxImport.SelectedIndex];
+                }
+                else if (cmbDataType.SelectedIndex == 9) //Encounters
+                {
+                    pgImport.SelectedObject = mergeMod.moduleEncountersList[lbxImport.SelectedIndex];
+                }
             }
         }
         #endregion
 
         #region Methods
+        public void loadMergeModule(string modfilepath)
+        {
+            using (StreamReader sr = File.OpenText(modfilepath))
+            {
+                string s = "";
+                s = sr.ReadLine();
+                if (!s.Equals("MODULE"))
+                {
+                    MessageBox.Show("module file did not have 'MODULE' on first line, aborting...");
+                    return;
+                }
+                //Read in the module file line
+                for (int i = 0; i < 99; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("AREAS")))
+                    {
+                        break;
+                    }
+                    mergeMod = (Module)JsonConvert.DeserializeObject(s, typeof(Module));
+                }
+                //Read in the areas
+                mergeMod.moduleAreasObjects.Clear();
+                Area ar;
+                for (int i = 0; i < 9999; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("ENCOUNTERS")))
+                    {
+                        break;
+                    }
+                    ar = (Area)JsonConvert.DeserializeObject(s, typeof(Area));
+                    mergeMod.moduleAreasObjects.Add(ar);
+                }
+                //Read in the encounters
+                mergeMod.moduleEncountersList.Clear();
+                Encounter enc;
+                for (int i = 0; i < 9999; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("CONVOS")))
+                    {
+                        break;
+                    }
+                    enc = (Encounter)JsonConvert.DeserializeObject(s, typeof(Encounter));
+                    mergeMod.moduleEncountersList.Add(enc);
+                }
+                //Read in the convos
+                mergeMod.moduleConvoList.Clear();
+                Convo cnv;
+                for (int i = 0; i < 9999; i++)
+                {
+                    s = sr.ReadLine();
+                    if ((s == null) || (s.Equals("IMAGES")) || (s.Equals("END")))
+                    {
+                        break;
+                    }
+                    cnv = (Convo)JsonConvert.DeserializeObject(s, typeof(Convo));
+                    mergeMod.moduleConvoList.Add(cnv);
+                }
+                //Read in the images
+                mergeMod.moduleImageDataList.Clear();
+            }
+        }
         private void refreshMainListBox()
         {
             if (cmbDataType.SelectedIndex == 0) //Class
@@ -343,14 +367,30 @@ namespace IB2ToolsetMini
                 lbxMain.DisplayMember = "name";
                 lbxMain.EndUpdate();
             }
-            /*else if (cmbDataType.SelectedIndex == 7) //Prop
+            else if (cmbDataType.SelectedIndex == 7) //Areas
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.propsList.propsList;
-                lbxMain.DisplayMember = "PropNameWithNotes";
+                lbxMain.DataSource = prntForm.mod.moduleAreasObjects;
+                lbxMain.DisplayMember = "Filename";
                 lbxMain.EndUpdate();
-            }*/   
+            }
+            else if (cmbDataType.SelectedIndex == 8) //Convos
+            {
+                lbxMain.BeginUpdate();
+                lbxMain.DataSource = null;
+                lbxMain.DataSource = prntForm.mod.moduleConvoList;
+                lbxMain.DisplayMember = "ConvoFileName";
+                lbxMain.EndUpdate();
+            }
+            else if (cmbDataType.SelectedIndex == 9) //Encounters
+            {
+                lbxMain.BeginUpdate();
+                lbxMain.DataSource = null;
+                lbxMain.DataSource = prntForm.mod.moduleEncountersList;
+                lbxMain.DisplayMember = "encounterName";
+                lbxMain.EndUpdate();
+            }
         }
         private void refreshImportListBox()
         {
@@ -358,7 +398,7 @@ namespace IB2ToolsetMini
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = classListImport;
+                lbxImport.DataSource = mergeMod.modulePlayerClassList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
@@ -366,7 +406,7 @@ namespace IB2ToolsetMini
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = raceListImport;
+                lbxImport.DataSource = mergeMod.moduleRacesList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
@@ -374,7 +414,7 @@ namespace IB2ToolsetMini
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = spellListImport;
+                lbxImport.DataSource = mergeMod.moduleSpellsList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
@@ -382,7 +422,7 @@ namespace IB2ToolsetMini
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = traitListImport;
+                lbxImport.DataSource = mergeMod.moduleTraitsList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
@@ -390,7 +430,7 @@ namespace IB2ToolsetMini
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = effectListImport;
+                lbxImport.DataSource = mergeMod.moduleEffectsList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
@@ -398,7 +438,7 @@ namespace IB2ToolsetMini
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = creatureListImport;
+                lbxImport.DataSource = mergeMod.moduleCreaturesList;
                 lbxImport.DisplayMember = "cr_name";
                 lbxImport.EndUpdate();
             }
@@ -406,18 +446,34 @@ namespace IB2ToolsetMini
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = itemListImport;
+                lbxImport.DataSource = mergeMod.moduleItemsList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
-            /*else if (cmbDataType.SelectedIndex == 8) //Prop
+            else if (cmbDataType.SelectedIndex == 7) //Areas
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = propListImport.propsList;
-                lbxImport.DisplayMember = "PropNameWithNotes";
+                lbxImport.DataSource = mergeMod.moduleAreasObjects;
+                lbxImport.DisplayMember = "Filename";
                 lbxImport.EndUpdate();
-            }*/   
+            }
+            else if (cmbDataType.SelectedIndex == 8) //Convos
+            {
+                lbxImport.BeginUpdate();
+                lbxImport.DataSource = null;
+                lbxImport.DataSource = mergeMod.moduleConvoList;
+                lbxImport.DisplayMember = "ConvoFileName";
+                lbxImport.EndUpdate();
+            }
+            else if (cmbDataType.SelectedIndex == 9) //Encounters
+            {
+                lbxImport.BeginUpdate();
+                lbxImport.DataSource = null;
+                lbxImport.DataSource = mergeMod.moduleEncountersList;
+                lbxImport.DisplayMember = "encounterName";
+                lbxImport.EndUpdate();
+            }
         }        
         private bool classExists(PlayerClass itImp)
         {
@@ -496,11 +552,33 @@ namespace IB2ToolsetMini
             }
             return false;
         }
-        private bool propExists(Prop itImp)
+        private bool areaExists(Area itImp)
         {
-            foreach (Prop it in prntForm.mod.modulePropsList)
+            foreach (Area it in prntForm.mod.moduleAreasObjects)
             {
-                if (it.PropTag == itImp.PropTag)
+                if (it.Filename == itImp.Filename)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool convoExists(Convo itImp)
+        {
+            foreach (Convo it in prntForm.mod.moduleConvoList)
+            {
+                if (it.ConvoFileName == itImp.ConvoFileName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool encExists(Encounter itImp)
+        {
+            foreach (Encounter it in prntForm.mod.moduleEncountersList)
+            {
+                if (it.encounterName == itImp.encounterName)
                 {
                     return true;
                 }
