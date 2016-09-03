@@ -27,6 +27,48 @@ namespace IB2ToolsetMini
             prntForm = pf;
         }
 
+        public void doConversionInfoAndSave()
+        {
+            //print a list of portraits need for the conversion and the nameTags used in convos
+            try
+            {
+                File.Delete(prntForm._mainDirectory + "\\modules\\portraits_needed.txt");
+            }
+            catch { }
+            File.AppendAllLines(prntForm._mainDirectory + "\\modules\\portraits_needed.txt", portraits_needed);
+            //print a list of portraits need for the conversion and the nameTags used in convos
+            try
+            {
+                File.Delete(prntForm._mainDirectory + "\\modules\\scripts_needed.txt");
+            }
+            catch { }
+            File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scripts_needed.txt", scripts_needed);
+            try
+            {
+                File.Delete(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt");
+            }
+            catch { }
+            File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt", scriptTypesNeeded);
+            //SAVE out the module file   
+            string fullPathFilename = prntForm._mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
+            //save module data
+            prntForm.saveModule(modIBmini, fullPathFilename);
+            //save areas
+            prntForm.saveAreas(modIBmini, fullPathFilename);
+            //save encounters
+            prntForm.saveEncounters(modIBmini, fullPathFilename);
+            //save convos
+            prntForm.saveConvos(modIBmini, fullPathFilename);
+            //finished
+            MessageBox.Show("Moduled saved as: " + modIBmini.moduleName + ".mod in the module folder.");
+            //delete 'temp' directory
+            try
+            {
+                Directory.Delete(prntForm._mainDirectory + "\\temp", true);
+            }
+            catch { }
+            this.Close();
+        }
         private void btnConvertFromModFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = Environment.CurrentDirectory;
@@ -39,7 +81,7 @@ namespace IB2ToolsetMini
             if (result == DialogResult.OK) // Test result.
             {
                 string filename = Path.GetFullPath(openFileDialog1.FileName);
-                string directory = Path.GetDirectoryName(openFileDialog1.FileName);
+                //string directory = Path.GetDirectoryName(openFileDialog1.FileName);
                 //read the .mod, iterate through all the files and convert them one by one and add to IBmini module
                 ErfFile erf = new ErfFile(filename);
 
@@ -49,6 +91,7 @@ namespace IB2ToolsetMini
                 modIBmini.moduleLabelName = Path.GetFileNameWithoutExtension(filename);
                 modIBmini.moduleAreasObjects.Clear();
                 modIBmini.moduleEncountersList.Clear();
+                modIBmini.moduleJournal.Clear();
 
                 //create 'temp' directory
                 Directory.CreateDirectory(prntForm._mainDirectory + "\\temp");
@@ -66,48 +109,11 @@ namespace IB2ToolsetMini
 
                     }
                 }
+                //go through all files and convert them one by one and add to IBmini module
                 processFiles(prntForm._mainDirectory + "\\temp");
-                //print a list of portraits need for the conversion and the nameTags used in convos
-                try
-                {
-                    File.Delete(prntForm._mainDirectory + "\\modules\\portraits_needed.txt");
-                }
-                catch { }
-                File.AppendAllLines(prntForm._mainDirectory + "\\modules\\portraits_needed.txt", portraits_needed);
-                //print a list of portraits need for the conversion and the nameTags used in convos
-                try
-                {
-                    File.Delete(prntForm._mainDirectory + "\\modules\\scripts_needed.txt");
-                }
-                catch { }
-                File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scripts_needed.txt", scripts_needed);
-                try
-                {
-                    File.Delete(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt");
-                }
-                catch { }
-                File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt", scriptTypesNeeded);
-                //SAVE out the module file   
-                string fullPathFilename = prntForm._mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
-                //save module data
-                prntForm.saveModule(modIBmini, fullPathFilename);
-                //save areas
-                prntForm.saveAreas(modIBmini, fullPathFilename);
-                //save encounters
-                prntForm.saveEncounters(modIBmini, fullPathFilename);
-                //save convos
-                prntForm.saveConvos(modIBmini, fullPathFilename);
-                //finished
-                MessageBox.Show("Moduled saved as: " + modIBmini.moduleName + ".mod in the module folder.");
-                //delete 'temp' directory
-                try
-                {
-                    Directory.Delete(prntForm._mainDirectory + "\\temp", true);
-                }
-                catch { }
+                doConversionInfoAndSave();       
             }
         }
-
         private void btnConvertFromModFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory;
@@ -122,25 +128,14 @@ namespace IB2ToolsetMini
                     modIBmini.moduleLabelName = Path.GetDirectoryName(folderBrowserDialog1.SelectedPath);
                     modIBmini.moduleAreasObjects.Clear();
                     modIBmini.moduleEncountersList.Clear();
+                    modIBmini.moduleJournal.Clear();
+
                     //go through all files and convert them one by one and add to IBmini module
                     processFiles(folderBrowserDialog1.SelectedPath);
-                    
-                    //SAVE out the module file   
-                    string fullPathFilename = prntForm._mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
-                    //save module data
-                    prntForm.saveModule(modIBmini, fullPathFilename);
-                    //save areas
-                    prntForm.saveAreas(modIBmini, fullPathFilename);
-                    //save encounters
-                    prntForm.saveEncounters(modIBmini, fullPathFilename);
-                    //save convos
-                    prntForm.saveConvos(modIBmini, fullPathFilename);
-                    //finished
-                    MessageBox.Show("Moduled saved as: " + modIBmini.moduleName + ".mod in the module folder.");
+                    doConversionInfoAndSave();
                 }
             }
         }
-
         public void loadDefaultModule()
         {
             using (StreamReader sr = File.OpenText(prntForm._mainDirectory + "\\default\\NewModule\\NewModule.mod"))
@@ -205,7 +200,6 @@ namespace IB2ToolsetMini
                 modIBmini.moduleImageDataList.Clear();
             }
         }
-
         public void processFiles(string folderPath)
         {
             foreach (string filename in Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories))
@@ -747,7 +741,6 @@ namespace IB2ToolsetMini
 
             return area;
         }
-
         public void convertJournal(GffFile gff)
         {
             foreach (GffField field in gff.TopLevelStruct.Fields)
@@ -1221,9 +1214,11 @@ namespace IB2ToolsetMini
             {
                 newAction.a_script = "gaGiveGold.cs";
                 newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_take_gold"))
+            {
+                newAction.a_script = "gaTakeGold.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
             }
             else if (scriptName.Equals("ga_open_store"))
             {
@@ -1238,8 +1233,12 @@ namespace IB2ToolsetMini
                 newAction.a_script = "gaGiveItem.cs";
                 newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
                 newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("ga_destroy_item"))
+            {
+                newAction.a_script = "gaTakeItem.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
             }
             else if (scriptName.Equals("ga_journal"))
             {
@@ -1249,11 +1248,11 @@ namespace IB2ToolsetMini
             }
             else
             {
-                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
-                scriptInfo += "::p1=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "---";
-                scriptInfo += "::p2=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "---";
-                scriptInfo += "::p3=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "---";
-                scriptInfo += "::p4=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "---";
+                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + " --> ";
+                scriptInfo += "::p1 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "    ";
+                scriptInfo += "::p2 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "    ";
+                scriptInfo += "::p3 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "    ";
+                scriptInfo += "::p4 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "    ";
                 scripts_needed.Add("|" + filename + scriptInfo);
                 if (!scriptTypesNeeded.Contains(scriptName)) { scriptTypesNeeded.Add(scriptName); }
                 newEntryNode.conversationText += scriptInfo;
@@ -1351,13 +1350,205 @@ namespace IB2ToolsetMini
                     newCondition.c_parameter_4 = parm3;
                 }
             }
-            else if (scriptName.Equals("gc_check_class"))
+            else if ((scriptName.Equals("gc_check_class")) || (scriptName.Equals("gc_class_level")))
             {
+                //Example: to check if the current party leader PC is a ranger (-1, ranger, 1)
+                //         to check if the main PC is a level 4 or greater wizard (0, wizard, 4)
                 newCondition.c_script = "gcCheckIsClassLevel.cs";
+                newCondition.c_parameter_1 = "-1";
+                int pcClass = -1;
+                try
+                {
+                    pcClass = Convert.ToInt32(GetParameterDataByFieldLabelAndNumber(thisStruct, 1));
+                }
+                catch { }
+                if (pcClass == 0) { newCondition.c_parameter_2 = "barbarian"; }
+                else if (pcClass == 1) { newCondition.c_parameter_2 = "bard"; }
+                else if (pcClass == 2) { newCondition.c_parameter_2 = "cleric"; }
+                else if (pcClass == 3) { newCondition.c_parameter_2 = "druid"; }
+                else if (pcClass == 4) { newCondition.c_parameter_2 = "fighter"; }
+                else if (pcClass == 5) { newCondition.c_parameter_2 = "monk"; }
+                else if (pcClass == 6) { newCondition.c_parameter_2 = "paladin"; }
+                else if (pcClass == 7) { newCondition.c_parameter_2 = "ranger"; }
+                else if (pcClass == 8) { newCondition.c_parameter_2 = "thief"; }
+                else if ((pcClass == 9) || (pcClass == 10) || (pcClass == 39)) { newCondition.c_parameter_2 = "wizard"; }
+
+                string parm3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                if (parm3.StartsWith(">"))
+                {
+                    newCondition.c_parameter_3 = parm3.Substring(1);
+                }
+                else
+                {
+                    newCondition.c_parameter_3 = parm3;
+                }
+                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
+            }
+            else if (scriptName.Equals("gc_check_race_pc"))
+            {
+                newCondition.c_script = "gcCheckIsRace.cs";
+                newCondition.c_parameter_1 = "-1";
+                int race = -1;
+                try
+                {
+                    race = Convert.ToInt32(GetParameterDataByFieldLabelAndNumber(thisStruct, 1));
+                }
+                catch { }
+                if (race == 1) { newCondition.c_parameter_2 = "dwarf"; }
+                else if (race == 2) { newCondition.c_parameter_2 = "elf"; }
+                else if (race == 3) { newCondition.c_parameter_2 = "gnome"; }
+                else if (race == 4) { newCondition.c_parameter_2 = "halfelf"; }
+                else if (race == 5) { newCondition.c_parameter_2 = "halfling"; }
+                else if (race == 6) { newCondition.c_parameter_2 = "halforc"; }
+                else if (race == 7) { newCondition.c_parameter_2 = "human"; }
+                else if (race == 8) { newCondition.c_parameter_2 = "outsider"; }
+                else newCondition.c_parameter_2 = "nonIB_race:" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+            }
+            else if (scriptName.Equals("gc_check_stats"))
+            {
+                //str 0, dex 1, con 2, int 3, wis 4, cha 5
+                newCondition.c_script = "gcCheckAttribute.cs";
+                newCondition.c_parameter_1 = "-1";
+                int att = -1;
+                try
+                {
+                    att = Convert.ToInt32(GetParameterDataByFieldLabelAndNumber(thisStruct, 1));
+                }
+                catch { }
+                if (att == 0) { newCondition.c_parameter_2 = "str"; }
+                else if (att == 1) { newCondition.c_parameter_2 = "dex"; }
+                else if (att == 2) { newCondition.c_parameter_2 = "con"; }
+                else if (att == 3) { newCondition.c_parameter_2 = "int"; }
+                else if (att == 4) { newCondition.c_parameter_2 = "wis"; }
+                else if (att == 5) { newCondition.c_parameter_2 = "cha"; }
+                int val = -1;
+                try
+                {
+                    val = Convert.ToInt32(GetParameterDataByFieldLabelAndNumber(thisStruct, 2));
+                }
+                catch { }
+                newCondition.c_parameter_3 = ">";
+                newCondition.c_parameter_4 = (val - 1).ToString();
+            }
+            else if (scriptName.Equals("gc_is_in_party"))
+            {
+                newCondition.c_script = "gcCheckPcInPartyByName.cs";
                 newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
-                newCondition.c_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
-                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
-                newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
+            }
+            else if (scriptName.Equals("gc_is_male"))
+            {
+                newCondition.c_script = "gcCheckIsMale.cs";
+                newCondition.c_parameter_1 = "-1";
+            }
+            else if (scriptName.Equals("gc_skill_rank"))
+            {
+                newCondition.c_script = "gcCheckHasTrait.cs";
+                newCondition.c_parameter_1 = "-1";
+                int skill = -1;
+                int rank = -1;
+                try
+                {
+                    skill = Convert.ToInt32(GetParameterDataByFieldLabelAndNumber(thisStruct, 2));
+                }
+                catch { }
+                try
+                {
+                    rank = Convert.ToInt32(GetParameterDataByFieldLabelAndNumber(thisStruct, 3));
+                }
+                catch { }
+                /*skill ints
+                0   APPRAISE
+                1   BLUFF
+                2   CONCENTRATION
+                3   CRAFT ALCHEMY
+                4   CRAFT ARMOR
+                5   CRAFT WEAPON
+                6   DIPLOMACY
+                7   DISABLE DEVICE
+                8   DISCIPLINE
+                9   HEAL
+                10  HIDE
+                11  INTIMIDATE
+                12  LISTEN
+                13  LORE
+                14  MOVE SILENTLY
+                15  OPEN LOCK
+                16  PARRY
+                17  PERFORM
+                18  RIDE
+                19  SEARCH
+                20  CRAFT TRAP
+                21  SLEIGHT OF HAND
+                22  SPELL CRAFT
+                23  SPOT
+                24  SURVIVAL
+                25  TAUNT
+                26  TUMBLE
+                27  USE MAGIC DEVICE*/
+                if ((skill == 1) && (rank < 5)) { newCondition.c_parameter_2 = "bluff"; }
+                else if ((skill == 1) && (rank >= 5)) { newCondition.c_parameter_2 = "bluff2"; }
+                else if ((skill == 6) && (rank < 5)) { newCondition.c_parameter_2 = "diplomacy"; }
+                else if ((skill == 6) && (rank >= 5)) { newCondition.c_parameter_2 = "diplomacy2"; }
+                else if (((skill == 7) || (skill == 15)) && (rank < 5)) { newCondition.c_parameter_2 = "disarmdevice"; }
+                else if (((skill == 7) || (skill == 15)) && (rank >= 5)) { newCondition.c_parameter_2 = "disarmdevice2"; }
+                else if ((skill == 11) && (rank < 5)) { newCondition.c_parameter_2 = "intimidate"; }
+                else if ((skill == 11) && (rank >= 5)) { newCondition.c_parameter_2 = "intimidate2"; }
+                else if ((skill == 21) && (rank < 5)) { newCondition.c_parameter_2 = "pickpocket"; }
+                else if ((skill == 21) && (rank >= 5)) { newCondition.c_parameter_2 = "pickpocket2"; }
+                else if (((skill == 23) || (skill == 19)) && (rank < 5)) { newCondition.c_parameter_2 = "spot"; }
+                else if (((skill == 23) || (skill == 19)) && (rank >= 5)) { newCondition.c_parameter_2 = "spot2"; }
+                else if (((skill == 14) || (skill == 10)) && (rank < 5)) { newCondition.c_parameter_2 = "stealth"; }
+                else if (((skill == 14) || (skill == 10)) && (rank >= 5)) { newCondition.c_parameter_2 = "stealth2"; }
+                else newCondition.c_parameter_2 = "nonIB_skill:" + skill.ToString();
+            }
+            else if (scriptName.Equals("gc_skill_dc"))
+            {
+                newCondition.c_script = "gcPassSkillCheck.cs";
+                newCondition.c_parameter_1 = "-1";
+                int skill = -1;
+                try
+                {
+                    skill = Convert.ToInt32(GetParameterDataByFieldLabelAndNumber(thisStruct, 1));
+                }
+                catch { }
+                /*skill ints
+                0   APPRAISE
+                1   BLUFF
+                2   CONCENTRATION
+                3   CRAFT ALCHEMY
+                4   CRAFT ARMOR
+                5   CRAFT WEAPON
+                6   DIPLOMACY
+                7   DISABLE DEVICE
+                8   DISCIPLINE
+                9   HEAL
+                10  HIDE
+                11  INTIMIDATE
+                12  LISTEN
+                13  LORE
+                14  MOVE SILENTLY
+                15  OPEN LOCK
+                16  PARRY
+                17  PERFORM
+                18  RIDE
+                19  SEARCH
+                20  CRAFT TRAP
+                21  SLEIGHT OF HAND
+                22  SPELL CRAFT
+                23  SPOT
+                24  SURVIVAL
+                25  TAUNT
+                26  TUMBLE
+                27  USE MAGIC DEVICE*/
+                if (skill == 1) { newCondition.c_parameter_2 = "bluff"; }
+                else if (skill == 6) { newCondition.c_parameter_2 = "diplomacy"; }
+                else if ((skill == 7) || (skill == 15)) { newCondition.c_parameter_2 = "disarmdevice"; }
+                else if (skill == 11) { newCondition.c_parameter_2 = "intimidate"; }
+                else if (skill == 21) { newCondition.c_parameter_2 = "pickpocket"; }
+                else if ((skill == 23) || (skill == 19)) { newCondition.c_parameter_2 = "spot"; }
+                else if ((skill == 14) || (skill == 10)) { newCondition.c_parameter_2 = "stealth"; }
+                else newCondition.c_parameter_2 = "nonIB_skill:" + skill.ToString();
+                newCondition.c_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
             }
             else if (scriptName.Equals("gc_check_gold"))
             {
@@ -1408,11 +1599,11 @@ namespace IB2ToolsetMini
             }
             else
             {
-                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + "-->";
-                scriptInfo += "::p1=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "---";
-                scriptInfo += "::p2=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "---";
-                scriptInfo += "::p3=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "---";
-                scriptInfo += "::p4=" + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "---";
+                string scriptInfo = "|***" + scriptName + "(nonIBscript)" + " --> ";
+                scriptInfo += "::p1 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 1) + "    ";
+                scriptInfo += "::p2 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 2) + "    ";
+                scriptInfo += "::p3 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 3) + "    ";
+                scriptInfo += "::p4 = " + GetParameterDataByFieldLabelAndNumber(thisStruct, 4) + "    ";
                 scripts_needed.Add("|" + filename + scriptInfo);
                 if (!scriptTypesNeeded.Contains(scriptName)) { scriptTypesNeeded.Add(scriptName); }
                 newSyncStruct.scriptInfoForEndOfText += scriptInfo;
