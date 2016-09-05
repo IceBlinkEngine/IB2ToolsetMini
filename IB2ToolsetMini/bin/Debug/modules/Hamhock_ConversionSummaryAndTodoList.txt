@@ -1,0 +1,730 @@
+TASKS TODO
+-build areas
+-build encounters
+-build shops
+-build containers
+-go through all convos and verify scripts
+-find and assign portraits to convos
+-find and assign tokens to custom creatures
+-find and assign item images to custom items
+
+POSSIBLE COMPANIONS
+Khelvar
+Gimak
+Thraigin
+Duke
+Laurelin
+Duke2
+Laurelin2
+Elros
+Galrich2
+Hood
+Krondor
+Soldier
+Railz
+Shade
+Spell
+
+PORTRAITS NEEDED
+ptr_alexandrite
+ptr_altar
+ptr_ambush
+ptr_assassination
+ptr_assassins
+ptr_baim
+ptr_baim2
+ptr_balfanin
+ptr_barley
+ptr_belana2
+ptr_belanaintro
+ptr_beryl
+ptr_bill
+ptr_blackspike
+ptr_boldak
+ptr_book
+ptr_borim
+ptr_bosco
+ptr_boulders
+ptr_brazor
+ptr_brazor2
+ptr_brimstone
+ptr_calvin
+ptr_Ceregrim
+ptr_cheers
+ptr_clancy
+ptr_Clancy
+ptr_clancydead
+ptr_clara
+ptr_cliff
+ptr_council
+ptr_darwain
+ptr_delana
+ptr_diggs
+ptr_dorac
+ptr_dorac2
+ptr_duke
+ptr_duke2
+ptr_elros
+ptr_Elros
+ptr_endgame
+ptr_Farbain1
+ptr_ferrain
+ptr_ferrain2
+ptr_finn
+ptr_fiona
+ptr_Forkus
+ptr_galrich
+ptr_galrich2
+ptr_galrich3
+ptr_garnak
+ptr_gates
+ptr_gildim
+ptr_giltar
+ptr_gimak
+ptr_Gimak
+ptr_gimak2
+ptr_gimakgaurd
+ptr_gimbarak
+ptr_goldenharp
+ptr_gordon
+ptr_gorly
+ptr_haffnar
+ptr_halifax
+ptr_Halifax
+ptr_hall6
+ptr_halls2
+ptr_hood
+ptr_Hood
+ptr_hood2
+ptr_introductions
+ptr_irongrip
+ptr_irongrip2
+ptr_irongrip3
+ptr_izod
+ptr_izod2
+ptr_jarlgoth
+ptr_kennifer
+ptr_khelvar
+ptr_Khelvar
+ptr_khelvar2
+ptr_khelvar3
+ptr_kilvain
+ptr_kilvain2
+ptr_kilvaindead
+ptr_krondor
+ptr_Krondor
+ptr_laurelin2
+ptr_maggie
+ptr_Maggie
+ptr_maggie2
+ptr_mandril
+ptr_Mandril
+ptr_mandril2
+ptr_marlin
+ptr_melfor
+ptr_mineambush
+ptr_minedepository
+ptr_mineentrance
+ptr_mineexit
+ptr_minequarters
+ptr_mines
+ptr_minetemple
+ptr_mirimdale
+ptr_morgan
+ptr_Morgan
+ptr_morgrim
+ptr_mulligan
+ptr_mural
+ptr_Narrator
+ptr_Nordur
+ptr_norgrim
+ptr_north_east
+ptr_north_west
+ptr_octavius
+ptr_Ogre Guard B
+ptr_ogres
+ptr_olin
+ptr_onurum
+ptr_opening
+ptr_orb
+ptr_otto
+ptr_otto2
+ptr_passage
+ptr_peridot
+ptr_Peridot
+ptr_portal
+ptr_prisoner
+ptr_ragnost
+ptr_ralgar
+ptr_riders
+ptr_salute
+ptr_Samson
+ptr_sapphire
+ptr_Sapphire
+ptr_shaman
+ptr_shield
+ptr_snarl
+ptr_soldier
+ptr_south_east
+ptr_south_west
+ptr_speech
+ptr_spell
+ptr_Spell
+ptr_spooks
+ptr_spune
+ptr_Spune
+ptr_statue
+ptr_steelslate
+ptr_steelslate2
+ptr_stench
+ptr_talbreth
+ptr_templedoor
+ptr_thak
+ptr_thorbur
+ptr_thork
+ptr_thraigin
+ptr_thraigin2
+ptr_thrail
+ptr_tinravyn
+ptr_Tinravyn
+ptr_troll
+ptr_turk
+ptr_undead
+ptr_well
+ptr_xedlon
+
+NON-IB SCRIPT TYPES FOUND
+ga_face_target
+ga_attack
+gc_dead
+gc_align_lawful
+gc_align_chaotic
+ga_destroy
+gc_align_good
+ga_move
+gc_align_evil
+ga_move_exit
+ga_give_quest_xp
+ga_play_sound
+ga_roster_spawn
+ga_roster_despawn
+ga_roster_selectable
+ga_roster_party_add
+ga_reset_level_by_xp
+ga_roster_party_remove
+ga_end_game
+ga_jump_players
+ga_reset_level
+ga_party_creation
+ga_attack_target
+ga_effect
+
+NON-IB SCRIPTS FOUND (DETAILS)
+|assassination.dlg|***ga_face_target(nonIBscript) --> ::p1 = Azareth    ::p2 = Ceregrim    ::p3 = 0    ::p4 =     
+|assassination.dlg|***ga_face_target(nonIBscript) --> ::p1 = Ceregrim    ::p2 = Azareth    ::p3 = 0    ::p4 =     
+|assassination.dlg|***ga_face_target(nonIBscript) --> ::p1 = Azareth    ::p2 = Ceregrim    ::p3 = 0    ::p4 =     
+|assassination.dlg|***ga_attack(nonIBscript) --> ::p1 = Azareth    ::p2 = 0    ::p3 =     ::p4 =     
+|assassination.dlg|***ga_attack(nonIBscript) --> ::p1 = Ceregrim    ::p2 = 0    ::p3 =     ::p4 =     
+|assassination.dlg|***ga_attack(nonIBscript) --> ::p1 = Azareth    ::p2 = 0    ::p3 =     ::p4 =     
+|assassination.dlg|***ga_attack(nonIBscript) --> ::p1 = Ceregrim    ::p2 = 0    ::p3 =     ::p4 =     
+|assassination.dlg|***ga_attack(nonIBscript) --> ::p1 = Azareth    ::p2 = 0    ::p3 =     ::p4 =     
+|assassination.dlg|***ga_attack(nonIBscript) --> ::p1 = Ceregrim    ::p2 = 0    ::p3 =     ::p4 =     
+|assassins.dlg|***gc_dead(nonIBscript) --> ::p1 = Azareth    ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***gc_dead(nonIBscript) --> ::p1 = Ceregrim    ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***gc_dead(nonIBscript) --> ::p1 = Azareth    ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***gc_dead(nonIBscript) --> ::p1 = Ceregrim    ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***gc_dead(nonIBscript) --> ::p1 = Azareth    ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***gc_dead(nonIBscript) --> ::p1 = Ceregrim    ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|assassins.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakGargoyle    ::p2 = 0    ::p3 = 0    ::p4 =     
+|barley.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|belanaintro.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|belanaintro.dlg|***ga_move(nonIBscript) --> ::p1 = NW_WP_Clerk    ::p2 = 0    ::p3 =     ::p4 =     
+|belanaintro.dlg|***ga_move(nonIBscript) --> ::p1 = NW_WP_Clerk    ::p2 = 0    ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|boldak.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|boldak.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|bosco.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|bosco.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|bosco.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|bosco.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Bosco    ::p2 =     ::p3 =     ::p4 =     
+|bosco.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|bosco.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|brazor.dlg|***ga_face_target(nonIBscript) --> ::p1 = Hood    ::p2 = Krondor    ::p3 = 0    ::p4 =     
+|brazor.dlg|***ga_face_target(nonIBscript) --> ::p1 = Brazor    ::p2 = Sapphire    ::p3 = 0    ::p4 =     
+|brazor.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Assassin    ::p2 =     ::p3 =     ::p4 =     
+|brazor.dlg|***ga_face_target(nonIBscript) --> ::p1 = Brazor    ::p2 = Sapphire    ::p3 = 0    ::p4 =     
+|brazor.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Assassin    ::p2 =     ::p3 =     ::p4 =     
+|brazor2.dlg|***ga_face_target(nonIBscript) --> ::p1 = Gimak    ::p2 = Brazor    ::p3 = 0    ::p4 =     
+|brazor2.dlg|***ga_face_target(nonIBscript) --> ::p1 = Sapphire    ::p2 = Gimak    ::p3 = 0    ::p4 =     
+|brazor2.dlg|***ga_face_target(nonIBscript) --> ::p1 = Gimak    ::p2 = Brazor    ::p3 = 0    ::p4 =     
+|brazor2.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakMines    ::p2 = 0    ::p3 = 0    ::p4 =     
+|calvin.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|cheers.dlg|***ga_face_target(nonIBscript) --> ::p1 = Peridot    ::p2 = Thraigin    ::p3 = 0    ::p4 =     
+|cheers.dlg|***ga_face_target(nonIBscript) --> ::p1 = Thraigin    ::p2 = Peridot    ::p3 = 0    ::p4 =     
+|cheers.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|cheers.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_pl_cheeringm1    ::p2 =     ::p3 = 0    ::p4 =     
+|clancy.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|clancy.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|clancy.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|council.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Khelvar    ::p2 = NW_WP_FaxKing    ::p3 =     ::p4 =     
+|council.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Gimak    ::p2 = NW_WP_DeepKing    ::p3 =     ::p4 =     
+|council.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Thraigin    ::p2 = NW_WP_ThraiKing    ::p3 =     ::p4 =     
+|diggs.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Poker    ::p2 =     ::p3 =     ::p4 =     
+|dorac.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|dorac.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|dorac.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakDorac    ::p2 = 0    ::p3 = 0    ::p4 =     
+|dorac.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakDorac    ::p2 = 0    ::p3 = 0    ::p4 =     
+|dorac.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakDorac    ::p2 = 0    ::p3 = 0    ::p4 =     
+|dorac2.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|dorac2.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|dorac2.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakDorac    ::p2 = 0    ::p3 = 0    ::p4 =     
+|dorac2.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakDorac    ::p2 = 0    ::p3 = 0    ::p4 =     
+|dorac2.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakDorac    ::p2 = 0    ::p3 = 0    ::p4 =     
+|duke.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Duke    ::p2 =     ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Laurelin    ::p2 =     ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Duke2    ::p2 = NW_WP_Duke    ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Laurelin2    ::p2 = NW_WP_Laurelin    ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Duke    ::p2 =     ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Laurelin    ::p2 =     ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Duke2    ::p2 = NW_WP_Duke    ::p3 =     ::p4 =     
+|duke.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Laurelin2    ::p2 = NW_WP_Laurelin    ::p3 =     ::p4 =     
+|duke2.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Duke2    ::p2 =     ::p3 =     ::p4 =     
+|duke2.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Laurelin2    ::p2 =     ::p3 =     ::p4 =     
+|duke2.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Duke2    ::p2 =     ::p3 =     ::p4 =     
+|duke2.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Laurelin2    ::p2 =     ::p3 =     ::p4 =     
+|elros.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|elros.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Elros    ::p2 = 1    ::p3 =     ::p4 =     
+|elros.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Elros    ::p2 =     ::p3 =     ::p4 =     
+|elros.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Elros    ::p2 = 10000    ::p3 = 1    ::p4 =     
+|elros.dlg|***ga_roster_party_remove(nonIBscript) --> ::p1 = Elros    ::p2 = Elros    ::p3 =     ::p4 =     
+|elros.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Elros    ::p2 = NW_WP_Wait    ::p3 =     ::p4 =     
+|endgame.dlg|***ga_end_game(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ferrain.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ferrain.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ferrain.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ferrain.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ferrain.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ferrain.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|finn.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|finn.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Barley    ::p2 =     ::p3 =     ::p4 =     
+|galrich.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|galrich.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|galrich.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|galrich.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich2.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Galrich2    ::p2 = NW_WP_Galrich    ::p3 =     ::p4 =     
+|galrich2.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|galrich3.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich2    ::p2 = 0    ::p3 =     ::p4 =     
+|galrich3.dlg|***ga_attack(nonIBscript) --> ::p1 = Galrich2    ::p2 = 0    ::p3 =     ::p4 =     
+|gates.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|gates.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|gimak.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|gimak.dlg|***ga_face_target(nonIBscript) --> ::p1 = Gimak    ::p2 = Krondor    ::p3 = 0    ::p4 =     
+|gimak.dlg|***ga_face_target(nonIBscript) --> ::p1 = Krondor    ::p2 = Elros    ::p3 = 0    ::p4 =     
+|gimak.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|gimak.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|gimak.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|gimak.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|gimak.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_GimakIn    ::p2 = 1    ::p3 = 0    ::p4 =     
+|gimak.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls7mid    ::p2 = 1    ::p3 = 0    ::p4 =     
+|gimak.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls7mid    ::p2 = 1    ::p3 = 0    ::p4 =     
+|goldenharp.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_flute1    ::p2 =     ::p3 = 0    ::p4 =     
+|halifax.dlg|***gc_dead(nonIBscript) --> ::p1 = Snarl    ::p2 =     ::p3 =     ::p4 =     
+|halifax.dlg|***gc_dead(nonIBscript) --> ::p1 = Fang    ::p2 =     ::p3 =     ::p4 =     
+|halifax.dlg|***gc_dead(nonIBscript) --> ::p1 = Claw    ::p2 =     ::p3 =     ::p4 =     
+|halifax.dlg|***gc_dead(nonIBscript) --> ::p1 = Nailz    ::p2 =     ::p3 =     ::p4 =     
+|halifax.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|halifax.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|halifax.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|halifax.dlg|***ga_move(nonIBscript) --> ::p1 = NW_WP_Halifax1    ::p2 = 1    ::p3 = Halifax    ::p4 =     
+|hall6.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl2    ::p2 =     ::p3 = 0    ::p4 =     
+|hall6.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Thraigin    ::p2 = NW_WP_Thraigin    ::p3 =     ::p4 =     
+|halls2.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet2    ::p2 = 1    ::p3 = 0    ::p4 =     
+|halls2.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet2    ::p2 = 1    ::p3 = 0    ::p4 =     
+|hood.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood.dlg|***ga_reset_level(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Hood    ::p2 = 11750    ::p3 = 1    ::p4 =     
+|hood2.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Hood    ::p2 = 11750    ::p3 = 1    ::p4 =     
+|hood2.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Hood    ::p2 = 11750    ::p3 = 1    ::p4 =     
+|hood2.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Hood    ::p2 = 11750    ::p3 = 1    ::p4 =     
+|hood2.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Hood    ::p2 = 11750    ::p3 = 1    ::p4 =     
+|hood2.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Hood    ::p2 = 11750    ::p3 = 1    ::p4 =     
+|hood2.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
+|hood2.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
+|hood2.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Hood    ::p2 = 11750    ::p3 = 1    ::p4 =     
+|introductions.dlg|***ga_face_target(nonIBscript) --> ::p1 = Krondor    ::p2 = Elros    ::p3 = 0    ::p4 =     
+|introductions.dlg|***ga_face_target(nonIBscript) --> ::p1 = Krondor    ::p2 = Spell    ::p3 = 0    ::p4 =     
+|introductions.dlg|***ga_face_target(nonIBscript) --> ::p1 = Krondor    ::p2 = Elros    ::p3 = 0    ::p4 =     
+|introductions.dlg|***ga_face_target(nonIBscript) --> ::p1 = Krondor    ::p2 = Spell    ::p3 = 0    ::p4 =     
+|introductions.dlg|***ga_face_target(nonIBscript) --> ::p1 = Krondor    ::p2 = Elros    ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_face_target(nonIBscript) --> ::p1 = Irongrip    ::p2 = Halifax    ::p3 = 0    ::p4 =     
+|irongrip.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|irongrip.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl1    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl2    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_belltower1    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_pl_battlegrp1    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_face_target(nonIBscript) --> ::p1 = Irongrip    ::p2 = Halifax    ::p3 = 0    ::p4 =     
+|irongrip.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|irongrip.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl1    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl2    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_belltower1    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_pl_battlegrp1    ::p2 =     ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_face_target(nonIBscript) --> ::p1 =     ::p2 = Irongrip    ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_face_target(nonIBscript) --> ::p1 =     ::p2 = Irongrip    ::p3 = 0    ::p4 =     
+|irongrip.dlg|***ga_move(nonIBscript) --> ::p1 = NW_WP_Halifax2    ::p2 = 1    ::p3 = Halifax    ::p4 =     
+|irongrip3.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|jarlgoth.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|jarlgoth.dlg|***ga_attack(nonIBscript) --> ::p1 = Jarlgoth    ::p2 = 0    ::p3 =     ::p4 =     
+|jarlgoth.dlg|***ga_attack(nonIBscript) --> ::p1 = Jarlgoth    ::p2 = 0    ::p3 =     ::p4 =     
+|jarlgoth.dlg|***ga_attack(nonIBscript) --> ::p1 = Jarlgoth    ::p2 = 0    ::p3 =     ::p4 =     
+|kennifer.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kennifer.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kennifer.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kennifer.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|khelvar.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|khelvar.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|khelvar.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|khelvar.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|khelvar.dlg|***ga_move(nonIBscript) --> ::p1 = NW_WP_FaxQuest    ::p2 = 0    ::p3 = Khelvar    ::p4 =     
+|khelvar2.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|khelvar2.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakHall2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|khelvar2.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakFaxcrest    ::p2 = 0    ::p3 = 0    ::p4 =     
+|khelvar2.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kilvaindead.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kilvaindead.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakKilvain    ::p2 = 0    ::p3 = 0    ::p4 =     
+|kilvaindead.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kilvaindead.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kilvaindead.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|kilvaindead.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 1    ::p3 = NW_WP_Kilvain    ::p4 =     
+|kilvaindead.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 1    ::p3 = NW_WP_Kilvain    ::p4 =     
+|kilvaindead.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 1    ::p3 = NW_WP_Kilvain    ::p4 =     
+|krondor.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|krondor.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Krondor    ::p2 = 1    ::p3 =     ::p4 =     
+|krondor.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Krondor    ::p2 =     ::p3 =     ::p4 =     
+|krondor.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Krondor    ::p2 = 10000    ::p3 = 1    ::p4 =     
+|krondor.dlg|***ga_roster_party_remove(nonIBscript) --> ::p1 = Krondor    ::p2 = Krondor    ::p3 =     ::p4 =     
+|krondor.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Krondor    ::p2 = NW_WP_Wait    ::p3 =     ::p4 =     
+|maggie.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|maggie.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Mandril    ::p2 =     ::p3 =     ::p4 =     
+|maggie.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|mandril.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|mandril.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|mandril.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|mandril.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|mandril2.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|marlin.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|marlin.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|marlin.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|marlin.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|melfor.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|melfor.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|mineambush.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_depository    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mineambush.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minedepository.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_exit    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minedepository.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_temple    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minedepository.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_quarters    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minedepository.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minedepository.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minedepository.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|mineexit.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_temple    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mineexit.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_quarters    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mineexit.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Ambush    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mineexit.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|mineexit.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|mineexit.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minequarters.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_exit    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minequarters.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_temple    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minequarters.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Ambush    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minequarters.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minequarters.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minequarters.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|mines.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minetemple.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_exit    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minetemple.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_quarters    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minetemple.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Ambush    ::p2 = 1    ::p3 = 0    ::p4 =     
+|minetemple.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minetemple.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|minetemple.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
+|mulligan.dlg|***ga_party_creation(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|norgrim.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|norgrim.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|norgrim.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|norgrim.dlg|***ga_face_target(nonIBscript) --> ::p1 = Morgan    ::p2 = Norgrim    ::p3 = 0    ::p4 =     
+|north east.dlg|***gc_dead(nonIBscript) --> ::p1 = Bosh    ::p2 =     ::p3 =     ::p4 =     
+|north east.dlg|***gc_dead(nonIBscript) --> ::p1 = Cleav    ::p2 =     ::p3 =     ::p4 =     
+|north east.dlg|***gc_dead(nonIBscript) --> ::p1 = Kazgath    ::p2 =     ::p3 =     ::p4 =     
+|north east.dlg|***gc_dead(nonIBscript) --> ::p1 = Rend    ::p2 =     ::p3 =     ::p4 =     
+|north east.dlg|***gc_dead(nonIBscript) --> ::p1 = Spitz    ::p2 =     ::p3 =     ::p4 =     
+|north east.dlg|***gc_dead(nonIBscript) --> ::p1 = Stinger    ::p2 =     ::p3 =     ::p4 =     
+|north east.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakNE    ::p2 = 0    ::p3 = 0    ::p4 =     
+|north east.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Soldier    ::p2 = NW_WP_NorthEast    ::p3 =     ::p4 =     
+|north west.dlg|***gc_dead(nonIBscript) --> ::p1 = Bonez    ::p2 =     ::p3 =     ::p4 =     
+|north west.dlg|***gc_dead(nonIBscript) --> ::p1 = Gnash    ::p2 =     ::p3 =     ::p4 =     
+|north west.dlg|***gc_dead(nonIBscript) --> ::p1 = Fetch    ::p2 =     ::p3 =     ::p4 =     
+|north west.dlg|***gc_dead(nonIBscript) --> ::p1 = Skull    ::p2 =     ::p3 =     ::p4 =     
+|north west.dlg|***gc_dead(nonIBscript) --> ::p1 = Thrasher    ::p2 =     ::p3 =     ::p4 =     
+|north west.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakNW    ::p2 = 0    ::p3 = 0    ::p4 =     
+|north west.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Soldier    ::p2 = NW_WP_NorthWest    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Samson    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard B    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard C    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Samson    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard B    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard C    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Samson    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard B    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard C    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Samson    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard B    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard C    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Samson    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard B    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard C    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Samson    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard B    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard C    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Samson    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard B    ::p2 = 0    ::p3 =     ::p4 =     
+|ogres.dlg|***ga_attack(nonIBscript) --> ::p1 = Ogre Guard C    ::p2 = 0    ::p3 =     ::p4 =     
+|opening.dlg|***ga_play_sound(nonIBscript) --> ::p1 = al_cv_firebowl1    ::p2 =     ::p3 = 0    ::p4 =     
+|opening.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl1    ::p2 =     ::p3 = 0    ::p4 =     
+|opening.dlg|***ga_attack_target(nonIBscript) --> ::p1 = Demon    ::p2 = Farbain2    ::p3 = 1    ::p4 =     
+|opening.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Start    ::p2 = 0    ::p3 = 0    ::p4 =     
+|otto.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|otto.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|otto2.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|otto2.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|otto2.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|otto2.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|passage.dlg|***ga_face_target(nonIBscript) --> ::p1 = Spell    ::p2 = Krondor    ::p3 = 0    ::p4 =     
+|portal.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls6X    ::p2 = 1    ::p3 = 0    ::p4 =     
+|prisoner.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|prisoner.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thunderds1    ::p2 =     ::p3 = 0    ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Ragnost    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion1    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion2    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion3    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion4    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion5    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion6    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion7    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion8    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion9    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion10    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Ragnost    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion1    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion2    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion3    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion4    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion5    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion6    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion7    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion8    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion9    ::p2 = 0    ::p3 =     ::p4 =     
+|ragnost.dlg|***ga_attack(nonIBscript) --> ::p1 = Minion10    ::p2 = 0    ::p3 =     ::p4 =     
+|riders.dlg|***gc_dead(nonIBscript) --> ::p1 = Hooks    ::p2 =     ::p3 =     ::p4 =     
+|riders.dlg|***gc_dead(nonIBscript) --> ::p1 = Railz    ::p2 =     ::p3 =     ::p4 =     
+|riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Hooks    ::p2 = 0    ::p3 =     ::p4 =     
+|riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Railz    ::p2 = 0    ::p3 =     ::p4 =     
+|riders.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakHooks    ::p2 = 0    ::p3 = 0    ::p4 =     
+|riders.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls1    ::p2 = 1    ::p3 = 0    ::p4 =     
+|riders.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Mines    ::p2 =     ::p3 =     ::p4 =     
+|riders.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|riders.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Railz    ::p2 =     ::p3 =     ::p4 =     
+|riders.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakHooks    ::p2 = 0    ::p3 = 0    ::p4 =     
+|riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Hooks    ::p2 = 0    ::p3 =     ::p4 =     
+|riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Railz    ::p2 = 0    ::p3 =     ::p4 =     
+|riders.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakHooks    ::p2 = 0    ::p3 = 0    ::p4 =     
+|riders.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Mines    ::p2 =     ::p3 =     ::p4 =     
+|riders.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|riders.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Railz    ::p2 =     ::p3 =     ::p4 =     
+|riders.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakHooks    ::p2 = 0    ::p3 = 0    ::p4 =     
+|riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Hooks    ::p2 = 0    ::p3 =     ::p4 =     
+|riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Railz    ::p2 = 0    ::p3 =     ::p4 =     
+|riders.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakHooks    ::p2 = 0    ::p3 = 0    ::p4 =     
+|shaman.dlg|***gc_dead(nonIBscript) --> ::p1 = Shaman1    ::p2 =     ::p3 =     ::p4 =     
+|shaman.dlg|***gc_dead(nonIBscript) --> ::p1 = Shaman2    ::p2 =     ::p3 =     ::p4 =     
+|shaman.dlg|***gc_dead(nonIBscript) --> ::p1 = Shaman3    ::p2 =     ::p3 =     ::p4 =     
+|shaman.dlg|***gc_dead(nonIBscript) --> ::p1 = Shaman4    ::p2 =     ::p3 =     ::p4 =     
+|shaman.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_hr_x2ghost4    ::p2 =     ::p3 = 0    ::p4 =     
+|shaman.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Shade    ::p2 = NW_WP_Shade    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakShaman    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman1    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman2    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman3    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman4    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakShaman    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
+|shaman.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls2    ::p2 = 1    ::p3 = 0    ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman1    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman2    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman3    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman4    ::p2 = 0    ::p3 =     ::p4 =     
+|shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shade    ::p2 = 0    ::p3 =     ::p4 =     
+|shield.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|shield.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|shield.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|shield.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Snarl    ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Fang    ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Claw    ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Nailz    ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Snarl    ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Fang    ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Claw    ::p2 =     ::p3 =     ::p4 =     
+|snarl.dlg|***ga_attack(nonIBscript) --> ::p1 = Nailz    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***gc_dead(nonIBscript) --> ::p1 = Bramble    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***gc_dead(nonIBscript) --> ::p1 = Dalagath    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***gc_dead(nonIBscript) --> ::p1 = Ditch    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***gc_dead(nonIBscript) --> ::p1 = Raze    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***gc_dead(nonIBscript) --> ::p1 = Thorne    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***gc_dead(nonIBscript) --> ::p1 = Snake    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***gc_dead(nonIBscript) --> ::p1 = Weed    ::p2 =     ::p3 =     ::p4 =     
+|south east.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakSE    ::p2 = 0    ::p3 = 0    ::p4 =     
+|south east.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Soldier    ::p2 = NW_WP_SouthEast    ::p3 =     ::p4 =     
+|south west.dlg|***gc_dead(nonIBscript) --> ::p1 = Chantz    ::p2 =     ::p3 =     ::p4 =     
+|south west.dlg|***gc_dead(nonIBscript) --> ::p1 = Grind    ::p2 =     ::p3 =     ::p4 =     
+|south west.dlg|***gc_dead(nonIBscript) --> ::p1 = Smash    ::p2 =     ::p3 =     ::p4 =     
+|south west.dlg|***gc_dead(nonIBscript) --> ::p1 = Snag    ::p2 =     ::p3 =     ::p4 =     
+|south west.dlg|***gc_dead(nonIBscript) --> ::p1 = Spike    ::p2 =     ::p3 =     ::p4 =     
+|south west.dlg|***gc_dead(nonIBscript) --> ::p1 = Thugg    ::p2 =     ::p3 =     ::p4 =     
+|south west.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakSW    ::p2 = 0    ::p3 = 0    ::p4 =     
+|south west.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Soldier    ::p2 = NW_WP_SouthWest    ::p3 =     ::p4 =     
+|speech.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_pl_cheeringm1    ::p2 =     ::p3 = 0    ::p4 =     
+|spell.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Spell    ::p2 = 1    ::p3 =     ::p4 =     
+|spell.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Spell    ::p2 =     ::p3 =     ::p4 =     
+|spell.dlg|***ga_reset_level_by_xp(nonIBscript) --> ::p1 = Spell    ::p2 = 10000    ::p3 = 1    ::p4 =     
+|spell.dlg|***ga_roster_party_remove(nonIBscript) --> ::p1 = Spell    ::p2 = Spell    ::p3 =     ::p4 =     
+|spell.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Spell    ::p2 = NW_WP_Wait    ::p3 =     ::p4 =     
+|spune.dlg|***ga_attack(nonIBscript) --> ::p1 = Spune    ::p2 = 0    ::p3 =     ::p4 =     
+|spune.dlg|***ga_attack(nonIBscript) --> ::p1 = Forkus    ::p2 = 0    ::p3 =     ::p4 =     
+|spune.dlg|***ga_attack(nonIBscript) --> ::p1 = Spune    ::p2 = 0    ::p3 =     ::p4 =     
+|spune.dlg|***ga_attack(nonIBscript) --> ::p1 = Forkus    ::p2 = 0    ::p3 =     ::p4 =     
+|spune.dlg|***ga_attack(nonIBscript) --> ::p1 = Spune    ::p2 = 0    ::p3 =     ::p4 =     
+|spune.dlg|***ga_attack(nonIBscript) --> ::p1 = Forkus    ::p2 = 0    ::p3 =     ::p4 =     
+|steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Mandril    ::p2 = Thondar    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Thondar    ::p2 = Mandril    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Mandril    ::p2 = Thondar    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakThondar    ::p2 = 0    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Mandril    ::p2 = Thondar    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Thondar    ::p2 = Mandril    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Mandril    ::p2 = Thondar    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakThondar    ::p2 = 0    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
+|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
+|talbreth.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|talbreth.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|talbreth.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|talbreth.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|talbreth.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|talbreth.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|templedoor.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_ForgeIn    ::p2 = 1    ::p3 = 0    ::p4 =     
+|thraigin.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|thraigin.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Clara    ::p2 =     ::p3 =     ::p4 =     
+|thrail.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|thrail.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|thrail.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|tinravyn.dlg|***gc_dead(nonIBscript) --> ::p1 = Tinravyn    ::p2 =     ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakTin    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Tinravyn    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook1    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook2    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook3    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook4    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook5    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakTin    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
+|tinravyn.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls2    ::p2 = 1    ::p3 = 0    ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Tinravyn    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook1    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook2    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook3    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook4    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook5    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Tinravyn    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook1    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook2    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook3    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook4    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook5    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Tinravyn    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook1    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook2    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook3    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook4    ::p2 = 0    ::p3 =     ::p4 =     
+|tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook5    ::p2 = 0    ::p3 =     ::p4 =     
+|troll.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|troll.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|troll.dlg|***ga_attack(nonIBscript) --> ::p1 =     ::p2 = 0    ::p3 =     ::p4 =     
+|troll.dlg|***ga_attack(nonIBscript) --> ::p1 =     ::p2 = 0    ::p3 =     ::p4 =     
+|troll.dlg|***ga_attack(nonIBscript) --> ::p1 =     ::p2 = 0    ::p3 =     ::p4 =     
+|turk.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|undead.dlg|***ga_play_sound(nonIBscript) --> ::p1 = al_wt_gustchasm1    ::p2 =     ::p3 = 0    ::p4 =     
+|undead.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|undead.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|undead.dlg|***ga_attack(nonIBscript) --> ::p1 = undead    ::p2 = 0    ::p3 =     ::p4 =     
+|undead.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 =     ::p4 =     
+|well.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_well    ::p2 = 1    ::p3 = 0    ::p4 =     
+|well.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_well    ::p2 = 1    ::p3 = 0    ::p4 =     
+|xedlon.dlg|***ga_effect(nonIBscript) --> ::p1 = Visual    ::p2 = 22    ::p3 =     ::p4 = 0    
+|xedlon.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_an_dragonror1    ::p2 =     ::p3 = 0    ::p4 =     

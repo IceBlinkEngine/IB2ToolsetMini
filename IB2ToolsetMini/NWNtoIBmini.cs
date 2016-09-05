@@ -10,16 +10,24 @@ namespace IB2ToolsetMini
     {
         private ParentForm prntForm;
         public Module modIBmini = new Module();
-        
+
+        //Transitions stuff
+        public List<NwnWayPoint> waypointList = new List<NwnWayPoint>();
+        public List<NwnTrigger> triggerList = new List<NwnTrigger>();
+        public List<NwnDoor> doorList = new List<NwnDoor>();
+
         //Conversation conversion stuff
         public List<string> portraits_needed = new List<string>();
         public List<string> scripts_needed = new List<string>();
         public List<string> scriptTypesNeeded = new List<string>();
+        public List<string> possibleCompanions = new List<string>();
         public int nextIndex = 100000;
         public int nextLinkIdNumber = 100000;
+        public int nextIdNumber = 1;
         public List<DlgSyncStruct> dlgStartingnodeList = new List<DlgSyncStruct>();
         public List<ContentNode> dlgEntrynodeList = new List<ContentNode>();
         public List<ContentNode> dlgReplynodeList = new List<ContentNode>();
+
 
         public NWNtoIBmini(ParentForm pf)
         {
@@ -29,26 +37,33 @@ namespace IB2ToolsetMini
 
         public void doConversionInfoAndSave()
         {
-            //print a list of portraits need for the conversion and the nameTags used in convos
+            //Summary Report and Todo List
+            string summaryReportPath = prntForm._mainDirectory + "\\modules\\" + modIBmini.moduleName + "_ConversionSummaryAndTodoList.txt";
             try
             {
-                File.Delete(prntForm._mainDirectory + "\\modules\\portraits_needed.txt");
+                File.Delete(summaryReportPath);
             }
             catch { }
-            File.AppendAllLines(prntForm._mainDirectory + "\\modules\\portraits_needed.txt", portraits_needed);
-            //print a list of portraits need for the conversion and the nameTags used in convos
-            try
-            {
-                File.Delete(prntForm._mainDirectory + "\\modules\\scripts_needed.txt");
-            }
-            catch { }
-            File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scripts_needed.txt", scripts_needed);
-            try
-            {
-                File.Delete(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt");
-            }
-            catch { }
-            File.AppendAllLines(prntForm._mainDirectory + "\\modules\\scriptTypesNeeded.txt", scriptTypesNeeded);
+            string todolist = "TASKS TODO" + Environment.NewLine +
+                              "-build areas" + Environment.NewLine +
+                              "-build encounters" + Environment.NewLine +
+                              "-build shops" + Environment.NewLine +
+                              "-build containers" + Environment.NewLine +
+                              "-go through all convos and verify scripts" + Environment.NewLine +
+                              "-find and assign portraits to convos" + Environment.NewLine +
+                              "-find and assign tokens to custom creatures" + Environment.NewLine +
+                              "-find and assign item images to custom items" + Environment.NewLine;
+            File.AppendAllText(summaryReportPath, todolist);
+            File.AppendAllText(summaryReportPath, Environment.NewLine + "POSSIBLE COMPANIONS" + Environment.NewLine);
+            File.AppendAllLines(summaryReportPath, possibleCompanions);
+            portraits_needed.Sort();
+            File.AppendAllText(summaryReportPath, Environment.NewLine + "PORTRAITS NEEDED" + Environment.NewLine);
+            File.AppendAllLines(summaryReportPath, portraits_needed);
+            File.AppendAllText(summaryReportPath, Environment.NewLine + "NON-IB SCRIPT TYPES FOUND" + Environment.NewLine);
+            File.AppendAllLines(summaryReportPath, scriptTypesNeeded);
+            File.AppendAllText(summaryReportPath, Environment.NewLine + "NON-IB SCRIPTS FOUND (DETAILS)" + Environment.NewLine);
+            File.AppendAllLines(summaryReportPath, scripts_needed);
+
             //SAVE out the module file   
             string fullPathFilename = prntForm._mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
             //save module data
@@ -254,14 +269,18 @@ namespace IB2ToolsetMini
                         if (gffArea != null)
                         {
                             Area newArea = createNewArea(gffArea);
-                            //go through GIT and find all creatures and place in .lvl file
+                            //go through GIT and find all creatures/npcs and place in area file as props
                             addPropsToArea(gff, gffArea, newArea);
+                            //go through GIT and find all transitions and place in area file
+                            getTransitionsData(gff, gffArea, newArea);
                             modIBmini.moduleAreasObjects.Add(newArea);
                         }
                     }
                     gff = null;
                 }
             }
+            //once complete, go through each area and create transitions
+            setupAllTransitions();
         }
 
         public Item addItem(GffFile gff)
@@ -676,6 +695,147 @@ namespace IB2ToolsetMini
                 }
             }
         }
+        public void getTransitionsData(GffFile gff, GffFile gffARE, Area area)
+        {
+            //used to see if indoor or outdoor area
+            GffList tileList = (GffList)GetFieldByLabel(gffARE.TopLevelStruct, "TileList").Data;
+
+            //go through door list, waypoint list and trigger list and store data
+            #region WayPoints
+            GffList wpList = (GffList)GetFieldByLabel(gff.TopLevelStruct, "WaypointList").Data;
+            foreach (GffStruct strct in wpList.StructList)
+            {
+                NwnWayPoint newWP = new NwnWayPoint();
+                newWP.Tag = GetFieldByLabel(strct, "Tag").Data.ToString();
+                newWP.InAreaName = area.Filename;
+                
+                //Xposition
+                float xPos = GetFieldByLabel(strct, "XPosition").ValueFloat;                
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int xLoc = (int)(((xPos + 0.5f) / 1.5f) - 6);
+                    newWP.XPositionInSquares = xLoc;
+                }
+                else //outdoors
+                {
+                    int xLoc = (int)(((xPos + 0.5f) / 5f) - 16);
+                    newWP.XPositionInSquares = xLoc;
+                }
+                //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
+                //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2
+                
+                //Yposition
+                float yPos = GetFieldByLabel(strct, "YPosition").ValueFloat;                
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int yLoc = (int)(((yPos + 0.5f) / 1.5f) - 6);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    newWP.YPositionInSquares = area.MapSizeY - yLoc;
+                }
+                else //outdoors
+                {
+                    int yLoc = (int)(((yPos + 0.5f) / 5f) - 16);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    newWP.YPositionInSquares = area.MapSizeY - yLoc;
+                }
+                //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
+                //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2    
+                waypointList.Add(newWP);            
+            }
+            #endregion
+            #region Triggers
+            GffList trigList = (GffList)GetFieldByLabel(gff.TopLevelStruct, "TriggerList").Data;
+            foreach (GffStruct strct in trigList.StructList)
+            {
+                //check if has a LinkedTo or skip
+                if (GetFieldByLabel(strct, "LinkedTo").Data.ToString() == "") { continue; }
+
+                NwnTrigger newTrig = new NwnTrigger();
+                newTrig.Tag = GetFieldByLabel(strct, "Tag").Data.ToString();
+                newTrig.InAreaName = area.Filename;
+                newTrig.LinkedTo = GetFieldByLabel(strct, "LinkedTo").Data.ToString();
+
+                //Xposition
+                float xPos = GetFieldByLabel(strct, "XPosition").ValueFloat;
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int xLoc = (int)(((xPos + 0.5f) / 1.5f) - 6);
+                    newTrig.XPositionInSquares = xLoc;
+                }
+                else //outdoors
+                {
+                    int xLoc = (int)(((xPos + 0.5f) / 5f) - 16);
+                    newTrig.XPositionInSquares = xLoc;
+                }
+                //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
+                //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2
+
+                //Yposition
+                float yPos = GetFieldByLabel(strct, "YPosition").ValueFloat;
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int yLoc = (int)(((yPos + 0.5f) / 1.5f) - 6);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    newTrig.YPositionInSquares = area.MapSizeY - yLoc;
+                }
+                else //outdoors
+                {
+                    int yLoc = (int)(((yPos + 0.5f) / 5f) - 16);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    newTrig.YPositionInSquares = area.MapSizeY - yLoc;
+                }
+                //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
+                //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2   
+                triggerList.Add(newTrig);                         
+            }
+            #endregion
+            #region Doors
+            GffList drList = (GffList)GetFieldByLabel(gff.TopLevelStruct, "Door List").Data;
+            foreach (GffStruct strct in drList.StructList)
+            {
+                //check if has a LinkedTo or skip
+                if (GetFieldByLabel(strct, "LinkedTo").Data.ToString() == "") { continue; }
+
+                NwnDoor newDoor = new NwnDoor();
+                newDoor.Tag = GetFieldByLabel(strct, "Tag").Data.ToString();
+                newDoor.InAreaName = area.Filename;
+                newDoor.LinkedTo = GetFieldByLabel(strct, "LinkedTo").Data.ToString();
+
+                //Xposition
+                float xPos = GetFieldByLabel(strct, "X").ValueFloat;
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int xLoc = (int)(((xPos + 0.5f) / 1.5f) - 6);
+                    newDoor.XPositionInSquares = xLoc;
+                }
+                else //outdoors
+                {
+                    int xLoc = (int)(((xPos + 0.5f) / 5f) - 16);
+                    newDoor.XPositionInSquares = xLoc;
+                }
+                //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
+                //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2
+
+                //Yposition
+                float yPos = GetFieldByLabel(strct, "Y").ValueFloat;
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int yLoc = (int)(((yPos + 0.5f) / 1.5f) - 6);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    newDoor.YPositionInSquares = area.MapSizeY - yLoc;
+                }
+                else //outdoors
+                {
+                    int yLoc = (int)(((yPos + 0.5f) / 5f) - 16);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    newDoor.YPositionInSquares = area.MapSizeY - yLoc;
+                }
+                //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
+                //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2   
+                doorList.Add(newDoor);
+            }
+            #endregion
+        }
         private Area createNewArea(GffFile gffARE)
         {
             //create tilemap
@@ -814,12 +974,107 @@ namespace IB2ToolsetMini
             }
         }
 
+        public void setupAllTransitions()
+        {
+            //transitions from triggers
+            foreach (NwnTrigger trig in triggerList)
+            {
+                //get this trigger's area object
+                Area thisArea = getAreaByFilename(trig.InAreaName);
+                if (thisArea == null) { continue; }
+                Trigger newtrig = new Trigger();
+                newtrig.TriggerTag = trig.Tag + trig.XPositionInSquares.ToString() + trig.YPositionInSquares.ToString();
+                //trigger location in this area
+                newtrig.TriggerSquaresList.Add(new Coordinate(trig.XPositionInSquares, trig.YPositionInSquares));
+                //define trigger type as a transition
+                newtrig.Event1Type = "transition";
+                //find linkedto area name
+                newtrig.Event1FilenameOrTag = getAreaNameOfDoorOrWaypointByTag(trig.LinkedTo);
+                if (newtrig.Event1FilenameOrTag.Equals("")) { continue; }
+                //find linkedto location
+                newtrig.Event1TransPointX = getTransitionLocationOfDoorOrWaypointByTag(trig.LinkedTo).X;
+                if (newtrig.Event1TransPointX == -1) { continue; } 
+                newtrig.Event1TransPointY = getTransitionLocationOfDoorOrWaypointByTag(trig.LinkedTo).Y;
+
+                thisArea.Triggers.Add(newtrig);                
+            }
+            //transitions from doors
+            foreach (NwnDoor dr in doorList)
+            {
+                //get this trigger's area object
+                Area thisArea = getAreaByFilename(dr.InAreaName);
+                if (thisArea == null) { continue; }
+                Trigger newtrig = new Trigger();
+                newtrig.TriggerTag = dr.Tag + dr.XPositionInSquares.ToString() + dr.YPositionInSquares.ToString();
+                //trigger location in this area
+                newtrig.TriggerSquaresList.Add(new Coordinate(dr.XPositionInSquares, dr.YPositionInSquares));
+                //define trigger type as a transition
+                newtrig.Event1Type = "transition";
+                //find linkedto area name
+                newtrig.Event1FilenameOrTag = getAreaNameOfDoorOrWaypointByTag(dr.LinkedTo);
+                if (newtrig.Event1FilenameOrTag.Equals("")) { continue; }
+                //find linkedto location
+                newtrig.Event1TransPointX = getTransitionLocationOfDoorOrWaypointByTag(dr.LinkedTo).X;
+                if (newtrig.Event1TransPointX == -1) { continue; }
+                newtrig.Event1TransPointY = getTransitionLocationOfDoorOrWaypointByTag(dr.LinkedTo).Y;
+
+                thisArea.Triggers.Add(newtrig);
+            }
+        }
+        public Area getAreaByFilename(string name)
+        {
+            foreach (Area a in modIBmini.moduleAreasObjects)
+            {
+                if (a.Filename.Equals(name))
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
+        public string getAreaNameOfDoorOrWaypointByTag(string tag)
+        {
+            foreach (NwnDoor d in doorList)
+            {
+                if (d.Tag.Equals(tag))
+                {
+                    return d.InAreaName;
+                }                    
+            }
+            foreach (NwnWayPoint w in waypointList)
+            {
+                if (w.Tag.Equals(tag))
+                {
+                    return w.InAreaName;
+                }
+            }
+            return "";
+        }
+        public Coordinate getTransitionLocationOfDoorOrWaypointByTag(string tag)
+        {
+            foreach (NwnDoor d in doorList)
+            {
+                if (d.Tag.Equals(tag))
+                {
+                    return new Coordinate(d.XPositionInSquares, d.YPositionInSquares);
+                }
+            }
+            foreach (NwnWayPoint w in waypointList)
+            {
+                if (w.Tag.Equals(tag))
+                {
+                    return new Coordinate(w.XPositionInSquares, w.YPositionInSquares);
+                }
+            }
+            return new Coordinate(-1,-1);
+        }
+
         public void fillDlgLists(GffFile gff)
         {
             dlgStartingnodeList.Clear();
             dlgEntrynodeList.Clear();
             dlgReplynodeList.Clear();
-            int nextIdNumber = 1;
+            nextIdNumber = 1;
 
             foreach (GffField ibf in gff.TopLevelStruct.Fields)
             {
@@ -865,7 +1120,7 @@ namespace IB2ToolsetMini
                         newEntryNode.pcNode = false;
                         newEntryNode.idNum = nextIdNumber;
                         nextIdNumber++;
-                        newEntryNode.conversationText = GetFieldByLabel(istr, "Text").Data.ToString();
+                        newEntryNode.conversationText = replaceText(GetFieldByLabel(istr, "Text").Data.ToString());
                         if ((newEntryNode.conversationText.Equals("")) || (newEntryNode.conversationText.Equals("||")))
                         {
                             newEntryNode.conversationText = "Continue";
@@ -936,7 +1191,7 @@ namespace IB2ToolsetMini
                         newReplyNode.pcNode = true;
                         newReplyNode.idNum = nextIdNumber;
                         nextIdNumber++;
-                        newReplyNode.conversationText = GetFieldByLabel(istr, "Text").Data.ToString();
+                        newReplyNode.conversationText = replaceText(GetFieldByLabel(istr, "Text").Data.ToString());
                         if ((newReplyNode.conversationText.Equals("")) || (newReplyNode.conversationText.Equals("||")))
                         {
                             newReplyNode.conversationText = "Continue";
@@ -1000,6 +1255,10 @@ namespace IB2ToolsetMini
             newConvo.ConvoFileName = filename;
             newConvo.DefaultNpcName = filename;
             newConvo.NpcPortraitBitmap = "ptr_" + filename;
+            if (!portraits_needed.Contains(newConvo.NpcPortraitBitmap))
+            {
+                portraits_needed.Add(newConvo.NpcPortraitBitmap);
+            }
 
             //this is the root node of the convo, all the StartingList nodes will be subnodes of this rootNode
             ContentNode rootNode = new ContentNode();
@@ -1013,7 +1272,7 @@ namespace IB2ToolsetMini
                 //subNodeOfRootNode.isLink = startingListSync.IsChild;
                 subNodeOfRootNode.ShowOnlyOnce = startingListSync.ShowOnce;
                 subNodeOfRootNode.conversationText += startingListSync.scriptInfoForEndOfText;
-                //TODO add all conditionals in sync to this above node as well
+                //add all conditionals in sync to this above node as well
                 foreach (Condition cond in startingListSync.conditions)
                 {
                     subNodeOfRootNode.conditions.Add(cond.DeepCopy());
@@ -1024,6 +1283,14 @@ namespace IB2ToolsetMini
                     foreach (DlgSyncStruct sync2 in subNodeOfRootNode.syncStructs) //pointers to nodes in 
                     {
                         subNodeOfRootNode.subNodes.Add(addIbContentNode(dlgReplynodeList[(int)sync2.Index], sync2));
+                    }
+                    if (subNodeOfRootNode.syncStructs.Count == 0) //no subnodes on a NPC node so add an [END DIALOG] PC node
+                    {
+                        ContentNode subNode = new ContentNode();
+                        subNode.idNum = nextIdNumber;
+                        nextIdNumber++;
+                        subNode.conversationText = "[END DIALOG]";
+                        subNodeOfRootNode.subNodes.Add(subNode);
                     }
                 }
                 else //is a link so create a blank node with a idNum incremented start at 100000 and assign the link to ID
@@ -1064,7 +1331,7 @@ namespace IB2ToolsetMini
             {
                 newNode.conditions.Add(cond.DeepCopy());
             }
-            if (thisSync.IsChild)
+            if (thisSync.IsChild) //Is a Link node
             {
                 if (newNode.pcNode) //PC node
                 {
@@ -1099,6 +1366,18 @@ namespace IB2ToolsetMini
                     }
                 }
                 return newNode;
+            }
+            if (newNode.syncStructs.Count == 0) //no subnodes on a NPC node so add an [END DIALOG] PC node
+            {
+                if (!newNode.pcNode) //NPC node
+                {
+                    ContentNode subNode = new ContentNode();
+                    subNode.idNum = nextIdNumber;
+                    nextIdNumber++;
+                    subNode.conversationText = "[END DIALOG]";
+                    newNode.subNodes.Add(subNode);
+                    return newNode;
+                }
             }
             foreach (DlgSyncStruct s in newNode.syncStructs)
             {
@@ -1210,6 +1489,12 @@ namespace IB2ToolsetMini
                 newAction.a_parameter_3 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
                 newAction.a_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 4);
             }
+            else if (scriptName.Equals("ga_roster_add_object"))
+            {
+                newAction.a_script = "gaAddPartyMember.cs";
+                newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
+                if (!possibleCompanions.Contains(newAction.a_parameter_1)) { possibleCompanions.Add(newAction.a_parameter_1); }
+            }
             else if (scriptName.Equals("ga_give_gold"))
             {
                 newAction.a_script = "gaGiveGold.cs";
@@ -1234,7 +1519,7 @@ namespace IB2ToolsetMini
                 newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
                 newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
             }
-            else if (scriptName.Equals("ga_destroy_item"))
+            else if ((scriptName.Equals("ga_destroy_item")) || (scriptName.Equals("ga_take_item")))
             {
                 newAction.a_script = "gaTakeItem.cs";
                 newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
@@ -1632,6 +1917,64 @@ namespace IB2ToolsetMini
             }
             //MessageBox.Show("Couldn't find parameter number: " + number + "in GffList of size: " + parameterList.StructList.Count);
             return "";
+        }
+        public string replaceText(string originalText)
+        {
+            string newString = originalText;
+                        
+            newString = newString.Replace("<color=#FFFFFF>", "<wh>");
+            newString = newString.Replace("</color=#FFFFFF>", "</wh>");
+            newString = newString.Replace("<color=#FF0000>", "<rd>");
+            newString = newString.Replace("</color=#FF0000>", "</rd>");
+            newString = newString.Replace("<color=#00FF00>", "<gn>");
+            newString = newString.Replace("</color=#00FF00>", "</gn>");
+            newString = newString.Replace("<color=#FFFF00>", "<yl>");
+            newString = newString.Replace("</color=#FFFF00>", "</yl>");
+            newString = newString.Replace("<i>", "");
+            newString = newString.Replace("</i>", "");
+            newString = newString.Replace("<b>", "");
+            newString = newString.Replace("</b>", "");
+            
+            return newString;
+        }
+    }
+
+    public class NwnWayPoint
+    {
+        public string Tag = "";
+        public string InAreaName = "";
+        public int XPositionInSquares = 0;
+        public int YPositionInSquares = 0;
+
+        public NwnWayPoint()
+        {
+
+        }
+    }
+    public class NwnTrigger
+    {
+        public string Tag = "";
+        public string InAreaName = "";
+        public int XPositionInSquares = 0;
+        public int YPositionInSquares = 0;
+        public string LinkedTo = "";
+
+        public NwnTrigger()
+        {
+
+        }
+    }
+    public class NwnDoor
+    {
+        public string Tag = "";
+        public string InAreaName = "";
+        public int XPositionInSquares = 0;
+        public int YPositionInSquares = 0;
+        public string LinkedTo = "";
+
+        public NwnDoor()
+        {
+
         }
     }
 }
