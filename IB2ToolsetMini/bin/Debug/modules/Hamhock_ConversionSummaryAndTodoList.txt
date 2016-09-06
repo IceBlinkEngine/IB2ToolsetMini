@@ -213,7 +213,6 @@ ga_roster_party_add
 ga_reset_level_by_xp
 ga_roster_party_remove
 ga_end_game
-ga_jump_players
 ga_reset_level
 ga_party_creation
 ga_attack_target
@@ -355,9 +354,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |gimak.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |gimak.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |gimak.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|gimak.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_GimakIn    ::p2 = 1    ::p3 = 0    ::p4 =     
-|gimak.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls7mid    ::p2 = 1    ::p3 = 0    ::p4 =     
-|gimak.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls7mid    ::p2 = 1    ::p3 = 0    ::p4 =     
 |goldenharp.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_flute1    ::p2 =     ::p3 = 0    ::p4 =     
 |halifax.dlg|***gc_dead(nonIBscript) --> ::p1 = Snarl    ::p2 =     ::p3 =     ::p4 =     
 |halifax.dlg|***gc_dead(nonIBscript) --> ::p1 = Fang    ::p2 =     ::p3 =     ::p4 =     
@@ -369,8 +365,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |halifax.dlg|***ga_move(nonIBscript) --> ::p1 = NW_WP_Halifax1    ::p2 = 1    ::p3 = Halifax    ::p4 =     
 |hall6.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl2    ::p2 =     ::p3 = 0    ::p4 =     
 |hall6.dlg|***ga_roster_spawn(nonIBscript) --> ::p1 = Thraigin    ::p2 = NW_WP_Thraigin    ::p3 =     ::p4 =     
-|halls2.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet2    ::p2 = 1    ::p3 = 0    ::p4 =     
-|halls2.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet2    ::p2 = 1    ::p3 = 0    ::p4 =     
 |hood.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
 |hood.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = Hood    ::p2 =     ::p3 =     ::p4 =     
 |hood.dlg|***ga_reset_level(nonIBscript) --> ::p1 = Hood    ::p2 = 1    ::p3 =     ::p4 =     
@@ -467,37 +461,17 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |marlin.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |melfor.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |melfor.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|mineambush.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_depository    ::p2 = 1    ::p3 = 0    ::p4 =     
 |mineambush.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
-|minedepository.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_exit    ::p2 = 1    ::p3 = 0    ::p4 =     
-|minedepository.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_temple    ::p2 = 1    ::p3 = 0    ::p4 =     
-|minedepository.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_quarters    ::p2 = 1    ::p3 = 0    ::p4 =     
 |minedepository.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |minedepository.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |minedepository.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
-|mineexit.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_temple    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mineexit.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_quarters    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mineexit.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Ambush    ::p2 = 1    ::p3 = 0    ::p4 =     
 |mineexit.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |mineexit.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |mineexit.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
-|minequarters.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_exit    ::p2 = 1    ::p3 = 0    ::p4 =     
-|minequarters.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_temple    ::p2 = 1    ::p3 = 0    ::p4 =     
-|minequarters.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Ambush    ::p2 = 1    ::p3 = 0    ::p4 =     
 |minequarters.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |minequarters.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |minequarters.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |mines.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
-|mines.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_NotYet1    ::p2 = 1    ::p3 = 0    ::p4 =     
-|minetemple.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_exit    ::p2 = 1    ::p3 = 0    ::p4 =     
-|minetemple.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_quarters    ::p2 = 1    ::p3 = 0    ::p4 =     
-|minetemple.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Ambush    ::p2 = 1    ::p3 = 0    ::p4 =     
 |minetemple.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |minetemple.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
 |minetemple.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_cv_minercar1    ::p2 =     ::p3 = 0    ::p4 =     
@@ -545,7 +519,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |opening.dlg|***ga_play_sound(nonIBscript) --> ::p1 = al_cv_firebowl1    ::p2 =     ::p3 = 0    ::p4 =     
 |opening.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thundercl1    ::p2 =     ::p3 = 0    ::p4 =     
 |opening.dlg|***ga_attack_target(nonIBscript) --> ::p1 = Demon    ::p2 = Farbain2    ::p3 = 1    ::p4 =     
-|opening.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Start    ::p2 = 0    ::p3 = 0    ::p4 =     
 |otto.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |otto.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |otto2.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -553,7 +526,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |otto2.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |otto2.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |passage.dlg|***ga_face_target(nonIBscript) --> ::p1 = Spell    ::p2 = Krondor    ::p3 = 0    ::p4 =     
-|portal.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls6X    ::p2 = 1    ::p3 = 0    ::p4 =     
 |prisoner.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
 |prisoner.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
 |ragnost.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_wt_thunderds1    ::p2 =     ::p3 = 0    ::p4 =     
@@ -584,7 +556,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Hooks    ::p2 = 0    ::p3 =     ::p4 =     
 |riders.dlg|***ga_attack(nonIBscript) --> ::p1 = Railz    ::p2 = 0    ::p3 =     ::p4 =     
 |riders.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakHooks    ::p2 = 0    ::p3 = 0    ::p4 =     
-|riders.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls1    ::p2 = 1    ::p3 = 0    ::p4 =     
 |riders.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Mines    ::p2 =     ::p3 =     ::p4 =     
 |riders.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
 |riders.dlg|***ga_roster_despawn(nonIBscript) --> ::p1 = Railz    ::p2 =     ::p3 =     ::p4 =     
@@ -611,7 +582,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman3    ::p2 = 0    ::p3 =     ::p4 =     
 |shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman4    ::p2 = 0    ::p3 =     ::p4 =     
 |shaman.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakShaman    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
-|shaman.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls2    ::p2 = 1    ::p3 = 0    ::p4 =     
 |shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman1    ::p2 = 0    ::p3 =     ::p4 =     
 |shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman2    ::p2 = 0    ::p3 =     ::p4 =     
 |shaman.dlg|***ga_attack(nonIBscript) --> ::p1 = Shaman3    ::p2 = 0    ::p3 =     ::p4 =     
@@ -669,17 +639,12 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Thondar    ::p2 = Mandril    ::p3 = 0    ::p4 =     
 |steelslate.dlg|***ga_face_target(nonIBscript) --> ::p1 = Mandril    ::p2 = Thondar    ::p3 = 0    ::p4 =     
 |steelslate.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakThondar    ::p2 = 0    ::p3 = 0    ::p4 =     
-|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
-|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
-|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
-|steelslate.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Mountain    ::p2 = 1    ::p3 = 0    ::p4 =     
 |talbreth.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |talbreth.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |talbreth.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |talbreth.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |talbreth.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |talbreth.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
-|templedoor.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_ForgeIn    ::p2 = 1    ::p3 = 0    ::p4 =     
 |thraigin.dlg|***gc_align_lawful(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |thraigin.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = Clara    ::p2 =     ::p3 =     ::p4 =     
 |thrail.dlg|***gc_align_chaotic(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -694,7 +659,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook4    ::p2 = 0    ::p3 =     ::p4 =     
 |tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook5    ::p2 = 0    ::p3 =     ::p4 =     
 |tinravyn.dlg|***ga_destroy(nonIBscript) --> ::p1 = SpeakTin    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
-|tinravyn.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_WP_Halls2    ::p2 = 1    ::p3 = 0    ::p4 =     
 |tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Tinravyn    ::p2 = 0    ::p3 =     ::p4 =     
 |tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook1    ::p2 = 0    ::p3 =     ::p4 =     
 |tinravyn.dlg|***ga_attack(nonIBscript) --> ::p1 = Mook2    ::p2 = 0    ::p3 =     ::p4 =     
@@ -724,7 +688,5 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |undead.dlg|***gc_align_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |undead.dlg|***ga_attack(nonIBscript) --> ::p1 = undead    ::p2 = 0    ::p3 =     ::p4 =     
 |undead.dlg|***ga_move_exit(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 =     ::p4 =     
-|well.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_well    ::p2 = 1    ::p3 = 0    ::p4 =     
-|well.dlg|***ga_jump_players(nonIBscript) --> ::p1 = NW_well    ::p2 = 1    ::p3 = 0    ::p4 =     
 |xedlon.dlg|***ga_effect(nonIBscript) --> ::p1 = Visual    ::p2 = 22    ::p3 =     ::p4 = 0    
 |xedlon.dlg|***ga_play_sound(nonIBscript) --> ::p1 = as_an_dragonror1    ::p2 =     ::p3 = 0    ::p4 =     

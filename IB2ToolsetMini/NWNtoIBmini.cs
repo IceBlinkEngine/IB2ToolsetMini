@@ -10,6 +10,8 @@ namespace IB2ToolsetMini
     {
         private ParentForm prntForm;
         public Module modIBmini = new Module();
+        public string camDescription = "";
+        public string camDisplayName = "";
 
         //Transitions stuff
         public List<NwnWayPoint> waypointList = new List<NwnWayPoint>();
@@ -126,6 +128,7 @@ namespace IB2ToolsetMini
                 }
                 //go through all files and convert them one by one and add to IBmini module
                 processFiles(prntForm._mainDirectory + "\\temp");
+                overrideModWithCampaignInfo();
                 doConversionInfoAndSave();       
             }
         }
@@ -139,16 +142,28 @@ namespace IB2ToolsetMini
                 {
                     //first load the default module and clear out some of the Lists
                     loadDefaultModule();
-                    modIBmini.moduleName = Path.GetDirectoryName(folderBrowserDialog1.SelectedPath);
-                    modIBmini.moduleLabelName = Path.GetDirectoryName(folderBrowserDialog1.SelectedPath);
+                    modIBmini.moduleName = Path.GetFileName(folderBrowserDialog1.SelectedPath);
+                    modIBmini.moduleLabelName = Path.GetFileName(folderBrowserDialog1.SelectedPath);
                     modIBmini.moduleAreasObjects.Clear();
                     modIBmini.moduleEncountersList.Clear();
                     modIBmini.moduleJournal.Clear();
 
                     //go through all files and convert them one by one and add to IBmini module
                     processFiles(folderBrowserDialog1.SelectedPath);
+                    overrideModWithCampaignInfo();
                     doConversionInfoAndSave();
                 }
+            }
+        }
+        public void overrideModWithCampaignInfo()
+        {
+            if (!camDescription.Equals(""))
+            {
+                modIBmini.moduleDescription = camDescription;
+            }
+            if (!camDisplayName.Equals(""))
+            {
+                modIBmini.moduleLabelName = camDisplayName;
             }
         }
         public void loadDefaultModule()
@@ -247,6 +262,24 @@ namespace IB2ToolsetMini
                     }
                     gff = null;
                 }
+                else if ((filename.EndsWith(".IFO") || filename.EndsWith(".ifo")))
+                {
+                    GffFile gff = new GffFile(filename);
+                    if (gff != null)
+                    {
+                        getModuleInfo(gff);
+                    }
+                    gff = null;
+                }
+                else if ((filename.EndsWith(".CAM") || filename.EndsWith(".cam")))
+                {
+                    GffFile gff = new GffFile(filename);
+                    if (gff != null)
+                    {
+                        getCampaignInfo(gff);
+                    }
+                    gff = null;
+                }
                 else if ((filename.EndsWith(".DLG") || filename.EndsWith(".dlg")))
                 {
                     GffFile gff = new GffFile(filename);                    
@@ -263,8 +296,15 @@ namespace IB2ToolsetMini
                     GffFile gff = new GffFile(filename);                    
                     if (gff != null)
                     {
-                        string fullpathForArea = filename.Replace(".GIT", ".ARE");
-                        fullpathForArea = filename.Replace(".git", ".are");
+                        string fullpathForArea = "";
+                        if (filename.EndsWith("GIT"))
+                        {
+                            fullpathForArea = filename.Replace(".GIT", ".ARE");
+                        }
+                        else
+                        {
+                            fullpathForArea = filename.Replace(".git", ".are");
+                        }                      
                         GffFile gffArea = new GffFile(fullpathForArea);                        
                         if (gffArea != null)
                         {
@@ -282,7 +322,17 @@ namespace IB2ToolsetMini
             //once complete, go through each area and create transitions
             setupAllTransitions();
         }
-
+        public void getModuleInfo(GffFile gff)
+        {
+            modIBmini.moduleDescription = GetFieldByLabel(gff.TopLevelStruct, "Mod_Description").Data.ToString();
+            modIBmini.startingArea = GetFieldByLabel(gff.TopLevelStruct, "Mod_Entry_Area").Data.ToString();
+            //modIBmini.moduleLabelName = GetFieldByLabel(gff.TopLevelStruct, "Mod_Name").Data.ToString();
+        }
+        public void getCampaignInfo(GffFile gff)
+        {
+            camDescription = GetFieldByLabel(gff.TopLevelStruct, "Description").Data.ToString();
+            camDisplayName = GetFieldByLabel(gff.TopLevelStruct, "DisplayName").Data.ToString();
+        }
         public Item addItem(GffFile gff)
         {
             Item newItem = new Item();
@@ -604,7 +654,42 @@ namespace IB2ToolsetMini
         }
         public void addPropsToArea(GffFile gff, GffFile gffARE, Area area)
         {
+            //used to see if indoor or outdoor area
             GffList tileList = (GffList)GetFieldByLabel(gffARE.TopLevelStruct, "TileList").Data;
+
+            if (area.Filename.Equals(modIBmini.startingArea))
+            {
+                //x
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int xLoc = (int)(((GetFieldByLabel(gff.TopLevelStruct, "Mod_Entry_X").ValueFloat + 0.5f) / 1.5f) - 6);
+                    modIBmini.startingPlayerPositionX = xLoc - 1;
+                    if (modIBmini.startingPlayerPositionX < 0) { modIBmini.startingPlayerPositionX = 0; }
+                }
+                else //outdoors
+                {
+                    int xLoc = (int)(((GetFieldByLabel(gff.TopLevelStruct, "Mod_Entry_X").ValueFloat + 0.5f) / 5f) - 16);
+                    modIBmini.startingPlayerPositionX = xLoc - 1;
+                    if (modIBmini.startingPlayerPositionX < 0) { modIBmini.startingPlayerPositionX = 0; }
+                }
+
+                //y
+                if (tileList.StructList.Count > 0) //indoors
+                {
+                    int yLoc = (int)(((GetFieldByLabel(gff.TopLevelStruct, "Mod_Entry_Y").ValueFloat + 0.5f) / 1.5f) - 6);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    modIBmini.startingPlayerPositionY = area.MapSizeY - yLoc - 1;
+                    if (modIBmini.startingPlayerPositionY < 0) { modIBmini.startingPlayerPositionY = 0; }
+                }
+                else //outdoors
+                {
+                    int yLoc = (int)(((GetFieldByLabel(gff.TopLevelStruct, "Mod_Entry_Y").ValueFloat + 0.5f) / 5f) - 16);
+                    //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
+                    modIBmini.startingPlayerPositionY = area.MapSizeY - yLoc - 1;
+                    if (modIBmini.startingPlayerPositionY < 0) { modIBmini.startingPlayerPositionY = 0; }
+                }
+            }
+
             //go through list of creatures and create Props
             foreach (GffField field in gff.TopLevelStruct.Fields)
             {
@@ -648,12 +733,14 @@ namespace IB2ToolsetMini
                                 if (tileList.StructList.Count > 0) //indoors
                                 {
                                     int xLoc = (int)(((field2.ValueFloat + 0.5f) / 1.5f) - 6);
-                                    newItem.LocationX = xLoc;
+                                    newItem.LocationX = xLoc - 1;
+                                    if (newItem.LocationX < 0) { newItem.LocationX = 0; }
                                 }
                                 else //outdoors
                                 {
                                     int xLoc = (int)(((field2.ValueFloat + 0.5f) / 5f) - 16);
-                                    newItem.LocationX = xLoc;
+                                    newItem.LocationX = xLoc - 1;
+                                    if (newItem.LocationX < 0) { newItem.LocationX = 0; }
                                 }
                                 //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
                                 //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2
@@ -665,13 +752,15 @@ namespace IB2ToolsetMini
                                 {
                                     int yLoc = (int)(((field2.ValueFloat + 0.5f) / 1.5f) - 6);
                                     //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
-                                    newItem.LocationY = area.MapSizeY - yLoc;
+                                    newItem.LocationY = area.MapSizeY - yLoc - 1;
+                                    if (newItem.LocationY < 0) { newItem.LocationY = 0; }
                                 }
                                 else //outdoors
                                 {
                                     int yLoc = (int)(((field2.ValueFloat + 0.5f) / 5f) - 16);
                                     //need to invert the y value since IB2 measure top to bottom and nwn2 bottom to top so use MapSizeY - yLoc  
-                                    newItem.LocationY = area.MapSizeY - yLoc;
+                                    newItem.LocationY = area.MapSizeY - yLoc - 1;
+                                    if (newItem.LocationY < 0) { newItem.LocationY = 0; }
                                 }
                                 //nwn2 each square is 9x9 units so a 4x4 area is 36x36 units and all creatures will be located in the inner 2x2 space so (9,9) to (27,27)
                                 //IB2 will assume each 6x6 squares are equal to 9x9 units in nwn2
@@ -882,7 +971,8 @@ namespace IB2ToolsetMini
                     }                    
                 }
             }
-
+            
+            //setup blank area tiles
             for (int index = 0; index < (area.MapSizeX * area.MapSizeY); index++)
             {
                 area.Layer1Filename.Add("t_grass");
@@ -897,6 +987,40 @@ namespace IB2ToolsetMini
                 area.Walkable.Add(1);
                 area.LoSBlocked.Add(0);
                 area.Visible.Add(0);
+            }
+
+            //assign black tiles to non-tile spaces            
+            GffList tiles = (GffList)GetFieldByLabel(gffARE.TopLevelStruct, "TileList").Data;
+            if (tiles.StructList.Count > 0) //indoors
+            {
+                foreach (GffStruct strct in tiles.StructList)
+                {
+                    int appearance = GetFieldByLabel(strct, "Appearance").ValueInt;
+                    GffStruct PositionStruct = (GffStruct)GetFieldByLabel(strct, "Position").Data;
+                    float Xpos = GetFieldByLabel(PositionStruct, "x").ValueFloat;
+                    float Ypos = GetFieldByLabel(PositionStruct, "y").ValueFloat;
+                    int nwn2mapsizeX = GetFieldByLabel(gffARE.TopLevelStruct, "Width").ValueInt;
+                    int nwn2mapsizeY = GetFieldByLabel(gffARE.TopLevelStruct, "Height").ValueInt;
+                    int x = (int)((Xpos - 4.5f) / 9.0f);
+                    int y = (nwn2mapsizeY - 1) - (int)((Ypos - 4.5f) / 9.0f); //area.MapSizeY - yLoc;
+                    //skip if a border row or column
+                    if ((x <= 0) || (y <= 0) || (x >= (nwn2mapsizeX - 1)) || (y >= (nwn2mapsizeY - 1))) { continue; }
+                    if (appearance == 39)
+                    {
+                        int xx = x - 1;
+                        int yy = y - 1;
+                        //an NWN2 square is 6x6 IBmini squares...skip outer border NWN2 squares
+                        for (int ibx = 0; ibx < 6; ibx++)
+                        {
+                            for (int iby = 0; iby < 6; iby++)
+                            {
+                                int x2 = (xx * 6) + ibx;
+                                int y2 = (yy * 6) + iby;
+                                area.Layer2Filename[y2 * (area.MapSizeX) + x2] = "t_black_tile";
+                            }
+                        }                        
+                    }
+                }
             }
 
             return area;
@@ -985,7 +1109,11 @@ namespace IB2ToolsetMini
                 Trigger newtrig = new Trigger();
                 newtrig.TriggerTag = trig.Tag + trig.XPositionInSquares.ToString() + trig.YPositionInSquares.ToString();
                 //trigger location in this area
-                newtrig.TriggerSquaresList.Add(new Coordinate(trig.XPositionInSquares, trig.YPositionInSquares));
+                int x = trig.XPositionInSquares - 1;
+                if (x < 0) { x = 0; }
+                int y = trig.YPositionInSquares - 1;
+                if (y < 0) { y = 0; }
+                newtrig.TriggerSquaresList.Add(new Coordinate(x, y));
                 //define trigger type as a transition
                 newtrig.Event1Type = "transition";
                 //find linkedto area name
@@ -1007,7 +1135,11 @@ namespace IB2ToolsetMini
                 Trigger newtrig = new Trigger();
                 newtrig.TriggerTag = dr.Tag + dr.XPositionInSquares.ToString() + dr.YPositionInSquares.ToString();
                 //trigger location in this area
-                newtrig.TriggerSquaresList.Add(new Coordinate(dr.XPositionInSquares, dr.YPositionInSquares));
+                int x = dr.XPositionInSquares - 1;
+                if (x < 0) { x = 0; }
+                int y = dr.YPositionInSquares - 1;
+                if (y < 0) { y = 0; }
+                newtrig.TriggerSquaresList.Add(new Coordinate(x, y));
                 //define trigger type as a transition
                 newtrig.Event1Type = "transition";
                 //find linkedto area name
@@ -1531,6 +1663,18 @@ namespace IB2ToolsetMini
                 newAction.a_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
                 newAction.a_parameter_2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
             }
+            else if (scriptName.Equals("ga_jump_players"))
+            {
+                newAction.a_script = "gaTransitionPartyToMapLocation.cs";
+                string ar = getAreaNameOfDoorOrWaypointByTag(GetParameterDataByFieldLabelAndNumber(thisStruct, 1));
+                if (ar.Equals("")) { return null; }
+                int x = getTransitionLocationOfDoorOrWaypointByTag(GetParameterDataByFieldLabelAndNumber(thisStruct, 1)).X;
+                if (x == -1) { return null; }
+                int y = getTransitionLocationOfDoorOrWaypointByTag(GetParameterDataByFieldLabelAndNumber(thisStruct, 1)).Y;
+                newAction.a_parameter_1 = ar;
+                newAction.a_parameter_2 = x.ToString();
+                newAction.a_parameter_3 = y.ToString();
+            }
             else
             {
                 string scriptInfo = "|***" + scriptName + "(nonIBscript)" + " --> ";
@@ -1724,6 +1868,11 @@ namespace IB2ToolsetMini
             {
                 newCondition.c_script = "gcCheckIsMale.cs";
                 newCondition.c_parameter_1 = "-1";
+            }
+            else if (scriptName.Equals("gc_rand_1of"))
+            {
+                newCondition.c_script = "gcRand1of.cs";
+                newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
             }
             else if (scriptName.Equals("gc_skill_rank"))
             {
