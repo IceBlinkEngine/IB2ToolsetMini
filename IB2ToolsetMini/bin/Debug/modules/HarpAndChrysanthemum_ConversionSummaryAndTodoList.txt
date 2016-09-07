@@ -160,11 +160,36 @@ ptr_watchtower_con
 ptr_zhentroad_con
 ptr_zombiesod_con
 
+TAGS FOR TEXT FORMATTING AND TOKENS USED
+<i>
+</i>
+<FirstName>
+<Deity>
+<color=green>
+</color>
+<man/woman>
+<day/night>
+<lad/lass>
+<race>
+<color=blue>
+<Subrace>
+<he/she>
+<color=yellow>
+<color=red>
+<brother/sister>
+<FullName>
+<class>
+<him/her>
+<ii>
+<i/>
+<lord/lady>
+<Sir/Madam>
+<racenoun>
+<Race>
+
 NON-IB SCRIPT TYPES FOUND
-gc_rand_1of
 aniphil1_attack
 aniphil2_attack
-gc_comp_remove
 ga_jump
 ga_move
 anselm_pause
@@ -219,7 +244,6 @@ nomaps_script
 ga_load_mod
 ianth_cut_move
 ga_play_animation
-gc_check_level
 ga_start_convo
 joyboy
 marc500_jump
@@ -243,26 +267,12 @@ aniphil6_appear
 thedove_fight
 
 NON-IB SCRIPTS FOUND (DETAILS)
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 9    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 8    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 7    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
-|animadversio_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
 |aniphil1_con.DLG|***aniphil1_attack(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |aniphil2_con.DLG|***aniphil2_attack(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|anselm2_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
 |anselm2_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sk2_vromanwp    ::p2 = vroman    ::p3 = 0    ::p4 =     
 |anselm2_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sk2_ianthwp    ::p2 = ianth    ::p3 = 0    ::p4 =     
 |anselm2_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sk2_vromanwp    ::p2 = vroman    ::p3 = 0    ::p4 =     
 |anselm2_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sk2_ianthwp    ::p2 = ianth    ::p3 = 0    ::p4 =     
-|anselm2_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|anselm2_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|anselm2_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|anselm2_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |anselm_con.DLG|***ga_move(nonIBscript) --> ::p1 = intro2_wp3    ::p2 = 0    ::p3 = vroman    ::p4 =     
 |anselm_con.DLG|***anselm_pause(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |anselm_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 10    ::p3 = 0    ::p4 =     
@@ -273,26 +283,18 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |anselm_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = brother_anselm    ::p2 = 0    ::p3 = 0    ::p4 =     
 |anselm_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = brother_anselm    ::p2 = 0    ::p3 = 0    ::p4 =     
 |anselm_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = brother_anselm    ::p2 = 0    ::p3 = 0    ::p4 =     
-|asterchord_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |asterchord_con.DLG|***ga_jump(nonIBscript) --> ::p1 = aster_vromanwp    ::p2 = vroman    ::p3 = 0    ::p4 =     
 |asterchord_con.DLG|***ga_jump(nonIBscript) --> ::p1 = aster_ianthwp    ::p2 = ianth    ::p3 = 0    ::p4 =     
 |asterchord_con.DLG|***ga_jump(nonIBscript) --> ::p1 = aster_vromanwp    ::p2 = vroman    ::p3 = 0    ::p4 =     
 |asterchord_con.DLG|***ga_jump(nonIBscript) --> ::p1 = aster_ianthwp    ::p2 = ianth    ::p3 = 0    ::p4 =     
 |asterchord_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|asterchord_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|asterchord_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|asterchord_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |aster_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
 |bboarhead_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
 |bboarhead_con.DLG|***bboar_enable_enc(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |bboarhead_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
 |bboarhead_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|bboarhead_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|bboarhead_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |bboar_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
 |bboar_con.DLG|***bboar_disable_enc(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|bboar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|bboar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |bboar_con.DLG|***bboar_attack(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |bboar_con.DLG|***bboar_attack(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |bboar_con.DLG|***gc_wildempathy(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -332,71 +334,26 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |cjwell_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
 |cjwell_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
 |cjwell_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 20    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 19    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 18    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 17    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 16    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 15    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 14    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 13    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 12    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 11    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 10    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 9    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 8    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 7    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|commoner_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
 |cryptdoor_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
 |cryptdoor_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
 |cryptdoor_con.DLG|***ga_door_open(nonIBscript) --> ::p1 = swordskeep_b_door    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |cryptdoor_con.DLG|***ga_door_open(nonIBscript) --> ::p1 = swordskeep_b_door    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |cryptdoor_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
 |cryptdoor_con.DLG|***ga_door_open(nonIBscript) --> ::p1 = swordskeep_b_door    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|cryptdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |danmar_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sand_vroman_wp    ::p2 = vroman    ::p3 = 0    ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |danmar_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 6    ::p3 = 0    ::p4 =     
 |danmar_con.DLG|***ga_time_advance(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 = 0    ::p4 = 0    
 |danmar_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 6    ::p3 = 0    ::p4 =     
 |danmar_con.DLG|***ga_time_advance(nonIBscript) --> ::p1 = 8    ::p2 = 0    ::p3 = 0    ::p4 = 0    
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |danmar_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sand_ianth_wp    ::p2 = ianth    ::p3 = 0    ::p4 =     
 |danmar_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sand_vroman_wp    ::p2 = vroman    ::p3 = 0    ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = vroman    ::p2 =     ::p3 =     ::p4 =     
 |danmar_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sand_gossam_wp    ::p2 = gossam    ::p3 = 0    ::p4 =     
 |danmar_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sand_vroman_wp    ::p2 = vroman    ::p3 = 0    ::p4 =     
 |danmar_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sand_vroman_wp    ::p2 = vroman    ::p3 = 0    ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |danmar_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 6    ::p3 = 0    ::p4 =     
 |danmar_con.DLG|***ga_time_set(nonIBscript) --> ::p1 = 21    ::p2 = 30    ::p3 = 0    ::p4 = 0    
 |danmar_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 6    ::p3 = 0    ::p4 =     
 |danmar_con.DLG|***ga_time_set(nonIBscript) --> ::p1 = 7    ::p2 = 30    ::p3 = 0    ::p4 = 0    
-|danmar_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |danmar_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |danmar_con.DLG|***ga_restoration(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 = 0    ::p3 = 1    ::p4 = 1    
 |danmar_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -407,23 +364,10 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |danmar_con.DLG|***ga_restoration(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 = 0    ::p3 = 1    ::p4 = 1    
 |debug_con.DLG|***ga_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
 |debug_con.DLG|***ga_party_add(nonIBscript) --> ::p1 = ianth_ros    ::p2 =     ::p3 =     ::p4 =     
-|deleuthelis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|deleuthelis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|deleuthelis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|deleuthelis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|deleuthelis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|deleuthelis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |doornight_con.DLG|***gc_ds_night(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|dovegrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|drunk_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|drunk_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|drunk_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|drunk_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
 |dryad_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
 |dryad_con.DLG|***ga_party_freeze(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |dryad_con.DLG|***ga_jump_party_in_formation(nonIBscript) --> ::p1 = speakdryad_ianth    ::p2 = 0    ::p3 = 2    ::p4 = 0    
-|dryad_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|dryad_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |dryad_con.DLG|***ga_effect(nonIBscript) --> ::p1 = Visual    ::p2 =     ::p3 =     ::p4 = 29    
 |dryad_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = gilathias    ::p3 = gilathias_wp    ::p4 = 1    
 |dryad_con.DLG|***ga_effect(nonIBscript) --> ::p1 = Visual    ::p2 =     ::p3 =     ::p4 = 33    
@@ -469,32 +413,11 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |evereskan_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = barkoven    ::p2 = 0    ::p3 =     ::p4 =     
 |evereskan_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = hag_horse    ::p2 = 0    ::p3 =     ::p4 =     
 |evereskan_con.DLG|***evereskan_attack(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|evereskan_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|evereskan_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |evereskan_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = hag_horse    ::p2 = 0    ::p3 =     ::p4 =     
 |evereskan_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = oublio    ::p2 = 0    ::p3 =     ::p4 =     
 |evereskan_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = barkoven    ::p2 = 0    ::p3 =     ::p4 =     
 |evereskan_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = hag_horse    ::p2 = 0    ::p3 = 0    ::p4 =     
 |evereskan_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = hag_horse    ::p2 = 0    ::p3 = 0    ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 20    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 19    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 18    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 17    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 16    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 15    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 14    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 13    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 12    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 11    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 10    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 9    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 8    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 7    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|ezbollus_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
 |ezbollus_con.DLG|***gc_deity(nonIBscript) --> ::p1 = cyric    ::p2 =     ::p3 =     ::p4 =     
 |ezbollus_con.DLG|***gc_deity(nonIBscript) --> ::p1 = cyric    ::p2 =     ::p3 =     ::p4 =     
 |ezbollus_con.DLG|***gc_deity(nonIBscript) --> ::p1 = cyric    ::p2 =     ::p3 =     ::p4 =     
@@ -522,47 +445,13 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |gargothis_con.DLG|***war_script(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |gargothis_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
 |gargothis_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|gargothis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |gargothis_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 6    ::p3 = 0    ::p4 =     
-|gargothis_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |gilathias500_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |gilathias500_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |gilathias_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
 |gilathias_con.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 4    ::p2 = 1    ::p3 =     ::p4 = gilathias1    
-|gossam_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 30    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 29    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 28    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 27    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 26    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 25    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 24    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 23    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 22    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 21    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 20    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 19    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 18    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 17    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 16    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 15    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 14    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 13    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 12    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 11    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 10    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 9    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 8    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 7    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
 |gossam_con.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = gossam_ros    ::p2 =     ::p3 =     ::p4 =     
 |gossam_con.DLG|***ga_reset_level(nonIBscript) --> ::p1 = gossam    ::p2 = 1    ::p3 =     ::p4 =     
-|gossam_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |gurkik_con.DLG|***gc_false(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |gurkik_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
 |gurkik_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
@@ -598,10 +487,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |hamfast_con.DLG|***ga_jump(nonIBscript) --> ::p1 = skeep_ianth_wp    ::p2 = ianth    ::p3 = 0    ::p4 =     
 |hamfast_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_move(nonIBscript) --> ::p1 = skeep_gossam_wp    ::p2 = 0    ::p3 = gossam    ::p4 =     
-|hamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|hamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|hamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|hamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con.DLG|***bonus_xp1(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_door_close(nonIBscript) --> ::p1 = ilmater_exd    ::p2 = 1    ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = manfred    ::p3 = manfred_lives_wp    ::p4 = 1    
@@ -622,13 +507,11 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |hamfast_con.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 999    ::p2 = 0    ::p3 =     ::p4 = maerdred    
 |hamfast_con.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 999    ::p2 = 0    ::p3 =     ::p4 = valeria    
 |hamfast_con.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 999    ::p2 = 0    ::p3 =     ::p4 = lorimer    
-|hamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con.DLG|***bonus_xp_text(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = manfred    ::p2 = 0    ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = maerdred    ::p2 = 0    ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = lorimer    ::p2 = 0    ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = valeria    ::p2 = 0    ::p3 =     ::p4 =     
-|hamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = maerdred    ::p2 = 0    ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = valeria    ::p2 = 0    ::p3 =     ::p4 =     
 |hamfast_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = lorimer    ::p2 = 0    ::p3 =     ::p4 =     
@@ -642,17 +525,12 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |hamfast_con1.DLG|***ga_jump(nonIBscript) --> ::p1 = skeep_ianth_wp    ::p2 = ianth    ::p3 = 0    ::p4 =     
 |hamfast_con1.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con1.DLG|***ga_move(nonIBscript) --> ::p1 = skeep_gossam_wp    ::p2 = 0    ::p3 = gossam    ::p4 =     
-|hamfast_con1.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|hamfast_con1.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|hamfast_con1.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|hamfast_con1.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con1.DLG|***bonus_xp1(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con1.DLG|***ga_door_close(nonIBscript) --> ::p1 = ilmater_exd    ::p2 = 1    ::p3 =     ::p4 =     
 |hamfast_con1.DLG|***bonus_xp1(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con1.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = manfred    ::p3 = manfred_lives_wp    ::p4 = 1    
 |hamfast_con1.DLG|***ga_destroy(nonIBscript) --> ::p1 = manfred    ::p2 = 0    ::p3 = 0    ::p4 =     
 |hamfast_con1.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 7    ::p2 = 0    ::p3 = 0    ::p4 =     
-|hamfast_con1.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |hamfast_con1.DLG|***bonus_xp_text(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |harp2_con.DLG|***ga_music_battle_play(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |harp2_con.DLG|***gc_has_feat(nonIBscript) --> ::p1 =     ::p2 = 16778916    ::p3 = 0    ::p4 =     
@@ -682,10 +560,7 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |harp_con.DLG|***gc_has_feat(nonIBscript) --> ::p1 =     ::p2 = 16778915    ::p3 = 0    ::p4 =     
 |harp_con.DLG|***gc_false(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |harp_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 8    ::p2 = 0    ::p3 = 16777215    ::p4 =     
-|harp_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |harp_con.DLG|***ga_time_set(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 = 0    
-|hezro_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|hezro_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |ianth_con.DLG|***gc_deity(nonIBscript) --> ::p1 = sune    ::p2 =     ::p3 =     ::p4 =     
 |ianth_con.DLG|***gc_deity(nonIBscript) --> ::p1 = sune    ::p2 =     ::p3 =     ::p4 =     
 |ianth_con.DLG|***gc_deity(nonIBscript) --> ::p1 = sune    ::p2 =     ::p3 =     ::p4 =     
@@ -709,14 +584,11 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |ianth_cut_con.DLG|***ga_scripthidden(nonIBscript) --> ::p1 = gossam    ::p2 = 0    ::p3 =     ::p4 =     
 |ianth_cut_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 5.5    ::p2 = 0    ::p3 = 0    ::p4 =     
 |ianth_cut_con.DLG|***ga_move(nonIBscript) --> ::p1 = WP_asyin    ::p2 = 0    ::p3 = vroman    ::p4 =     
-|ianth_cut_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|ianth_cut_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |ianth_cut_con.DLG|***ga_move(nonIBscript) --> ::p1 = ianth_cut_ianthwp    ::p2 = 0    ::p3 = $PC_SPEAKER    ::p4 =     
 |ianth_cut_con.DLG|***ga_move(nonIBscript) --> ::p1 = ianth_cut_ianthwp    ::p2 = 0    ::p3 = $PC_SPEAKER    ::p4 =     
 |ianth_cut_con.DLG|***ga_move(nonIBscript) --> ::p1 = ianth_cut_ianthwp    ::p2 = 0    ::p3 = $PC_SPEAKER    ::p4 =     
 |ianth_cut_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |ianth_cut_con.DLG|***ga_time_set(nonIBscript) --> ::p1 = 7    ::p2 = 0    ::p3 = 0    ::p4 = 0    
-|ianth_cut_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |intro0_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 6    ::p3 = 0    ::p4 =     
 |intro0_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 5    ::p3 = 0    ::p4 =     
 |intro0_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 15    ::p2 =     ::p3 =     ::p4 =     
@@ -753,9 +625,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |intro_bkup.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 = 0    ::p4 =     
 |intro_bkup.DLG|***ga_music_stop(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |intro_bkup.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 = ianth    
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
 |intro_bkup.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
 |intro_bkup.DLG|***ga_reset_level(nonIBscript) --> ::p1 = vroman    ::p2 = 1    ::p3 =     ::p4 =     
 |intro_bkup.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
@@ -764,12 +633,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |intro_bkup.DLG|***ga_reset_level(nonIBscript) --> ::p1 = vroman    ::p2 = 1    ::p3 =     ::p4 =     
 |intro_bkup.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
 |intro_bkup.DLG|***ga_reset_level(nonIBscript) --> ::p1 = vroman    ::p2 = 1    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup.DLG|***gc_check_level(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 4    ::p3 = 0    ::p4 =     
 |intro_bkup1.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***gc_false(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -782,9 +645,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |intro_bkup1.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 = 0    ::p4 =     
 |intro_bkup1.DLG|***ga_music_stop(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 = ianth    
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***ga_reset_level(nonIBscript) --> ::p1 = vroman    ::p2 = 1    ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
@@ -793,12 +653,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |intro_bkup1.DLG|***ga_reset_level(nonIBscript) --> ::p1 = vroman    ::p2 = 1    ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
 |intro_bkup1.DLG|***ga_reset_level(nonIBscript) --> ::p1 = vroman    ::p2 = 1    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_bkup1.DLG|***gc_check_level(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
 |intro_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 4    ::p3 = 0    ::p4 =     
 |intro_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 5    ::p3 = 0    ::p4 =     
 |intro_con.DLG|***ga_music_play(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -813,9 +667,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |intro_con.DLG|***ga_start_convo(nonIBscript) --> ::p1 = vroman    ::p2 = intro_bkup    ::p3 = 0    ::p4 = 0    
 |intro_con.DLG|***ga_music_stop(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |intro_con.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 = ianth    
-|intro_con.DLG|***gc_check_level(nonIBscript) --> ::p1 = 4    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_con.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
-|intro_con.DLG|***gc_check_level(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
 |intro_con.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
 |intro_con.DLG|***ga_reset_level(nonIBscript) --> ::p1 = vroman    ::p2 = 1    ::p3 =     ::p4 =     
 |intro_con.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = vroman_ros    ::p2 =     ::p3 =     ::p4 =     
@@ -827,16 +678,8 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |joyboy_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 8    ::p2 =     ::p3 =     ::p4 =     
 |joyboy_con.DLG|***joyboy(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |ladyelf_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|ludosdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|ludosdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|ludosdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|ludosdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|ludosdoor_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |ludosdoor_con.DLG|***ga_door_open(nonIBscript) --> ::p1 = ludos_door    ::p2 =     ::p3 =     ::p4 =     
 |ludos_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = spectral_knight    ::p2 = 0    ::p3 = 0.1    ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |manfredgrave_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = zombie_idiot1    ::p3 = zswb_wp1    ::p4 = 0    
 |manfredgrave_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = zombie_idiot2    ::p3 = zswb_wp2    ::p4 = 0    
 |manfredgrave_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = zombie_idiot3    ::p3 = zswb_wp3    ::p4 = 0    
@@ -847,16 +690,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |manfredgrave_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = zombie_idiot3    ::p3 = zswb_wp3    ::p4 = 0    
 |manfredgrave_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = zombie_idiot4    ::p3 = zswb_wp4    ::p4 = 0    
 |manfredgrave_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = zombie_idiot5    ::p3 = zswb_wp5    ::p4 = 0    
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|manfredgrave_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |manfredgrave_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot1    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
 |manfredgrave_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot2    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
 |manfredgrave_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot3    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
@@ -870,8 +703,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |manfredgrave_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot5    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
 |manfredgrave_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = zombiemashtrig    ::p2 = 0    ::p3 = 0    ::p4 =     
 |manfred_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|manfred_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|manfred_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |manfred_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 15    ::p3 = 0    ::p4 =     
 |manfred_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = revelian_inn    ::p3 = innkeep_wp    ::p4 = 1    
 |manfred_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = hamfast3    ::p2 = 0    ::p3 = 0.2    ::p4 =     
@@ -909,22 +740,10 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |marcellus1_con.DLG|***marcellus1_fight(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |marcellus1_con.DLG|***marcellus1_hostile(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |marcellus1_con.DLG|***marcellus1_fight(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |melincourt_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
 |melincourt_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
 |melincourt_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
 |melincourt_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|melincourt_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |melincourt_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 5    ::p2 = 6    ::p3 = 0    ::p4 =     
 |melincourt_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 5    ::p2 = 6    ::p3 = 0    ::p4 =     
 |melincourt_con.DLG|***armwrestle_script(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -939,11 +758,9 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |ndark2_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |ndark2_con.DLG|***ga_effect(nonIBscript) --> ::p1 = Disease    ::p2 = 5    ::p3 = I    ::p4 = 1    
 |ndark2_con.DLG|***gc_has_feat(nonIBscript) --> ::p1 =     ::p2 = 16778915    ::p3 = 0    ::p4 =     
-|ndark2_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |oublio_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |oublio_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |oublio_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|oublio_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |oublio_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 8    ::p3 = 0    ::p4 =     
 |oublio_con.DLG|***ga_jump(nonIBscript) --> ::p1 = barkoven_wp    ::p2 = barkoven    ::p3 = 0    ::p4 =     
 |oublio_con.DLG|***ga_jump(nonIBscript) --> ::p1 = oublio_wp    ::p2 = oublio    ::p3 = 0    ::p4 =     
@@ -970,7 +787,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |portfolio_con.DLG|***ga_face_target(nonIBscript) --> ::p1 = ianth    ::p2 = marcellus    ::p3 = 0    ::p4 =     
 |portfolio_con.DLG|***ga_face_target(nonIBscript) --> ::p1 = vroman    ::p2 = marcellus    ::p3 = 0    ::p4 =     
 |portfolio_con.DLG|***ga_face_target(nonIBscript) --> ::p1 = gossam    ::p2 = marcellus    ::p3 = 0    ::p4 =     
-|portfolio_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |portfolio_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = teurneia    ::p3 = teurneia_wp1    ::p4 = 0    
 |portfolio_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = belforet    ::p3 = belforet_wp1    ::p4 = 0    
 |portfolio_con.DLG|***gc_is_female(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -980,8 +796,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |portfolio_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = z_portfolio    ::p2 = 0    ::p3 = 0    ::p4 =     
 |portfolio_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = z_portfolio    ::p2 = 0    ::p3 = 0    ::p4 =     
 |raghragh_con.DLG|***gc_is_in_combat(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 =     ::p3 =     ::p4 =     
-|raghragh_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|raghragh_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |raghragh_con.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 15    ::p2 = 1    ::p3 =     ::p4 = raghragh    
 |raghragh_con.DLG|***ga_move_exit(nonIBscript) --> ::p1 = 15    ::p2 = 1    ::p3 =     ::p4 = raghragh    
 |revelian_inn_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 6    ::p3 = 0    ::p4 =     
@@ -992,7 +806,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |revelian_inn_con.DLG|***ga_time_set(nonIBscript) --> ::p1 = 21    ::p2 = 30    ::p3 = 0    ::p4 = 0    
 |revelian_inn_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 6    ::p3 = 0    ::p4 =     
 |revelian_inn_con.DLG|***ga_time_set(nonIBscript) --> ::p1 = 7    ::p2 = 30    ::p3 = 0    ::p4 = 0    
-|revelian_inn_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |revelian_inn_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |revelian_inn_con.DLG|***ga_restoration(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 = 0    ::p3 = 1    ::p4 = 1    
 |revelian_inn_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -1001,23 +814,13 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |revelian_inn_con.DLG|***ga_restoration(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 = 0    ::p3 = 1    ::p4 = 1    
 |revelian_inn_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |revelian_inn_con.DLG|***ga_restoration(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 = 0    ::p3 = 1    ::p4 = 1    
-|robhamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|robhamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|robhamfast_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |robhamfast_con.DLG|***ga_jump(nonIBscript) --> ::p1 = sarah_wp    ::p2 = sarah    ::p3 = 0    ::p4 =     
 |sarah_con.DLG|***ham_jumping(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |sarah_con.DLG|***ham_jumping(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |sarah_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = hamfast2    ::p3 = ham_ham_wp    ::p4 = 0    
 |sarah_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = danmar2    ::p3 = ham_dan_wp    ::p4 = 0    
 |sarah_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|sarah_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|sarah_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |sarah_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 7    ::p2 = 0    ::p3 = 0    ::p4 =     
-|sarah_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|sarah_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|sarah_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|sarah_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|sarah_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |sarah_con.DLG|***ga_time_set(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 = 0    ::p4 = 0    
 |sarah_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = danmar2    ::p2 = 0    ::p3 = 0    ::p4 =     
 |sarah_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = hamfast2    ::p2 = 0    ::p3 = 0    ::p4 =     
@@ -1042,7 +845,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |snow_con.DLG|***ga_move(nonIBscript) --> ::p1 = normative_wp    ::p2 = 0    ::p3 = gossam    ::p4 =     
 |snow_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 8    ::p2 = 0    ::p3 = 16777215    ::p4 =     
 |snow_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 4    ::p2 = 5    ::p3 = 0    ::p4 =     
-|snow_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |snow_con.DLG|***ga_clear_actions(nonIBscript) --> ::p1 = $PC_SPEAKER    ::p2 = 0    ::p3 =     ::p4 =     
 |snow_con.DLG|***ga_clear_actions(nonIBscript) --> ::p1 = ianth    ::p2 = 0    ::p3 =     ::p4 =     
 |snow_con.DLG|***ga_clear_actions(nonIBscript) --> ::p1 = vroman    ::p2 = 0    ::p3 =     ::p4 =     
@@ -1056,15 +858,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |snow_con.DLG|***unequip_items(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |snow_con.DLG|***export_script(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |snow_con.DLG|***ga_end_game(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 10    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 9    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 8    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 7    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|stagwarrior_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
 |stone_con.DLG|***sd_resting(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |thedove2_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
 |thedove2_con.DLG|***dovetalk_01(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -1086,13 +879,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |thedove_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = c_ogre0    ::p3 = dovetalk_wp8    ::p4 = 1    
 |thedove_con.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = c_ogre0    ::p3 = dovetalk_wp9    ::p4 = 1    
 |thedove_con.DLG|***thedove_fight(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
-|traveler_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 7    ::p2 =     ::p3 =     ::p4 =     
-|traveler_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 6    ::p2 =     ::p3 =     ::p4 =     
-|traveler_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 5    ::p2 =     ::p3 =     ::p4 =     
-|traveler_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|traveler_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
-|traveler_con.DLG|***gc_rand_1of(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
-|vigil_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |vigil_con.DLG|***ga_jump(nonIBscript) --> ::p1 = pc_vig_wp    ::p2 = $PC_SPEAKER    ::p3 = 0    ::p4 =     
 |vigil_con.DLG|***ga_jump(nonIBscript) --> ::p1 = vroman_vig_wp    ::p2 = vroman    ::p3 = 0    ::p4 =     
 |vigil_con.DLG|***ga_jump(nonIBscript) --> ::p1 = ianth_vig_wp    ::p2 = ianth    ::p3 = 0    ::p4 =     
@@ -1116,8 +902,6 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |vigil_con.DLG|***ga_give_feat(nonIBscript) --> ::p1 = ianth    ::p2 = 16778918    ::p3 = 0    ::p4 = 0    
 |vigil_con.DLG|***ga_move(nonIBscript) --> ::p1 = pc_vig_wp    ::p2 = 0    ::p3 = ianth    ::p4 =     
 |vigil_con.DLG|***ga_move(nonIBscript) --> ::p1 = pc_vig_wp    ::p2 = 0    ::p3 = ianth    ::p4 =     
-|vigil_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|vigil_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |vigil_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = flamestone_worldmap    ::p2 = 0    ::p3 = 0    ::p4 =     
 |vroman_con.DLG|***gc_is_female(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
 |vroman_cut.DLG|***gc_false(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
@@ -1127,22 +911,10 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |vroman_cut.DLG|***ga_destroy(nonIBscript) --> ::p1 = marcellus1    ::p2 = 0    ::p3 = 0    ::p4 =     
 |vroman_cut.DLG|***ga_destroy(nonIBscript) --> ::p1 = teurneia1    ::p2 = 0    ::p3 = 0    ::p4 =     
 |vroman_cut.DLG|***ga_destroy(nonIBscript) --> ::p1 = belforet1    ::p2 = 0    ::p3 = 0    ::p4 =     
-|vroman_cut.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |vroman_cut.DLG|***ga_destroy(nonIBscript) --> ::p1 = teurneia1    ::p2 = 0    ::p3 = 0    ::p4 =     
 |vroman_cut.DLG|***ga_destroy(nonIBscript) --> ::p1 = belforet1    ::p2 = 0    ::p3 = 0    ::p4 =     
-|vroman_cut.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
 |watchtower_con.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 3    ::p2 = 6    ::p3 = 0    ::p4 =     
 |watchtower_con.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
-|zhentroad_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = ianth    ::p2 =     ::p3 =     ::p4 =     
 |zombiesod_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot1    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
 |zombiesod_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot2    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
 |zombiesod_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot3    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
@@ -1155,4 +927,3 @@ NON-IB SCRIPTS FOUND (DETAILS)
 |zombiesod_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot4    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
 |zombiesod_con.DLG|***ga_faction_join(nonIBscript) --> ::p1 = zombie_idiot5    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
 |zombiesod_con.DLG|***ga_destroy(nonIBscript) --> ::p1 = zombiemashtrig    ::p2 = 0    ::p3 = 0    ::p4 =     
-|zombiesod_con.DLG|***gc_comp_remove(nonIBscript) --> ::p1 = gossam    ::p2 =     ::p3 =     ::p4 =     

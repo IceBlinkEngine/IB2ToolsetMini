@@ -1,0 +1,450 @@
+TASKS TODO
+-build areas
+-build encounters
+-build shops
+-build containers
+-go through all convos and verify scripts
+-find and assign portraits to convos
+-find and assign tokens to custom creatures
+-find and assign item images to custom items
+
+POSSIBLE COMPANIONS
+Balen
+Fledge
+Ian
+Miki
+
+PORTRAITS NEEDED
+ptr_alec
+ptr_b_Adwen
+ptr_b_Boone
+ptr_b_dark_dwarf_king
+ptr_b_Galdor
+ptr_b_jadissan
+ptr_b_Sandur
+ptr_b_Sildor
+ptr_b_Ulrind
+ptr_b_Veloria
+ptr_b_zorniancommander
+ptr_baby_spiders
+ptr_balen
+ptr_Balen
+ptr_berrin
+ptr_Berrin
+ptr_Boone
+ptr_brendan
+ptr_c_commoner
+ptr_c_guard
+ptr_c_halforc
+ptr_camp_fire
+ptr_cat
+ptr_charnia_commander
+ptr_charnia_greeting
+ptr_climb_rope
+ptr_dark_dwarf_king
+ptr_Derik
+ptr_digawig
+ptr_doril
+ptr_Dragrin
+ptr_dungeon_master
+ptr_ending_convo
+ptr_ending_convo_2
+ptr_ending_convo_old
+ptr_enter_brinsby_east
+ptr_enter_grimstan
+ptr_enter_hideout
+ptr_enter_mines
+ptr_esyia
+ptr_exit_hideout
+ptr_fail_safe_ending
+ptr_fimblin
+ptr_fledge
+ptr_Fledge
+ptr_galdor
+ptr_Galdor2
+ptr_gillen
+ptr_gnoll_king
+ptr_goblin_leader
+ptr_grack
+ptr_Grack
+ptr_guild_member
+ptr_guild_slave
+ptr_halflings
+ptr_ian
+ptr_Ian
+ptr_ians_comps
+ptr_jaden
+ptr_Jaden
+ptr_jadissan_death
+ptr_jadissan_destroy
+ptr_jadissan_sanctum
+ptr_jadissan_volcano
+ptr_Jadissan_zorn
+ptr_jerun
+ptr_join_guild
+ptr_jorind
+ptr_k_kobold_king
+ptr_kelv
+ptr_kendra
+ptr_kobold_king
+ptr_kylee
+ptr_lendel
+ptr_lisa
+ptr_Lisa
+ptr_lizard_queen
+ptr_marissa
+ptr_Marissa
+ptr_merin
+ptr_miki
+ptr_Miki
+ptr_miki_ian_tomb
+ptr_mindee
+ptr_next_mod
+ptr_nipen
+ptr_numblin
+ptr_numblin2
+ptr_opening_scene
+ptr_orc_leader
+ptr_paths
+ptr_pegel
+ptr_perin
+ptr_pirates
+ptr_queen_spider
+ptr_rappel_rope
+ptr_return_home
+ptr_rillian
+ptr_roland
+ptr_sandur
+ptr_selyna
+ptr_sidney
+ptr_Sidney
+ptr_sildor
+ptr_sivel
+ptr_sulob
+ptr_suril
+ptr_suril2
+ptr_t_adwen
+ptr_t_Boone
+ptr_t_Galdor
+ptr_t_Jerun
+ptr_t_Sildor
+ptr_t_Veloria
+ptr_talk_wolverine
+ptr_testing
+ptr_tom
+ptr_touley
+ptr_tree_spirit
+ptr_tree_spirit2
+ptr_vampires
+ptr_vin
+ptr_Vin
+ptr_vulona
+ptr_wave1_convo
+ptr_wave2_convo
+ptr_wave3_convo
+ptr_wave4_convo
+ptr_wendell
+ptr_Wendy
+ptr_zorn
+ptr_zorn_death
+
+NON-IB SCRIPT TYPES FOUND
+ga_group_attack
+ga_roster_party_add
+ga_roster_selectable
+ga_reset_level
+ga_fade_from_black
+open_create_character_gui
+ga_fade_to_black
+ga_remove_effects
+ga_force_exit
+ga_conversation_self
+ga_destroy
+spawn_gnolls
+sj_a_map_point_show
+ga_create_obj
+ga_move
+ga_door_close
+gc_check_level
+play_music_track
+play_instruments_frontier
+play_instruments_saltarello
+sj_a_map_point_hide
+xp_modification
+ga_faction_join
+ga_effect
+ga_load_mod
+wave1_spawn
+wave1_move
+wave1_start_combat
+wave_return_good
+wave2_spawn
+wave2_move
+wave2_start_combat
+wave3_spawn
+wave3_move
+wave3_start_combat
+wave4_spawn
+wave4_move
+wave4_start_combat
+ga_lock
+
+NON-IB SCRIPTS FOUND (DETAILS)
+|alec.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Alec    ::p2 = guild    ::p3 =     ::p4 =     
+|baby spiders.DLG|***ga_group_attack(nonIBscript) --> ::p1 = baby_spider_leader    ::p2 = spiders    ::p3 =     ::p4 =     
+|balen.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = Balen    ::p2 =     ::p3 =     ::p4 =     
+|balen.DLG|***ga_roster_selectable(nonIBscript) --> ::p1 = Balen    ::p2 = 1    ::p3 =     ::p4 =     
+|balen.DLG|***ga_reset_level(nonIBscript) --> ::p1 = Balen    ::p2 = 1    ::p3 =     ::p4 =     
+|charnia_commander.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|charnia_commander.DLG|***ga_group_attack(nonIBscript) --> ::p1 = zorniancommander    ::p2 = charnia_commander    ::p3 =     ::p4 =     
+|charnia_commander.DLG|***ga_group_attack(nonIBscript) --> ::p1 = zorniancommander    ::p2 = charnia_commander    ::p3 =     ::p4 =     
+|dark_dwarf_king.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|dark_dwarf_king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = dark_dwarf_king    ::p2 = dark_dwarf_leader    ::p3 =     ::p4 =     
+|dark_dwarf_king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = dark_dwarf_king    ::p2 = dark_dwarf_leader    ::p3 =     ::p4 =     
+|dungeon_master.DLG|***open_create_character_gui(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ending_convo.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|ending_convo.DLG|***ga_remove_effects(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ending_convo.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Galdor    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Veloria    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Galdor    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Veloria    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Galdor    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Veloria    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Galdor    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Veloria    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Galdor    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Veloria    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_2.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_old.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|ending_convo_old.DLG|***ga_remove_effects(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_old.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Galdor    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_old.DLG|***ga_remove_effects(nonIBscript) --> ::p1 = b_Veloria    ::p2 =     ::p3 =     ::p4 =     
+|ending_convo_old.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|enter_brinsby_east.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|enter_brinsby_east.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Wendy    ::p2 = wendy_exit    ::p3 = 1    ::p4 =     
+|enter_brinsby_east.DLG|***ga_conversation_self(nonIBscript) --> ::p1 = paths    ::p2 =     ::p3 =     ::p4 =     
+|enter_grimstan.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|enter_grimstan.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|enter_grimstan.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|enter_grimstan.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|enter_grimstan.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|fledge.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = Fledge    ::p2 =     ::p3 =     ::p4 =     
+|fledge.DLG|***ga_roster_selectable(nonIBscript) --> ::p1 = Fledge    ::p2 = 1    ::p3 =     ::p4 =     
+|fledge.DLG|***ga_reset_level(nonIBscript) --> ::p1 = Fledge    ::p2 = 1    ::p3 =     ::p4 =     
+|galdor.DLG|***ga_destroy(nonIBscript) --> ::p1 = fx_containment_barrier    ::p2 = 0    ::p3 = 0    ::p4 =     
+|galdor.DLG|***ga_destroy(nonIBscript) --> ::p1 = Galdor2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|galdor.DLG|***ga_destroy(nonIBscript) --> ::p1 = fx_containment_barrier    ::p2 = 0    ::p3 = 0    ::p4 =     
+|galdor.DLG|***ga_destroy(nonIBscript) --> ::p1 = Galdor2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|gnoll king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_gnoll_king    ::p2 = gnolls    ::p3 =     ::p4 =     
+|goblin leader.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Palik    ::p2 = goblin_leader    ::p3 =     ::p4 =     
+|guild_slave.DLG|***ga_force_exit(nonIBscript) --> ::p1 = GuildMember1    ::p2 = slave_exit1    ::p3 = 1    ::p4 =     
+|guild_slave.DLG|***ga_force_exit(nonIBscript) --> ::p1 = GuildMember2    ::p2 = slave_exit2    ::p3 = 1    ::p4 =     
+|halflings.DLG|***spawn_gnolls(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|halflings.DLG|***spawn_gnolls(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|ian.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_south_grimstan_forest    ::p2 =     ::p3 =     ::p4 =     
+|ian.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = Ian    ::p2 =     ::p3 =     ::p4 =     
+|ian.DLG|***ga_roster_selectable(nonIBscript) --> ::p1 = Ian    ::p2 = 1    ::p3 =     ::p4 =     
+|ian.DLG|***ga_reset_level(nonIBscript) --> ::p1 = Ian    ::p2 = 1    ::p3 =     ::p4 =     
+|ian.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Ian    ::p2 = ian_exit    ::p3 = 1    ::p4 =     
+|ians_comps.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Ulrind    ::p2 = ian_comp_exit1    ::p3 = 1    ::p4 =     
+|ians_comps.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Boone    ::p2 = ian_comp_exit2    ::p3 = 1    ::p4 =     
+|ians_comps.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Derik    ::p2 = ian_comp_exit3    ::p3 = 1    ::p4 =     
+|ians_comps.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Ulrind    ::p2 = ian_comp_exit1    ::p3 = 1    ::p4 =     
+|ians_comps.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Boone    ::p2 = ian_comp_exit2    ::p3 = 1    ::p4 =     
+|ians_comps.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Derik    ::p2 = ian_comp_exit3    ::p3 = 1    ::p4 =     
+|jadissan_death.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|jadissan_death.DLG|***ga_remove_effects(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|jadissan_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|jadissan_sanctum.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|jadissan_sanctum.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 1    ::p2 =     ::p3 =     ::p4 =     
+|jadissan_sanctum.DLG|***ga_create_obj(nonIBscript) --> ::p1 = V    ::p2 = fx_gem_energy_orange    ::p3 = spawn_jadissan    ::p4 = 0    
+|jadissan_sanctum.DLG|***ga_destroy(nonIBscript) --> ::p1 = jadissan_destroy    ::p2 = 0    ::p3 = 1.5    ::p4 =     
+|jadissan_sanctum.DLG|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = jadissan_final    ::p3 = spawn_jadissan    ::p4 = 0    
+|jadissan_sanctum.DLG|***ga_destroy(nonIBscript) --> ::p1 = fx_jad    ::p2 = 0    ::p3 = 0    ::p4 =     
+|jadissan_sanctum.DLG|***ga_group_attack(nonIBscript) --> ::p1 = jadissan_final    ::p2 = jadissan_final_group    ::p3 =     ::p4 =     
+|jadissan_volcano.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Jadissan_volcano    ::p2 = wp_jadissan_volcano_exit    ::p3 = 1    ::p4 =     
+|jadissan_volcano.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_giantfire_leader    ::p2 = witch_group    ::p3 =     ::p4 =     
+|jerun.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_falls    ::p2 =     ::p3 =     ::p4 =     
+|jerun.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_forest    ::p2 =     ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|kobold king.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|kobold king.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|kobold king.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|kobold king.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|kobold king.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 = 0    ::p4 =     
+|kobold king.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = k_kobold_king    ::p2 = kobolds    ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = k_kobold_king    ::p2 = kobolds    ::p3 =     ::p4 =     
+|kobold king.DLG|***ga_group_attack(nonIBscript) --> ::p1 = k_kobold_king    ::p2 = kobolds    ::p3 =     ::p4 =     
+|kylee.DLG|***ga_move(nonIBscript) --> ::p1 = Kylee_end    ::p2 = 1    ::p3 =     ::p4 =     
+|lendel.DLG|***ga_door_close(nonIBscript) --> ::p1 = brinsby_to_brinsby_inn    ::p2 = 1    ::p3 =     ::p4 =     
+|lendel.DLG|***gc_check_level(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
+|lendel.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Lendel    ::p2 = lendel_end    ::p3 = 1    ::p4 =     
+|lendel.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Lendel    ::p2 = lendel_end    ::p3 = 1    ::p4 =     
+|lisa.DLG|***play_music_track(nonIBscript) --> ::p1 = 210    ::p2 = 110    ::p3 = 87.1    ::p4 =     
+|lisa.DLG|***play_instruments_frontier(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|lisa.DLG|***play_music_track(nonIBscript) --> ::p1 = 211    ::p2 = 110    ::p3 = 58.1    ::p4 =     
+|lisa.DLG|***play_instruments_saltarello(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|lisa.DLG|***play_music_track(nonIBscript) --> ::p1 = 210    ::p2 = 110    ::p3 = 87.1    ::p4 =     
+|lisa.DLG|***play_instruments_frontier(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|lisa.DLG|***play_music_track(nonIBscript) --> ::p1 = 211    ::p2 = 110    ::p3 = 58.1    ::p4 =     
+|lisa.DLG|***play_instruments_saltarello(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|lizard queen.DLG|***ga_door_close(nonIBscript) --> ::p1 = idol_exit    ::p2 = 1    ::p3 =     ::p4 =     
+|lizard queen.DLG|***ga_door_close(nonIBscript) --> ::p1 = idol_exit    ::p2 = 1    ::p3 =     ::p4 =     
+|lizard queen.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_reeYuanTiF    ::p2 = lizard_queen    ::p3 =     ::p4 =     
+|lizard queen.DLG|***ga_group_attack(nonIBscript) --> ::p1 = c_reeYuanTiF    ::p2 = lizard_queen    ::p3 =     ::p4 =     
+|marissa.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 2    ::p2 = 5    ::p3 = 0    ::p4 =     
+|marissa.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_grimstan_cave    ::p2 =     ::p3 =     ::p4 =     
+|marissa.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_grimstan_cave    ::p2 =     ::p3 =     ::p4 =     
+|marissa.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|miki.DLG|***ga_roster_party_add(nonIBscript) --> ::p1 = Miki    ::p2 =     ::p3 =     ::p4 =     
+|miki.DLG|***ga_roster_selectable(nonIBscript) --> ::p1 = Miki    ::p2 = 1    ::p3 =     ::p4 =     
+|miki.DLG|***ga_reset_level(nonIBscript) --> ::p1 = Miki    ::p2 = 1    ::p3 =     ::p4 =     
+|mindee.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Mindee    ::p2 = mindee_exit    ::p3 = 1    ::p4 =     
+|numblin.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Numblin    ::p2 = wp_exit_numblin    ::p3 = 1    ::p4 =     
+|opening_scene.DLG|***sj_a_map_point_hide(nonIBscript) --> ::p1 = mp_west_langdale    ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***sj_a_map_point_hide(nonIBscript) --> ::p1 = mp_langdale    ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***sj_a_map_point_hide(nonIBscript) --> ::p1 = mp_stankin_mountain    ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***sj_a_map_point_hide(nonIBscript) --> ::p1 = mp_dark_woods    ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***sj_a_map_point_hide(nonIBscript) --> ::p1 = mp_glenfax_tower    ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***sj_a_map_point_hide(nonIBscript) --> ::p1 = mp_south_grimstan_forest    ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***xp_modification(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|opening_scene.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 1.5    ::p2 =     ::p3 =     ::p4 =     
+|orc leader.DLG|***ga_door_close(nonIBscript) --> ::p1 = grimstan_cave_up    ::p2 = 1    ::p3 =     ::p4 =     
+|orc leader.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Slive    ::p2 = orc_leader    ::p3 =     ::p4 =     
+|pirates.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Tom    ::p2 = pirates    ::p3 =     ::p4 =     
+|pirates.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Tom    ::p2 = pirates    ::p3 =     ::p4 =     
+|pirates.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Tom    ::p2 = pirates    ::p3 =     ::p4 =     
+|queen spider.DLG|***ga_group_attack(nonIBscript) --> ::p1 = queen_spider    ::p2 = spiders    ::p3 =     ::p4 =     
+|queen spider.DLG|***ga_group_attack(nonIBscript) --> ::p1 = queen_spider    ::p2 = spiders    ::p3 =     ::p4 =     
+|return_home.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|return_home.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|return_home.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|rillian.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_dark_woods    ::p2 =     ::p3 =     ::p4 =     
+|rillian.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Rillian    ::p2 = rillian_exit    ::p3 = 1    ::p4 =     
+|sidney.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Sidney    ::p2 = sidney_exit    ::p3 = 1    ::p4 =     
+|sulob.DLG|***ga_faction_join(nonIBscript) --> ::p1 = Sulob    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
+|suril.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Suril    ::p2 = wp_suril_exit    ::p3 = 1    ::p4 =     
+|suril.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Suril    ::p2 = wp_suril_exit    ::p3 = 1    ::p4 =     
+|testing.DLG|***ga_effect(nonIBscript) --> ::p1 = Death    ::p2 =     ::p3 =     ::p4 = 0    
+|testing.DLG|***ga_effect(nonIBscript) --> ::p1 = Death    ::p2 =     ::p3 =     ::p4 = 0    
+|testing.DLG|***ga_effect(nonIBscript) --> ::p1 = Paralyze    ::p2 =     ::p3 =     ::p4 = 0    
+|testing.DLG|***ga_effect(nonIBscript) --> ::p1 = Paralyze    ::p2 =     ::p3 =     ::p4 = 0    
+|tree_spirit2.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_glenfax_tower    ::p2 =     ::p3 =     ::p4 =     
+|t_adwen.DLG|***ga_load_mod(nonIBscript) --> ::p1 = lanterna_MP_04    ::p2 = wp_PC_bat_start    ::p3 =     ::p4 =     
+|t_adwen.DLG|***ga_load_mod(nonIBscript) --> ::p1 = lanterna_MP_04    ::p2 = wp_PC_bat_start    ::p3 =     ::p4 =     
+|t_adwen.DLG|***ga_load_mod(nonIBscript) --> ::p1 = lanterna_MP_04    ::p2 = wp_PC_bat_start    ::p3 =     ::p4 =     
+|t_adwen.DLG|***ga_load_mod(nonIBscript) --> ::p1 = lanterna_MP_04    ::p2 = wp_PC_bat_start    ::p3 =     ::p4 =     
+|vampires.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 0    ::p2 =     ::p3 =     ::p4 =     
+|vampires.DLG|***ga_group_attack(nonIBscript) --> ::p1 = female_vampire    ::p2 = vampire_group    ::p3 =     ::p4 =     
+|vampires.DLG|***ga_group_attack(nonIBscript) --> ::p1 = female_vampire    ::p2 = vampire_group    ::p3 =     ::p4 =     
+|wave1_convo.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|wave1_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 4    ::p2 =     ::p3 =     ::p4 =     
+|wave1_convo.DLG|***wave1_spawn(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave1_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 1    ::p2 =     ::p3 =     ::p4 =     
+|wave1_convo.DLG|***wave1_move(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave1_convo.DLG|***ga_destroy(nonIBscript) --> ::p1 = b_jadissan    ::p2 = 0    ::p3 = 0    ::p4 =     
+|wave1_convo.DLG|***wave1_start_combat(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|wave2_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***wave2_spawn(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 1    ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***wave2_move(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave2_convo.DLG|***ga_destroy(nonIBscript) --> ::p1 = b_jadissan    ::p2 = 0    ::p3 = 0    ::p4 =     
+|wave2_convo.DLG|***wave2_start_combat(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|wave3_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***wave3_spawn(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 1    ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***wave3_move(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave3_convo.DLG|***ga_destroy(nonIBscript) --> ::p1 = b_jadissan    ::p2 = 0    ::p3 = 0    ::p4 =     
+|wave3_convo.DLG|***wave3_start_combat(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 0    ::p2 = 0    ::p3 = 0    ::p4 =     
+|wave4_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 3    ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***wave4_spawn(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 1    ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***wave4_move(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***wave_return_good(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***wave4_start_combat(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Sildor    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Sandur    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Adwen    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Vin    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Suril    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Fimblin    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Boone    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_MountainDwarf1    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_MountainDwarf2    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Galdor    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_WoodElf1    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_WoodElf2    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Veloria    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Numblin    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Leo    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Derik    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Ulrind    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|wave4_convo.DLG|***ga_faction_join(nonIBscript) --> ::p1 = b_Jerun    ::p2 = Andy_bat    ::p3 =     ::p4 =     
+|zorn.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Jadissan_zorn    ::p2 = wp_jadissan_exit    ::p3 = 1    ::p4 =     
+|zorn.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Jadissan_zorn    ::p2 = wp_jadissan_exit    ::p3 = 1    ::p4 =     
+|zorn.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Jadissan_zorn    ::p2 = wp_jadissan_exit    ::p3 = 1    ::p4 =     
+|zorn.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Zorn    ::p2 = zorn    ::p3 =     ::p4 =     
+|zorn.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Zorn    ::p2 = zorn    ::p3 =     ::p4 =     
+|zorn.DLG|***ga_group_attack(nonIBscript) --> ::p1 = Zorn    ::p2 = zorn    ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 = 0    ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_volcano    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_lock(nonIBscript) --> ::p1 = jail_door    ::p2 = 0    ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 = 0    ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_volcano    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_lock(nonIBscript) --> ::p1 = jail_door    ::p2 = 0    ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 = 0    ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_volcano    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_lock(nonIBscript) --> ::p1 = jail_door    ::p2 = 0    ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_fade_to_black(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 = 0    ::p4 =     
+|zorn_death.DLG|***ga_fade_from_black(nonIBscript) --> ::p1 = 2    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***sj_a_map_point_show(nonIBscript) --> ::p1 = mp_volcano    ::p2 =     ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_lock(nonIBscript) --> ::p1 = jail_door    ::p2 = 0    ::p3 =     ::p4 =     
+|zorn_death.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Zorn_nice    ::p2 = wp_adwen_exit    ::p3 = 1    ::p4 =     
+|zorn_death.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Zorn_nice    ::p2 = wp_adwen_exit    ::p3 = 1    ::p4 =     
+|zorn_death.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Zorn_nice    ::p2 = wp_adwen_exit    ::p3 = 1    ::p4 =     
+|zorn_death.DLG|***ga_force_exit(nonIBscript) --> ::p1 = Zorn_nice    ::p2 = wp_adwen_exit    ::p3 = 1    ::p4 =     

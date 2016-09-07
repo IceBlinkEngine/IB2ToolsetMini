@@ -171,22 +171,19 @@ namespace IB2ToolsetMini
         {
             //check that starting area is an actual file
             bool foundOne = false;
-            string jobDir = "";
-            jobDir = frm._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
-            foreach (string f in Directory.GetFiles(jobDir, "*.lvl"))
+            foreach (Area a in mod.moduleAreasObjects)
             {
-                string filename = Path.GetFileNameWithoutExtension(f);
-                if (mod.startingArea.Equals(filename))
+                if (mod.startingArea.Equals(a.Filename))
                 {
                     foundOne = true;
                 }
             }
             if (!foundOne)
             {
-                frm.logText("MODULE ERROR: Starting Area: " + mod.startingArea + " file is not found in the 'areas' folder of your module" + Environment.NewLine);
+                frm.logText("MODULE ERROR: Starting Area: " + mod.startingArea + " file is not found in the 'areas' list of your module" + Environment.NewLine);
             }
             //check that party token is a valid file
-            foundOne = false;
+            /*foundOne = false;
             jobDir = "";
             jobDir = frm._mainDirectory + "\\modules\\" + mod.moduleName + "\\graphics";
             foreach (string f in Directory.GetFiles(jobDir, "*.png"))
@@ -200,9 +197,9 @@ namespace IB2ToolsetMini
             if (!foundOne)
             {
                 frm.logText("MODULE ERROR: Party Token: " + mod.partyTokenFilename + " file is not found in the 'graphics' folder of your module" + Environment.NewLine);
-            }
+            }*/
             //check that default player is a valid file name
-            foundOne = false;
+            /*foundOne = false;
             jobDir = "";
             jobDir = frm._mainDirectory + "\\modules\\" + mod.moduleName + "\\data";
             foreach (string f in Directory.GetFiles(jobDir, "*.json"))
@@ -216,7 +213,7 @@ namespace IB2ToolsetMini
             if (!foundOne)
             {
                 frm.logText("MODULE ERROR: Default Player: " + mod.defaultPlayerFilename + " file is not found in the 'data' folder of your module. (make sure to include file extension on name)." + Environment.NewLine);
-            }
+            }*/
         }
         public void CheckAmmoTypes()
         {

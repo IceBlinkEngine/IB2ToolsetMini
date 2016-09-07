@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace IB2ToolsetMini
@@ -23,6 +24,7 @@ namespace IB2ToolsetMini
         public List<string> scripts_needed = new List<string>();
         public List<string> scriptTypesNeeded = new List<string>();
         public List<string> possibleCompanions = new List<string>();
+        public List<string> bracketTagsUsed = new List<string>();
         public int nextIndex = 100000;
         public int nextLinkIdNumber = 100000;
         public int nextIdNumber = 1;
@@ -61,6 +63,8 @@ namespace IB2ToolsetMini
             portraits_needed.Sort();
             File.AppendAllText(summaryReportPath, Environment.NewLine + "PORTRAITS NEEDED" + Environment.NewLine);
             File.AppendAllLines(summaryReportPath, portraits_needed);
+            File.AppendAllText(summaryReportPath, Environment.NewLine + "TAGS FOR TEXT FORMATTING AND TOKENS USED" + Environment.NewLine);
+            File.AppendAllLines(summaryReportPath, bracketTagsUsed);
             File.AppendAllText(summaryReportPath, Environment.NewLine + "NON-IB SCRIPT TYPES FOUND" + Environment.NewLine);
             File.AppendAllLines(summaryReportPath, scriptTypesNeeded);
             File.AppendAllText(summaryReportPath, Environment.NewLine + "NON-IB SCRIPTS FOUND (DETAILS)" + Environment.NewLine);
@@ -1813,6 +1817,21 @@ namespace IB2ToolsetMini
                 }
                 newCondition.c_parameter_4 = GetParameterDataByFieldLabelAndNumber(thisStruct, 3);
             }
+            else if (scriptName.Equals("gc_check_level"))
+            {
+                //Example: to check if the current party leader PC is level 4 (-1, 4)
+                newCondition.c_script = "gcCheckIsLevel.cs";
+                newCondition.c_parameter_1 = "-1";
+                string parm2 = GetParameterDataByFieldLabelAndNumber(thisStruct, 2);
+                if (parm2.StartsWith(">"))
+                {
+                    newCondition.c_parameter_2 = parm2.Substring(1);
+                }
+                else
+                {
+                    newCondition.c_parameter_2 = parm2;
+                }
+            }
             else if (scriptName.Equals("gc_check_race_pc"))
             {
                 newCondition.c_script = "gcCheckIsRace.cs";
@@ -1859,7 +1878,7 @@ namespace IB2ToolsetMini
                 newCondition.c_parameter_3 = ">";
                 newCondition.c_parameter_4 = (val - 1).ToString();
             }
-            else if (scriptName.Equals("gc_is_in_party"))
+            else if ((scriptName.Equals("gc_is_in_party")) || (scriptName.Equals("gc_comp_remove")))
             {
                 newCondition.c_script = "gcCheckPcInPartyByName.cs";
                 newCondition.c_parameter_1 = GetParameterDataByFieldLabelAndNumber(thisStruct, 1);
@@ -2069,6 +2088,14 @@ namespace IB2ToolsetMini
         }
         public string replaceText(string originalText)
         {
+            //report any <stuff> used in module
+            var input = originalText;
+            List<string> output = input.Split('<', '>').Where((item, index) => index % 2 != 0).ToList();
+            foreach (string s in output)
+            {
+                if (!bracketTagsUsed.Contains("<" + s + ">")) { bracketTagsUsed.Add("<" + s + ">"); }
+            }
+
             string newString = originalText;
                         
             newString = newString.Replace("<color=#FFFFFF>", "<wh>");
@@ -2079,6 +2106,16 @@ namespace IB2ToolsetMini
             newString = newString.Replace("</color=#00FF00>", "</gn>");
             newString = newString.Replace("<color=#FFFF00>", "<yl>");
             newString = newString.Replace("</color=#FFFF00>", "</yl>");
+            newString = newString.Replace("<color=white>", "<wh>");
+            newString = newString.Replace("</color=white>", "</wh>");
+            newString = newString.Replace("<color=red>", "<rd>");
+            newString = newString.Replace("</color=red>", "</rd>");
+            newString = newString.Replace("<color=green>", "<gn>");
+            newString = newString.Replace("</color=green>", "</gn>");
+            newString = newString.Replace("<color=yellow>", "<yl>");
+            newString = newString.Replace("</color=yellow>", "</yl>");
+            newString = newString.Replace("<color=blue>", "<bu>");
+            newString = newString.Replace("</color=blue>", "</bu>");
             newString = newString.Replace("<i>", "");
             newString = newString.Replace("</i>", "");
             newString = newString.Replace("<b>", "");
