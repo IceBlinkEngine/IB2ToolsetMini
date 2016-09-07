@@ -1779,7 +1779,7 @@ namespace IB2ToolsetMini
             area.MapSizeY = height;
             for (int index = 0; index < (width * height); index++)
             {
-                area.Layer1Filename.Add("t_grass");
+                area.Layer1Filename.Add("t_f_grass");
                 area.Layer1Rotate.Add(0);
                 area.Layer1Mirror.Add(0);
                 area.Layer2Filename.Add("t_blank");
@@ -2074,7 +2074,7 @@ namespace IB2ToolsetMini
             {
                 //Tile newTile = new Tile();
                 //area.Tiles.Insert(i, newTile);
-                area.Layer1Filename.Insert(i, "t_grass");
+                area.Layer1Filename.Insert(i, "t_f_grass");
                 area.Layer1Rotate.Insert(i, 0);
                 area.Layer1Mirror.Insert(i, 0);
                 area.Layer2Filename.Insert(i, "t_blank");
@@ -2143,7 +2143,7 @@ namespace IB2ToolsetMini
             {
                 //Tile newTile = new Tile();
                 //area.Tiles.Insert(i + 1, newTile);
-                area.Layer1Filename.Insert(i+1, "t_grass");
+                area.Layer1Filename.Insert(i+1, "t_f_grass");
                 area.Layer1Rotate.Insert(i+1, 0);
                 area.Layer1Mirror.Insert(i+1, 0);
                 area.Layer2Filename.Insert(i+1, "t_blank");
@@ -2189,7 +2189,7 @@ namespace IB2ToolsetMini
             {
                 //Tile newTile = new Tile();
                 //area.Tiles.Insert(0, newTile);
-                area.Layer1Filename.Insert(0, "t_grass");
+                area.Layer1Filename.Insert(0, "t_f_grass");
                 area.Layer1Rotate.Insert(0, 0);
                 area.Layer1Mirror.Insert(0, 0);
                 area.Layer2Filename.Insert(0, "t_blank");
@@ -2256,7 +2256,7 @@ namespace IB2ToolsetMini
             {
                 //Tile newTile = new Tile();
                 //area.Tiles.Add(newTile);
-                area.Layer1Filename.Add("t_grass");
+                area.Layer1Filename.Add("t_f_grass");
                 area.Layer1Rotate.Add(0);
                 area.Layer1Mirror.Add(0);
                 area.Layer2Filename.Add("t_blank");

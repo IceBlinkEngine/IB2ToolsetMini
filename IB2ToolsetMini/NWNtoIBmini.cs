@@ -979,7 +979,7 @@ namespace IB2ToolsetMini
             //setup blank area tiles
             for (int index = 0; index < (area.MapSizeX * area.MapSizeY); index++)
             {
-                area.Layer1Filename.Add("t_grass");
+                area.Layer1Filename.Add("t_f_grass");
                 area.Layer1Rotate.Add(0);
                 area.Layer1Mirror.Add(0);
                 area.Layer2Filename.Add("t_blank");

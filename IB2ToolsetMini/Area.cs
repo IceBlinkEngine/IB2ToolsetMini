@@ -271,7 +271,7 @@ namespace IB2ToolsetMini
         {
             for (int index = 0; index < (this.MapSizeX * this.MapSizeY); index++)
             {
-                this.Layer1Filename.Add("t_grass");
+                this.Layer1Filename.Add("t_f_grass");
                 this.Layer1Rotate.Add(0);
                 this.Layer1Mirror.Add(0);
                 this.Layer2Filename.Add("t_blank");
