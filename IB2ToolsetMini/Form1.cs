@@ -1232,7 +1232,7 @@ namespace IB2ToolsetMini
         }
         #endregion        
 
-        public string GetImageFilename(string filter)
+        public string GetImageFilename(List<string> filters)
         {
             /*if (mod.moduleName != "NewModule")
             {
@@ -1254,7 +1254,7 @@ namespace IB2ToolsetMini
             }*/
             //return "none";
 
-            using (var sel = new ImageSelector(mod, this, filter))
+            using (var sel = new ImageSelector(mod, this, filters))
             {                
                 var result = sel.ShowDialog();
                 if (result == DialogResult.OK) // Test result.
@@ -1361,7 +1361,9 @@ namespace IB2ToolsetMini
         public void LoadCreatureSprite()
         {
             string _nodeTag = frmBlueprints.tvCreatures.SelectedNode.Name;
-            string name = GetImageFilename("tkn_");
+            List<string> prefixlist = new List<string>();
+            prefixlist.Add("tkn_");
+            string name = GetImageFilename(prefixlist);
             if (name != "none")
             {
                 mod.moduleCreaturesList[frmBlueprints.GetCreatureIndex(_nodeTag)].cr_tokenFilename = name;
@@ -1425,7 +1427,9 @@ namespace IB2ToolsetMini
         public void LoadItemIcon()
         {
             string _nodeTag = frmBlueprints.tvItems.SelectedNode.Name;
-            string name = GetImageFilename("it_");
+            List<string> prefixlist = new List<string>();
+            prefixlist.Add("it_");
+            string name = GetImageFilename(prefixlist);
             if (name != "none")
             {
                 mod.moduleItemsList[frmBlueprints.GetItemIndex(_nodeTag)].itemImage = name;
@@ -1505,7 +1509,10 @@ namespace IB2ToolsetMini
         public void LoadPropSprite()
         {
             string _nodeTag = frmBlueprints.tvProps.SelectedNode.Name;
-            string name = GetImageFilename("prp_");
+            List<string> prefixlist = new List<string>();
+            prefixlist.Add("prp_");
+            prefixlist.Add("tkn_");
+            string name = GetImageFilename(prefixlist);
             if (name != "none")
             {
                 mod.modulePropsList[frmBlueprints.GetPropIndex(_nodeTag)].ImageFileName = name;

@@ -262,8 +262,9 @@ namespace IB2ToolsetMini
                 f_convo.NpcPortraitBitmap = filename;
                 txtImage.Text = filename;
             }*/
-
-            string name = prntForm.GetImageFilename("ptr_");
+            List<string> prefixlist = new List<string>();
+            prefixlist.Add("ptr_");
+            string name = prntForm.GetImageFilename(prefixlist);
             if (name != "none")
             {
                 f_convo.NpcPortraitBitmap = name;
@@ -294,8 +295,9 @@ namespace IB2ToolsetMini
                 chdnod.NodePortraitBitmap = filename;
                 txtNodeImage.Text = filename;
             }*/
-
-            string name = prntForm.GetImageFilename("ptr_");
+            List<string> prefixlist = new List<string>();
+            prefixlist.Add("ptr_");
+            string name = prntForm.GetImageFilename(prefixlist);
             if (name != "none")
             {
                 int cnod = Convert.ToInt32(treeView1.SelectedNode.Name);

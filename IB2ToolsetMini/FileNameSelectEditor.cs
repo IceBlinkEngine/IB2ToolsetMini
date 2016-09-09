@@ -19,7 +19,10 @@ namespace IB2ToolsetMini
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
             Prop p = (Prop)context.Instance;
-            using (var sel = new ImageSelector(p.prntForm.mod, p.prntForm, "prp_"))
+            List<string> prefixlist = new List<string>();
+            prefixlist.Add("prp_");
+            prefixlist.Add("tkn_");
+            using (var sel = new ImageSelector(p.prntForm.mod, p.prntForm, prefixlist))
             {                
                 var result = sel.ShowDialog();
                 if (result == DialogResult.OK) // Test result.

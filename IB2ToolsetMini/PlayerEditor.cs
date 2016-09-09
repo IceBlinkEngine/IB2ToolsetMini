@@ -159,7 +159,9 @@ namespace IB2ToolsetMini
         {
             try
             {
-                string name = prntForm.GetImageFilename("tkn_");
+                List<string> prefixlist = new List<string>();
+                prefixlist.Add("tkn_");
+                string name = prntForm.GetImageFilename(prefixlist);
                 if (name != "none")
                 {
                     pc.tokenFilename = name;

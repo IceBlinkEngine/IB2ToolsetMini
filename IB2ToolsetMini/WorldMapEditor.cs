@@ -1580,6 +1580,13 @@ namespace IB2ToolsetMini
                 float scalerY = GetFromBitmapList(prpRef.ImageFileName).PixelSize.Height / prntForm.standardTokenSize;
                 SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(prpRef.ImageFileName).PixelSize.Width, GetFromBitmapList(prpRef.ImageFileName).PixelSize.Height);
                 SharpDX.RectangleF dst = new SharpDX.RectangleF(prpRef.LocationX * sqr, prpRef.LocationY * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
+                if (prpRef.ImageFileName.StartsWith("tkn_"))
+                {
+                    scalerX = GetFromBitmapList(prpRef.ImageFileName).PixelSize.Width / prntForm.standardTokenSize;
+                    scalerY = (GetFromBitmapList(prpRef.ImageFileName).PixelSize.Height / 2) / prntForm.standardTokenSize;
+                    src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(prpRef.ImageFileName).PixelSize.Width, (GetFromBitmapList(prpRef.ImageFileName).PixelSize.Height) / 2);
+                    dst = new SharpDX.RectangleF(prpRef.LocationX * sqr, prpRef.LocationY * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
+                }
                 int mirror = 0;
                 if (!prpRef.PropFacingLeft) { mirror = 1; }
                 DrawD2DBitmap(GetFromBitmapList(prpRef.ImageFileName), src, dst, 0, mirror);

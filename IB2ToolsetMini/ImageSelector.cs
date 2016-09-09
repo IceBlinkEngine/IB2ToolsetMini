@@ -16,14 +16,18 @@ namespace IB2ToolsetMini
         private Module mod;
         private ParentForm prntForm;
         public Dictionary<string, Bitmap> imageList = new Dictionary<string, Bitmap>();
-        public string prefix = "";
+        public List<string> prefixList = new List<string>();
 
-        public ImageSelector(Module m, ParentForm pf, string Prefix)
+        public ImageSelector(Module m, ParentForm pf, List<string> Prefixes)
         {
             InitializeComponent();
             mod = m;
             prntForm = pf;
-            prefix = Prefix;
+            prefixList.Clear();
+            foreach (string s in Prefixes)
+            {
+                prefixList.Add(s);
+            }
             loadImageList();
             createButtons();
         }
@@ -37,10 +41,13 @@ namespace IB2ToolsetMini
             //first load from module ImageList
             foreach (KeyValuePair<string, Bitmap> kvp in prntForm.resourcesBitmapList)
             {
-                if (kvp.Key.StartsWith(prefix))
+                foreach (string prefix in prefixList)
                 {
-                    imageList.Add(kvp.Key, kvp.Value);
-                }
+                    if (kvp.Key.StartsWith(prefix))
+                    {
+                        imageList.Add(kvp.Key, kvp.Value);
+                    }
+                }                
             }
             //next load from default folder graphics
             string jobDir = "";
@@ -48,13 +55,16 @@ namespace IB2ToolsetMini
             foreach (string f in Directory.GetFiles(jobDir, "*.*"))
             {
                 string name = Path.GetFileNameWithoutExtension(f);
-                if (name.StartsWith(prefix))
+                foreach (string prefix in prefixList)
                 {
-                    if (!imageList.ContainsKey(name))
+                    if (name.StartsWith(prefix))
                     {
-                        imageList.Add(name, new Bitmap(f));
+                        if (!imageList.ContainsKey(name))
+                        {
+                            imageList.Add(name, new Bitmap(f));
+                        }
                     }
-                }                
+                }         
             }
         }
         private void createButtons()
