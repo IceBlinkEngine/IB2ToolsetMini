@@ -374,14 +374,14 @@ namespace IB2ToolsetMini
                     if (nod.isLink)
                     {
                         txtText.Enabled = false;
-                        txtNodeSound.Enabled = false;
+                        //txtNodeSound.Enabled = false;
                         txtNodeNpcName.Enabled = false;
                         chkDoOnceOnly.Enabled = false;
                     }
                     else
                     {
                         txtText.Enabled = true;
-                        txtNodeSound.Enabled = true;
+                        //txtNodeSound.Enabled = true;
                         txtNodeNpcName.Enabled = true;
                         if (!nod.pcNode) 
                         { 
@@ -1687,6 +1687,18 @@ namespace IB2ToolsetMini
             }
             return list;
         }
-        #endregion                       
+        #endregion
+
+        private void btnColors_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Default color is white. For other colors, use the tags below:" + Environment.NewLine + 
+                "<bk>this will be black text</bk>" + Environment.NewLine +
+                "<bu>this will be blue text</bu>" + Environment.NewLine +
+                "<gn>this will be green text</gn>" + Environment.NewLine +
+                "<gy>this will be gray text</gy>" + Environment.NewLine +
+                "<ma>this will be magenta text</ma>" + Environment.NewLine +
+                "<rd>this will be red text</rd>" + Environment.NewLine +
+                "<yl>this will be yellow text</yl>" + Environment.NewLine);
+        }
     }
 }

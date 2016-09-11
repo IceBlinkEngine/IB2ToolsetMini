@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConvoEditor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.ctxTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,12 +60,8 @@
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnClearNodeImage = new System.Windows.Forms.Button();
             this.chkDoOnceOnly = new System.Windows.Forms.CheckBox();
-            this.txtNodeNpcName = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.btnRedoText = new System.Windows.Forms.Button();
             this.btnUndoText = new System.Windows.Forms.Button();
-            this.txtNodeSound = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtNodeImage = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOpenNodeImage = new System.Windows.Forms.Button();
@@ -89,6 +85,8 @@
             this.CAScriptSplitPanel = new System.Windows.Forms.SplitContainer();
             this.CondActSplitPanel2 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCondPaste = new System.Windows.Forms.Button();
+            this.btnCondCopySelected = new System.Windows.Forms.Button();
             this.btnCondVariables = new System.Windows.Forms.Button();
             this.btnCondMoveDown = new System.Windows.Forms.Button();
             this.btnCondMoveUp = new System.Windows.Forms.Button();
@@ -105,6 +103,8 @@
             this.Parameter3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Parameter4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnActPaste = new System.Windows.Forms.Button();
+            this.btnActCopySelected = new System.Windows.Forms.Button();
             this.btnActVariables = new System.Windows.Forms.Button();
             this.btnActMoveDown = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -121,8 +121,6 @@
             this.rtxtScript = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkMainPcOnly = new System.Windows.Forms.CheckBox();
-            this.txtDefaultNpcName = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.chkPartyChat = new System.Windows.Forms.CheckBox();
             this.btnClearImage = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -138,12 +136,13 @@
             this.tsMoveUp = new System.Windows.Forms.ToolStripButton();
             this.tsMoveDown = new System.Windows.Forms.ToolStripButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDefaultNpcName = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtNodeNpcName = new System.Windows.Forms.TextBox();
+            this.btnColors = new System.Windows.Forms.Button();
             this.conditionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.conditionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btnCondCopySelected = new System.Windows.Forms.Button();
-            this.btnCondPaste = new System.Windows.Forms.Button();
-            this.btnActPaste = new System.Windows.Forms.Button();
-            this.btnActCopySelected = new System.Windows.Forms.Button();
             this.ctxTreeView.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.convoMainSplitPanel)).BeginInit();
@@ -184,7 +183,7 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(1083, 190);
+            this.treeView1.Size = new System.Drawing.Size(1072, 190);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
             this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
@@ -345,6 +344,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnColors);
             this.groupBox1.Controls.Add(this.btnInsert);
             this.groupBox1.Controls.Add(this.btnClearNodeImage);
             this.groupBox1.Controls.Add(this.chkDoOnceOnly);
@@ -352,8 +352,6 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.btnRedoText);
             this.groupBox1.Controls.Add(this.btnUndoText);
-            this.groupBox1.Controls.Add(this.txtNodeSound);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtNodeImage);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnOpenNodeImage);
@@ -370,7 +368,7 @@
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 274);
+            this.groupBox1.Size = new System.Drawing.Size(270, 274);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Node Info";
@@ -378,7 +376,7 @@
             // btnInsert
             // 
             this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnInsert.Location = new System.Drawing.Point(156, 216);
+            this.btnInsert.Location = new System.Drawing.Point(156, 194);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(57, 23);
             this.btnInsert.TabIndex = 28;
@@ -389,7 +387,7 @@
             // btnClearNodeImage
             // 
             this.btnClearNodeImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClearNodeImage.Location = new System.Drawing.Point(191, 243);
+            this.btnClearNodeImage.Location = new System.Drawing.Point(230, 243);
             this.btnClearNodeImage.Name = "btnClearNodeImage";
             this.btnClearNodeImage.Size = new System.Drawing.Size(30, 23);
             this.btnClearNodeImage.TabIndex = 32;
@@ -409,29 +407,6 @@
             this.toolTip1.SetToolTip(this.chkDoOnceOnly, "If checked, the selected\r\nnode will only be shown\r\nonce per game.");
             this.chkDoOnceOnly.UseVisualStyleBackColor = true;
             this.chkDoOnceOnly.CheckedChanged += new System.EventHandler(this.chkDoOnceOnly_CheckedChanged);
-            // 
-            // txtNodeNpcName
-            // 
-            this.txtNodeNpcName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtNodeNpcName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNodeNpcName.Location = new System.Drawing.Point(225, 220);
-            this.txtNodeNpcName.Name = "txtNodeNpcName";
-            this.txtNodeNpcName.Size = new System.Drawing.Size(116, 20);
-            this.txtNodeNpcName.TabIndex = 37;
-            this.txtNodeNpcName.Visible = false;
-            this.txtNodeNpcName.TextChanged += new System.EventHandler(this.txtNodeNpcName_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(204, 227);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(92, 13);
-            this.label11.TabIndex = 38;
-            this.label11.Text = "Node NPC Name:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label11.Visible = false;
             // 
             // btnRedoText
             // 
@@ -453,29 +428,6 @@
             this.btnUndoText.UseVisualStyleBackColor = true;
             this.btnUndoText.Click += new System.EventHandler(this.btnUndoText_Click);
             // 
-            // txtNodeSound
-            // 
-            this.txtNodeSound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtNodeSound.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNodeSound.Location = new System.Drawing.Point(225, 249);
-            this.txtNodeSound.Name = "txtNodeSound";
-            this.txtNodeSound.Size = new System.Drawing.Size(116, 20);
-            this.txtNodeSound.TabIndex = 33;
-            this.txtNodeSound.Visible = false;
-            this.txtNodeSound.TextChanged += new System.EventHandler(this.txtNodeSound_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(204, 248);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 26);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Node Sound File:\r\n(ex. VO_01.mp3)";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label10.Visible = false;
-            // 
             // txtNodeImage
             // 
             this.txtNodeImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -483,7 +435,7 @@
             this.txtNodeImage.Location = new System.Drawing.Point(43, 245);
             this.txtNodeImage.Name = "txtNodeImage";
             this.txtNodeImage.ReadOnly = true;
-            this.txtNodeImage.Size = new System.Drawing.Size(103, 20);
+            this.txtNodeImage.Size = new System.Drawing.Size(138, 20);
             this.txtNodeImage.TabIndex = 29;
             // 
             // label2
@@ -500,7 +452,7 @@
             // btnOpenNodeImage
             // 
             this.btnOpenNodeImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpenNodeImage.Location = new System.Drawing.Point(148, 243);
+            this.btnOpenNodeImage.Location = new System.Drawing.Point(187, 243);
             this.btnOpenNodeImage.Name = "btnOpenNodeImage";
             this.btnOpenNodeImage.Size = new System.Drawing.Size(42, 23);
             this.btnOpenNodeImage.TabIndex = 31;
@@ -530,7 +482,7 @@
             "<boy/girl>",
             "<Brother/Sister>",
             "<brother/sister>"});
-            this.cmbTokens.Location = new System.Drawing.Point(7, 217);
+            this.cmbTokens.Location = new System.Drawing.Point(7, 195);
             this.cmbTokens.Name = "cmbTokens";
             this.cmbTokens.Size = new System.Drawing.Size(143, 21);
             this.cmbTokens.TabIndex = 27;
@@ -618,7 +570,7 @@
             this.txtText.Location = new System.Drawing.Point(8, 96);
             this.txtText.Multiline = true;
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(252, 114);
+            this.txtText.Size = new System.Drawing.Size(250, 94);
             this.txtText.TabIndex = 2;
             this.txtText.TextChanged += new System.EventHandler(this.txtText_TextChanged);
             this.txtText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtText_KeyDown);
@@ -634,7 +586,7 @@
             // chkNarrator
             // 
             this.chkNarrator.AutoSize = true;
-            this.chkNarrator.Location = new System.Drawing.Point(17, 48);
+            this.chkNarrator.Location = new System.Drawing.Point(17, 74);
             this.chkNarrator.Name = "chkNarrator";
             this.chkNarrator.Size = new System.Drawing.Size(102, 17);
             this.chkNarrator.TabIndex = 26;
@@ -644,7 +596,7 @@
             // 
             // btnOpenImage
             // 
-            this.btnOpenImage.Location = new System.Drawing.Point(148, 17);
+            this.btnOpenImage.Location = new System.Drawing.Point(187, 17);
             this.btnOpenImage.Name = "btnOpenImage";
             this.btnOpenImage.Size = new System.Drawing.Size(42, 23);
             this.btnOpenImage.TabIndex = 15;
@@ -668,7 +620,7 @@
             this.txtImage.Location = new System.Drawing.Point(43, 19);
             this.txtImage.Name = "txtImage";
             this.txtImage.ReadOnly = true;
-            this.txtImage.Size = new System.Drawing.Size(103, 20);
+            this.txtImage.Size = new System.Drawing.Size(138, 20);
             this.txtImage.TabIndex = 13;
             // 
             // convoMainSplitPanel
@@ -688,7 +640,7 @@
             // convoMainSplitPanel.Panel2
             // 
             this.convoMainSplitPanel.Panel2.Controls.Add(this.bottomSplitPanel);
-            this.convoMainSplitPanel.Size = new System.Drawing.Size(1083, 588);
+            this.convoMainSplitPanel.Size = new System.Drawing.Size(1072, 588);
             this.convoMainSplitPanel.SplitterDistance = 190;
             this.convoMainSplitPanel.TabIndex = 25;
             // 
@@ -706,8 +658,8 @@
             // 
             this.bottomSplitPanel.Panel2.Controls.Add(this.groupBox2);
             this.bottomSplitPanel.Panel2.Controls.Add(this.groupBox1);
-            this.bottomSplitPanel.Size = new System.Drawing.Size(1083, 394);
-            this.bottomSplitPanel.SplitterDistance = 807;
+            this.bottomSplitPanel.Size = new System.Drawing.Size(1072, 394);
+            this.bottomSplitPanel.SplitterDistance = 798;
             this.bottomSplitPanel.TabIndex = 26;
             // 
             // CAScriptSplitPanel
@@ -724,7 +676,7 @@
             // CAScriptSplitPanel.Panel2
             // 
             this.CAScriptSplitPanel.Panel2.Controls.Add(this.rtxtScript);
-            this.CAScriptSplitPanel.Size = new System.Drawing.Size(807, 394);
+            this.CAScriptSplitPanel.Size = new System.Drawing.Size(798, 394);
             this.CAScriptSplitPanel.SplitterDistance = 274;
             this.CAScriptSplitPanel.TabIndex = 0;
             // 
@@ -744,7 +696,7 @@
             // 
             this.CondActSplitPanel2.Panel2.Controls.Add(this.panel2);
             this.CondActSplitPanel2.Panel2.Controls.Add(this.dgvAction);
-            this.CondActSplitPanel2.Size = new System.Drawing.Size(807, 274);
+            this.CondActSplitPanel2.Size = new System.Drawing.Size(798, 274);
             this.CondActSplitPanel2.SplitterDistance = 134;
             this.CondActSplitPanel2.TabIndex = 0;
             // 
@@ -763,8 +715,28 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(807, 30);
+            this.panel1.Size = new System.Drawing.Size(798, 30);
             this.panel1.TabIndex = 4;
+            // 
+            // btnCondPaste
+            // 
+            this.btnCondPaste.Location = new System.Drawing.Point(546, 4);
+            this.btnCondPaste.Name = "btnCondPaste";
+            this.btnCondPaste.Size = new System.Drawing.Size(87, 23);
+            this.btnCondPaste.TabIndex = 7;
+            this.btnCondPaste.Text = "Paste";
+            this.btnCondPaste.UseVisualStyleBackColor = true;
+            this.btnCondPaste.Click += new System.EventHandler(this.btnCondPaste_Click);
+            // 
+            // btnCondCopySelected
+            // 
+            this.btnCondCopySelected.Location = new System.Drawing.Point(454, 4);
+            this.btnCondCopySelected.Name = "btnCondCopySelected";
+            this.btnCondCopySelected.Size = new System.Drawing.Size(87, 23);
+            this.btnCondCopySelected.TabIndex = 6;
+            this.btnCondCopySelected.Text = "Copy Selected";
+            this.btnCondCopySelected.UseVisualStyleBackColor = true;
+            this.btnCondCopySelected.Click += new System.EventHandler(this.btnCondCopySelected_Click);
             // 
             // btnCondVariables
             // 
@@ -833,14 +805,14 @@
             this.dgvCondition.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCondition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCondition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCondition.ColumnHeadersHeight = 25;
             this.dgvCondition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCondition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -852,27 +824,27 @@
             this.Parameter2,
             this.Parameter3,
             this.Parameter4});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCondition.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCondition.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCondition.Location = new System.Drawing.Point(0, 30);
             this.dgvCondition.MultiSelect = false;
             this.dgvCondition.Name = "dgvCondition";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCondition.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCondition.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCondition.RowHeadersVisible = false;
-            this.dgvCondition.Size = new System.Drawing.Size(807, 104);
+            this.dgvCondition.Size = new System.Drawing.Size(798, 104);
             this.dgvCondition.TabIndex = 3;
             this.dgvCondition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCondition_CellClick);
             this.dgvCondition.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCondition_CellContentClick);
@@ -948,8 +920,28 @@
             this.panel2.Controls.Add(this.btnActRemove);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(807, 30);
+            this.panel2.Size = new System.Drawing.Size(798, 30);
             this.panel2.TabIndex = 5;
+            // 
+            // btnActPaste
+            // 
+            this.btnActPaste.Location = new System.Drawing.Point(546, 4);
+            this.btnActPaste.Name = "btnActPaste";
+            this.btnActPaste.Size = new System.Drawing.Size(87, 23);
+            this.btnActPaste.TabIndex = 11;
+            this.btnActPaste.Text = "Paste";
+            this.btnActPaste.UseVisualStyleBackColor = true;
+            this.btnActPaste.Click += new System.EventHandler(this.btnActPaste_Click);
+            // 
+            // btnActCopySelected
+            // 
+            this.btnActCopySelected.Location = new System.Drawing.Point(454, 4);
+            this.btnActCopySelected.Name = "btnActCopySelected";
+            this.btnActCopySelected.Size = new System.Drawing.Size(87, 23);
+            this.btnActCopySelected.TabIndex = 10;
+            this.btnActCopySelected.Text = "Copy Selected";
+            this.btnActCopySelected.UseVisualStyleBackColor = true;
+            this.btnActCopySelected.Click += new System.EventHandler(this.btnActCopySelected_Click);
             // 
             // btnActVariables
             // 
@@ -1018,14 +1010,14 @@
             this.dgvAction.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAction.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAction.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAction.ColumnHeadersHeight = 25;
             this.dgvAction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1035,27 +1027,27 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAction.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAction.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvAction.Location = new System.Drawing.Point(0, 30);
             this.dgvAction.MultiSelect = false;
             this.dgvAction.Name = "dgvAction";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAction.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAction.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAction.RowHeadersVisible = false;
-            this.dgvAction.Size = new System.Drawing.Size(807, 108);
+            this.dgvAction.Size = new System.Drawing.Size(798, 108);
             this.dgvAction.TabIndex = 4;
             this.dgvAction.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAction_CellClick);
             this.dgvAction.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAction_CellContentClick);
@@ -1111,7 +1103,7 @@
             this.rtxtScript.Location = new System.Drawing.Point(0, 0);
             this.rtxtScript.Name = "rtxtScript";
             this.rtxtScript.ReadOnly = true;
-            this.rtxtScript.Size = new System.Drawing.Size(807, 116);
+            this.rtxtScript.Size = new System.Drawing.Size(798, 116);
             this.rtxtScript.TabIndex = 19;
             this.rtxtScript.Text = "";
             this.rtxtScript.WordWrap = false;
@@ -1131,7 +1123,7 @@
             this.groupBox2.Controls.Add(this.btnOpenImage);
             this.groupBox2.Location = new System.Drawing.Point(0, 280);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(272, 113);
+            this.groupBox2.Size = new System.Drawing.Size(270, 113);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Conversation Properties";
@@ -1139,7 +1131,7 @@
             // chkMainPcOnly
             // 
             this.chkMainPcOnly.AutoSize = true;
-            this.chkMainPcOnly.Location = new System.Drawing.Point(17, 86);
+            this.chkMainPcOnly.Location = new System.Drawing.Point(124, 74);
             this.chkMainPcOnly.Name = "chkMainPcOnly";
             this.chkMainPcOnly.Size = new System.Drawing.Size(140, 17);
             this.chkMainPcOnly.TabIndex = 41;
@@ -1150,33 +1142,10 @@
             this.chkMainPcOnly.UseVisualStyleBackColor = true;
             this.chkMainPcOnly.CheckedChanged += new System.EventHandler(this.chkMainPcOnly_CheckedChanged);
             // 
-            // txtDefaultNpcName
-            // 
-            this.txtDefaultNpcName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDefaultNpcName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDefaultNpcName.Location = new System.Drawing.Point(180, 61);
-            this.txtDefaultNpcName.Name = "txtDefaultNpcName";
-            this.txtDefaultNpcName.Size = new System.Drawing.Size(111, 20);
-            this.txtDefaultNpcName.TabIndex = 39;
-            this.txtDefaultNpcName.Visible = false;
-            this.txtDefaultNpcName.TextChanged += new System.EventHandler(this.txtDefaultNpcName_TextChanged);
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(154, 68);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 13);
-            this.label12.TabIndex = 40;
-            this.label12.Text = "Default NPC Name:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label12.Visible = false;
-            // 
             // chkPartyChat
             // 
             this.chkPartyChat.AutoSize = true;
-            this.chkPartyChat.Location = new System.Drawing.Point(17, 67);
+            this.chkPartyChat.Location = new System.Drawing.Point(17, 93);
             this.chkPartyChat.Name = "chkPartyChat";
             this.chkPartyChat.Size = new System.Drawing.Size(101, 17);
             this.chkPartyChat.TabIndex = 28;
@@ -1186,7 +1155,7 @@
             // 
             // btnClearImage
             // 
-            this.btnClearImage.Location = new System.Drawing.Point(191, 17);
+            this.btnClearImage.Location = new System.Drawing.Point(230, 17);
             this.btnClearImage.Name = "btnClearImage";
             this.btnClearImage.Size = new System.Drawing.Size(30, 23);
             this.btnClearImage.TabIndex = 27;
@@ -1210,7 +1179,7 @@
             this.tsMoveDown});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1083, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1072, 25);
             this.toolStrip1.TabIndex = 27;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1330,6 +1299,59 @@
             this.tsMoveDown.Text = "MoveDown";
             this.tsMoveDown.Click += new System.EventHandler(this.tsMoveDown_Click);
             // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 13);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "Default NPC Name:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtDefaultNpcName
+            // 
+            this.txtDefaultNpcName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtDefaultNpcName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDefaultNpcName.Location = new System.Drawing.Point(105, 44);
+            this.txtDefaultNpcName.Name = "txtDefaultNpcName";
+            this.txtDefaultNpcName.Size = new System.Drawing.Size(155, 20);
+            this.txtDefaultNpcName.TabIndex = 39;
+            this.txtDefaultNpcName.TextChanged += new System.EventHandler(this.txtDefaultNpcName_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 223);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(92, 13);
+            this.label11.TabIndex = 38;
+            this.label11.Text = "Node NPC Name:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNodeNpcName
+            // 
+            this.txtNodeNpcName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtNodeNpcName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNodeNpcName.Location = new System.Drawing.Point(98, 220);
+            this.txtNodeNpcName.Name = "txtNodeNpcName";
+            this.txtNodeNpcName.Size = new System.Drawing.Size(162, 20);
+            this.txtNodeNpcName.TabIndex = 37;
+            this.txtNodeNpcName.TextChanged += new System.EventHandler(this.txtNodeNpcName_TextChanged);
+            // 
+            // btnColors
+            // 
+            this.btnColors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnColors.Location = new System.Drawing.Point(217, 194);
+            this.btnColors.Name = "btnColors";
+            this.btnColors.Size = new System.Drawing.Size(43, 23);
+            this.btnColors.TabIndex = 40;
+            this.btnColors.Text = "colors";
+            this.btnColors.UseVisualStyleBackColor = true;
+            this.btnColors.Click += new System.EventHandler(this.btnColors_Click);
+            // 
             // conditionBindingSource
             // 
             this.conditionBindingSource.DataSource = typeof(IB2ToolsetMini.Condition);
@@ -1338,51 +1360,11 @@
             // 
             this.conditionBindingSource1.DataSource = typeof(IB2ToolsetMini.Condition);
             // 
-            // btnCondCopySelected
-            // 
-            this.btnCondCopySelected.Location = new System.Drawing.Point(454, 4);
-            this.btnCondCopySelected.Name = "btnCondCopySelected";
-            this.btnCondCopySelected.Size = new System.Drawing.Size(87, 23);
-            this.btnCondCopySelected.TabIndex = 6;
-            this.btnCondCopySelected.Text = "Copy Selected";
-            this.btnCondCopySelected.UseVisualStyleBackColor = true;
-            this.btnCondCopySelected.Click += new System.EventHandler(this.btnCondCopySelected_Click);
-            // 
-            // btnCondPaste
-            // 
-            this.btnCondPaste.Location = new System.Drawing.Point(546, 4);
-            this.btnCondPaste.Name = "btnCondPaste";
-            this.btnCondPaste.Size = new System.Drawing.Size(87, 23);
-            this.btnCondPaste.TabIndex = 7;
-            this.btnCondPaste.Text = "Paste";
-            this.btnCondPaste.UseVisualStyleBackColor = true;
-            this.btnCondPaste.Click += new System.EventHandler(this.btnCondPaste_Click);
-            // 
-            // btnActPaste
-            // 
-            this.btnActPaste.Location = new System.Drawing.Point(546, 4);
-            this.btnActPaste.Name = "btnActPaste";
-            this.btnActPaste.Size = new System.Drawing.Size(87, 23);
-            this.btnActPaste.TabIndex = 11;
-            this.btnActPaste.Text = "Paste";
-            this.btnActPaste.UseVisualStyleBackColor = true;
-            this.btnActPaste.Click += new System.EventHandler(this.btnActPaste_Click);
-            // 
-            // btnActCopySelected
-            // 
-            this.btnActCopySelected.Location = new System.Drawing.Point(454, 4);
-            this.btnActCopySelected.Name = "btnActCopySelected";
-            this.btnActCopySelected.Size = new System.Drawing.Size(87, 23);
-            this.btnActCopySelected.TabIndex = 10;
-            this.btnActCopySelected.Text = "Copy Selected";
-            this.btnActCopySelected.UseVisualStyleBackColor = true;
-            this.btnActCopySelected.Click += new System.EventHandler(this.btnActCopySelected_Click);
-            // 
             // ConvoEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 613);
+            this.ClientSize = new System.Drawing.Size(1072, 613);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.convoMainSplitPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1485,8 +1467,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnClearNodeImage;
         private System.Windows.Forms.Button btnClearImage;
-        private System.Windows.Forms.TextBox txtNodeSound;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ContextMenuStrip ctxTreeView;
         private System.Windows.Forms.ToolStripMenuItem addNodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeNodeToolStripMenuItem;
@@ -1508,10 +1488,6 @@
         private System.Windows.Forms.Button btnRedoText;
         private System.Windows.Forms.Button btnUndoText;
         private System.Windows.Forms.CheckBox chkPartyChat;
-        private System.Windows.Forms.TextBox txtNodeNpcName;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtDefaultNpcName;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnCondVariables;
         private System.Windows.Forms.Button btnActVariables;
         private System.Windows.Forms.ToolStripMenuItem followLinkToolStripMenuItem;
@@ -1538,6 +1514,11 @@
         private System.Windows.Forms.Button btnCondCopySelected;
         private System.Windows.Forms.Button btnActPaste;
         private System.Windows.Forms.Button btnActCopySelected;
+        private System.Windows.Forms.TextBox txtNodeNpcName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtDefaultNpcName;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnColors;
     }
 }
 
