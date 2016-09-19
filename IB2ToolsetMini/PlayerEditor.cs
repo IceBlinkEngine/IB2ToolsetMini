@@ -17,6 +17,7 @@ namespace IB2ToolsetMini
         public bool refreshingList = false;
         private int selectedLbxIndex = 0;
         public Bitmap iconBitmap;
+        public Bitmap playerPortrait;
         public Player pc = new Player();
         public List<ItemRefs> itemsHeadList = new List<ItemRefs>();
         public List<ItemRefs> itemsNeckList = new List<ItemRefs>();
@@ -97,6 +98,7 @@ namespace IB2ToolsetMini
                 propertyGrid1.SelectedObject = prntForm.mod.companionPlayerList[selectedLbxIndex];
                 refreshForm();
                 LoadPlayerToken();
+                LoadPlayerPortrait();
             }
         }
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
@@ -125,6 +127,7 @@ namespace IB2ToolsetMini
                 {
                     pc = loadPlayerFile(PcFilename);
                     LoadPlayerToken();
+                    LoadPlayerPortrait();
                     refreshForm();
                 }
                 catch (Exception ex)
@@ -171,6 +174,25 @@ namespace IB2ToolsetMini
             catch (Exception ex)
             {
                 MessageBox.Show("failed to load token...Error: " + ex.ToString());
+            }
+        }
+        private void btnSelectPortrait_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<string> prefixlist = new List<string>();
+                prefixlist.Add("ptr_");
+                prefixlist.Add("pptr_");
+                string name = prntForm.GetImageFilename(prefixlist);
+                if (name != "none")
+                {
+                    pc.portraitFilename = name;
+                    LoadPlayerPortrait();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("failed to load portrait...Error: " + ex.ToString());
             }
         }
         private void cbxKnownSpells_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -425,6 +447,7 @@ namespace IB2ToolsetMini
             refreshSpellsKnown();
             refreshTraitsKnown();
             refreshTokenDisplay();
+            refreshPortraitDisplay();
             refreshCmbItems();
             refreshCmbSelected();
         }
@@ -468,6 +491,18 @@ namespace IB2ToolsetMini
             }
             catch { }
         }
+        public void refreshPortraitDisplay()
+        {
+            try
+            {
+                if ((pc.tag != "newPlayer") && (playerPortrait != null))
+                {
+                    pbPortrait.BackgroundImage = (Image)playerPortrait;
+                    if (playerPortrait == null) { MessageBox.Show("returned a null portrait bitmap"); }
+                }
+            }
+            catch { }
+        }
         public void LoadPlayerToken()
         {
             iconBitmap = prntForm.LoadBitmapGDI(pc.tokenFilename);
@@ -484,6 +519,23 @@ namespace IB2ToolsetMini
                 iconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
             }*/
             refreshTokenDisplay();
+        }
+        public void LoadPlayerPortrait()
+        {
+            playerPortrait = prntForm.LoadBitmapGDI(pc.portraitFilename);
+            /*if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + pc.tokenFilename + ".png"))
+            {
+                iconBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + pc.tokenFilename + ".png");
+            }
+            else if (File.Exists(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + pc.tokenFilename + ".png"))
+            {
+                iconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + pc.tokenFilename + ".png");
+            }
+            else
+            {
+                iconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
+            }*/
+            refreshPortraitDisplay();
         }
         public void refreshSpellsKnown()
         {
@@ -668,5 +720,7 @@ namespace IB2ToolsetMini
             cmbAmmo.SelectedItem = pc.AmmoRefs;
         }
         #endregion
+
+        
     }
 }

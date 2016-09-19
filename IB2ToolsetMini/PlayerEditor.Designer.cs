@@ -63,12 +63,15 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.lbxPlayers = new System.Windows.Forms.ListBox();
+            this.pbPortrait = new System.Windows.Forms.PictureBox();
+            this.btnSelectPortrait = new System.Windows.Forms.Button();
             this.gbKnownSpells.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbCreatureIconSelect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPortrait)).BeginInit();
             this.SuspendLayout();
             // 
             // gbKnownSpells
@@ -347,14 +350,16 @@
             // 
             // gbCreatureIconSelect
             // 
+            this.gbCreatureIconSelect.Controls.Add(this.btnSelectPortrait);
+            this.gbCreatureIconSelect.Controls.Add(this.pbPortrait);
             this.gbCreatureIconSelect.Controls.Add(this.pbIcon);
             this.gbCreatureIconSelect.Controls.Add(this.btnSelectIcon);
-            this.gbCreatureIconSelect.Location = new System.Drawing.Point(476, 344);
+            this.gbCreatureIconSelect.Location = new System.Drawing.Point(462, 344);
             this.gbCreatureIconSelect.Name = "gbCreatureIconSelect";
-            this.gbCreatureIconSelect.Size = new System.Drawing.Size(180, 214);
+            this.gbCreatureIconSelect.Size = new System.Drawing.Size(202, 236);
             this.gbCreatureIconSelect.TabIndex = 45;
             this.gbCreatureIconSelect.TabStop = false;
-            this.gbCreatureIconSelect.Text = "Icon/Sprite";
+            this.gbCreatureIconSelect.Text = "Token and Portrait";
             // 
             // pbIcon
             // 
@@ -364,17 +369,17 @@
             this.pbIcon.Location = new System.Drawing.Point(13, 19);
             this.pbIcon.Name = "pbIcon";
             this.pbIcon.Padding = new System.Windows.Forms.Padding(2);
-            this.pbIcon.Size = new System.Drawing.Size(154, 154);
+            this.pbIcon.Size = new System.Drawing.Size(54, 104);
             this.pbIcon.TabIndex = 25;
             this.pbIcon.TabStop = false;
             // 
             // btnSelectIcon
             // 
-            this.btnSelectIcon.Location = new System.Drawing.Point(13, 179);
+            this.btnSelectIcon.Location = new System.Drawing.Point(13, 129);
             this.btnSelectIcon.Name = "btnSelectIcon";
-            this.btnSelectIcon.Size = new System.Drawing.Size(154, 23);
+            this.btnSelectIcon.Size = new System.Drawing.Size(54, 43);
             this.btnSelectIcon.TabIndex = 26;
-            this.btnSelectIcon.Text = "Select";
+            this.btnSelectIcon.Text = "Select Token";
             this.btnSelectIcon.UseVisualStyleBackColor = true;
             this.btnSelectIcon.Click += new System.EventHandler(this.btnSelectIcon_Click);
             // 
@@ -449,6 +454,28 @@
             this.lbxPlayers.TabIndex = 82;
             this.lbxPlayers.SelectedIndexChanged += new System.EventHandler(this.lbxPlayers_SelectedIndexChanged);
             // 
+            // pbPortrait
+            // 
+            this.pbPortrait.BackColor = System.Drawing.Color.Silver;
+            this.pbPortrait.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbPortrait.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbPortrait.Location = new System.Drawing.Point(75, 19);
+            this.pbPortrait.Name = "pbPortrait";
+            this.pbPortrait.Padding = new System.Windows.Forms.Padding(2);
+            this.pbPortrait.Size = new System.Drawing.Size(114, 174);
+            this.pbPortrait.TabIndex = 27;
+            this.pbPortrait.TabStop = false;
+            // 
+            // btnSelectPortrait
+            // 
+            this.btnSelectPortrait.Location = new System.Drawing.Point(75, 195);
+            this.btnSelectPortrait.Name = "btnSelectPortrait";
+            this.btnSelectPortrait.Size = new System.Drawing.Size(114, 30);
+            this.btnSelectPortrait.TabIndex = 28;
+            this.btnSelectPortrait.Text = "Select Portrait";
+            this.btnSelectPortrait.UseVisualStyleBackColor = true;
+            this.btnSelectPortrait.Click += new System.EventHandler(this.btnSelectPortrait_Click);
+            // 
             // PlayerEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,6 +497,7 @@
             this.gbCreatureIconSelect.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPortrait)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -511,5 +539,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.ListBox lbxPlayers;
+        public System.Windows.Forms.Button btnSelectPortrait;
+        public System.Windows.Forms.PictureBox pbPortrait;
     }
 }

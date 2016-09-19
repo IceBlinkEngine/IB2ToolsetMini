@@ -56,10 +56,10 @@ namespace IB2ToolsetMini
 	    public int classBonus = 0;
 	    public int baseAttBonus = 1;
 	    public int baseAttBonusAdders = 0;
-	    public int hp = 10;
-	    public int hpMax = 10;
-	    public int sp = 50;
-	    public int spMax = 50;
+	    public int hp = 999;
+	    public int hpMax = 999;
+	    public int sp = 999;
+	    public int spMax = 999;
 	    private int _XP = 0;
 	    public int XPNeeded = 200;
         public int hpRegenTimePassedCounter = 0;

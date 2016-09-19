@@ -1273,6 +1273,26 @@ namespace IB2ToolsetMini
             System.Drawing.Bitmap bm = null;
             try
             {
+                //first load from module ImageList
+                foreach (KeyValuePair<string, Bitmap> kvp in this.resourcesBitmapList)
+                {
+                    if (kvp.Key.Equals(filename + ".png"))
+                    {
+                        return (Bitmap)kvp.Value.Clone();
+                    }
+                    else if (kvp.Key.Equals(filename + ".PNG"))
+                    {
+                        return (Bitmap)kvp.Value.Clone();
+                    }
+                    else if (kvp.Key.Equals(filename + ".jpg"))
+                    {
+                        return (Bitmap)kvp.Value.Clone();
+                    }
+                    else if (kvp.Key.Equals(filename))
+                    {
+                        return (Bitmap)kvp.Value.Clone();
+                    }
+                }
                 if (File.Exists(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".png"))
                 {
                     bm = new Bitmap(_mainDirectory + "\\default\\NewModule\\graphics\\" + filename + ".png");
