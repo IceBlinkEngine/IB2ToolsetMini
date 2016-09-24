@@ -35,8 +35,6 @@ namespace IB2ToolsetMini
         public ParentForm prntForm;
         public Module mod;
 
-        //private List<TileBitmapNamePair> tileList = new List<TileBitmapNamePair>();
-        //public SharpDX.Direct2D1.Bitmap gameMapBitmapD2D;
         private Bitmap selectedBitmap;
         public string selectedBitmapFilename = "";
         private int sqr = 25;
@@ -53,8 +51,6 @@ namespace IB2ToolsetMini
         public bool tileSelected = true;
         public Point currentSquareClicked = new Point(0, 0);
         public Point lastSquareClicked = new Point(0, 0);
-        //public string g_filename = "";
-        //public string g_directory = "";
         public Area area;
         public selectionStruct selectedTile;
         public Point lastSelectedCreaturePropIcon;
@@ -184,17 +180,6 @@ namespace IB2ToolsetMini
                 MessageBox.Show("error: " + ex.ToString());
             }
         }
-        /*private TileBitmapNamePair getTileByName(string name)
-        {
-            foreach (TileBitmapNamePair t in tileList)
-            {
-                if (t.filename == name)
-                {
-                    return t;
-                }
-            }
-            return null;
-        }*/
         private void refreshMap(bool refreshAll)
         {
             /*//GDI        
@@ -1651,6 +1636,8 @@ namespace IB2ToolsetMini
                 {
                     if (!currentTileFilename.Equals(""))
                     {
+                        float scalerX = GetFromBitmapList(currentTileFilename).PixelSize.Width / prntForm.tileSizeInPixels;
+                        float scalerY = GetFromBitmapList(currentTileFilename).PixelSize.Height / prntForm.tileSizeInPixels;
                         SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(currentTileFilename).PixelSize.Width, GetFromBitmapList(currentTileFilename).PixelSize.Height);
                         SharpDX.RectangleF dst = new SharpDX.RectangleF(gridX * sqr, gridY * sqr, (int)(sqr), (int)(sqr));
                         int mirror = 0;
@@ -1748,35 +1735,6 @@ namespace IB2ToolsetMini
             //GDI refreshMap(true);
             //this.Cursor = Cursors.Arrow;
         }
-        /*private void saveTilemapFileAs()
-        {
-            //display the open file dialog
-            saveFileDialog1.DefaultExt = ".lvl";
-            saveFileDialog1.Filter = "Area Level Files|*.lvl";
-            saveFileDialog1.Title = "Save Level File";
-            saveFileDialog1.AddExtension = true;
-            saveFileDialog1.OverwritePrompt = true;
-            saveFileDialog1.InitialDirectory = Environment.CurrentDirectory;
-            DialogResult result = saveFileDialog1.ShowDialog();
-            if (result != DialogResult.OK) return;
-            if (saveFileDialog1.FileName.Length == 0) return;
-            g_filename = Path.GetFileNameWithoutExtension(saveFileDialog1.FileName);
-            g_directory = Path.GetDirectoryName(saveFileDialog1.FileName);
-            area.Filename = g_filename;
-            //area.ImageFileName = Path.GetFileNameWithoutExtension(saveFileDialog1.FileName);
-            saveTilemapFile();
-        }*/
-        /*public void saveTilemapFile()
-        {
-            if (g_filename.Length == 0)
-            {
-                saveTilemapFileAs();
-                return;
-            }
-            area.Filename = g_filename;
-            //area.MapFileName = Path.GetFileNameWithoutExtension(g_filename) + ".jpg";
-            area.saveAreaFile(g_directory + "\\" + g_filename + ".lvl");
-        }*/
         private void createNewArea(int width, int height)
         {
             //create tilemap

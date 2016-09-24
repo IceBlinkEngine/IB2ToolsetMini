@@ -24,19 +24,9 @@ namespace IB2ToolsetMini
         public ParentForm prntForm;
         public Module mod;
 
-        //private List<TileBitmapNamePair> tileList = new List<TileBitmapNamePair>();
-        //GDI private Graphics device;
-        //GDI private Bitmap surface;
-        //GDI private Bitmap mapBitmap;
-        //public SharpDX.Direct2D1.Bitmap mapBitmapD2D;
         private Bitmap selectedBitmap;
         public string selectedBitmapFilename = "";
-        //GDI public Bitmap g_walkPass;
-        //GDI public Bitmap g_walkBlock;
-        //GDI public Bitmap g_LoSBlock;
         private int sqr = 50;
-        //private int mSizeW = 800;
-        //private int mSizeH = 800;
         private Point currentPoint = new Point(0, 0);
         private Point lastPoint = new Point(0, 0);
         private int gridX = 0;
@@ -50,10 +40,6 @@ namespace IB2ToolsetMini
         public bool tileSelected = true;
         public bool PcSelected = false;
         public bool CrtSelected = false;
-        //GDI Font drawFont = new Font("Arial", 6);
-        //GDI Font drawFontNum = new Font("Arial", 24);
-        //GDI SolidBrush drawBrush = new SolidBrush(Color.Yellow);
-        //GDI Pen blackPen = new Pen(Color.Black, 1);
         public Point currentSquareClicked = new Point(0, 0);
         public Point lastSquareClicked = new Point(0, 0);
         public selectionStruct selectedTile;
@@ -62,8 +48,6 @@ namespace IB2ToolsetMini
         public string lastSelectedObjectResRef;
         public Creature le_selectedCreature = new Creature();
         public Prop le_selectedProp = new Prop();
-        //public List<Bitmap> crtBitmapList = new List<Bitmap>(); //index will match AreaCreatureList index
-        //GDI public List<Bitmap> propBitmapList = new List<Bitmap>(); //index will match AreaPropList index
         public Encounter thisEnc = new Encounter();
 
         #region Direct2D Stuff
@@ -248,17 +232,6 @@ namespace IB2ToolsetMini
                 MessageBox.Show("error: " + ex.ToString());
             }
         }
-        /*private TileBitmapNamePair getTileByName(string name)
-        {
-            foreach (TileBitmapNamePair t in tileList)
-            {
-                if (t.filename == name)
-                {
-                    return t;
-                }
-            }
-            return null;
-        }*/        
         private void refreshMap(bool refreshAll)
         {
             /*//GDI this.Cursor = Cursors.WaitCursor;
@@ -740,7 +713,10 @@ namespace IB2ToolsetMini
             lastSquareClicked.Y = currentSquareClicked.Y;
             currentSquareClicked.X = gridX;
             currentSquareClicked.Y = gridY;
-
+            if (!mouseInMapArea(gridX, gridY))
+            {
+                return;
+            }
             switch (e.Button)
             {
                 #region Left Button
@@ -1588,11 +1564,13 @@ namespace IB2ToolsetMini
                 {
                     if (!currentTileFilename.Equals(""))
                     {
-                        float scalerX = GetFromBitmapList(currentTileFilename).PixelSize.Width / 100;
-                        float scalerY = GetFromBitmapList(currentTileFilename).PixelSize.Height / 100;
+                        float scalerX = GetFromBitmapList(currentTileFilename).PixelSize.Width / prntForm.tileSizeInPixels;
+                        float scalerY = GetFromBitmapList(currentTileFilename).PixelSize.Height / prntForm.tileSizeInPixels;
                         SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(currentTileFilename).PixelSize.Width, GetFromBitmapList(currentTileFilename).PixelSize.Height);
                         SharpDX.RectangleF dst = new SharpDX.RectangleF(gridX * sqr, gridY * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
-                        DrawD2DBitmap(GetFromBitmapList(currentTileFilename), src, dst, tileToBePlaced.angle, tileToBePlaced.mirror);
+                        int mirror = 0;
+                        if (tileToBePlaced.mirror == 1) { mirror = 1; }
+                        DrawD2DBitmap(GetFromBitmapList(currentTileFilename), src, dst, tileToBePlaced.angle, mirror);
                     }
                 }
                 catch (Exception ex) { MessageBox.Show("failed mouse move update to be placed tile: " + ex.ToString()); }
