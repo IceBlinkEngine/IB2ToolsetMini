@@ -1476,7 +1476,9 @@ namespace IB2ToolsetMini
                         if (!tile.Equals("t_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
+                            if (scalerX == 0) { scalerX = 1.0f; }
                             float scalerY = GetFromBitmapList(tile).PixelSize.Height / prntForm.tileSizeInPixels;
+                            if (scalerY == 0) { scalerY = 1.0f; }
                             SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(tile).PixelSize.Width, GetFromBitmapList(tile).PixelSize.Height);
                             SharpDX.RectangleF dst = new SharpDX.RectangleF(x * sqr, y * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
                             DrawD2DBitmap(GetFromBitmapList(tile), src, dst, area.Layer1Rotate[y * area.MapSizeX + x], area.Layer1Mirror[y * area.MapSizeX + x]);
@@ -1496,7 +1498,9 @@ namespace IB2ToolsetMini
                         if (!tile.Equals("t_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
+                            if (scalerX == 0) { scalerX = 1.0f; }
                             float scalerY = GetFromBitmapList(tile).PixelSize.Height / prntForm.tileSizeInPixels;
+                            if (scalerY == 0) { scalerY = 1.0f; }
                             SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(tile).PixelSize.Width, GetFromBitmapList(tile).PixelSize.Height);
                             SharpDX.RectangleF dst = new SharpDX.RectangleF(x * sqr, y * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
                             DrawD2DBitmap(GetFromBitmapList(tile), src, dst, area.Layer2Rotate[y * area.MapSizeX + x], area.Layer2Mirror[y * area.MapSizeX + x]);
@@ -1516,7 +1520,9 @@ namespace IB2ToolsetMini
                         if (!tile.Equals("t_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
+                            if (scalerX == 0) { scalerX = 1.0f; }
                             float scalerY = GetFromBitmapList(tile).PixelSize.Height / prntForm.tileSizeInPixels;
+                            if (scalerY == 0) { scalerY = 1.0f; }
                             SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(tile).PixelSize.Width, GetFromBitmapList(tile).PixelSize.Height);
                             SharpDX.RectangleF dst = new SharpDX.RectangleF(x * sqr, y * sqr, (int)(sqr * scalerX), (int)(sqr * scalerY));
                             DrawD2DBitmap(GetFromBitmapList(tile), src, dst, area.Layer3Rotate[y * area.MapSizeX + x], area.Layer3Mirror[y * area.MapSizeX + x]);
