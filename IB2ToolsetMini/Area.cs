@@ -282,6 +282,7 @@ namespace IB2ToolsetMini
                 this.Layer3Mirror.Add(0);
                 this.Walkable.Add(1);
                 this.LoSBlocked.Add(0);
+                this.Visible.Add(0);
             }
         }
         public void saveAreaFile(string path)
