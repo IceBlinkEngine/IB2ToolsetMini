@@ -2007,6 +2007,14 @@ namespace IB2ToolsetMini
                 thisEnc.Walkable.Insert(i, 1);
                 thisEnc.LoSBlocked.Insert(i, 0);
             }
+            foreach (CreatureRefs crtRef in thisEnc.encounterCreatureRefsList)
+            {
+                crtRef.creatureStartLocationX++;
+            }
+            foreach (Coordinate coor in thisEnc.encounterPcStartLocations)
+            {
+                coor.X++;
+            }
             /*TODOforeach (Prop prpRef in thisEnc.Props)
             {
                 prpRef.LocationX++;
@@ -2039,6 +2047,14 @@ namespace IB2ToolsetMini
                 thisEnc.Layer3Mirror.RemoveAt(i);
                 thisEnc.Walkable.RemoveAt(i);
                 thisEnc.LoSBlocked.RemoveAt(i);
+            }
+            foreach (CreatureRefs crtRef in thisEnc.encounterCreatureRefsList)
+            {
+                crtRef.creatureStartLocationX--;
+            }
+            foreach (Coordinate coor in thisEnc.encounterPcStartLocations)
+            {
+                coor.X--;
             }
             /*foreach (Prop prpRef in thisEnc.Props)
             {
@@ -2118,6 +2134,14 @@ namespace IB2ToolsetMini
                 thisEnc.Walkable.Insert(0, 1);
                 thisEnc.LoSBlocked.Insert(0, 0);
             }
+            foreach (CreatureRefs crtRef in thisEnc.encounterCreatureRefsList)
+            {
+                crtRef.creatureStartLocationY++;
+            }
+            foreach (Coordinate coor in thisEnc.encounterPcStartLocations)
+            {
+                coor.Y++;
+            }
             /*TODOforeach (Prop prpRef in thisEnc.Props)
             {
                 prpRef.LocationY++;
@@ -2149,6 +2173,14 @@ namespace IB2ToolsetMini
                 thisEnc.Layer3Mirror.RemoveAt(0);
                 thisEnc.Walkable.RemoveAt(0);
                 thisEnc.LoSBlocked.RemoveAt(0);
+            }
+            foreach (CreatureRefs crtRef in thisEnc.encounterCreatureRefsList)
+            {
+                crtRef.creatureStartLocationY--;
+            }
+            foreach (Coordinate coor in thisEnc.encounterPcStartLocations)
+            {
+                coor.Y--;
             }
             /*TODOforeach (Prop prpRef in thisEnc.Props)
             {

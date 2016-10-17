@@ -403,12 +403,14 @@ namespace IB2ToolsetMini
         public void refreshLists()
         {
             containersList.Clear();
+            containersList.Add("none");
             foreach (Container c in prntForm.mod.moduleContainersList)
             {
                 containersList.Add(c.containerTag);
             }
             
             convosList.Clear();
+            convosList.Add("none");
             foreach (Convo c in prntForm.mod.moduleConvoList)
             {
                 convosList.Add(c.ConvoFileName);
@@ -416,6 +418,7 @@ namespace IB2ToolsetMini
             //convosList = new List<string>(prntForm.mod.moduleConvosList);
                         
             ibscriptsList.Clear();
+            ibscriptsList.Add("none");
             foreach (IBScript c in prntForm.mod.moduleIBScriptList)
             {
                 ibscriptsList.Add(c.scriptName);
@@ -423,6 +426,7 @@ namespace IB2ToolsetMini
             //ibscriptsList = new List<string>(prntForm.mod.moduleIBScriptsList);
 
             encountersList.Clear();
+            encountersList.Add("none");
             foreach (Encounter c in prntForm.mod.moduleEncountersList)
             {
                 encountersList.Add(c.encounterName);
@@ -432,6 +436,7 @@ namespace IB2ToolsetMini
             scriptsList = new List<string>(prntForm.scriptList);
 
             areasList.Clear();
+            areasList.Add("none");
             foreach (Area c in prntForm.mod.moduleAreasObjects)
             {
                 areasList.Add(c.Filename);
