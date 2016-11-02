@@ -1,0 +1,140 @@
+TASKS TODO
+-build areas
+-build encounters
+-build shops
+-build containers
+-go through all convos and verify scripts
+-find and assign portraits to convos
+-find and assign tokens to custom creatures
+-find and assign item images to custom items
+
+POSSIBLE COMPANIONS
+c_graal
+
+PORTRAITS NEEDED
+ptr_c_amaviel
+ptr_c_celon
+ptr_c_charnor
+ptr_c_gigaspid
+ptr_c_graal
+ptr_c_guardp
+ptr_c_ixxa
+ptr_c_olly
+ptr_c_pietr
+ptr_c_reece
+ptr_c_steve
+ptr_conv_amaviel
+ptr_conv_bucket
+ptr_conv_bystander
+ptr_conv_celon
+ptr_conv_costen
+ptr_conv_enter
+ptr_conv_graal
+ptr_conv_guard
+ptr_conv_hoppy
+ptr_conv_ixxa
+ptr_conv_pietr
+ptr_conv_reece
+ptr_conv_shanter
+ptr_conv_steve
+ptr_conv_stuckdoor
+ptr_conv_tam
+ptr_dr_stuck
+
+NON-IB SCRIPT TYPES FOUND
+ga_destroy
+ga_give_partial_quest_xp
+ga_alignment
+ga_give_quest_xp
+gc_align_evil
+ga_roster_selectable
+ga_roster_party_add
+ga_roster_rem
+ga_force_exit
+ga_create_obj
+ga_attack
+ga_fade_from_black
+ga_effect
+ga_fade_to_black
+ga_move
+ga_faction_join
+gc_is_female
+
+NON-IB SCRIPTS FOUND (DETAILS)
+|conv_celon.dlg|***ga_destroy(nonIBscript) --> ::p1 = c_steve    ::p2 = 0    ::p3 = 0    ::p4 =     
+|conv_celon.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lostring    ::p2 = 50    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lostring    ::p2 = 50    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lostring    ::p2 = 75    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lostring    ::p2 = 50    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967294    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967294    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967294    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_alignment(nonIBscript) --> ::p1 = 3    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_celon.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = j_lake    ::p2 =     ::p3 =     ::p4 =     
+|conv_enter.dlg|***gc_align_evil(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|conv_enter.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = c_graal    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_enter.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = c_graal    ::p2 =     ::p3 =     ::p4 =     
+|conv_graal.dlg|***ga_roster_rem(nonIBscript) --> ::p1 = c_graal    ::p2 =     ::p3 =     ::p4 =     
+|conv_graal.dlg|***ga_force_exit(nonIBscript) --> ::p1 = c_graal    ::p2 = wp_leaving    ::p3 = 1    ::p4 =     
+|conv_graal.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_graal.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_graal.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_ixxa.dlg|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = c_gigaspid    ::p3 = wp_ixxaconv    ::p4 = 1    
+|conv_ixxa.dlg|***ga_attack(nonIBscript) --> ::p1 = c_ixxa    ::p2 =     ::p3 =     ::p4 =     
+|conv_ixxa.dlg|***ga_attack(nonIBscript) --> ::p1 = c_gigaspid    ::p2 =     ::p3 =     ::p4 =     
+|conv_pietr.dlg|***ga_create_obj(nonIBscript) --> ::p1 = C    ::p2 = c_guard    ::p3 = wp_guard_pietr    ::p4 = 0    
+|conv_pietr.dlg|***ga_fade_from_black(nonIBscript) --> ::p1 = 1    ::p2 =     ::p3 =     ::p4 =     
+|conv_pietr.dlg|***ga_effect(nonIBscript) --> ::p1 = Visual    ::p2 = VFX_FNF_SCREEN_SHAKE    ::p3 = I    ::p4 = 286    
+|conv_pietr.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_pietr.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_pietr.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_pietr.dlg|***ga_destroy(nonIBscript) --> ::p1 = c_guardp    ::p2 = 0    ::p3 = 1    ::p4 =     
+|conv_pietr.dlg|***ga_fade_to_black(nonIBscript) --> ::p1 = 3    ::p2 = 4    ::p3 = 0    ::p4 =     
+|conv_pietr.dlg|***ga_fade_to_black(nonIBscript) --> ::p1 = 1    ::p2 = 2    ::p3 = 0    ::p4 =     
+|conv_pietr.dlg|***ga_fade_to_black(nonIBscript) --> ::p1 = 1    ::p2 = 2    ::p3 = 0    ::p4 =     
+|conv_reece.dlg|***ga_destroy(nonIBscript) --> ::p1 = NW_IT_REECE    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
+|conv_reece.dlg|***ga_destroy(nonIBscript) --> ::p1 = NW_IT_REECE    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
+|conv_reece.dlg|***ga_destroy(nonIBscript) --> ::p1 = NW_IT_REECE    ::p2 = 4294967295    ::p3 = 0    ::p4 =     
+|conv_reece.dlg|***ga_attack(nonIBscript) --> ::p1 = c_reece    ::p2 =     ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_attack(nonIBscript) --> ::p1 = c_reece    ::p2 =     ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_attack(nonIBscript) --> ::p1 = c_reece    ::p2 =     ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_attack(nonIBscript) --> ::p1 = c_reece    ::p2 =     ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_attack(nonIBscript) --> ::p1 = c_reece    ::p2 =     ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_attack(nonIBscript) --> ::p1 = c_reece    ::p2 =     ::p3 =     ::p4 =     
+|conv_reece.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lostring    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_shanter.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lake    ::p2 = 20    ::p3 =     ::p4 =     
+|conv_shanter.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967294    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_shanter.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lake    ::p2 = 20    ::p3 =     ::p4 =     
+|conv_shanter.dlg|***ga_force_exit(nonIBscript) --> ::p1 = c_shanter    ::p2 = wp_shanterflee    ::p3 = 1    ::p4 =     
+|conv_shanter.dlg|***ga_move(nonIBscript) --> ::p1 = wp_shanterflee    ::p2 = 1    ::p3 = c_shanter    ::p4 =     
+|conv_shanter.dlg|***ga_destroy(nonIBscript) --> ::p1 = c_shanter    ::p2 = 0    ::p3 = 5    ::p4 =     
+|conv_shanter.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lake    ::p2 = 20    ::p3 =     ::p4 =     
+|conv_shanter.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_shanter.dlg|***ga_force_exit(nonIBscript) --> ::p1 = c_shanter    ::p2 = wp_shanterflee    ::p3 = 1    ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_attack(nonIBscript) --> ::p1 = c_steve    ::p2 =     ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967294    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_faction_join(nonIBscript) --> ::p1 = c_steve    ::p2 = $HOSTILE    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_attack(nonIBscript) --> ::p1 = c_steve    ::p2 =     ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***gc_is_female(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|conv_steve.dlg|***gc_is_female(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|conv_steve.dlg|***gc_is_female(nonIBscript) --> ::p1 =     ::p2 =     ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lostring    ::p2 = 10    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_attack(nonIBscript) --> ::p1 = c_steve    ::p2 =     ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_give_partial_quest_xp(nonIBscript) --> ::p1 = j_lostring    ::p2 = 50    ::p3 =     ::p4 =     
+|conv_steve.dlg|***ga_destroy(nonIBscript) --> ::p1 = c_steve    ::p2 = 1    ::p3 = 0.5    ::p4 =     
+|conv_steve.dlg|***ga_force_exit(nonIBscript) --> ::p1 = c_steve    ::p2 = wp_leaving    ::p3 = 1    ::p4 =     
+|conv_tam.dlg|***ga_destroy(nonIBscript) --> ::p1 = c_ettercap    ::p2 = 1    ::p3 = 0.5    ::p4 =     

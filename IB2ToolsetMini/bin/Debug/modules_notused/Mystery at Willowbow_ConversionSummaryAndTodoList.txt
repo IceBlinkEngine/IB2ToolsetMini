@@ -1,0 +1,74 @@
+TASKS TODO
+-build areas
+-build encounters
+-build shops
+-build containers
+-go through all convos and verify scripts
+-find and assign portraits to convos
+-find and assign tokens to custom creatures
+-find and assign item images to custom items
+
+POSSIBLE COMPANIONS
+alice_1
+c_cler
+cr_garret
+
+PORTRAITS NEEDED
+ptr_alice_01
+ptr_arlene_1
+ptr_burgan_1
+ptr_c_emma
+ptr_c_garret
+ptr_c_illem
+ptr_c_kids
+ptr_c_trav
+ptr_cassandra_c1
+ptr_hal_01
+
+NON-IB SCRIPT TYPES FOUND
+ga_roster_selectable
+ga_roster_party_add
+ga_reset_level
+ga_give_quest_xp
+ga_alignment
+
+NON-IB SCRIPTS FOUND (DETAILS)
+|alice_01.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = alice_1    ::p2 = 1    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = alice_1    ::p2 =     ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_reset_level(nonIBscript) --> ::p1 = alice_1    ::p2 = 0    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = alice_1    ::p2 = 1    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = alice_1    ::p2 =     ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_reset_level(nonIBscript) --> ::p1 = alice_1    ::p2 = 0    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = alice_1    ::p2 = 1    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = alice_1    ::p2 =     ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_reset_level(nonIBscript) --> ::p1 = alice_1    ::p2 = 0    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = alice_1    ::p2 = 1    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = alice_1    ::p2 =     ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_reset_level(nonIBscript) --> ::p1 = alice_1    ::p2 = 0    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = alice_1    ::p2 = 1    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = alice_1    ::p2 =     ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_reset_level(nonIBscript) --> ::p1 = alice_1    ::p2 = 0    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = j_tom    ::p2 =     ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_alignment(nonIBscript) --> ::p1 = 1    ::p2 = 0    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 1    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967294    ::p2 = 1    ::p3 =     ::p4 =     
+|alice_01.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967295    ::p2 = 0    ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = c_cler    ::p2 = 1    ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = c_cler    ::p2 =     ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_reset_level(nonIBscript) --> ::p1 = c_cler    ::p2 = 0    ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = c_cler    ::p2 = 1    ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = c_cler    ::p2 =     ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_reset_level(nonIBscript) --> ::p1 = c_cler    ::p2 = 0    ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = c_cler    ::p2 = 1    ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = c_cler    ::p2 =     ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_reset_level(nonIBscript) --> ::p1 = c_cler    ::p2 = 0    ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = j_cass    ::p2 =     ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = j_cass    ::p2 =     ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = j_cass    ::p2 =     ::p3 =     ::p4 =     
+|cassandra_c1.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = j_cass    ::p2 =     ::p3 =     ::p4 =     
+|c_garret.dlg|***ga_roster_selectable(nonIBscript) --> ::p1 = cr_garret    ::p2 = 1    ::p3 =     ::p4 =     
+|c_garret.dlg|***ga_roster_party_add(nonIBscript) --> ::p1 = cr_garret    ::p2 =     ::p3 =     ::p4 =     
+|c_garret.dlg|***ga_reset_level(nonIBscript) --> ::p1 = cr_garret    ::p2 = 0    ::p3 =     ::p4 =     
+|hal_01.dlg|***ga_give_quest_xp(nonIBscript) --> ::p1 = j_ink_ferry    ::p2 =     ::p3 =     ::p4 =     
+|hal_01.dlg|***ga_alignment(nonIBscript) --> ::p1 = 2    ::p2 = 0    ::p3 =     ::p4 =     
+|hal_01.dlg|***ga_alignment(nonIBscript) --> ::p1 = 4294967294    ::p2 = 1    ::p3 =     ::p4 =     

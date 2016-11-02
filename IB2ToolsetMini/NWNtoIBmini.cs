@@ -1475,10 +1475,14 @@ namespace IB2ToolsetMini
                     newNode.idNum = nextLinkIdNumber;
                     nextLinkIdNumber++;
                     //assign linkTo
-                    if (thisSync.Index < dlgEntrynodeList.Count)
+                    if (thisSync.Index < dlgReplynodeList.Count)
                     {
-                        newNode.linkTo = dlgEntrynodeList[(int)thisSync.Index].idNum;
+                        newNode.linkTo = dlgReplynodeList[(int)thisSync.Index].idNum;
                     }
+                    //if (thisSync.Index < dlgEntrynodeList.Count)
+                    //{
+                    //    newNode.linkTo = dlgEntrynodeList[(int)thisSync.Index].idNum;
+                    //}
                     else //broken or bad link so comment
                     {
                         newNode.linkTo = -1;
@@ -1491,10 +1495,14 @@ namespace IB2ToolsetMini
                     newNode.idNum = nextLinkIdNumber;
                     nextLinkIdNumber++;
                     //assign linkTo
-                    if (thisSync.Index < dlgReplynodeList.Count)
+                    if (thisSync.Index < dlgEntrynodeList.Count)
                     {
-                        newNode.linkTo = dlgReplynodeList[(int)thisSync.Index].idNum;
+                        newNode.linkTo = dlgEntrynodeList[(int)thisSync.Index].idNum;
                     }
+                    //if (thisSync.Index < dlgReplynodeList.Count)
+                    //{
+                    //    newNode.linkTo = dlgReplynodeList[(int)thisSync.Index].idNum;
+                    //}
                     else //broken or bad link so comment
                     {
                         newNode.linkTo = -1;
