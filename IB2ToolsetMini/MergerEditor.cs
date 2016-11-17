@@ -120,6 +120,15 @@ namespace IB2ToolsetMini
                         refreshMainListBox();
                     }
                 }
+                else if (cmbDataType.SelectedIndex == 10) //IBScript
+                {
+                    if (!ibscriptExists(mergeMod.moduleIBScriptList[lbxImport.SelectedIndex]))
+                    {
+                        prntForm.mod.moduleIBScriptList.Add(mergeMod.moduleIBScriptList[lbxImport.SelectedIndex].DeepCopy());
+                        refreshImportListBox();
+                        refreshMainListBox();
+                    }
+                }
             }
         }
         private void btnFolderImport_Click(object sender, EventArgs e)
@@ -194,6 +203,10 @@ namespace IB2ToolsetMini
                 {
                     pgMain.SelectedObject = prntForm.mod.moduleEncountersList[lbxMain.SelectedIndex];
                 }
+                else if (cmbDataType.SelectedIndex == 10) //IBscripts
+                {
+                    pgMain.SelectedObject = prntForm.mod.moduleIBScriptList[lbxMain.SelectedIndex];
+                }
             }
         }
         private void lbxImport_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,6 +252,10 @@ namespace IB2ToolsetMini
                 else if (cmbDataType.SelectedIndex == 9) //Encounters
                 {
                     pgImport.SelectedObject = mergeMod.moduleEncountersList[lbxImport.SelectedIndex];
+                }
+                else if (cmbDataType.SelectedIndex == 10) //IBScripts
+                {
+                    pgImport.SelectedObject = mergeMod.moduleIBScriptList[lbxImport.SelectedIndex];
                 }
             }
         }
@@ -391,6 +408,14 @@ namespace IB2ToolsetMini
                 lbxMain.DisplayMember = "encounterName";
                 lbxMain.EndUpdate();
             }
+            else if (cmbDataType.SelectedIndex == 10) //IBScripts
+            {
+                lbxMain.BeginUpdate();
+                lbxMain.DataSource = null;
+                lbxMain.DataSource = prntForm.mod.moduleIBScriptList;
+                lbxMain.DisplayMember = "scriptName";
+                lbxMain.EndUpdate();
+            }
         }
         private void refreshImportListBox()
         {
@@ -472,6 +497,14 @@ namespace IB2ToolsetMini
                 lbxImport.DataSource = null;
                 lbxImport.DataSource = mergeMod.moduleEncountersList;
                 lbxImport.DisplayMember = "encounterName";
+                lbxImport.EndUpdate();
+            }
+            else if (cmbDataType.SelectedIndex == 10) //IBScripts
+            {
+                lbxImport.BeginUpdate();
+                lbxImport.DataSource = null;
+                lbxImport.DataSource = mergeMod.moduleIBScriptList;
+                lbxImport.DisplayMember = "scriptName";
                 lbxImport.EndUpdate();
             }
         }        
@@ -568,6 +601,17 @@ namespace IB2ToolsetMini
             foreach (Convo it in prntForm.mod.moduleConvoList)
             {
                 if (it.ConvoFileName == itImp.ConvoFileName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool ibscriptExists(IBScript itImp)
+        {
+            foreach (IBScript it in prntForm.mod.moduleIBScriptList)
+            {
+                if (it.scriptName == itImp.scriptName)
                 {
                     return true;
                 }

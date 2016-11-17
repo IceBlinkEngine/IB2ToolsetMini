@@ -176,7 +176,8 @@
             "Items",
             "Areas",
             "Convos",
-            "Encounters"});
+            "Encounters",
+            "IBScripts"});
             this.cmbDataType.Location = new System.Drawing.Point(361, 11);
             this.cmbDataType.Name = "cmbDataType";
             this.cmbDataType.Size = new System.Drawing.Size(165, 21);

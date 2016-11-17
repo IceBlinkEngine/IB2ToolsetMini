@@ -20,5 +20,20 @@ namespace IB2ToolsetMini
         {
 
         }
+
+        public IBScript DeepCopy()
+        {
+            IBScript copy = new IBScript();
+
+            copy.scriptName = this.scriptName;
+
+            copy.codeLines = new List<string>();
+            foreach (string s in this.codeLines)
+            {
+                copy.codeLines.Add(s);
+            }
+
+            return copy;
+        }
     }
 }

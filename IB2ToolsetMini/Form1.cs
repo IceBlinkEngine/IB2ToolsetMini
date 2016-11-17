@@ -2163,10 +2163,11 @@ namespace IB2ToolsetMini
                     }
                     modIBmini.moduleEffectsList = loadEffectsFile(directory + "\\data\\effects.json");
 
-                    //LOAD all areas, convos, and encounters and convert to new format as needed
+                    //LOAD all areas, convos, ibscripts, and encounters and convert to new format as needed
                     ImportAreas(modIBmini, directory);
                     ImportConvos(modIBmini, directory);
                     ImportEncounters(modIBmini, directory);
+                    ImportIBScripts(modIBmini, directory);
                     //make a list of images that need to be copied over to the hak folder (images that do not exist in default/NewModule/graphics folder)      
                     //SAVE out the module file   
                     string fullPathFilename = _mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
@@ -2296,6 +2297,30 @@ namespace IB2ToolsetMini
                     IB2convo = (Convo)serializer.Deserialize(file, typeof(Convo));
                 }
                 mod.moduleConvoList.Add(IB2convo);
+            }
+        }
+        public void ImportIBScripts(Module mod, string directory)
+        {
+            mod.moduleIBScriptList.Clear();
+                        
+            string jobDir = "";
+            jobDir = directory + "\\ibscript";
+            foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
+            {
+                string filename = Path.GetFileName(f);
+                if (!filename.EndsWith(".ibs"))
+                {
+                    continue;
+                }
+                string scriptName = Path.GetFileNameWithoutExtension(f);
+                IBScript IB2ibscript = new IBScript();
+                IB2ibscript.scriptName = scriptName;
+                string[] lines = File.ReadAllLines(f);
+                foreach (string l in lines)
+                {
+                    IB2ibscript.codeLines.Add(l + Environment.NewLine);
+                }                
+                mod.moduleIBScriptList.Add(IB2ibscript);
             }
         }
         public void ImportEncounters(Module mod, string directory)
