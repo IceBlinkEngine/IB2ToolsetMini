@@ -24,13 +24,7 @@ namespace IB2ToolsetMini
         #region Fields
         [JsonIgnore]
         public Bitmap itemIconBitmap;
-        //private UsableInSituation useableInSituation = UsableInSituation.Always;
-        //private category p_category = category.Armor; //catergory type (armor, weapon, ammo, etc.)
         private string _armorWeightType = "Light"; //Light, Medium, Heavy           
-        //private ScriptSelectEditorReturnObject onScoringHit = new ScriptSelectEditorReturnObject();
-        //private ScriptSelectEditorReturnObject onUseItem = new ScriptSelectEditorReturnObject();
-        //private ScriptSelectEditorReturnObject onWhileEquipped = new ScriptSelectEditorReturnObject();
-        //private DamageType typeOfDamage = DamageType.Slashing;
         private string _itemImage = "blank";
         private string _name = "none"; //item name    
         private string _tag = "none"; //item unique tag name    
@@ -75,12 +69,9 @@ namespace IB2ToolsetMini
         private int _roundsPerSpRegenOutsideCombat = 0;
         private int _hpRegenPerRoundInCombat = 0;
         private int _roundsPerHpRegenOutsideCombat = 0;
-        private string _onScoringHit = "none";
-        private string _onScoringHitParms = "none";
-        private string _onUseItem = "none";
-        private string _onUseItemLogicTree = "none";
-        private string _onUseItemLogicTreeParms = "";
-        private bool _destroyItemAfterOnUseItemLogicTree = false;
+        //private string _onScoringHit = "none";
+        //private string _onScoringHitParms = "none";
+        //private string _onUseItem = "none";
         private string _onUseItemIBScript = "none";
         private string _onUseItemIBScriptParms = "";
         private bool _destroyItemAfterOnUseItemIBScript = false;
@@ -194,12 +185,6 @@ namespace IB2ToolsetMini
                 this.NotifyPropertyChanged("desc");
             }
         }
-        /*[CategoryAttribute("99 - Not Implemented Yet"), DescriptionAttribute("When can this be used: Always means that it can be used in combat and on the main maps, Passive means that it is always on and doesn't need to be activated.")]
-        public UsableInSituation UseableInSituation
-        {
-            get { return useableInSituation; }
-            set { useableInSituation = value; }
-        }*/
         [Browsable(true), TypeConverter(typeof(UseableWhenConverter))]
         [CategoryAttribute("01 - Main"), DescriptionAttribute("When can this be used: Always means that it can be used in combat and on the main maps, Passive means that it is always on and doesn't need to be activated.")]
         public string useableInSituation
@@ -252,18 +237,6 @@ namespace IB2ToolsetMini
                 _itemImage = value;
             }
         }
-        /*[CategoryAttribute("01 - Main"), DescriptionAttribute("Item Category Type")]
-        public category ItemCategory
-        {
-            get
-            {
-                return p_category;
-            }
-            set
-            {
-                p_category = value;
-            }
-        }*/
         public bool plotItem
         {
             get
@@ -511,12 +484,6 @@ namespace IB2ToolsetMini
             get { return _damageTypeResistanceValueFire; }
             set { _damageTypeResistanceValueFire = value; }
         }
-        /*[CategoryAttribute("01 - Main"), DescriptionAttribute("The Type of Damage (useful with immunity checks)")]
-        public DamageType typeOfDamage
-        {
-            get { return _typeOfDamage; }
-            set { _typeOfDamage = value; }
-        }*/
         [CategoryAttribute("02 - Modifiers"), DescriptionAttribute("The Type of Damage (useful with immunity checks)")]
         [Browsable(true), TypeConverter(typeof(DamageTypeConverter))]
         public string typeOfDamage
@@ -609,44 +576,17 @@ namespace IB2ToolsetMini
             set { _roundsPerHpRegenOutsideCombat = value; }
         }
         /*[CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires when the item makes a successful hit on a target")]
-        [Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public ScriptSelectEditorReturnObject OnScoringHit
-        {
-            get { return onScoringHit; }
-            set { onScoringHit = value; }
-        }*/
-        [CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires when the item makes a successful hit on a target")]
         public string onScoringHit
         {
             get { return _onScoringHit; }
             set { _onScoringHit = value; }
-        }
-        [CategoryAttribute("03 - Scripts"), DescriptionAttribute("(not used yet)optional input parameters if using a LogicTree...comma separated parameters")]
+        }*/
+        /*[CategoryAttribute("03 - Scripts"), DescriptionAttribute("(not used yet)optional input parameters if using a LogicTree...comma separated parameters")]
         public string onScoringHitParms
         {
             get { return _onScoringHitParms; }
             set { _onScoringHitParms = value; }
-        }
-        [Browsable(true), TypeConverter(typeof(LogicTreeConverter))]
-        [CategoryAttribute("04 - LogicTree Hooks"), DescriptionAttribute("LogicTree name to be run upon using an item (onUseItem must be set to 'none' for this to work properly)")]
-        public string onUseItemLogicTree
-        {
-            get { return _onUseItemLogicTree; }
-            set { _onUseItemLogicTree = value; }
-        }
-        [CategoryAttribute("04 - LogicTree Hooks"), DescriptionAttribute("Parameters to be used for this LogicTree hook (as many parameters as needed, comma deliminated with no spaces)")]
-        public string onUseItemLogicTreeParms
-        {
-            get { return _onUseItemLogicTreeParms; }
-            set { _onUseItemLogicTreeParms = value; }
-        }
-        [CategoryAttribute("04 - LogicTree Hooks"), DescriptionAttribute("If set to true, the item will be destroyed (or decremented by one if stacked) after the Logic Tree is completed.")]
-        public bool destroyItemAfterOnUseItemLogicTree
-        {
-            get { return _destroyItemAfterOnUseItemLogicTree; }
-            set { _destroyItemAfterOnUseItemLogicTree = value; }
-        }
-
+        }*/     
         [Browsable(true), TypeConverter(typeof(IBScriptConverter))]
         [CategoryAttribute("04 - IBScript Hooks"), DescriptionAttribute("IBScript name to be run upon using an item (onUseItem must be set to 'none' for this to work properly)")]
         public string onUseItemIBScript
@@ -666,25 +606,11 @@ namespace IB2ToolsetMini
             get { return _destroyItemAfterOnUseItemIBScript; }
             set { _destroyItemAfterOnUseItemIBScript = value; }
         }
-        /*[CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires when the item is used")]
-        [Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public ScriptSelectEditorReturnObject OnUseItem
-        {
-            get { return onUseItem; }
-            set { onUseItem = value; }
-        }*/
-        [CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires when the item is used (onUseItemLogicTree must be set to 'none' for this to work properly)")]
+        /*[CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires when the item is used (onUseItemLogicTree must be set to 'none' for this to work properly)")]
         public string onUseItem
         {
             get { return _onUseItem; }
             set { _onUseItem = value; }
-        } 
-        /*[CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires every time the UpdateStats() function is called. Useful for modifying PC's stats.")]
-        [Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public ScriptSelectEditorReturnObject OnWhileEquipped
-        {
-            get { return onWhileEquipped; }
-            set { onWhileEquipped = value; }
         }*/
         [CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires every time the UpdateStats() function is called. Useful for modifying PC's stats.")]
         public string onWhileEquipped
@@ -737,18 +663,6 @@ namespace IB2ToolsetMini
         public void LoadItemBitmap(ParentForm prntForm)
         {
             this.itemIconBitmap = prntForm.LoadBitmapGDI(this.itemImage);
-            /*if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.itemImage + ".png"))
-            {
-                this.itemIconBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.itemImage + ".png");
-            }
-            else if (File.Exists(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + this.itemImage + ".png"))
-            {
-                this.itemIconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + this.itemImage + ".png");
-            }
-            else
-            {
-                this.itemIconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
-            }*/
         }
         public override string ToString()
         {

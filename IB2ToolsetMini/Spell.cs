@@ -28,7 +28,6 @@ namespace IB2ToolsetMini
         private string _tag = "newSpellTag"; //item unique tag name
         private string _spellImage = "sp_magebolt";
         private string _description = "";
-        //private UsableInSituation useableInSituation = UsableInSituation.Always;
         private string _useableInSituation = "Always";        
         private string _spriteFilename = "none";
         private string _spriteEndingFilename = "none";
@@ -36,13 +35,10 @@ namespace IB2ToolsetMini
         private string _spellEndSound = "none";
         private int _costSP = 0;
         private string _spellTargetType = "Enemy";
-        //private TargetType spellTargetType = TargetType.Enemy;
         private string _spellEffectType = "Damage";
-        //private EffectType spellEffectType = EffectType.Damage;
         private AreaOfEffectShape _aoeShape = AreaOfEffectShape.Circle;
         private int _aoeRadius = 0;
         private int _range = 0;
-        //private ScriptSelectEditorReturnObject spellScript = new ScriptSelectEditorReturnObject();
         private string _spellScript = "none";
         private string _spellEffectTag = "none";
         private List<EffectTagForDropDownList> _removeEffectTagList = new List<EffectTagForDropDownList>();
@@ -98,12 +94,6 @@ namespace IB2ToolsetMini
                 _description = value;
             }
         }
-        /*[CategoryAttribute("01 - Main"), DescriptionAttribute("When can this be used: Always means that it can be used in combat and on the main maps, Passive means that it is always on and doesn't need to be activated.")]
-        public UsableInSituation UseableInSituation
-        {
-            get { return useableInSituation; }
-            set { useableInSituation = value; }
-        }*/
         [CategoryAttribute("01 - Main"), DescriptionAttribute("When can this be used: Always means that it can be used in combat and on the main maps, Passive means that it is always on and doesn't need to be activated.")]
         public string useableInSituation
         {
@@ -162,18 +152,6 @@ namespace IB2ToolsetMini
                 _costSP = value;
             }
         }
-        /*[CategoryAttribute("02 - Target"), DescriptionAttribute("The type of target for this spell")]
-        public TargetType SpellTargetType
-        {
-            get
-            {
-                return spellTargetType;
-            }
-            set
-            {
-                spellTargetType = value;
-            }
-        }*/
         [CategoryAttribute("02 - Target"), DescriptionAttribute("The type of target for this spell")]
         public string spellTargetType
         {
@@ -186,18 +164,6 @@ namespace IB2ToolsetMini
                 _spellTargetType = value;
             }
         }
-        /*[CategoryAttribute("03 - Effect"), DescriptionAttribute("damage = persistent, negative; heal = persistent, positive; buff = temporary, positive; debuff = temporary, negative")]
-        public EffectType SpellEffectType
-        {
-            get
-            {
-                return spellEffectType;
-            }
-            set
-            {
-                spellEffectType = value;
-            }
-        }*/
         [CategoryAttribute("03 - Effect"), DescriptionAttribute("damage = persistent, negative; heal = persistent, positive; buff = temporary, positive; debuff = temporary, negative")]
         public string spellEffectType
         {
@@ -247,15 +213,7 @@ namespace IB2ToolsetMini
                 _range = value;
             }
         }
-        /*[CategoryAttribute("01 - Main"), DescriptionAttribute("the script to use for this Spell")]
-        [Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public ScriptSelectEditorReturnObject SpellScript
-        {
-            get { return spellScript; }
-            set { spellScript = value; }
-        }*/
         [CategoryAttribute("01 - Main"), DescriptionAttribute("the script to use for this Spell (leave as 'none' to use spellEffectTag instead)")]
-        //[Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string spellScript
         {
             get { return _spellScript; }
@@ -268,7 +226,6 @@ namespace IB2ToolsetMini
             get { return _spellEffectTag; }
             set { _spellEffectTag = value; }
         }
-        //[Browsable(true), TypeConverter(typeof(EffectTagTypeConverter))]
         [CategoryAttribute("05 - Spell/Effect System"), DescriptionAttribute("List of EffectTags that will be removed from the target when this spell is used (used for dispell magic, free action, neutralize poison, etc.)")]
         public List<EffectTagForDropDownList> removeEffectTagList
         {

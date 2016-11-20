@@ -36,7 +36,6 @@ namespace IB2ToolsetMini
         private int moveDistanceMediumHeavyArmor = 4;
         private List<string> _classesAllowed = new List<string>();
         private SortableBindingList<TraitAllowed> _traitsAllowed = new SortableBindingList<TraitAllowed>();
-        //private SortableBindingList<TraitAllowed> traitsAllowed = new SortableBindingList<TraitAllowed>();
         #endregion
 
         #region Properties        
@@ -251,18 +250,6 @@ namespace IB2ToolsetMini
                 _traitsAllowed = value;
             }
         }
-        /*[CategoryAttribute("04 - Racial Traits"), DescriptionAttribute("A list of racial traits"), Browsable(false), ReadOnly(true)]
-        public SortableBindingList<TraitAllowed> TraitsAllowed
-        {
-            get
-            {
-                return traitsAllowed;
-            }
-            set
-            {
-                traitsAllowed = value;
-            }
-        }*/
         #endregion
 
         public Race()
@@ -284,12 +271,6 @@ namespace IB2ToolsetMini
             {
                 other.classesAllowed.Add(s);
             }
-            /*other.traitsAllowed = new SortableBindingList<TraitAllowed>();
-            foreach (TraitAllowed s in this.traitsAllowed)
-            {
-                TraitAllowed sa = s.DeepCopy();
-                other.traitsAllowed.Add(sa);
-            }*/
             return other;
         }
     }

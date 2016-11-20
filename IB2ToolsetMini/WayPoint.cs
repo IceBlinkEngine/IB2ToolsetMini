@@ -13,8 +13,7 @@ namespace IB2ToolsetMini
         private int _WaitDuration = 6; //in seconds
         private List<BarkString> _BarkStringsAtWayPoint = new List<BarkString>();
         private List<BarkString> _BarkStringsOnTheWayToNextWayPoint = new List<BarkString>();
-	    //private int _StartWaitDurationTime = 0; //in seconds, this is set to the world time once at waypoint
-        string _areaName;
+	    string _areaName;
         string _departureTime;
 
         [CategoryAttribute("01 - Main"), DescriptionAttribute("X coordinate of waypoint")]

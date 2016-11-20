@@ -56,13 +56,11 @@ namespace IB2ToolsetMini
         private int _damageDie = 4; //type of dice to roll for damage
         private int _damageAdder = 0;
         private string _category = "Melee"; //catergory type (Ranged, Melee)
-        //private crCategory cr_category = crCategory.Melee; //catergory type (ranged, melee)
         private string _projSpriteFilename = "none"; //sprite filename including .spt
         private string _spriteEndingFilename = "none"; //sprite to use for end effect of projectiles
         private string _attackSound = "none";
         private int _numberOfAttacks = 1;
         private string _ai = "BasicAttacker";
-        //private AiBasicTactic cr_ai = AiBasicTactic.BasicAttacker;
         private int _fortitude = 0;
         private int _will = 0;
         private int _reflex = 0;
@@ -74,7 +72,6 @@ namespace IB2ToolsetMini
         private int _damageTypeResistanceValueMagic = 0;
         private int _damageTypeResistanceValuePoison = 0;
         private string _typeOfDamage = "Normal"; //Normal,Acid,Cold,Electricity,Fire,Magic,Poison
-        //private DamageType typeOfDamage = DamageType.Slashing;
         private string _onScoringHit = "none";
         private string _onScoringHitParms = "none";
         private string _onScoringHitCastSpellTag = "none";
@@ -82,7 +79,6 @@ namespace IB2ToolsetMini
         private string _onDeathParms = "";
         private string _onDeathIBScript = "none";
         private string _onDeathIBScriptParms = ""; 
-        //private ScriptSelectEditorReturnObject onScoringHit = new ScriptSelectEditorReturnObject();  
         private List<string> _knownSpellsTags = new List<string>();
 	    public List<Effect> cr_effectsList = new List<Effect>();
         
@@ -241,13 +237,6 @@ namespace IB2ToolsetMini
             get { return this._numberOfAttacks; }
             set { this._numberOfAttacks = value; }
         }
-        //[CategoryAttribute("07 - Scripts"), DescriptionAttribute("fires when the creature makes a successful hit on a target")]
-        //[Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        //public ScriptSelectEditorReturnObject OnScoringHit
-        //{
-        //    get { return onScoringHit; }
-        //    set { onScoringHit = value; }
-        //}
         [CategoryAttribute("03 - Scripts"), DescriptionAttribute("fires when the creature makes a successful hit on a target")]
         public string onScoringHit
         {
@@ -297,18 +286,6 @@ namespace IB2ToolsetMini
             get { return this._damageAdder; }
             set { this._damageAdder = value; }
         }
-        /*[CategoryAttribute("00 - Basic Creature"), DescriptionAttribute("initiative modifier")]
-        public int InitiativeModifier
-        {
-            get { return this.initiativeModifier; }
-            set { this.initiativeModifier = value; }
-        }*/
-        /*[CategoryAttribute("00 - Basic Creature"), DescriptionAttribute("Generic AI for the creature to use")]
-        public AiBasicTactic CreatureAI
-        {
-            get { return this.cr_ai; }
-            set { this.cr_ai = value; }
-        }*/
         [Browsable(true), TypeConverter(typeof(AiTypeConverter))]
         [CategoryAttribute("01 - Attack/Defend"), DescriptionAttribute("Generic AI for the creature to use")]
         public string cr_ai
@@ -452,18 +429,6 @@ namespace IB2ToolsetMini
         public void LoadCreatureBitmap(ParentForm prntForm)
         {
             this.creatureIconBitmap = prntForm.LoadBitmapGDI(this.cr_tokenFilename);
-            /*if (File.Exists(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.cr_tokenFilename + ".png"))
-            {
-                this.creatureIconBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + prntForm.mod.moduleName + "\\graphics\\" + this.cr_tokenFilename + ".png");
-            }
-            else if (File.Exists(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + this.cr_tokenFilename + ".png"))
-            {
-                this.creatureIconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + this.cr_tokenFilename + ".png");
-            }
-            else
-            {
-                this.creatureIconBitmap = new Bitmap(prntForm._mainDirectory + "\\default\\NewModule\\graphics\\" + "missingtexture.png");
-            }*/
         }
         public Creature ShallowCopy()
         {

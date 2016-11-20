@@ -10,43 +10,6 @@ using Newtonsoft.Json;
 
 namespace IB2ToolsetMini
 {
-    /*public class Containers
-    {
-        //[XmlArrayItem("Containers")]
-        public List<Container> containers = new List<Container>();
-        public Containers()
-        {
-        }
-        public void saveContainersFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }
-        public Containers loadContainersFile(string filename)
-        {
-            Containers toReturn = null;
-
-            // deserialize JSON directly from a file
-            using (StreamReader file = File.OpenText(filename))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                toReturn = (Containers)serializer.Deserialize(file, typeof(Containers));
-            }
-            return toReturn;
-        }
-        public Container getContainer(string tag)
-        {
-            foreach (Container cont in containers)
-            {
-                if (cont.containerTag == tag) return cont;
-            }
-            return null;
-        }
-    }*/
-
     public class Container
     {
         private string _containerTag = ""; //container tag

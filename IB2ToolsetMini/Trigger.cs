@@ -29,8 +29,6 @@ namespace IB2ToolsetMini
         private bool enabledEvent1 = true;
         private bool doOnceOnlyEvent1 = false;
         private string event1Type = "none";
-        //private TriggerType event1TypeEnum = TriggerType.None;
-        //private EventObjEditorReturnObject parameters1 = new EventObjEditorReturnObject();
         private string event1FilenameOrTag = "none";        
         private int event1TransPointX = 0;
         private int event1TransPointY = 0;
@@ -42,8 +40,6 @@ namespace IB2ToolsetMini
         private bool enabledEvent2 = true;
         private bool doOnceOnlyEvent2 = false;
         private string event2Type = "none";
-        //private TriggerType event2TypeEnum = TriggerType.None;
-        //private EventObjEditorReturnObject parameters2 = new EventObjEditorReturnObject();
         private string event2FilenameOrTag = "none";
         private int event2TransPointX = 0;
         private int event2TransPointY = 0;
@@ -55,7 +51,6 @@ namespace IB2ToolsetMini
         private bool enabledEvent3 = true;
         private bool doOnceOnlyEvent3 = false;
         private string event3Type = "none";
-        //private TriggerType event3TypeEnum = TriggerType.None;
         private string event3FilenameOrTag = "none";
         private int event3TransPointX = 0;
         private int event3TransPointY = 0;
@@ -63,8 +58,6 @@ namespace IB2ToolsetMini
         private string event3Parm2 = "none";
         private string event3Parm3 = "none";
         private string event3Parm4 = "none";
-
-        //private bool ConversationCannotBeAvoided = true;
 
         #endregion
 
@@ -121,16 +114,6 @@ namespace IB2ToolsetMini
                 event1Type = value;
             }
         }
-        /*[CategoryAttribute("1 - Event"), DescriptionAttribute("Type of event that will be triggered at this point in the order of events")]
-        public TriggerType Event1TypeEnum
-        {
-            get { return event1TypeEnum; }
-            set
-            {
-                event1TypeEnum = value;
-                event1Type = getStringEnum((int)value);                
-            }
-        }*/
         
         [CategoryAttribute("1 - Event"), DescriptionAttribute("Filename or Tag of the Event Type")]
         public string Event1FilenameOrTag
@@ -199,16 +182,6 @@ namespace IB2ToolsetMini
                 event2Type = value;
             }
         }
-        /*[CategoryAttribute("2 - Event"), DescriptionAttribute("Type of event that will be triggered at this point in the order of events")]
-        public TriggerType Event2TypeEnum
-        {
-            get { return event2TypeEnum; }
-            set
-            {
-                event2TypeEnum = value;
-                event2Type = getStringEnum((int)value);
-            }
-        }*/
         
         [CategoryAttribute("2 - Event"), DescriptionAttribute("Filename or Tag of the Event Type")]
         public string Event2FilenameOrTag
@@ -274,16 +247,6 @@ namespace IB2ToolsetMini
                 event3Type = value;
             }
         }
-        /*[CategoryAttribute("3 - Event"), DescriptionAttribute("Type of event that will be triggered at this point in the order of events")]
-        public TriggerType Event3TypeEnum
-        {
-            get { return event3TypeEnum; }
-            set
-            {
-                event3TypeEnum = value;
-                event3Type = getStringEnum((int)value);
-            }
-        }*/
         
         [CategoryAttribute("3 - Event"), DescriptionAttribute("Filename or Tag of the Event Type")]
         public string Event3FilenameOrTag

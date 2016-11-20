@@ -142,6 +142,7 @@ namespace IB2ToolsetMini
             if (result == DialogResult.OK) // Test result.
             {
                 loadMergeModule(Path.GetFullPath(openFileDialog1.FileName));
+                txtFolderImport.Text = Path.GetFileName(openFileDialog1.FileName);
             }            
         }
         private void cmbDataType_SelectedIndexChanged(object sender, EventArgs e)
@@ -633,16 +634,17 @@ namespace IB2ToolsetMini
 
         private void btnInstructions_Click(object sender, EventArgs e)
         {
-            string text = "To copy/merge data from another module, first click on the '...' button"
-                        + " and browse to the 'data' folder inside the module folder (the one you"
-                        + " want to copy data from). Click on that 'data' folder and then click on"
-                        + " the 'okay' button. Next, select a data type from the dropdown at the top"
+            string text = "To copy/merge data from another module:" + Environment.NewLine
+                        + "1) Click on the '...' button" + Environment.NewLine
+                        + "2) Browse to the modules folder and select the module file (.mod) that you"
+                        + " want to copy data from. Click on the 'okay' button." + Environment.NewLine
+                        + "3) Next, select a data type from the dropdown at the top"
                         + " center of this editor. Once the data type is selected you will be able"
                         + " to see and compare the individual items of that data group from your module"
                         + " compared to the module you want to copy data from. Editing the data in the"
-                        + " PropertyGrid of you module's data ('Current Module Data') will actually modify the data in your module"
-                        + " so feel free to edit/update data in your module while comparing to the other"
-                        + " module. To copy a data item over to your module, select the item in the Import Data"
+                        + " PropertyGrid of your module's data ('Current Module Data') will actually modify the data in your module"
+                        + " so feel free to edit/update data in your module while comparing to the other module." + Environment.NewLine
+                        + "4) To copy a data item over to your module, select the item in the Import Data"
                         + " list that you want to copy and then click on the '<<<copy over selected<<<' button.";
             MessageBox.Show(text);
         }

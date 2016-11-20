@@ -22,18 +22,14 @@ namespace IB2ToolsetMini
         private string _prerequisiteTrait = "none";
         private int _skillModifier = 0;
         private string _skillModifierAttribute = "str";
-        //private UsableInSituation useableInSituation = UsableInSituation.Always;
         private string _useableInSituation = "Always";
         private string _spriteFilename = "none";
         private string _spriteEndingFilename = "none";
         private int _costSP = 0;
         private string _traitTargetType = "Enemy";
-        //private TargetType spellTargetType = TargetType.Enemy;
         private string _traitEffectType = "Damage";
-        //private EffectType spellEffectType = EffectType.Damage;
         private int _aoeRadius = 0;
         private int _range = 0;
-        //private ScriptSelectEditorReturnObject spellScript = new ScriptSelectEditorReturnObject();
         private string _traitScript = "none";
         #endregion
 
@@ -105,19 +101,12 @@ namespace IB2ToolsetMini
             get { return _skillModifierAttribute; }
             set { _skillModifierAttribute = value; }
         }
-        /*[CategoryAttribute("01 - Main"), DescriptionAttribute("When can this be used: Always means that it can be used in combat and on the main maps, Passive means that it is always on and doesn't need to be activated.")]
-        public UsableInSituation UseableInSituation
-        {
-            get { return useableInSituation; }
-            set { useableInSituation = value; }
-        }*/
         [CategoryAttribute("01 - Main"), DescriptionAttribute("When can this be used: Always means that it can be used in combat and on the main maps, Passive means that it is always on and doesn't need to be activated.")]
         public string useableInSituation
         {
             get { return _useableInSituation; }
             set { _useableInSituation = value; }
         }
-        //[Browsable(true), TypeConverter(typeof(SpriteConverter))]
         [CategoryAttribute("01 - Main"), DescriptionAttribute("Sprite to use for the effect (Sprite Filename with extension)")]
         public string spriteFilename
         {
@@ -130,7 +119,6 @@ namespace IB2ToolsetMini
                 _spriteFilename = value;
             }
         }
-        //[Browsable(true), TypeConverter(typeof(SpriteConverter))]
         [CategoryAttribute("01 - Main"), DescriptionAttribute("Sprite to use for the ending effect (Sprite Filename with extension)")]
         public string spriteEndingFilename
         {
@@ -155,18 +143,6 @@ namespace IB2ToolsetMini
                 _costSP = value;
             }
         }
-        /*[CategoryAttribute("02 - Target"), DescriptionAttribute("The type of target for this spell")]
-        public TargetType SpellTargetType
-        {
-            get
-            {
-                return spellTargetType;
-            }
-            set
-            {
-                spellTargetType = value;
-            }
-        }*/
         [CategoryAttribute("02 - Target"), DescriptionAttribute("The type of target for this trait")]
         public string traitTargetType
         {
@@ -179,18 +155,6 @@ namespace IB2ToolsetMini
                 _traitTargetType = value;
             }
         }
-        /*[CategoryAttribute("03 - Effect"), DescriptionAttribute("damage = persistent, negative; heal = persistent, positive; buff = temporary, positive; debuff = temporary, negative")]
-        public EffectType SpellEffectType
-        {
-            get
-            {
-                return spellEffectType;
-            }
-            set
-            {
-                spellEffectType = value;
-            }
-        }*/
         [CategoryAttribute("03 - Effect"), DescriptionAttribute("damage = persistent, negative; heal = persistent, positive; buff = temporary, positive; debuff = temporary, negative")]
         public string traitEffectType
         {
@@ -227,15 +191,7 @@ namespace IB2ToolsetMini
                 _range = value;
             }
         }
-        /*[CategoryAttribute("01 - Main"), DescriptionAttribute("the script to use for this Spell")]
-        [Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public ScriptSelectEditorReturnObject SpellScript
-        {
-            get { return spellScript; }
-            set { spellScript = value; }
-        }*/
         [CategoryAttribute("01 - Main"), DescriptionAttribute("the script to use for this Spell")]
-        //[Editor(typeof(ScriptSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string traitScript
         {
             get { return _traitScript; }

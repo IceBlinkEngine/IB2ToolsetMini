@@ -15,12 +15,9 @@ namespace IB2ToolsetMini
     public class Encounter
     {
         private string encName = "newEncounter";
-        //private string mapImage = "none";
-        //private bool useMapImage = false;
         private bool useDayNightCycle = false;
         public int MapSizeX = 11;
         public int MapSizeY = 11;
-        //public List<TileEnc> encounterTiles = new List<TileEnc>();
         public List<string> Layer1Filename = new List<string>();
         public List<int> Layer1Rotate = new List<int>();
         public List<int> Layer1Mirror = new List<int>();

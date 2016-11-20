@@ -73,31 +73,7 @@ namespace IB2ToolsetMini
         public ItemRefs Ring2Refs = new ItemRefs();
         public ItemRefs FeetRefs = new ItemRefs();
         public ItemRefs AmmoRefs = new ItemRefs();
-        //public string HeadTag = "";
-        //public string NeckTag = "";
-        //public string BodyTag = "";
-        //public string MainHandTag = "";
-        //public string OffHandTag = "";
-        //public string RingTag = "";
-        //public string Ring2Tag = "";
-        //public string FeetTag = "";
-        //[JsonIgnore]
-		//public Item Head;
-        //[JsonIgnore]
-		//public Item Neck;
-        //[JsonIgnore]
-		//public Item Body;
-        //[JsonIgnore]
-        //public Item MainHand;
-        //[JsonIgnore]
-		//public Item OffHand;
-        //[JsonIgnore]
-		//public Item Ring;
-        //[JsonIgnore]
-		//public Item Ring2;
-        //[JsonIgnore]
-		//public Item Feet;	
-	    public int damageTypeResistanceTotalAcid = 0;
+        public int damageTypeResistanceTotalAcid = 0;
 	    public int damageTypeResistanceTotalCold = 0;
 	    public int damageTypeResistanceTotalNormal = 0;
 	    public int damageTypeResistanceTotalElectricity = 0;

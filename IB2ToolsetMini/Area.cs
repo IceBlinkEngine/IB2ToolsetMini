@@ -17,22 +17,12 @@ namespace IB2ToolsetMini
         private string filename = "newArea";
         private int areaVisibleDistance = 2;
         private bool restingAllowed = false;
-        //private string imageFileName = "none";
-        //public int backgroundImageStartLocX = 0;
-        //public int backgroundImageStartLocY = 0;
         private int mapSizeX = 16;
         private int mapSizeY = 16;
         private bool useMiniMapFogOfWar = false;
         private bool _areaDark = false;
         private bool useDayNightCycle = false;
-        private int timePerSquare = 6;              //currently in minutes
-        //private string areaMusic = "none";
-        //private int areaMusicDelay = 0;
-        //private int areaMusicDelayRandomAdder = 0;
-        //private string areaSounds = "none";
-        //private int areaSoundsDelay = 0;
-        //private int areaSoundsDelayRandomAdder = 0;
-        //private List<Tile> tiles = new List<Tile>();
+        private int timePerSquare = 6; //currently in minutes
         public List<string> Layer1Filename = new List<string>();
         public List<int> Layer1Rotate = new List<int>();
         public List<int> Layer1Mirror = new List<int>();
@@ -48,36 +38,9 @@ namespace IB2ToolsetMini
         private List<Prop> props = new List<Prop>();
         private List<Trigger> triggers = new List<Trigger>();
         private int nextIdNumber = 100;
-        //private string musicFileName = "forest.mp3";
-        //private string onHeartBeatLogicTree = "none";
-        //private string onHeartBeatParms = "";
         private string onHeartBeatIBScript = "none";
         private string onHeartBeatIBScriptParms = "";
-        //private List<LocalInt> areaLocalInts = new List<LocalInt>();
-        //private List<LocalString> areaLocalStrings = new List<LocalString>();
         private string _inGameAreaName = "newArea";
-        //private bool _useMiniProps = false;
-        //private bool _useSuperTinyProps = false;
-
-        //private string _areaWeatherScript = "";
-        //private string _effectChannelScript1 = "deactivateChannel1";
-        //private string _effectChannelScript2 = "deactivateChannel2";
-        //private string _effectChannelScript3 = "deactivateChannel3";
-        //private string _effectChannelScript4 = "deactivateChannel4";
-        //private string _areaWeatherTag = "";
-        //private string _areaWeatherName = "";
-
-        //private string _easternNeighbourArea = "";
-        //private string _westernNeighbourArea = "";
-        //private string _northernNeighbourArea = "";
-        //private string _southernNeighbourArea = "";
-
-        //public string sourceBitmapName = "";
-        //public bool isJPGMap = false;
-        //public bool isPNGMap = false;
-
-        //private bool _drawWithLessVisibleSeamsButMorePixelated = false;
-        //private bool _use100pixSquares = false;
 
         #endregion
 
@@ -142,12 +105,6 @@ namespace IB2ToolsetMini
             get { return mapSizeY; }
             set { mapSizeY = value; }
         }
-        /*[CategoryAttribute("07 - Lists with objects contained in this area"), ReadOnly(true), Browsable(false)]
-        public List<Tile> Tiles
-        {
-            get { return tiles; }
-            set { tiles = value; }
-        }*/
         [CategoryAttribute("07 - Lists with objects contained in this area"), ReadOnly(true)]
         public List<Prop> Props
         {

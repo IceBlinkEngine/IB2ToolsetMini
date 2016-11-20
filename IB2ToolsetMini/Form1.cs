@@ -21,23 +21,9 @@ namespace IB2ToolsetMini
         public int tileSizeInPixels = 48;
         public int standardTokenSize = 24;
         public Dictionary<string, Bitmap> resourcesBitmapList = new Dictionary<string, Bitmap>();
-        //public List<JournalQuest> journal = new List<JournalQuest>();
-        //public List<Creature> creaturesList = new List<Creature>();
-        //public List<Container> containersList = new List<Container>();
-        //public List<Shop> shopsList = new List<Shop>();
-        //public List<Encounter> encountersList = new List<Encounter>();
-        //public List<Item> itemsList = new List<Item>();
-        //public List<Prop> propsList = new List<Prop>();
-        //public List<PlayerClass> playerClassesList = new List<PlayerClass>();
-        //public List<Race> racesList = new List<Race>();
-        //public List<Spell> spellsList = new List<Spell>();
-        //public List<Trait> traitsList = new List<Trait>();
-        //public List<Effect> effectsList = new List<Effect>();
         public List<string> itemsParentNodeList = new List<string>();
         public List<string> creaturesParentNodeList = new List<string>();
         public List<string> propsParentNodeList = new List<string>();
-        //public List<Area> openAreasList = new List<Area>();
-        //public List<Convo> openConvosList = new List<Convo>();
         public List<string> scriptList = new List<string>();
         public List<Condition> copiedConditionalsList = new List<Condition>();
         public List<Action> copiedActionsList = new List<Action>();
@@ -578,18 +564,6 @@ namespace IB2ToolsetMini
                 DropdownStringLists.soundStringList.Add(filename);
             }
         }
-        /*public void loadLogicTreeDropdownList()
-        {
-            DropdownStringLists.logicTreeStringList = new List<string>();
-            DropdownStringLists.logicTreeStringList.Add("none");
-            string jobDir = "";
-            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\logictree";
-            foreach (string f in Directory.GetFiles(jobDir, "*.*", SearchOption.AllDirectories))
-            {
-                string filename = Path.GetFileNameWithoutExtension(f);
-                DropdownStringLists.logicTreeStringList.Add(filename);
-            }
-        }*/
         public void loadIBScriptDropdownList()
         {
             DropdownStringLists.ibScriptStringList = new List<string>();
@@ -626,18 +600,6 @@ namespace IB2ToolsetMini
                 DropdownStringLists.areaTypeStringList.Add(a.Filename);
             }
         }
-        /*public void loadMusicDropdownList()
-        {
-            DropdownStringLists.musicStringList = new List<string>();
-            DropdownStringLists.musicStringList.Add("none");
-            string jobDir = "";
-            jobDir = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\music";
-            foreach (string f in Directory.GetFiles(jobDir, "*.mp3", SearchOption.AllDirectories))
-            {
-                string filename = Path.GetFileNameWithoutExtension(f);
-                DropdownStringLists.musicStringList.Add(filename);
-            }
-        }*/
         public void loadPlayerClassesTagsList()
         {
             DropdownStringLists.playerClassTagsTypeStringList = new List<string>();
@@ -673,24 +635,6 @@ namespace IB2ToolsetMini
             }
         }
         
-        /*public class EffectTagTypeConverter : StringConverter
-        {
-            public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
-            {
-                //true means show a combobox
-                return true;
-            }
-            public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
-            {
-                //true will limit to list. false will show the list, but allow free-form entry
-                return true;
-            }
-            public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
-            {
-                return new StandardValuesCollection(DropdownStringLists.effectTagsTypeStringList);
-            }
-        }*/
-                
         private void fillScriptList()
         {
             scriptList.Clear();
@@ -967,12 +911,6 @@ namespace IB2ToolsetMini
             }
         }
 
-        /*private void newModule()
-        {
-            openModule(_mainDirectory + "\\default\\NewModule\\NewModule.mod");
-            openCreatures(_mainDirectory + "\\default\\NewModule\\data\\creatures.json");
-            openItems(_mainDirectory + "\\default\\NewModule\\data\\items.json");
-        }*/
         private void createDirectory(string fullPath)
         {
             try
@@ -1094,10 +1032,6 @@ namespace IB2ToolsetMini
         {
             frmAreas.Show(dockPanel1);
         }
-        /*//REMOVEprivate void logicTreesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLogicTree.Show(dockPanel1);
-        }*/
         private void iBScriptsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmIBScript.Show(dockPanel1);
@@ -1569,14 +1503,6 @@ namespace IB2ToolsetMini
         #endregion                                                                        
 
         #region Save, Load and Get module data files                
-        /*public void saveCreaturesFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleCreaturesList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Creature> loadCreaturesFile(string filename)
         {
             List<Creature> toReturn = null;
@@ -1614,14 +1540,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveItemsFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleItemsList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Item> loadItemsFile(string filename)
         {
             List<Item> toReturn = null;
@@ -1651,14 +1569,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveContainersFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleContainersList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Container> loadContainersFile(string filename)
         {
             List<Container> toReturn = null;
@@ -1680,14 +1590,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveShopsFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleShopsList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Shop> loadShopsFile(string filename)
         {
             List<Shop> toReturn = null;
@@ -1712,26 +1614,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveEncountersFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleEncountersList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
-        /*public List<Encounter> loadEncountersFile(string filename)
-        {
-            List<Encounter> toReturn = null;
-
-            // deserialize JSON directly from a file
-            using (StreamReader file = File.OpenText(filename))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                toReturn = (List<Encounter>)serializer.Deserialize(file, typeof(List<Encounter>));
-            }
-            return toReturn;
-        }*/
         public Encounter getEncounter(string name)
         {
             foreach (Encounter encounter in mod.moduleEncountersList)
@@ -1741,14 +1623,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void savePropsFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.modulePropsList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Prop> loadPropsFile(string filename)
         {
             List<Prop> toReturn = null;
@@ -1770,14 +1644,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveJournalFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleJournal, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<JournalQuest> loadJournalFile(string filename)
         {
             List<JournalQuest> toReturn = null;
@@ -1807,14 +1673,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void savePlayerClassesFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.modulePlayerClassList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<PlayerClass> loadPlayerClassesFile(string filename)
         {
             List<PlayerClass> toReturn = null;
@@ -1836,14 +1694,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveRacesFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleRacesList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Race> loadRacesFile(string filename)
         {
             List<Race> toReturn = null;
@@ -1865,14 +1715,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveSpellsFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleSpellsList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Spell> loadSpellsFile(string filename)
         {
             List<Spell> toReturn = null;
@@ -1902,14 +1744,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveTraitsFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleTraitsList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Trait> loadTraitsFile(string filename)
         {
             List<Trait> toReturn = null;
@@ -1939,14 +1773,6 @@ namespace IB2ToolsetMini
             return null;
         }
 
-        /*public void saveEffectsFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(mod.moduleEffectsList, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }*/
         public List<Effect> loadEffectsFile(string filename)
         {
             List<Effect> toReturn = null;

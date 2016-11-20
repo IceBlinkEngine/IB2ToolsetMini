@@ -12,43 +12,6 @@ using Newtonsoft.Json;
 
 namespace IB2ToolsetMini
 {
-    /*public class PlayerClasses
-    {
-        public List<PlayerClass> playerClassList = new List<PlayerClass>();
-
-        public PlayerClasses()
-        {
-        }
-        public void savePlayerClassesFile(string filename)
-        {
-            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-            using (StreamWriter sw = new StreamWriter(filename))
-            {
-                sw.Write(json.ToString());
-            }
-        }
-        public PlayerClasses loadPlayerClassesFile(string filename)
-        {
-            PlayerClasses toReturn = null;
-
-            // deserialize JSON directly from a file
-            using (StreamReader file = File.OpenText(filename))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                toReturn = (PlayerClasses)serializer.Deserialize(file, typeof(PlayerClasses));
-            }
-            return toReturn;
-        }
-        public PlayerClass getPlayerClassByTag(string tag)
-        {
-            foreach (PlayerClass ts in playerClassList)
-            {
-                if (ts.tag == tag) return ts;
-            }
-            return null;
-        }
-    }*/
-
     public class PlayerClass
     {        
         #region Fields        
@@ -68,8 +31,6 @@ namespace IB2ToolsetMini
         private int[] _babTable = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         private int[] _xpTable = new int[] { 0, 200, 400, 800, 1600, 3200, 6500, 12500, 25000, 50000 };
         private List<ItemRefs> _itemsAllowed = new List<ItemRefs>();
-        //private SortableBindingList<TraitAllowed> _traitsAllowed = new SortableBindingList<TraitAllowed>();
-        //private SortableBindingList<SpellAllowed> _spellsAllowed = new SortableBindingList<SpellAllowed>();
         private SortableBindingList<TraitAllowed> _traitsAllowed = new SortableBindingList<TraitAllowed>();
         private SortableBindingList<SpellAllowed> _spellsAllowed = new SortableBindingList<SpellAllowed>();
         #endregion
@@ -354,7 +315,6 @@ namespace IB2ToolsetMini
         private string _tag = "";
         private int _atWhatLevelIsAvailable = 0;
         private bool _automaticallyLearned = false;
-        //private bool _needsSpecificTrainingToLearn = false;
         private bool _allow = false;
 
         public string name
@@ -393,15 +353,6 @@ namespace IB2ToolsetMini
                 this.NotifyPropertyChanged("automaticallyLearned");
             }
         }
-        /*public bool needsSpecificTrainingToLearn
-        {
-            get { return _needsSpecificTrainingToLearn; }
-            set
-            {
-                _needsSpecificTrainingToLearn = value;
-                this.NotifyPropertyChanged("needsSpecificTrainingToLearn");
-            }
-        }*/
         public bool allow
         {
             get { return _allow; }
