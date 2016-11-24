@@ -264,6 +264,7 @@ namespace IB2ToolsetMini
             }*/
             List<string> prefixlist = new List<string>();
             prefixlist.Add("ptr_");
+            prefixlist.Add("pptr_");
             string name = prntForm.GetImageFilename(prefixlist);
             if (name != "none")
             {
@@ -297,6 +298,7 @@ namespace IB2ToolsetMini
             }*/
             List<string> prefixlist = new List<string>();
             prefixlist.Add("ptr_");
+            prefixlist.Add("pptr_");
             string name = prntForm.GetImageFilename(prefixlist);
             if (name != "none")
             {
