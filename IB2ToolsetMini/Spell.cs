@@ -36,6 +36,7 @@ namespace IB2ToolsetMini
         private int _costSP = 0;
         private string _spellTargetType = "Enemy";
         private string _spellEffectType = "Damage";
+        private bool _isUsedForCombatSquareEffect = false;
         private AreaOfEffectShape _aoeShape = AreaOfEffectShape.Circle;
         private int _aoeRadius = 0;
         private int _range = 0;
@@ -162,6 +163,18 @@ namespace IB2ToolsetMini
             set
             {
                 _spellTargetType = value;
+            }
+        }
+        [CategoryAttribute("02 - Target"), DescriptionAttribute("Does this spell apply effects to combat squares?")]
+        public bool isUsedForCombatSquareEffect
+        {
+            get
+            {
+                return _isUsedForCombatSquareEffect;
+            }
+            set
+            {
+                _isUsedForCombatSquareEffect = value;
             }
         }
         [CategoryAttribute("03 - Effect"), DescriptionAttribute("damage = persistent, negative; heal = persistent, positive; buff = temporary, positive; debuff = temporary, negative")]
