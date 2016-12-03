@@ -909,13 +909,9 @@ namespace IB2ToolsetMini
                     #region Paint New Trigger Selected
                     else if (rbtnPaintTrigger.Checked)
                     {
-                        /*TODO stil need to add triggers to encounters
                         string selectedTrigger = prntForm.selectedLevelMapTriggerTag;
                         prntForm.logText(selectedTrigger);
                         prntForm.logText(Environment.NewLine);
-
-                        //gridX = e.X / sqr;
-                        //gridY = e.Y / sqr;
 
                         prntForm.logText("gridx = " + gridX.ToString() + "gridy = " + gridY.ToString());
                         prntForm.logText(Environment.NewLine);
@@ -943,28 +939,23 @@ namespace IB2ToolsetMini
                                 newCoor.Y = newPoint.Y;
                                 newTrigger.TriggerSquaresList.Add(newCoor);
                             }
+                            prntForm.currentSelectedTrigger = newTrigger;
+                            prntForm.frmTriggerEvents.refreshTriggers();
                         }
                         catch
                         {
                             MessageBox.Show("The tag of the selected Trigger was not found in the area's trigger list");
-                        }
-                        //update the map to show colored squares    
-                        refreshMap(false);
-                        */
+                        }                        
                     }
                     #endregion
                     #region Edit Trigger Selected
                     else if (rbtnEditTrigger.Checked)
                     {
-                        /*TODO add triggers to encounters
                         if (prntForm.selectedLevelMapTriggerTag != null)
                         {
                             string selectedTrigger = prntForm.selectedLevelMapTriggerTag;
                             prntForm.logText(selectedTrigger);
                             prntForm.logText(Environment.NewLine);
-
-                            //gridX = e.X / sqr;
-                            //gridY = e.Y / sqr;
 
                             prntForm.logText("gridx = " + gridX.ToString() + "gridy = " + gridY.ToString());
                             prntForm.logText(Environment.NewLine);
@@ -994,17 +985,13 @@ namespace IB2ToolsetMini
                                     newCoor.X = newPoint.X;
                                     newCoor.Y = newPoint.Y;
                                     newTrigger.TriggerSquaresList.Add(newCoor);
-                                    //newTrigger.TriggerSquaresList.Add(newPoint);
                                 }
                             }
                             catch
                             {
                                 MessageBox.Show("The tag of the selected Trigger was not found in the area's trigger list");
                             }
-                            //update the map to show colored squares    
-                            refreshMap(false);
-                        }
-                        */
+                        }                        
                     }
                     #endregion
                     #region Walkmesh Toggle Selected (Make Non-Walkable)
@@ -1071,7 +1058,7 @@ namespace IB2ToolsetMini
                                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = prp;
                             }
                         }*/
-                        /*TODOforeach (Trigger t in thisEnc.Triggers)
+                        foreach (Trigger t in thisEnc.Triggers)
                         {
                             foreach (Coordinate p in t.TriggerSquaresList)
                             {
@@ -1085,7 +1072,7 @@ namespace IB2ToolsetMini
                                     //prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = t;
                                 }
                             }
-                        }*/
+                        }
                         //if the list is less than 2, do nothing
                         if (panelView.ContextMenuStrip.Items.Count > 1)
                         {
@@ -1470,12 +1457,12 @@ namespace IB2ToolsetMini
                 int cspx = crtRef.creatureStartLocationX * sqr;
                 int cspy = crtRef.creatureStartLocationY * sqr;
                 Creature crt = prntForm.getCreatureByResRef(crtRef.creatureResRef);
-                SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(crt.cr_tokenFilename).PixelSize.Width, GetFromBitmapList(crt.cr_tokenFilename).PixelSize.Width);
-                SharpDX.RectangleF dst = new SharpDX.RectangleF(cspx, cspy, sqr, sqr);
-                if (GetFromBitmapList(crt.cr_tokenFilename).PixelSize.Width > 100)
-                {
-                    dst = new SharpDX.RectangleF(cspx, cspy, sqr * 2, sqr * 2);
-                }
+                float scalerX = GetFromBitmapList(crt.cr_tokenFilename).PixelSize.Width / prntForm.standardTokenSize;
+                if (scalerX == 0) { scalerX = 1.0f; }
+                float scalerY = GetFromBitmapList(crt.cr_tokenFilename).PixelSize.Height / (prntForm.standardTokenSize * 2);
+                if (scalerY == 0) { scalerY = 1.0f; }
+                SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(crt.cr_tokenFilename).PixelSize.Width, GetFromBitmapList(crt.cr_tokenFilename).PixelSize.Height / 2);
+                SharpDX.RectangleF dst = new SharpDX.RectangleF(cspx, cspy, (int)(sqr * scalerX), (int)(sqr * scalerY));
                 DrawD2DBitmap(GetFromBitmapList(crt.cr_tokenFilename), src, dst, 0, 0);
                 //GDI device.DrawImage(crt.creatureIconBitmap, dst, src, GraphicsUnit.Pixel);
                 float scaler = 1.0f;
@@ -1511,7 +1498,7 @@ namespace IB2ToolsetMini
             }*/
             #endregion
             #region Draw Triggers
-            /*TODO foreach (Trigger t in area.Triggers)
+            foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
                 {
@@ -1538,7 +1525,7 @@ namespace IB2ToolsetMini
                     SharpDX.RectangleF rect = new SharpDX.RectangleF(dx + 3, dy + 3, sqr - 6, sqr - 6);
                     DrawRectangle(rect, clr, 2);
                 }
-            }*/
+            }
             #endregion
             #region Draw Selection Box
             if (selectionBoxLocation.X != -1)
@@ -1870,20 +1857,19 @@ namespace IB2ToolsetMini
                 }
                 cnt++;
             }*/
-            /*TODOforeach (Trigger t in area.Triggers)
+            foreach (Trigger t in thisEnc.Triggers)
             {
                 if (t.TriggerTag == lastSelectedObjectTag)
                 {
                     // remove at index of matched tag
-                    area.Triggers.Remove(t);
-                    refreshMap(true);
+                    thisEnc.Triggers.Remove(t);
                     return;
                 }
-            }*/
+            }
         }
         private void rbtnPaintTrigger_CheckedChanged(object sender, EventArgs e)
         {
-            /*TODOif (rbtnPaintTrigger.Checked)
+            if (rbtnPaintTrigger.Checked)
             {
                 //create a new trigger object
                 Trigger newTrigger = new Trigger();
@@ -1895,28 +1881,18 @@ namespace IB2ToolsetMini
                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = newTrigger;
                 prntForm.logText("painting a new trigger");
                 prntForm.logText(Environment.NewLine);
-                prntForm.selectedLevelMapCreatureTag = "";
-                prntForm.selectedLevelMapPropTag = "";
-                prntForm.CreatureSelected = false;
-                prntForm.PropSelected = false;
-                //refreshMap(true);
-                //UpdatePB();
-            }*/
+                ResetAllToFalse();
+            }
         }
         private void rbtnEditTrigger_CheckedChanged(object sender, EventArgs e)
         {
-            /*TODOif (rbtnEditTrigger.Checked)
+            if (rbtnEditTrigger.Checked)
             {
                 prntForm.logText("edit trigger: ");
                 prntForm.logText(Environment.NewLine);
-                prntForm.selectedLevelMapCreatureTag = "";
-                prntForm.selectedLevelMapPropTag = "";
-                prntForm.CreatureSelected = false;
-                prntForm.PropSelected = false;
+                ResetAllToFalse();
                 prntForm.selectedLevelMapTriggerTag = lastSelectedObjectTag;
-                //refreshMap(true);
-                //UpdatePB();
-            }*/
+            }
         }
         private void chkGrid_CheckedChanged(object sender, EventArgs e)
         {
@@ -1938,7 +1914,7 @@ namespace IB2ToolsetMini
                     return;
                 }
             }*/
-            /*TODOforeach (Trigger t in area.Triggers)
+            foreach (Trigger t in thisEnc.Triggers)
             {
                 if (t.TriggerTag == menuItm.Text)
                 {
@@ -1947,7 +1923,7 @@ namespace IB2ToolsetMini
                     prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = t;
                     return;
                 }
-            }*/
+            }
         }
         private void btnLoadMap_Click(object sender, EventArgs e)
         {
@@ -2018,14 +1994,14 @@ namespace IB2ToolsetMini
             /*TODOforeach (Prop prpRef in thisEnc.Props)
             {
                 prpRef.LocationX++;
-            }
+            }*/
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
                 {
                     p.X++;
                 }
-            }*/
+            }
             thisEnc.MapSizeX++;
             mapSizeChangeStuff();
         }
@@ -2059,14 +2035,14 @@ namespace IB2ToolsetMini
             /*foreach (Prop prpRef in thisEnc.Props)
             {
                 prpRef.LocationX--;
-            }
+            }*/
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
                 {
                     p.X--;
                 }
-            }*/
+            }
             thisEnc.MapSizeX--;
             mapSizeChangeStuff();
         }
@@ -2145,14 +2121,14 @@ namespace IB2ToolsetMini
             /*TODOforeach (Prop prpRef in thisEnc.Props)
             {
                 prpRef.LocationY++;
-            }
+            }*/
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
                 {
                     p.Y++;
                 }
-            }*/
+            }
             thisEnc.MapSizeY++;
             mapSizeChangeStuff();
         }
@@ -2185,14 +2161,14 @@ namespace IB2ToolsetMini
             /*TODOforeach (Prop prpRef in thisEnc.Props)
             {
                 prpRef.LocationY--;
-            }
+            }*/
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
                 {
                     p.Y--;
                 }
-            }*/
+            }
             thisEnc.MapSizeY--;
             mapSizeChangeStuff();
         }
@@ -2306,8 +2282,6 @@ namespace IB2ToolsetMini
                     {
                         // remove at index of matched location
                         thisEnc.encounterCreatureRefsList.RemoveAt(cnt);
-                        //crtBitmapList.RemoveAt(cnt);
-                        refreshMap(true);
                         return;
                     }
                     cnt++;
@@ -2319,21 +2293,19 @@ namespace IB2ToolsetMini
                         // remove at index of matched tag
                         area.Props.RemoveAt(cnt);
                         propBitmapList.RemoveAt(cnt);
-                        refreshMap(true);
                         return;
                     }
                     cnt++;
                 }*/
-                /*TODOforeach (Trigger t in area.Triggers)
+                foreach (Trigger t in thisEnc.Triggers)
                 {
                     if (t.TriggerTag == lastSelectedObjectTag)
                     {
                         // remove at index of matched tag
-                        area.Triggers.Remove(t);
-                        refreshMap(true);
+                        thisEnc.Triggers.Remove(t);
                         return;
                     }
-                }*/
+                }
             }
         }
         #endregion

@@ -59,6 +59,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.chkGrid = new System.Windows.Forms.CheckBox();
             this.gbMapSize = new System.Windows.Forms.GroupBox();
+            this.lblMapSizeError = new System.Windows.Forms.Label();
             this.btnMinusBottumY = new System.Windows.Forms.Button();
             this.btnPlusBottumY = new System.Windows.Forms.Button();
             this.btnMinusTopY = new System.Windows.Forms.Button();
@@ -85,7 +86,6 @@
             this.btnRemoveItems = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerRenderLoop = new System.Windows.Forms.Timer(this.components);
-            this.lblMapSizeError = new System.Windows.Forms.Label();
             this.panelNoScrollOnFocus1 = new IB2ToolsetMini.PanelNoScrollOnFocus();
             this.panelView = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
@@ -376,7 +376,6 @@
             // rbtnEditTrigger
             // 
             this.rbtnEditTrigger.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbtnEditTrigger.Enabled = false;
             this.rbtnEditTrigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnEditTrigger.Location = new System.Drawing.Point(9, 175);
             this.rbtnEditTrigger.Name = "rbtnEditTrigger";
@@ -391,7 +390,6 @@
             // rbtnPaintTrigger
             // 
             this.rbtnPaintTrigger.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbtnPaintTrigger.Enabled = false;
             this.rbtnPaintTrigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnPaintTrigger.Location = new System.Drawing.Point(9, 106);
             this.rbtnPaintTrigger.Name = "rbtnPaintTrigger";
@@ -447,6 +445,17 @@
             this.gbMapSize.TabIndex = 79;
             this.gbMapSize.TabStop = false;
             this.gbMapSize.Text = "Map Size (squares)";
+            // 
+            // lblMapSizeError
+            // 
+            this.lblMapSizeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMapSizeError.ForeColor = System.Drawing.Color.Red;
+            this.lblMapSizeError.Location = new System.Drawing.Point(3, 126);
+            this.lblMapSizeError.Name = "lblMapSizeError";
+            this.lblMapSizeError.Size = new System.Drawing.Size(109, 57);
+            this.lblMapSizeError.TabIndex = 74;
+            this.lblMapSizeError.Text = "ENCOUNTER MAPS MUST BE 11x11, PLEASE ADJUST.";
+            this.lblMapSizeError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnMinusBottumY
             // 
@@ -713,17 +722,6 @@
             // 
             this.timerRenderLoop.Interval = 16;
             this.timerRenderLoop.Tick += new System.EventHandler(this.timerRenderLoop_Tick);
-            // 
-            // lblMapSizeError
-            // 
-            this.lblMapSizeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMapSizeError.ForeColor = System.Drawing.Color.Red;
-            this.lblMapSizeError.Location = new System.Drawing.Point(3, 126);
-            this.lblMapSizeError.Name = "lblMapSizeError";
-            this.lblMapSizeError.Size = new System.Drawing.Size(109, 57);
-            this.lblMapSizeError.TabIndex = 74;
-            this.lblMapSizeError.Text = "ENCOUNTER MAPS MUST BE 11x11, PLEASE ADJUST.";
-            this.lblMapSizeError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panelNoScrollOnFocus1
             // 

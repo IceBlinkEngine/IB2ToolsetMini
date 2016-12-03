@@ -33,6 +33,7 @@ namespace IB2ToolsetMini
         public List<string> encounterCreatureList = new List<string>();
         public List<ItemRefs> encounterInventoryRefsList = new List<ItemRefs>();
         public List<Coordinate> encounterPcStartLocations = new List<Coordinate>();
+        public List<Trigger> Triggers = new List<Trigger>();
         public int goldDrop = 0;        
         private string onSetupCombatIBScript = "none";
         private string onSetupCombatIBScriptParms = "";
@@ -234,6 +235,14 @@ namespace IB2ToolsetMini
                                                          
                 }
             }*/
+        }
+        public Trigger getTriggerByTag(string tag)
+        {
+            foreach (Trigger it in Triggers)
+            {
+                if (it.TriggerTag == tag) return it;
+            }
+            return null;
         }
     }  
 }

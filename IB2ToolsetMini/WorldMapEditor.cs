@@ -1049,9 +1049,6 @@ namespace IB2ToolsetMini
                         prntForm.logText(selectedTrigger);
                         prntForm.logText(Environment.NewLine);
 
-                        //gridX = e.X / sqr;
-                        //gridY = e.Y / sqr;
-
                         prntForm.logText("gridx = " + gridX.ToString() + "gridy = " + gridY.ToString());
                         prntForm.logText(Environment.NewLine);
                         Point newPoint = new Point(gridX, gridY);
@@ -1085,8 +1082,6 @@ namespace IB2ToolsetMini
                         {
                             MessageBox.Show("The tag of the selected Trigger was not found in the area's trigger list");
                         }
-                        //update the map to show colored squares    
-                        //GDI refreshMap(false);
                     }
                     #endregion
                     #region Edit Trigger Selected
@@ -1097,9 +1092,6 @@ namespace IB2ToolsetMini
                             string selectedTrigger = prntForm.selectedLevelMapTriggerTag;
                             prntForm.logText(selectedTrigger);
                             prntForm.logText(Environment.NewLine);
-
-                            //gridX = e.X / sqr;
-                            //gridY = e.Y / sqr;
 
                             prntForm.logText("gridx = " + gridX.ToString() + "gridy = " + gridY.ToString());
                             prntForm.logText(Environment.NewLine);
@@ -1129,15 +1121,12 @@ namespace IB2ToolsetMini
                                     newCoor.X = newPoint.X;
                                     newCoor.Y = newPoint.Y;
                                     newTrigger.TriggerSquaresList.Add(newCoor);
-                                    //newTrigger.TriggerSquaresList.Add(newPoint);
                                 }
                             }
                             catch
                             {
                                 MessageBox.Show("The tag of the selected Trigger was not found in the area's trigger list");
                             }
-                            //update the map to show colored squares    
-                            //GDI refreshMap(false);
                         }
                     }
                     #endregion
@@ -1933,8 +1922,6 @@ namespace IB2ToolsetMini
                 {
                     // remove at index of matched tag
                     area.Props.RemoveAt(cnt);
-                    //GDI propBitmapList.RemoveAt(cnt);
-                    //GDI refreshMap(true);
                     return;
                 }
                 cnt++;
@@ -1945,7 +1932,6 @@ namespace IB2ToolsetMini
                 {
                     // remove at index of matched tag
                     area.Triggers.Remove(t);
-                    //GDI refreshMap(true);
                     return;
                 }
             }
@@ -1968,8 +1954,6 @@ namespace IB2ToolsetMini
                 prntForm.selectedLevelMapPropTag = "";
                 prntForm.CreatureSelected = false;
                 prntForm.PropSelected = false;
-                //refreshMap(true);
-                //UpdatePB();
             }
         }
         private void rbtnEditTrigger_CheckedChanged(object sender, EventArgs e)
@@ -1983,8 +1967,6 @@ namespace IB2ToolsetMini
                 prntForm.CreatureSelected = false;
                 prntForm.PropSelected = false;
                 prntForm.selectedLevelMapTriggerTag = lastSelectedObjectTag;
-                //refreshMap(true);
-                //UpdatePB();
             }
         }
         private void chkGrid_CheckedChanged(object sender, EventArgs e)
@@ -2332,8 +2314,6 @@ namespace IB2ToolsetMini
                     {
                         // remove at index of matched tag
                         area.Props.RemoveAt(cnt);
-                        //GDI propBitmapList.RemoveAt(cnt);
-                        //GDI refreshMap(true);
                         return;
                     }
                     cnt++;
@@ -2344,7 +2324,6 @@ namespace IB2ToolsetMini
                     {
                         // remove at index of matched tag
                         area.Triggers.Remove(t);
-                        //GDI refreshMap(true);
                         return;
                     }
                 }
