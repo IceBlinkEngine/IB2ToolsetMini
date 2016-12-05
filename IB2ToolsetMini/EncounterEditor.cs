@@ -870,13 +870,9 @@ namespace IB2ToolsetMini
                     #region Prop Selected
                     else if (prntForm.PropSelected)
                     {
-                        /*TODO still need to add props to encounters
                         string selectedProp = prntForm.selectedLevelMapPropTag;
                         prntForm.logText(selectedProp);
                         prntForm.logText(Environment.NewLine);
-
-                        //gridX = e.X / sqr;
-                        //gridY = e.Y / sqr;
 
                         prntForm.logText("gridx = " + gridX.ToString() + "gridy = " + gridY.ToString());
                         prntForm.logText(Environment.NewLine);
@@ -891,19 +887,7 @@ namespace IB2ToolsetMini
                         newProp.PropTag = le_selectedProp.PropTag + "_" + prntForm.mod.nextIdNumber;
                         newProp.LocationX = gridX;
                         newProp.LocationY = gridY;
-                        thisEnc.Props.Add(newProp);
-                        // show the item on the map
-                        if (mod.moduleName != "NewModule")
-                        {
-                            Bitmap newBitmap = new Bitmap(prntForm._mainDirectory + "\\modules\\" + mod.moduleName + "\\graphics\\" + le_selectedProp.ImageFileName + ".png");
-                            propBitmapList.Add(newBitmap);
-                        }
-                        else
-                        {
-                            //do nothing if default module
-                        }
-                        refreshMap(false);
-                        */
+                        thisEnc.propsList.Add(newProp);                        
                     }
                     #endregion
                     #region Paint New Trigger Selected
@@ -1045,7 +1029,7 @@ namespace IB2ToolsetMini
                                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = crt;
                             }
                         }
-                        /*TODOforeach (Prop prp in thisEnc.Props)
+                        foreach (Prop prp in thisEnc.propsList)
                         {
                             if ((prp.LocationX == newPoint.X) && (prp.LocationY == newPoint.Y))
                             {
@@ -1055,9 +1039,10 @@ namespace IB2ToolsetMini
                                 lastSelectedObjectTag = prp.PropTag;
                                 //prntForm.selectedLevelMapPropTag = prp.PropTag;
                                 panelView.ContextMenuStrip.Items.Add(prp.PropTag, null, handler); //string, image, handler
+                                prp.PassInParentForm(prntForm);
                                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = prp;
                             }
-                        }*/
+                        }
                         foreach (Trigger t in thisEnc.Triggers)
                         {
                             foreach (Coordinate p in t.TriggerSquaresList)
@@ -1490,12 +1475,19 @@ namespace IB2ToolsetMini
             #endregion
 
             #region Draw Props
-            /*TODO foreach (Prop prpRef in area.Props)
+            foreach (Prop prpRef in thisEnc.propsList)
             {
                 SharpDX.RectangleF src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(prpRef.ImageFileName).PixelSize.Width, GetFromBitmapList(prpRef.ImageFileName).PixelSize.Height);
                 SharpDX.RectangleF dst = new SharpDX.RectangleF(prpRef.LocationX * sqr, prpRef.LocationY * sqr, sqr, sqr);
-                DrawD2DBitmap(GetFromBitmapList(prpRef.ImageFileName), src, dst, 0, false, 0, 0);
-            }*/
+                if (prpRef.ImageFileName.StartsWith("tkn_"))
+                {
+                    src = new SharpDX.RectangleF(0, 0, GetFromBitmapList(prpRef.ImageFileName).PixelSize.Width, (GetFromBitmapList(prpRef.ImageFileName).PixelSize.Height) / 2);
+                    dst = new SharpDX.RectangleF(prpRef.LocationX * sqr, prpRef.LocationY * sqr, sqr, sqr);
+                }
+                int mirror = 0;
+                if (!prpRef.PropFacingLeft) { mirror = 1; }
+                DrawD2DBitmap(GetFromBitmapList(prpRef.ImageFileName), src, dst, 0, mirror);
+            }
             #endregion
             #region Draw Triggers
             foreach (Trigger t in thisEnc.Triggers)
@@ -1845,18 +1837,17 @@ namespace IB2ToolsetMini
                 }
                 cnt++;
             }
-            /*TODOforeach (Prop prp in thisEnc.Props)
+            cnt = 0;
+            foreach (Prop prp in thisEnc.propsList)
             {
                 if (prp.PropTag == lastSelectedObjectTag)
                 {
                     // remove at index of matched tag
-                    area.Props.RemoveAt(cnt);
-                    propBitmapList.RemoveAt(cnt);
-                    refreshMap(true);
+                    thisEnc.propsList.RemoveAt(cnt);
                     return;
                 }
                 cnt++;
-            }*/
+            }
             foreach (Trigger t in thisEnc.Triggers)
             {
                 if (t.TriggerTag == lastSelectedObjectTag)
@@ -1902,7 +1893,7 @@ namespace IB2ToolsetMini
         {
             //else, handler returns the selected tag
             ToolStripMenuItem menuItm = (ToolStripMenuItem)sender;
-            /*TODOforeach (Prop prp in area.Props)
+            foreach (Prop prp in thisEnc.propsList)
             {
                 if (prp.PropTag == menuItm.Text)
                 {
@@ -1910,10 +1901,11 @@ namespace IB2ToolsetMini
                     txtSelectedIconInfo.Text = "name: " + prp.PropName + Environment.NewLine + "tag: " + prp.PropTag;
                     lastSelectedObjectTag = prp.PropTag;
                     //prntForm.selectedLevelMapPropTag = prp.PropTag;
+                    prp.PassInParentForm(prntForm);
                     prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = prp;
                     return;
                 }
-            }*/
+            }
             foreach (Trigger t in thisEnc.Triggers)
             {
                 if (t.TriggerTag == menuItm.Text)
@@ -1991,10 +1983,10 @@ namespace IB2ToolsetMini
             {
                 coor.X++;
             }
-            /*TODOforeach (Prop prpRef in thisEnc.Props)
+            foreach (Prop prpRef in thisEnc.propsList)
             {
                 prpRef.LocationX++;
-            }*/
+            }
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
@@ -2032,10 +2024,10 @@ namespace IB2ToolsetMini
             {
                 coor.X--;
             }
-            /*foreach (Prop prpRef in thisEnc.Props)
+            foreach (Prop prpRef in thisEnc.propsList)
             {
                 prpRef.LocationX--;
-            }*/
+            }
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
@@ -2118,10 +2110,10 @@ namespace IB2ToolsetMini
             {
                 coor.Y++;
             }
-            /*TODOforeach (Prop prpRef in thisEnc.Props)
+            foreach (Prop prpRef in thisEnc.propsList)
             {
                 prpRef.LocationY++;
-            }*/
+            }
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
@@ -2158,10 +2150,10 @@ namespace IB2ToolsetMini
             {
                 coor.Y--;
             }
-            /*TODOforeach (Prop prpRef in thisEnc.Props)
+            foreach (Prop prpRef in thisEnc.propsList)
             {
                 prpRef.LocationY--;
-            }*/
+            }
             foreach (Trigger t in thisEnc.Triggers)
             {
                 foreach (Coordinate p in t.TriggerSquaresList)
@@ -2286,17 +2278,17 @@ namespace IB2ToolsetMini
                     }
                     cnt++;
                 }
-                /*TODOforeach (Prop prp in thisEnc.Props)
+                cnt = 0;
+                foreach (Prop prp in thisEnc.propsList)
                 {
                     if (prp.PropTag == lastSelectedObjectTag)
                     {
                         // remove at index of matched tag
-                        area.Props.RemoveAt(cnt);
-                        propBitmapList.RemoveAt(cnt);
+                        thisEnc.propsList.RemoveAt(cnt);
                         return;
                     }
                     cnt++;
-                }*/
+                }
                 foreach (Trigger t in thisEnc.Triggers)
                 {
                     if (t.TriggerTag == lastSelectedObjectTag)

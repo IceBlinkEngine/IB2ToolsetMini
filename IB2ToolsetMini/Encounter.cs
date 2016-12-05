@@ -34,6 +34,7 @@ namespace IB2ToolsetMini
         public List<ItemRefs> encounterInventoryRefsList = new List<ItemRefs>();
         public List<Coordinate> encounterPcStartLocations = new List<Coordinate>();
         public List<Trigger> Triggers = new List<Trigger>();
+        public List<Prop> propsList = new List<Prop>();
         public int goldDrop = 0;        
         private string onSetupCombatIBScript = "none";
         private string onSetupCombatIBScriptParms = "";

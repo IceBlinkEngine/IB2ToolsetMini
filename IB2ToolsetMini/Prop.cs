@@ -35,6 +35,8 @@ namespace IB2ToolsetMini
         private string _ConversationWhenOnPartySquare = "none";
         private string _EncounterWhenOnPartySquare = "none";
         private bool _DeletePropWhenThisEncounterIsWon = false;
+        private string _OnEnterSquareIBScript = "none";
+        private string _OnEnterSquareIBScriptParms = "";
         private List<LocalInt> _PropLocalInts = new List<LocalInt>();
         private List<LocalString> _PropLocalStrings = new List<LocalString>();
         private int _PostLocationX = 0;
@@ -50,8 +52,6 @@ namespace IB2ToolsetMini
 	    private int _ChaserGiveUpChasingRangeRadius = 3;
 	    private int _ChaserChaseDuration = 24;
 	    private int _RandomMoverRadius = 5;
-        private string onHeartBeatLogicTree = "none";
-        private string onHeartBeatParms = "";
         private string onHeartBeatIBScript = "none";
         private string onHeartBeatIBScriptParms = "";
         private bool _unavoidableConversation = false;
@@ -151,6 +151,19 @@ namespace IB2ToolsetMini
             get { return _DeletePropWhenThisEncounterIsWon; }
             set { _DeletePropWhenThisEncounterIsWon = value; }
         }
+        [Browsable(true), TypeConverter(typeof(IBScriptConverter))]
+        [CategoryAttribute("03 - Triggers"), DescriptionAttribute("IBScript name to be run for this Prop when a Player or Creature stands on this Prop")]
+        public string OnEnterSquareIBScript
+        {
+            get { return _OnEnterSquareIBScript; }
+            set { _OnEnterSquareIBScript = value; }
+        }
+        [CategoryAttribute("03 - Triggers"), DescriptionAttribute("Parameters to be used for this IBScript hook (as many parameters as needed, comma deliminated with no spaces)")]
+        public string OnEnterSquareIBScriptParms
+        {
+            get { return _OnEnterSquareIBScriptParms; }
+            set { _OnEnterSquareIBScriptParms = value; }
+        }
         [CategoryAttribute("04 - Locals"), DescriptionAttribute("Can be used for creating new properties or making individual props act unique.")]
         public List<LocalInt> PropLocalInts
         {
@@ -248,19 +261,6 @@ namespace IB2ToolsetMini
         {
             get { return _RandomMoverRadius; }
             set { _RandomMoverRadius = value; }
-        }
-        [Browsable(true), TypeConverter(typeof(LogicTreeConverter))]
-        [CategoryAttribute("03 - LogicTree Hooks"), DescriptionAttribute("LogicTree name to be run for this Prop at the end of each move on this area map (not combat)")]
-        public string OnHeartBeatLogicTree
-        {
-            get { return onHeartBeatLogicTree; }
-            set { onHeartBeatLogicTree = value; }
-        }
-        [CategoryAttribute("03 - LogicTree Hooks"), DescriptionAttribute("Parameters to be used for this LogicTree hook (as many parameters as needed, comma deliminated with no spaces)")]
-        public string OnHeartBeatParms
-        {
-            get { return onHeartBeatParms; }
-            set { onHeartBeatParms = value; }
         }
         [Browsable(true), TypeConverter(typeof(IBScriptConverter))]
         [CategoryAttribute("03 - IBScript Hooks"), DescriptionAttribute("IBScript name to be run for this Prop at the end of each move on this area map (not combat)")]
