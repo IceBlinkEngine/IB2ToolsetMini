@@ -71,7 +71,7 @@ namespace IB2ToolsetMini
             set { _LocationY = value; }
         }
         [EditorAttribute(typeof(FileNameSelectEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        [CategoryAttribute("02 - Sprite"), DescriptionAttribute("Filename for the prop's token (no extension).")]
+        [CategoryAttribute("02 - Sprite"), DescriptionAttribute("Filename for the prop's token (no extension). Use the IconSprite tab to change this image."), ReadOnly(true)]
         public string ImageFileName
         {
             get { return _ImageFileName; }
