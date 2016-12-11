@@ -25,6 +25,9 @@ namespace IB2ToolsetMini
         private bool enabled = true;
         private bool doOnceOnly = false;
         private List<Coordinate> triggerSquaresList = new List<Coordinate>();
+        public int numberOfScriptCallsRemaining = 999;
+        public bool canBeTriggeredByPc = true;
+        public bool canBeTriggeredByCreature = true;
 
         private bool enabledEvent1 = true;
         private bool doOnceOnlyEvent1 = false;

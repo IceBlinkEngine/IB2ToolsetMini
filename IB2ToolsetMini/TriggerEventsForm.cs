@@ -54,6 +54,27 @@ namespace IB2ToolsetMini
                 prntForm.currentSelectedTrigger.TriggerTag = txtTrigTag.Text;
             }
         }
+        private void chkTriggeredByPc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (prntForm.currentSelectedTrigger != null)
+            {
+                prntForm.currentSelectedTrigger.canBeTriggeredByPc = chkTriggeredByPc.Checked;
+            }
+        }
+        private void chkTriggeredByCreatures_CheckedChanged(object sender, EventArgs e)
+        {
+            if (prntForm.currentSelectedTrigger != null)
+            {
+                prntForm.currentSelectedTrigger.canBeTriggeredByCreature = chkTriggeredByCreatures.Checked;
+            }
+        }
+        private void numTriggerCallsAllowed_ValueChanged(object sender, EventArgs e)
+        {
+            if (prntForm.currentSelectedTrigger != null)
+            {
+                prntForm.currentSelectedTrigger.numberOfScriptCallsRemaining = (int)numTriggerCallsAllowed.Value;
+            }
+        }
 
         #region EVENT 1
         private void chkE1enabled_CheckedChanged(object sender, EventArgs e)
@@ -451,6 +472,9 @@ namespace IB2ToolsetMini
                 chkTrigEnabled.Checked = trg.Enabled;
                 chkTrigOnce.Checked = trg.DoOnceOnly;
                 txtTrigTag.Text = trg.TriggerTag;
+                chkTriggeredByPc.Checked = trg.canBeTriggeredByPc;
+                chkTriggeredByCreatures.Checked = trg.canBeTriggeredByCreature;
+                numTriggerCallsAllowed.Value = trg.numberOfScriptCallsRemaining;
 
                 chkE1enabled.Checked = trg.EnabledEvent1;
                 chkE1once.Checked = trg.DoOnceOnlyEvent1;

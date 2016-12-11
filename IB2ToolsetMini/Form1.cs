@@ -529,7 +529,7 @@ namespace IB2ToolsetMini
             fillScriptList();
             loadSpriteDropdownList();
             loadSoundDropdownList();
-            //loadLogicTreeDropdownList();
+            loadScriptDropdownList();
             loadIBScriptDropdownList();
             //loadMusicDropdownList();
             loadConversationDropdownList();
@@ -562,6 +562,18 @@ namespace IB2ToolsetMini
             {
                 string filename = Path.GetFileNameWithoutExtension(f);
                 DropdownStringLists.soundStringList.Add(filename);
+            }
+        }
+        public void loadScriptDropdownList()
+        {
+            DropdownStringLists.scriptStringList = new List<string>();
+            DropdownStringLists.scriptStringList.Add("none");
+            string jobDir = "";
+            jobDir = this._mainDirectory + "\\default\\NewModule\\scripts";
+            foreach (string f in Directory.GetFiles(jobDir, "*.cs"))
+            {
+                string filename = Path.GetFileName(f);
+                DropdownStringLists.scriptStringList.Add(filename);
             }
         }
         public void loadIBScriptDropdownList()

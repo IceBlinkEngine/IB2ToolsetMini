@@ -37,6 +37,14 @@ namespace IB2ToolsetMini
         private bool _DeletePropWhenThisEncounterIsWon = false;
         private string _OnEnterSquareIBScript = "none";
         private string _OnEnterSquareIBScriptParms = "";
+        private string _OnEnterSquareScript = "none";
+        private string _OnEnterSquareScriptParm1 = "none";
+        private string _OnEnterSquareScriptParm2 = "none";
+        private string _OnEnterSquareScriptParm3 = "none";
+        private string _OnEnterSquareScriptParm4 = "none";
+        private int _numberOfScriptCallsRemaining = 999;
+        private bool _canBeTriggeredByPc = true;
+        private bool _canBeTriggeredByCreature = true;
         private List<LocalInt> _PropLocalInts = new List<LocalInt>();
         private List<LocalString> _PropLocalStrings = new List<LocalString>();
         private int _PostLocationX = 0;
@@ -152,17 +160,66 @@ namespace IB2ToolsetMini
             set { _DeletePropWhenThisEncounterIsWon = value; }
         }
         [Browsable(true), TypeConverter(typeof(IBScriptConverter))]
-        [CategoryAttribute("03 - Triggers"), DescriptionAttribute("IBScript name to be run for this Prop when a Player or Creature stands on this Prop")]
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("IBScript name to be run for this Prop when a Player or Creature stands on this Prop")]
         public string OnEnterSquareIBScript
         {
             get { return _OnEnterSquareIBScript; }
             set { _OnEnterSquareIBScript = value; }
         }
-        [CategoryAttribute("03 - Triggers"), DescriptionAttribute("Parameters to be used for this IBScript hook (as many parameters as needed, comma deliminated with no spaces)")]
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("Parameters to be used for this IBScript hook (as many parameters as needed, comma deliminated with no spaces)")]
         public string OnEnterSquareIBScriptParms
         {
             get { return _OnEnterSquareIBScriptParms; }
             set { _OnEnterSquareIBScriptParms = value; }
+        }
+        [Browsable(true), TypeConverter(typeof(ScriptConverter))]
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("Script name to be run for this Prop when a Player or Creature stands on this Prop")]
+        public string OnEnterSquareScript
+        {
+            get { return _OnEnterSquareScript; }
+            set { _OnEnterSquareScript = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("Parameter 1 to be used for this Script hook (leave as 'none' if not used)")]
+        public string OnEnterSquareScriptParm1
+        {
+            get { return _OnEnterSquareScriptParm1; }
+            set { _OnEnterSquareScriptParm1 = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("Parameter 2 to be used for this Script hook (leave as 'none' if not used)")]
+        public string OnEnterSquareScriptParm2
+        {
+            get { return _OnEnterSquareScriptParm2; }
+            set { _OnEnterSquareScriptParm2 = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("Parameter 3 to be used for this Script hook (leave as 'none' if not used)")]
+        public string OnEnterSquareScriptParm3
+        {
+            get { return _OnEnterSquareScriptParm3; }
+            set { _OnEnterSquareScriptParm3 = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("Parameter 4 to be used for this Script hook (leave as 'none' if not used)")]
+        public string OnEnterSquareScriptParm4
+        {
+            get { return _OnEnterSquareScriptParm4; }
+            set { _OnEnterSquareScriptParm4 = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("if true, the prop OnEnterSquareIBScript can be triggered by Players; if false, Players will not trigger the ibscript.")]
+        public bool canBeTriggeredByPc
+        {
+            get { return _canBeTriggeredByPc; }
+            set { _canBeTriggeredByPc = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("if true, the prop OnEnterSquareIBScript can be triggered by Creatures; if false, Creatures will not trigger the ibscript.")]
+        public bool canBeTriggeredByCreature
+        {
+            get { return _canBeTriggeredByCreature; }
+            set { _canBeTriggeredByCreature = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("The number of times that the OnEnterSquare script or IBScript can be triggered. Each time the script is triggered, this number will be decremented by one. Once this number reaches zero, the Prop will be removed from the encounter map.")]
+        public int numberOfScriptCallsRemaining
+        {
+            get { return _numberOfScriptCallsRemaining; }
+            set { _numberOfScriptCallsRemaining = value; }
         }
         [CategoryAttribute("04 - Locals"), DescriptionAttribute("Can be used for creating new properties or making individual props act unique.")]
         public List<LocalInt> PropLocalInts
