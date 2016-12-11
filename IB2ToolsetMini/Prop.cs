@@ -45,6 +45,8 @@ namespace IB2ToolsetMini
         private int _numberOfScriptCallsRemaining = 999;
         private bool _canBeTriggeredByPc = true;
         private bool _canBeTriggeredByCreature = true;
+        private bool _isTrap = false;
+        private int _trapDCforDisableCheck = 10;
         private List<LocalInt> _PropLocalInts = new List<LocalInt>();
         private List<LocalString> _PropLocalStrings = new List<LocalString>();
         private int _PostLocationX = 0;
@@ -220,6 +222,18 @@ namespace IB2ToolsetMini
         {
             get { return _numberOfScriptCallsRemaining; }
             set { _numberOfScriptCallsRemaining = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("if true, the prop is used as a trap and can be disabled by a thief (pass/fail check made) or other selected classes.")]
+        public bool isTrap
+        {
+            get { return _isTrap; }
+            set { _isTrap = value; }
+        }
+        [CategoryAttribute("03 - Triggers (combat)"), DescriptionAttribute("the Difficulty Check value used when a Player tries to disable this trap.")]
+        public int trapDCforDisableCheck
+        {
+            get { return _trapDCforDisableCheck; }
+            set { _trapDCforDisableCheck = value; }
         }
         [CategoryAttribute("04 - Locals"), DescriptionAttribute("Can be used for creating new properties or making individual props act unique.")]
         public List<LocalInt> PropLocalInts
