@@ -102,8 +102,8 @@ namespace IB2ToolsetMini
         //private string _fontFilename = "Metamorphous-Regular.ttf";
         //private float _fontD2DScaleMultiplier = 1.0f;
         private int _logNumberOfLines = 20;
-        private string _spellLabelSingular = "Spell";
-        private string _spellLabelPlural = "Spells";
+        //private string _spellLabelSingular = "Spell";
+        //private string _spellLabelPlural = "Spells";
         private string _goldLabelSingular = "Gold";
         private string _goldLabelPlural = "Gold";
         #endregion
@@ -151,18 +151,18 @@ namespace IB2ToolsetMini
             get { return _logNumberOfLines; }
             set { _logNumberOfLines = value; }
         }
-        [CategoryAttribute("05 - Labels"), DescriptionAttribute("Label used for Spell singular form (ex. Spell, Power, etc.)")]
+        /*[CategoryAttribute("05 - Labels"), DescriptionAttribute("Label used for Spell singular form (ex. Spell, Power, etc.)")]
         public string spellLabelSingular
         {
             get { return _spellLabelSingular; }
             set { _spellLabelSingular = value; }
-        }
-        [CategoryAttribute("05 - Labels"), DescriptionAttribute("Label used for Spell plural form (ex. Spells, Powers, etc.)")]
+        }*/
+        /*[CategoryAttribute("05 - Labels"), DescriptionAttribute("Label used for Spell plural form (ex. Spells, Powers, etc.)")]
         public string spellLabelPlural
         {
             get { return _spellLabelPlural; }
             set { _spellLabelPlural = value; }
-        }
+        }*/
         [CategoryAttribute("05 - Labels"), DescriptionAttribute("Label used for Gold singular form (ex. Gold, Credit, etc.)")]
         public string goldLabelSingular
         {

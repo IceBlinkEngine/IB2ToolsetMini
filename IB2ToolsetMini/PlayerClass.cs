@@ -25,6 +25,8 @@ namespace IB2ToolsetMini
         private int _spPerLevelUp = 20;
         private int _hpRegenTimeNeeded = 0;
         private int _spRegenTimeNeeded = 0;
+        private string _spellLabelSingular = "Spell";
+        private string _spellLabelPlural = "Spells";
         private int[] _baseFortitudeAtLevel = new int[] { 0, 2, 3, 3, 4, 4, 5, 5, 6 };
         private int[] _baseWillAtLevel = new int[] { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
         private int[] _baseReflexAtLevel = new int[] { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
@@ -156,6 +158,18 @@ namespace IB2ToolsetMini
             {
                 _spRegenTimeNeeded = value;
             }
+        }
+        [CategoryAttribute("04 - Labels"), DescriptionAttribute("Label used for Spell singular form on cast screens (ex. Spell, Trait, Power, etc.)")]
+        public string spellLabelSingular
+        {
+            get { return _spellLabelSingular; }
+            set { _spellLabelSingular = value; }
+        }
+        [CategoryAttribute("04 - Labels"), DescriptionAttribute("Label used for Spell plural form on cast screens (ex. Spells, Traits, Powers, etc.)")]
+        public string spellLabelPlural
+        {
+            get { return _spellLabelPlural; }
+            set { _spellLabelPlural = value; }
         }
         [CategoryAttribute("02 - Stat Development"), DescriptionAttribute("BaseFortitude Table")]
         public int[] baseFortitudeAtLevel
