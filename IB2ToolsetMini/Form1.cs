@@ -500,6 +500,13 @@ namespace IB2ToolsetMini
                 string filename = Path.GetFullPath(openFileDialog1.FileName);
                 string directory = Path.GetDirectoryName(openFileDialog1.FileName);
                 openModule(filename);
+                foreach (Item it in mod.moduleItemsList)
+                {
+                    if (it.attackRange == 0)
+                    {
+                        it.attackRange = 1;
+                    }
+                }
                 //openCreatures(directory + "\\data\\creatures.json");
                 frmBlueprints.UpdateTreeViewCreatures();
                 loadCreatureSprites();
@@ -1849,28 +1856,6 @@ namespace IB2ToolsetMini
                 {
                     if (!tilenames.Contains(t)) { tilenames.Add(t); }
                 }
-
-                // try and load the file selected if it exists
-                /*string g_directory = this._mainDirectory + "\\modules\\" + mod.moduleName + "\\areas";
-                if (File.Exists(g_directory + "\\" + ar + ".lvl"))
-                {
-                    try
-                    {
-                        areaObj = areaObj.loadAreaFile(g_directory + "\\" + ar + ".lvl");
-                        foreach (string t in areaObj.Layer1Filename)
-                        {
-                            if (!tilenames.Contains(t)) { tilenames.Add(t); }
-                        }
-                        foreach (string t in areaObj.Layer2Filename)
-                        {
-                            if (!tilenames.Contains(t)) { tilenames.Add(t); }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("failed to open file: " + ex.ToString());
-                    }                    
-                }*/
             }
             
             //iterate over each encounter and add tile names to List<string> if not already contained
@@ -1888,62 +1873,22 @@ namespace IB2ToolsetMini
                 {
                     if (!tilenames.Contains(t)) { tilenames.Add(t); }
                 }
-            }
-            //write out list to a file 'tiles_used.txt', one tile per line
-            if (Directory.Exists(this._mainDirectory + "\\modules\\" + mod.moduleName + "\\tiles\\tiles_used"))
-            {
-                try
-                {
-                    //delete folder and all contents first then create a clean folder to fill
-                    Directory.Delete(this._mainDirectory + "\\modules\\" + mod.moduleName + "\\tiles\\tiles_used", true);
-                    createDirectory(this._mainDirectory + "\\modules\\" + mod.moduleName + "\\tiles\\tiles_used");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to delete 'tiles_used' folder and then create a new version: " + ex.ToString());
-                }
-            }  
-            else
-            {
-                try
-                {
-                    createDirectory(this._mainDirectory + "\\modules\\" + mod.moduleName + "\\tiles\\tiles_used");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to create the folder 'tiles_used': " + ex.ToString());
-                }
-            }
+            }            
             try
             {
                 tilenames.Sort();
-                File.WriteAllLines(this._mainDirectory + "\\modules\\" + mod.moduleName + "\\tiles\\tiles_used\\00_tiles_used_list.txt", tilenames);
+                File.WriteAllLines(this._mainDirectory + "\\modules\\" + mod.moduleName + "_tiles_used_list.txt", tilenames);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to create a text file with list of tiles used: " + ex.ToString());
-            }
-            //create a folder 'tiles_used' and copy the tiles into it
-            foreach (string s in tilenames)
-            {
-                try
-                {
-                    File.Copy(
-                        this._mainDirectory + "\\modules\\" + mod.moduleName + "\\tiles\\" + s + ".png",
-                        this._mainDirectory + "\\modules\\" + mod.moduleName + "\\tiles\\tiles_used\\" + s + ".png",
-                        true);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to copy file: s  " + ex.ToString());
-                }
-            }
+            }            
 
-            MessageBox.Show("A list of tiles and the tile files have been copied to a folder called 'tiles_used' in your " +
-                            "module's 'tiles' folder. If the 'tiles_used' folder existed before, it was deleted first and then updated " + 
-                            "to the currently used tiles in your module.");
+            MessageBox.Show("A list of tiles has been created and placed in the module folder.");
         }
 
+        public List<string> graphics_needed = new List<string>();
+        public List<string> tiles_needed = new List<string>();
         private void convertAnIB2ModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Ask for a module file/folder location
@@ -1957,6 +1902,9 @@ namespace IB2ToolsetMini
             {
                 try
                 {
+                    graphics_needed.Clear();
+                    tiles_needed.Clear();
+
                     //LOAD module file and copy over information
                     string filename = Path.GetFullPath(openFileDialog1.FileName);
                     string directory = Path.GetDirectoryName(openFileDialog1.FileName);
@@ -1966,21 +1914,45 @@ namespace IB2ToolsetMini
                     {
                         MessageBox.Show("returned a null module");
                     }
+                    //bring in default PC
+                    using (StreamReader file = File.OpenText(directory + "\\data\\" + modIBmini.defaultPlayerFilename))
+                    {
+                        JsonSerializer serializer = new JsonSerializer();
+                        Player defaultPC = (Player)serializer.Deserialize(file, typeof(Player));
+                        modIBmini.companionPlayerList.Add(defaultPC);
+                        addToGraphicsList(defaultPC.tokenFilename);
+                        addToGraphicsList(defaultPC.portraitFilename);
+                        modIBmini.defaultPlayerFilename = defaultPC.name;
+                    }                    
                     //LOAD all data (creatures, items, spells, races, player classes, etc.) and convert as needed (move distance, attack range, etc.)
                     modIBmini.moduleCreaturesList = loadCreaturesFile(directory + "\\data\\creatures.json");
                     foreach (Creature crt in modIBmini.moduleCreaturesList)
                     {
                         crt.moveDistance = (int)Math.Round(((double)crt.moveDistance / 2f), MidpointRounding.AwayFromZero);
                         crt.cr_attRange = (int)Math.Round(((double)crt.cr_attRange / 2f), MidpointRounding.AwayFromZero);
+                        //add creature token to the graphics needed list
+                        addToGraphicsList(crt.cr_projSpriteFilename);
+                        addToGraphicsList(crt.cr_spriteEndingFilename);
+                        addToGraphicsList(crt.cr_tokenFilename);
                     }
                     modIBmini.moduleContainersList = loadContainersFile(directory + "\\data\\containers.json");
                     modIBmini.moduleItemsList = loadItemsFile(directory + "\\data\\items.json");
                     foreach (Item it in modIBmini.moduleItemsList)
                     {
                         it.attackRange = (int)Math.Round((double)(it.attackRange / 2), MidpointRounding.AwayFromZero);
+                        if (it.attackRange == 0) { it.attackRange = 1; }
+                        //add item token to the graphics needed list
+                        addToGraphicsList(it.projectileSpriteFilename);
+                        addToGraphicsList(it.spriteEndingFilename);
+                        addToGraphicsList(it.itemImage);
                     }
                     modIBmini.moduleShopsList = loadShopsFile(directory + "\\data\\shops.json");
                     modIBmini.modulePropsList = loadPropsFile(directory + "\\data\\props.json");
+                    //add prop images to the graphics needed list
+                    foreach(Prop prp in modIBmini.modulePropsList)
+                    {
+                        addToGraphicsList(prp.ImageFileName);
+                    }
                     modIBmini.moduleJournal = loadJournalFile(directory + "\\data\\journal.json");
                     modIBmini.modulePlayerClassList = loadPlayerClassesFile(directory + "\\data\\playerClasses.json");
                     modIBmini.moduleRacesList = loadRacesFile(directory + "\\data\\races.json");
@@ -2003,10 +1975,62 @@ namespace IB2ToolsetMini
 
                     //LOAD all areas, convos, ibscripts, and encounters and convert to new format as needed
                     ImportAreas(modIBmini, directory);
+                    //add tile images to the graphics needed list
+                    foreach (Area ar in modIBmini.moduleAreasObjects)
+                    {
+                        foreach (string t in ar.Layer1Filename)
+                        {
+                            addToTilesList(t);
+                        }
+                        foreach (string t in ar.Layer2Filename)
+                        {
+                            addToTilesList(t);
+                        }
+                        foreach (string t in ar.Layer3Filename)
+                        {
+                            addToTilesList(t);
+                        }
+                        //add prop images to the graphics needed list
+                        foreach (Prop prp in ar.Props)
+                        {
+                            addToGraphicsList(prp.ImageFileName);
+                        }
+                    }
                     ImportConvos(modIBmini, directory);
+                    //TODO add portrait images to the graphics needed list
+                    foreach (Convo cnv in modIBmini.moduleConvoList)
+                    {
+                        addToGraphicsList(cnv.NpcPortraitBitmap);
+                        foreach (ContentNode subNode in cnv.subNodes)
+                        {
+                            getAllNodePortraits(subNode);
+                            addToGraphicsList(subNode.NodePortraitBitmap);
+                        }
+                    }
                     ImportEncounters(modIBmini, directory);
+                    //add tile images to the graphics needed list
+                    foreach (Encounter enc in modIBmini.moduleEncountersList)
+                    {
+                        foreach (string t in enc.Layer1Filename)
+                        {
+                            addToTilesList(t);
+                        }
+                        foreach (string t in enc.Layer2Filename)
+                        {
+                            addToTilesList(t);
+                        }
+                        foreach (string t in enc.Layer3Filename)
+                        {
+                            addToTilesList(t);
+                        }
+                        //add prop images to the graphics needed list
+                        foreach (Prop prp in enc.propsList)
+                        {
+                            addToGraphicsList(prp.ImageFileName);
+                        }
+                    }
+                    
                     ImportIBScripts(modIBmini, directory);
-                    //make a list of images that need to be copied over to the hak folder (images that do not exist in default/NewModule/graphics folder)      
                     //SAVE out the module file   
                     string fullPathFilename = _mainDirectory + "\\modules\\" + modIBmini.moduleName + ".mod";
                     saveModule(modIBmini, fullPathFilename);
@@ -2017,13 +2041,147 @@ namespace IB2ToolsetMini
                     //save convos
                     saveConvos(modIBmini, fullPathFilename);
                     //save images
+
+                    //Summary Report and Todo List
+                    string summaryReportPath = _mainDirectory + "\\modules\\" + modIBmini.moduleName + "_IB2ConversionSummary.txt";
+                    try
+                    {
+                        File.Delete(summaryReportPath);
+                    }
+                    catch { }
+                    File.AppendAllText(summaryReportPath, "GRAPHICS USED (copy them over)" + Environment.NewLine);
+                    graphics_needed.Sort();
+                    File.AppendAllLines(summaryReportPath, graphics_needed);
+                    File.AppendAllText(summaryReportPath, Environment.NewLine + "TILES USED (copy them over)");
+                    tiles_needed.Sort();
+                    File.AppendAllLines(summaryReportPath, tiles_needed);
+
                     MessageBox.Show("Moduled saved as: " + modIBmini.moduleName + ".mod in the module folder.");
+
+                    try
+                    {
+                        createGraphicsUsedFolderWithFiles(_mainDirectory + "\\modules\\" + modIBmini.moduleName + "_GraphicUsed", directory);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("failed to create GraphicsUsed folder with files: " + ex.ToString());
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("failed to create IBmini module: " + ex.ToString());
+                }                
+            }
+        }
+        public void createGraphicsUsedFolderWithFiles(string folderPath, string originalFolderPath)
+        {
+            if (Directory.Exists(folderPath))
+            {
+                try
+                {
+                    //delete folder and all contents first then create a clean folder to fill
+                    Directory.Delete(folderPath, true);
+                    createDirectory(folderPath + "\\graphics");
+                    createDirectory(folderPath + "\\tiles");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to delete " + folderPath + " folder and then create a new version: " + ex.ToString());
                 }
             }
+            else
+            {
+                try
+                {
+                    createDirectory(folderPath + "\\graphics");
+                    createDirectory(folderPath + "\\tiles");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to create the folder " + folderPath + ": " + ex.ToString());
+                }
+            }
+            //create a folder GraphicsUsed/graphics and copy the tiles into it
+            foreach (string s in graphics_needed)
+            {
+                try
+                {
+                    string file = s;
+                    if (!file.EndsWith(".png"))
+                    {
+                        file += ".png";
+                    }
+                    if (File.Exists(originalFolderPath + "\\graphics\\" + file))
+                    {
+                        File.Copy(originalFolderPath + "\\graphics\\" + file, folderPath + "\\graphics\\" + file, true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to find and copy file: " + s);
+                    }                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to copy file: s  " + ex.ToString());
+                }
+            }
+            //create a folder GraphicsUsed/tiles and copy the tiles into it
+            foreach (string s in tiles_needed)
+            {
+                try
+                {
+                    string file = s;
+                    if (!file.EndsWith(".png"))
+                    {
+                        file += ".png";
+                    }
+                    if (File.Exists(originalFolderPath + "\\tiles\\" + file))
+                    {
+                        File.Copy(originalFolderPath + "\\tiles\\" + file, folderPath + "\\tiles\\" + file, true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to find and copy file: " + s);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to copy file: s  " + ex.ToString());
+                }
+            }
+
+            MessageBox.Show("All graphics and tile files used have been copied to a folder called '_GraphicsUsed' in the module folder. Verify that the files match the '_IB2ConversionSummary.txt' list.");
+        }
+        public void addToGraphicsList(string toAdd)
+        {
+            if (!graphics_needed.Contains(toAdd))
+            {
+                graphics_needed.Add(toAdd);
+            }
+        }
+        public void addToTilesList(string toAdd)
+        {
+            if (!tiles_needed.Contains(toAdd))
+            {
+                tiles_needed.Add(toAdd);
+            }
+        }
+        public ContentNode getAllNodePortraits(ContentNode node)
+        {
+            ContentNode tempNode = null;
+            if (node != null)
+            {
+                addToGraphicsList(node.NodePortraitBitmap);
+            }
+            foreach (ContentNode subNode in node.subNodes)
+            {                
+                tempNode = getAllNodePortraits(subNode);
+                if (tempNode != null)
+                {
+                    return tempNode;
+                }               
+            }
+            return tempNode;
         }
         public void ImportAreas(Module mod, string directory)
         {

@@ -358,6 +358,45 @@ namespace IB2ToolsetMini
             }
             return returnBitmap;
         }
+        public Bitmap ResizeIB2TilesToIBmini(Bitmap b)
+        {
+            Bitmap returnBitmap = new Bitmap(48, 48);
+            Rectangle source = new Rectangle(0, 0, b.Width, b.Height);
+            Rectangle target = new Rectangle(0, 0, 48, 48);
+            //50x50 (24x24), 100x100 (24x24), 100x200 (24x48), 110x170 (55x85), 200x50 (96x24), 200x200 (48x48), 200x400(48x96), 400x200 (200x100)
+            if ((b.Width == 100) && (b.Height == 100))
+            {
+                returnBitmap = new Bitmap(48, 48);
+                target = new Rectangle(0, 0, 48, 48);
+            }
+            else if ((b.Width == 100) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(48, 96);
+                target = new Rectangle(0, 0, 48, 96);
+            }
+            else if ((b.Width == 200) && (b.Height == 100))
+            {
+                returnBitmap = new Bitmap(96, 48);
+                target = new Rectangle(0, 0, 96, 48);
+            }
+            else if ((b.Width == 200) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(96, 96);
+                target = new Rectangle(0, 0, 96, 96);
+            }
+            else //odd size, don't resize, skip
+            {
+                return b;
+            }
+
+            using (Graphics g = Graphics.FromImage(returnBitmap))
+            {
+                g.InterpolationMode = InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = PixelOffsetMode.Half;
+                g.DrawImage((Image)b, target, source, GraphicsUnit.Pixel);
+            }
+            return returnBitmap;
+        }
 
         private void btnRemoveSelectedArtResource_Click(object sender, EventArgs e)
         {
@@ -375,6 +414,40 @@ namespace IB2ToolsetMini
                 prntForm.resourcesBitmapList.Remove(checkedButton.Name);
                 prntForm.mod.moduleImageDataList.Remove(imd);
                 this.flwArtResources.Controls.Remove(checkedButton);
+                resetImageDataFlowPanel();
+            }
+        }
+
+        private void btnImportIB2Tiles_Click(object sender, EventArgs e)
+        {
+            //load file dialog and multiselect images to load
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = prntForm._mainDirectory;
+            ofd.FileName = String.Empty;
+            ofd.Filter = "Image files (*.png)|*.png|All files (*.*)|*.*";
+            ofd.FilterIndex = 1;
+            ofd.Multiselect = true;
+
+            DialogResult result = ofd.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string[] filenames = ofd.FileNames;
+                string directory = Path.GetDirectoryName(ofd.FileName);
+                //convert all images to ImageData and add to the Module list List<ImageData>
+                //also add images to imageDictionary Dictionary<string, Bitmap>
+                foreach (string s in filenames)
+                {
+                    try
+                    {
+                        string name = Path.GetFileNameWithoutExtension(s);
+                        if (!prntForm.resourcesBitmapList.ContainsKey(name))
+                        {
+                            prntForm.mod.moduleImageDataList.Add(prntForm.bsc.ConvertBitmapToImageData(name, ResizeIB2TilesToIBmini(new Bitmap(s))));
+                            prntForm.resourcesBitmapList.Add(name, ResizeIB2TilesToIBmini(new Bitmap(s)));
+                        }
+                    }
+                    catch { }
+                }
                 resetImageDataFlowPanel();
             }
         }

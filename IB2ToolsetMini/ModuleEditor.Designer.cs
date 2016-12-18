@@ -33,6 +33,14 @@
             this.rbtnOneSquare = new System.Windows.Forms.RadioButton();
             this.rtxtInfo = new System.Windows.Forms.RichTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gbArtResources = new System.Windows.Forms.GroupBox();
+            this.btnRemoveSelectedArtResource = new System.Windows.Forms.Button();
+            this.btnLoadArtResources = new System.Windows.Forms.Button();
+            this.flwArtResources = new System.Windows.Forms.FlowLayoutPanel();
+            this.gbTitleImage = new System.Windows.Forms.GroupBox();
+            this.btnLoadTitleImage = new System.Windows.Forms.Button();
+            this.pbModuleTitleImage = new System.Windows.Forms.PictureBox();
+            this.gbDescription = new System.Windows.Forms.GroupBox();
             this.gbToHitBonusFromBehind = new System.Windows.Forms.GroupBox();
             this.rbtnPlusOneToHitFromBehind = new System.Windows.Forms.RadioButton();
             this.rbtnPlusTwoToHitFromBehind = new System.Windows.Forms.RadioButton();
@@ -45,26 +53,19 @@
             this.rbtnUse3d6 = new System.Windows.Forms.RadioButton();
             this.rbtnUse6Plusd12 = new System.Windows.Forms.RadioButton();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.gbDescription = new System.Windows.Forms.GroupBox();
-            this.pbModuleTitleImage = new System.Windows.Forms.PictureBox();
-            this.gbTitleImage = new System.Windows.Forms.GroupBox();
-            this.btnLoadTitleImage = new System.Windows.Forms.Button();
-            this.flwArtResources = new System.Windows.Forms.FlowLayoutPanel();
-            this.gbArtResources = new System.Windows.Forms.GroupBox();
-            this.btnLoadArtResources = new System.Windows.Forms.Button();
-            this.btnRemoveSelectedArtResource = new System.Windows.Forms.Button();
+            this.btnImportIB2Tiles = new System.Windows.Forms.Button();
             this.gbMoveDiagonalCost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gbArtResources.SuspendLayout();
+            this.gbTitleImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbModuleTitleImage)).BeginInit();
+            this.gbDescription.SuspendLayout();
             this.gbToHitBonusFromBehind.SuspendLayout();
             this.gbArmorClassDisplay.SuspendLayout();
             this.gbRollingSystem.SuspendLayout();
-            this.gbDescription.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbModuleTitleImage)).BeginInit();
-            this.gbTitleImage.SuspendLayout();
-            this.gbArtResources.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbMoveDiagonalCost
@@ -137,6 +138,94 @@
             this.splitContainer1.Size = new System.Drawing.Size(881, 620);
             this.splitContainer1.SplitterDistance = 588;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // gbArtResources
+            // 
+            this.gbArtResources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbArtResources.Controls.Add(this.btnImportIB2Tiles);
+            this.gbArtResources.Controls.Add(this.btnRemoveSelectedArtResource);
+            this.gbArtResources.Controls.Add(this.btnLoadArtResources);
+            this.gbArtResources.Controls.Add(this.flwArtResources);
+            this.gbArtResources.Location = new System.Drawing.Point(12, 346);
+            this.gbArtResources.Name = "gbArtResources";
+            this.gbArtResources.Size = new System.Drawing.Size(565, 262);
+            this.gbArtResources.TabIndex = 7;
+            this.gbArtResources.TabStop = false;
+            this.gbArtResources.Text = "Module Custom Art Resources (Embedded)";
+            // 
+            // btnRemoveSelectedArtResource
+            // 
+            this.btnRemoveSelectedArtResource.Location = new System.Drawing.Point(157, 19);
+            this.btnRemoveSelectedArtResource.Name = "btnRemoveSelectedArtResource";
+            this.btnRemoveSelectedArtResource.Size = new System.Drawing.Size(244, 23);
+            this.btnRemoveSelectedArtResource.TabIndex = 8;
+            this.btnRemoveSelectedArtResource.Text = "Remove the Currently Selected Art Resource";
+            this.btnRemoveSelectedArtResource.UseVisualStyleBackColor = true;
+            this.btnRemoveSelectedArtResource.Click += new System.EventHandler(this.btnRemoveSelectedArtResource_Click);
+            // 
+            // btnLoadArtResources
+            // 
+            this.btnLoadArtResources.Location = new System.Drawing.Point(6, 19);
+            this.btnLoadArtResources.Name = "btnLoadArtResources";
+            this.btnLoadArtResources.Size = new System.Drawing.Size(145, 23);
+            this.btnLoadArtResources.TabIndex = 7;
+            this.btnLoadArtResources.Text = "Load More Art Resources";
+            this.btnLoadArtResources.UseVisualStyleBackColor = true;
+            this.btnLoadArtResources.Click += new System.EventHandler(this.btnLoadArtResources_Click);
+            // 
+            // flwArtResources
+            // 
+            this.flwArtResources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flwArtResources.AutoScroll = true;
+            this.flwArtResources.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flwArtResources.Location = new System.Drawing.Point(6, 48);
+            this.flwArtResources.Name = "flwArtResources";
+            this.flwArtResources.Size = new System.Drawing.Size(553, 208);
+            this.flwArtResources.TabIndex = 6;
+            // 
+            // gbTitleImage
+            // 
+            this.gbTitleImage.Controls.Add(this.btnLoadTitleImage);
+            this.gbTitleImage.Controls.Add(this.pbModuleTitleImage);
+            this.gbTitleImage.Location = new System.Drawing.Point(163, 12);
+            this.gbTitleImage.Name = "gbTitleImage";
+            this.gbTitleImage.Size = new System.Drawing.Size(213, 154);
+            this.gbTitleImage.TabIndex = 5;
+            this.gbTitleImage.TabStop = false;
+            this.gbTitleImage.Text = "Module Title Image";
+            // 
+            // btnLoadTitleImage
+            // 
+            this.btnLoadTitleImage.Location = new System.Drawing.Point(6, 124);
+            this.btnLoadTitleImage.Name = "btnLoadTitleImage";
+            this.btnLoadTitleImage.Size = new System.Drawing.Size(200, 23);
+            this.btnLoadTitleImage.TabIndex = 5;
+            this.btnLoadTitleImage.Text = "Load Title Image";
+            this.btnLoadTitleImage.UseVisualStyleBackColor = true;
+            this.btnLoadTitleImage.Click += new System.EventHandler(this.btnLoadTitleImage_Click);
+            // 
+            // pbModuleTitleImage
+            // 
+            this.pbModuleTitleImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbModuleTitleImage.Location = new System.Drawing.Point(6, 19);
+            this.pbModuleTitleImage.Name = "pbModuleTitleImage";
+            this.pbModuleTitleImage.Size = new System.Drawing.Size(200, 100);
+            this.pbModuleTitleImage.TabIndex = 4;
+            this.pbModuleTitleImage.TabStop = false;
+            // 
+            // gbDescription
+            // 
+            this.gbDescription.Controls.Add(this.rtxtInfo);
+            this.gbDescription.Location = new System.Drawing.Point(382, 12);
+            this.gbDescription.Name = "gbDescription";
+            this.gbDescription.Size = new System.Drawing.Size(195, 315);
+            this.gbDescription.TabIndex = 3;
+            this.gbDescription.TabStop = false;
+            this.gbDescription.Text = "Description";
             // 
             // gbToHitBonusFromBehind
             // 
@@ -288,92 +377,15 @@
             this.propertyGrid1.Size = new System.Drawing.Size(289, 620);
             this.propertyGrid1.TabIndex = 1;
             // 
-            // gbDescription
+            // btnImportIB2Tiles
             // 
-            this.gbDescription.Controls.Add(this.rtxtInfo);
-            this.gbDescription.Location = new System.Drawing.Point(382, 12);
-            this.gbDescription.Name = "gbDescription";
-            this.gbDescription.Size = new System.Drawing.Size(195, 315);
-            this.gbDescription.TabIndex = 3;
-            this.gbDescription.TabStop = false;
-            this.gbDescription.Text = "Description";
-            // 
-            // pbModuleTitleImage
-            // 
-            this.pbModuleTitleImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbModuleTitleImage.Location = new System.Drawing.Point(6, 19);
-            this.pbModuleTitleImage.Name = "pbModuleTitleImage";
-            this.pbModuleTitleImage.Size = new System.Drawing.Size(200, 100);
-            this.pbModuleTitleImage.TabIndex = 4;
-            this.pbModuleTitleImage.TabStop = false;
-            // 
-            // gbTitleImage
-            // 
-            this.gbTitleImage.Controls.Add(this.btnLoadTitleImage);
-            this.gbTitleImage.Controls.Add(this.pbModuleTitleImage);
-            this.gbTitleImage.Location = new System.Drawing.Point(163, 12);
-            this.gbTitleImage.Name = "gbTitleImage";
-            this.gbTitleImage.Size = new System.Drawing.Size(213, 154);
-            this.gbTitleImage.TabIndex = 5;
-            this.gbTitleImage.TabStop = false;
-            this.gbTitleImage.Text = "Module Title Image";
-            // 
-            // btnLoadTitleImage
-            // 
-            this.btnLoadTitleImage.Location = new System.Drawing.Point(6, 124);
-            this.btnLoadTitleImage.Name = "btnLoadTitleImage";
-            this.btnLoadTitleImage.Size = new System.Drawing.Size(200, 23);
-            this.btnLoadTitleImage.TabIndex = 5;
-            this.btnLoadTitleImage.Text = "Load Title Image";
-            this.btnLoadTitleImage.UseVisualStyleBackColor = true;
-            this.btnLoadTitleImage.Click += new System.EventHandler(this.btnLoadTitleImage_Click);
-            // 
-            // flwArtResources
-            // 
-            this.flwArtResources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flwArtResources.AutoScroll = true;
-            this.flwArtResources.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flwArtResources.Location = new System.Drawing.Point(6, 48);
-            this.flwArtResources.Name = "flwArtResources";
-            this.flwArtResources.Size = new System.Drawing.Size(553, 208);
-            this.flwArtResources.TabIndex = 6;
-            // 
-            // gbArtResources
-            // 
-            this.gbArtResources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbArtResources.Controls.Add(this.btnRemoveSelectedArtResource);
-            this.gbArtResources.Controls.Add(this.btnLoadArtResources);
-            this.gbArtResources.Controls.Add(this.flwArtResources);
-            this.gbArtResources.Location = new System.Drawing.Point(12, 346);
-            this.gbArtResources.Name = "gbArtResources";
-            this.gbArtResources.Size = new System.Drawing.Size(565, 262);
-            this.gbArtResources.TabIndex = 7;
-            this.gbArtResources.TabStop = false;
-            this.gbArtResources.Text = "Module Custom Art Resources (Embedded)";
-            // 
-            // btnLoadArtResources
-            // 
-            this.btnLoadArtResources.Location = new System.Drawing.Point(6, 19);
-            this.btnLoadArtResources.Name = "btnLoadArtResources";
-            this.btnLoadArtResources.Size = new System.Drawing.Size(145, 23);
-            this.btnLoadArtResources.TabIndex = 7;
-            this.btnLoadArtResources.Text = "Load More Art Resources";
-            this.btnLoadArtResources.UseVisualStyleBackColor = true;
-            this.btnLoadArtResources.Click += new System.EventHandler(this.btnLoadArtResources_Click);
-            // 
-            // btnRemoveSelectedArtResource
-            // 
-            this.btnRemoveSelectedArtResource.Location = new System.Drawing.Point(157, 19);
-            this.btnRemoveSelectedArtResource.Name = "btnRemoveSelectedArtResource";
-            this.btnRemoveSelectedArtResource.Size = new System.Drawing.Size(244, 23);
-            this.btnRemoveSelectedArtResource.TabIndex = 8;
-            this.btnRemoveSelectedArtResource.Text = "Remove the Currently Selected Art Resource";
-            this.btnRemoveSelectedArtResource.UseVisualStyleBackColor = true;
-            this.btnRemoveSelectedArtResource.Click += new System.EventHandler(this.btnRemoveSelectedArtResource_Click);
+            this.btnImportIB2Tiles.Location = new System.Drawing.Point(407, 19);
+            this.btnImportIB2Tiles.Name = "btnImportIB2Tiles";
+            this.btnImportIB2Tiles.Size = new System.Drawing.Size(145, 23);
+            this.btnImportIB2Tiles.TabIndex = 9;
+            this.btnImportIB2Tiles.Text = "Import IB2 Tiles";
+            this.btnImportIB2Tiles.UseVisualStyleBackColor = true;
+            this.btnImportIB2Tiles.Click += new System.EventHandler(this.btnImportIB2Tiles_Click);
             // 
             // ModuleEditor
             // 
@@ -389,16 +401,16 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gbArtResources.ResumeLayout(false);
+            this.gbTitleImage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbModuleTitleImage)).EndInit();
+            this.gbDescription.ResumeLayout(false);
             this.gbToHitBonusFromBehind.ResumeLayout(false);
             this.gbToHitBonusFromBehind.PerformLayout();
             this.gbArmorClassDisplay.ResumeLayout(false);
             this.gbArmorClassDisplay.PerformLayout();
             this.gbRollingSystem.ResumeLayout(false);
             this.gbRollingSystem.PerformLayout();
-            this.gbDescription.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbModuleTitleImage)).EndInit();
-            this.gbTitleImage.ResumeLayout(false);
-            this.gbArtResources.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -430,5 +442,6 @@
         private System.Windows.Forms.Button btnRemoveSelectedArtResource;
         private System.Windows.Forms.Button btnLoadArtResources;
         private System.Windows.Forms.FlowLayoutPanel flwArtResources;
+        private System.Windows.Forms.Button btnImportIB2Tiles;
     }
 }

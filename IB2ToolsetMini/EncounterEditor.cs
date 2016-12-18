@@ -78,7 +78,7 @@ namespace IB2ToolsetMini
             radioButton1.Checked = true;
             checkBox1.Checked = true;
             checkBox2.Checked = true;
-            //checkBox3.Checked = true;
+            checkBox3.Checked = true;
             
             rbtnInfo.Checked = true;
             //rbtnZoom1x.Checked = true;
