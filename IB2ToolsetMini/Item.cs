@@ -89,6 +89,7 @@ namespace IB2ToolsetMini
         private int _damageTypeResistanceValueMagic = 0;
         private int _damageTypeResistanceValuePoison = 0;
         private string _typeOfDamage = "Normal"; //Normal,Acid,Cold,Electricity,Fire,Magic,Poison        
+        private bool _isRation = false;
         #endregion
 
         #region Properties        
@@ -129,6 +130,18 @@ namespace IB2ToolsetMini
             {
                 _resref = value;
                 this.NotifyPropertyChanged("resref");
+            }
+        }
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("Sets this item to be a ration when ration system is being used in this module.")]
+        public bool isRation
+        {
+            get
+            {
+                return _isRation;
+            }
+            set
+            {
+                _isRation = value;;
             }
         }
         [CategoryAttribute("01 - Main"), DescriptionAttribute("Armor Weight Type (used when the item is an armor)")]
@@ -696,6 +709,7 @@ namespace IB2ToolsetMini
         private string _name = "none";
         private bool _canNotBeUnequipped = false;
         private int _quantity = 1; //useful for stacking and ammo
+        private bool _isRation = false;
 
         [CategoryAttribute("01 - Main"), DescriptionAttribute("ResRef of the item reference (must be left the same as the blueprint item's resref)")]
         public string resref
@@ -727,7 +741,13 @@ namespace IB2ToolsetMini
             get { return _quantity; }
             set { _quantity = value; }
         }
-        
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("Sets this item to be a ration if ration system is being used.")]
+        public bool isRation
+        {
+            get { return _isRation; }
+            set { _isRation = value; }
+        }
+
         public ItemRefs()
         {
         }

@@ -106,8 +106,10 @@ namespace IB2ToolsetMini
         //private string _spellLabelPlural = "Spells";
         private string _goldLabelSingular = "Gold";
         private string _goldLabelPlural = "Gold";
+        private bool _useRationSystem = false;
+        private int _maxNumberOfRationsAllowed = 7;
         #endregion
-
+        
         #region Properties
         [CategoryAttribute("01 - Main"), DescriptionAttribute("FileName of the Module and the Folder name as well (no spaces allowed)")]
         public string moduleName
@@ -126,6 +128,18 @@ namespace IB2ToolsetMini
         {
             get { return _moduleVersion; }
             set { _moduleVersion = value; }
+        }
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("Toggles the ration system on/off")]
+        public bool useRationSystem
+        {
+            get { return _useRationSystem; }
+            set { _useRationSystem = value; }
+        }
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("Max number of rations the party can carry if using the ration system in your module.")]
+        public int maxNumberOfRationsAllowed
+        {
+            get { return _maxNumberOfRationsAllowed; }
+            set { _maxNumberOfRationsAllowed = value; }
         }
         [CategoryAttribute("03 - Player and Party"), DescriptionAttribute("Filename of the Player to use as the default starting PC or the forced pre-made PC if that flag (mustUsePreMadePC) is true.")]
         public string defaultPlayerFilename
