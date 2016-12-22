@@ -1930,6 +1930,7 @@ namespace IB2ToolsetMini
                     {
                         crt.moveDistance = (int)Math.Round(((double)crt.moveDistance / 2f), MidpointRounding.AwayFromZero);
                         crt.cr_attRange = (int)Math.Round(((double)crt.cr_attRange / 2f), MidpointRounding.AwayFromZero);
+                        if (crt.cr_attRange == 0) { crt.cr_attRange = 1; }
                         //add creature token to the graphics needed list
                         addToGraphicsList(crt.cr_projSpriteFilename);
                         addToGraphicsList(crt.cr_spriteEndingFilename);
@@ -1965,11 +1966,13 @@ namespace IB2ToolsetMini
                     foreach (Spell sp in modIBmini.moduleSpellsList)
                     {
                         sp.range = (int)Math.Round((double)(sp.range / 2), MidpointRounding.AwayFromZero);
+                        if (sp.range == 0) { sp.range = 1; }
                     }
                     modIBmini.moduleTraitsList = loadTraitsFile(directory + "\\data\\traits.json");
                     foreach (Trait tr in modIBmini.moduleTraitsList)
                     {
                         tr.range = (int)Math.Round((double)(tr.range / 2), MidpointRounding.AwayFromZero);
+                        if (tr.range == 0) { tr.range = 1; }
                     }
                     modIBmini.moduleEffectsList = loadEffectsFile(directory + "\\data\\effects.json");
 
@@ -2223,8 +2226,79 @@ namespace IB2ToolsetMini
                 copyEnc.Layer3Rotate = new List<int>();
                 copyEnc.Walkable = new List<int>();
                 copyEnc.LoSBlocked = new List<int>();
-                foreach (Tile tile in IB2area.Tiles)
+                foreach (TileIB2 tile in IB2area.Tiles)
                 {
+                    //go through all layers and shift them down if layer not used
+                    if (tile.Layer1Filename.Equals("t_blank"))
+                    {
+                        if (tile.Layer2Filename.Equals("t_blank"))
+                        {
+                            tile.Layer1Filename = tile.Layer3Filename;
+                            tile.Layer2Filename = tile.Layer4Filename;
+                            tile.Layer3Filename = tile.Layer5Filename;
+                            tile.Layer1Rotate = tile.Layer3Rotate;
+                            tile.Layer2Rotate = tile.Layer4Rotate;
+                            tile.Layer3Rotate = tile.Layer5Rotate;
+                            tile.Layer1Mirror = tile.Layer3Mirror;
+                            tile.Layer2Mirror = tile.Layer4Mirror;
+                            tile.Layer3Mirror = tile.Layer5Mirror;
+                        }
+                        else
+                        {
+                            tile.Layer1Filename = tile.Layer2Filename;
+                            tile.Layer2Filename = tile.Layer3Filename;
+                            tile.Layer3Filename = tile.Layer4Filename;
+                            tile.Layer4Filename = tile.Layer5Filename;
+                            tile.Layer1Rotate = tile.Layer2Rotate;
+                            tile.Layer2Rotate = tile.Layer3Rotate;
+                            tile.Layer3Rotate = tile.Layer4Rotate;
+                            tile.Layer4Rotate = tile.Layer5Rotate;
+                            tile.Layer1Mirror = tile.Layer2Mirror;
+                            tile.Layer2Mirror = tile.Layer3Mirror;
+                            tile.Layer3Mirror = tile.Layer4Mirror;
+                            tile.Layer4Mirror = tile.Layer5Mirror;
+                        }
+                    }
+                    if (tile.Layer2Filename.Equals("t_blank"))
+                    {
+                        if (tile.Layer3Filename.Equals("t_blank"))
+                        {
+                            tile.Layer2Filename = tile.Layer4Filename;
+                            tile.Layer3Filename = tile.Layer5Filename;
+                            tile.Layer2Rotate = tile.Layer4Rotate;
+                            tile.Layer3Rotate = tile.Layer5Rotate;
+                            tile.Layer2Mirror = tile.Layer4Mirror;
+                            tile.Layer3Mirror = tile.Layer5Mirror;
+                        }
+                        else
+                        {
+                            tile.Layer2Filename = tile.Layer3Filename;
+                            tile.Layer3Filename = tile.Layer4Filename;
+                            tile.Layer4Filename = tile.Layer5Filename;
+                            tile.Layer2Rotate = tile.Layer3Rotate;
+                            tile.Layer3Rotate = tile.Layer4Rotate;
+                            tile.Layer4Rotate = tile.Layer5Rotate;
+                            tile.Layer2Mirror = tile.Layer3Mirror;
+                            tile.Layer3Mirror = tile.Layer4Mirror;
+                            tile.Layer4Mirror = tile.Layer5Mirror;
+                        }
+                    }
+                    if (tile.Layer3Filename.Equals("t_blank"))
+                    {
+                        if (tile.Layer4Filename.Equals("t_blank"))
+                        {
+                            tile.Layer3Filename = tile.Layer5Filename;
+                            tile.Layer3Rotate = tile.Layer5Rotate;
+                            tile.Layer3Mirror = tile.Layer5Mirror;
+                        }
+                        else
+                        {
+                            tile.Layer3Filename = tile.Layer4Filename;
+                            tile.Layer3Rotate = tile.Layer4Rotate;
+                            tile.Layer3Mirror = tile.Layer4Mirror;
+                        }
+                    }
+
                     copyEnc.Layer1Filename.Add(tile.Layer1Filename);
                     copyEnc.Layer1Rotate.Add(tile.Layer1Rotate);
                     if (tile.Layer1Mirror) { copyEnc.Layer1Mirror.Add(1); }

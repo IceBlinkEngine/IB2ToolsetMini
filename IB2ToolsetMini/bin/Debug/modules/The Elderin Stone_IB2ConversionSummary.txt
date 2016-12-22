@@ -253,6 +253,7 @@ dropseapillar
 dropseapillar2
 dropseapillargap
 dropseapillarrunes
+dungeonlittorch
 dungeontorch
 E
 fencebottom
@@ -266,6 +267,7 @@ floorstonegap
 floorwater
 floorwatercorner
 floorwateredge
+floorwaterstraight
 flooryellowplanks
 fountain1
 G
@@ -278,11 +280,15 @@ libraryweb
 marks
 N
 O
+o2
 pedastal
 pedastalorb
 picture1
 picture2
+picture3
+picture4
 picture6
+picture7
 planks
 poisongas
 portal1
@@ -293,6 +299,7 @@ RulianArchivist
 S
 shadowcorner
 ShinyFloorBR
+ShinyFloorTL
 sideshadow
 simpleboat
 stagnant
@@ -332,6 +339,7 @@ t_L7floor01stright
 t_rock01
 t_rock03
 t_sign
+table2
 tracks
 treebottom
 treetops
@@ -347,3 +355,4 @@ woodenwallside
 woodenwallsidevines1
 woodenwallsidevines2
 woodenwindow
+x

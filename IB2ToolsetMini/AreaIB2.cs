@@ -29,7 +29,7 @@ namespace IB2ToolsetMini
         public string AreaSounds = "none";
         public int AreaSoundsDelay = 0;
         public int AreaSoundsDelayRandomAdder = 0;
-        public List<Tile> Tiles = new List<Tile>();
+        public List<TileIB2> Tiles = new List<TileIB2>();
         public List<Prop> Props = new List<Prop>();
         public List<string> InitialAreaPropTagsList = new List<string>();
         public List<Trigger> Triggers = new List<Trigger>();
@@ -60,5 +60,31 @@ namespace IB2ToolsetMini
         public AreaIB2()
         {
         }
-    }    
+    }
+
+    public class TileIB2
+    {
+        public string Layer1Filename = "t_blank";
+        public string Layer2Filename = "t_blank";
+        public string Layer3Filename = "t_blank";
+        public string Layer4Filename = "t_blank";
+        public string Layer5Filename = "t_blank";
+        public int Layer1Rotate = 0;
+        public int Layer2Rotate = 0;
+        public int Layer3Rotate = 0;
+        public int Layer4Rotate = 0;
+        public int Layer5Rotate = 0;        
+        public bool Layer1Mirror = false;
+        public bool Layer2Mirror = false;
+        public bool Layer3Mirror = false;
+        public bool Layer4Mirror = false;
+        public bool Layer5Mirror = false;        
+        public bool Walkable = true;
+        public bool LoSBlocked = false;
+        public bool Visible = false;
+
+        public TileIB2()
+        {
+        }
+    }
 }
