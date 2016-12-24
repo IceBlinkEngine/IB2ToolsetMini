@@ -1817,6 +1817,7 @@ namespace IB2ToolsetMini
         private void tsBtnResetDropDowns_Click(object sender, EventArgs e)
         {
             refreshDropDownLists();
+            addPrefix();
         }
         private void tsBtnDataCheck_Click(object sender, EventArgs e)
         {
@@ -1887,6 +1888,87 @@ namespace IB2ToolsetMini
             MessageBox.Show("A list of tiles has been created and placed in the module folder.");
         }
 
+        public void addPrefixToConvoNodeImage(ContentNode node)
+        {
+            if ((node.NodePortraitBitmap != "") && (!node.NodePortraitBitmap.StartsWith("ptr_")))
+            {                
+                string summaryReportPath = _mainDirectory + "\\modules\\" + mod.moduleName + "_convos.txt";
+                File.AppendAllText(summaryReportPath, node.NodePortraitBitmap + Environment.NewLine);
+                node.NodePortraitBitmap = "ptr_" + node.NodePortraitBitmap;
+            }
+            /*if (node.NodePortraitBitmap.StartsWith("ptr_"))
+            {
+                foundLinkedNodesIdList.Add(node.idNum);
+            }*/
+            foreach (ContentNode subNode in node.subNodes)
+            {
+                addPrefixToConvoNodeImage(subNode);
+            }
+            
+        }
+        public void addPrefix()
+        {
+            /*foreach (Convo c in mod.moduleConvoList)
+            {
+                if ((c.NpcPortraitBitmap != "") && (!c.NpcPortraitBitmap.StartsWith("ptr_")))
+                {
+                    string summaryReportPath = _mainDirectory + "\\modules\\" + mod.moduleName + "_convos.txt";
+                    File.AppendAllText(summaryReportPath, c.NpcPortraitBitmap + Environment.NewLine);
+                    c.NpcPortraitBitmap = "ptr_" + c.NpcPortraitBitmap;
+                }
+                addPrefixToConvoNodeImage(c.subNodes[0]);
+            }*/
+            
+            /*foreach (Area ar in mod.moduleAreasObjects)
+            {
+                for (int i = 0; i < ar.Layer1Filename.Count; i++)
+                {
+                    if (!ar.Layer1Filename[i].StartsWith("t_"))
+                    {
+                        ar.Layer1Filename[i] = "t_es_" + ar.Layer1Filename[i];
+                    }
+                }
+                for (int i = 0; i < ar.Layer2Filename.Count; i++)
+                {
+                    if (!ar.Layer2Filename[i].StartsWith("t_"))
+                    {
+                        ar.Layer2Filename[i] = "t_es_" + ar.Layer2Filename[i];
+                    }
+                }
+                for (int i = 0; i < ar.Layer3Filename.Count; i++)
+                {
+                    if (!ar.Layer3Filename[i].StartsWith("t_"))
+                    {
+                        ar.Layer3Filename[i] = "t_es_" + ar.Layer3Filename[i];
+                    }
+                }
+            }
+            
+            foreach (Encounter enc in mod.moduleEncountersList)
+            {
+                for (int i = 0; i < enc.Layer1Filename.Count; i++)
+                {
+                    if (!enc.Layer1Filename[i].StartsWith("t_"))
+                    {
+                        enc.Layer1Filename[i] = "t_es_" + enc.Layer1Filename[i];
+                    }
+                }
+                for (int i = 0; i < enc.Layer2Filename.Count; i++)
+                {
+                    if (!enc.Layer2Filename[i].StartsWith("t_"))
+                    {
+                        enc.Layer2Filename[i] = "t_es_" + enc.Layer2Filename[i];
+                    }
+                }
+                for (int i = 0; i < enc.Layer3Filename.Count; i++)
+                {
+                    if (!enc.Layer3Filename[i].StartsWith("t_"))
+                    {
+                        enc.Layer3Filename[i] = "t_es_" + enc.Layer3Filename[i];
+                    }
+                }
+            }*/
+        }
         public List<string> graphics_needed = new List<string>();
         public List<string> tiles_needed = new List<string>();
         private void convertAnIB2ModuleToolStripMenuItem_Click(object sender, EventArgs e)
