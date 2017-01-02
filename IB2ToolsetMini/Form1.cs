@@ -1890,7 +1890,7 @@ namespace IB2ToolsetMini
 
         public void addPrefixToConvoNodeImage(ContentNode node)
         {
-            if ((node.NodePortraitBitmap != "") && (!node.NodePortraitBitmap.StartsWith("ptr_")))
+            if ((node.NodePortraitBitmap != "") && (!node.NodePortraitBitmap.StartsWith("ptr_")) && (!node.NodePortraitBitmap.StartsWith("nar_")))
             {                
                 string summaryReportPath = _mainDirectory + "\\modules\\" + mod.moduleName + "_convos.txt";
                 File.AppendAllText(summaryReportPath, node.NodePortraitBitmap + Environment.NewLine);
@@ -1908,16 +1908,16 @@ namespace IB2ToolsetMini
         }
         public void addPrefix()
         {
-            /*foreach (Convo c in mod.moduleConvoList)
+            foreach (Convo c in mod.moduleConvoList)
             {
-                if ((c.NpcPortraitBitmap != "") && (!c.NpcPortraitBitmap.StartsWith("ptr_")))
+                if ((c.NpcPortraitBitmap != "") && (!c.NpcPortraitBitmap.StartsWith("ptr_")) && (!c.NpcPortraitBitmap.StartsWith("nar_")))
                 {
                     string summaryReportPath = _mainDirectory + "\\modules\\" + mod.moduleName + "_convos.txt";
                     File.AppendAllText(summaryReportPath, c.NpcPortraitBitmap + Environment.NewLine);
                     c.NpcPortraitBitmap = "ptr_" + c.NpcPortraitBitmap;
                 }
                 addPrefixToConvoNodeImage(c.subNodes[0]);
-            }*/
+            }
             
             /*foreach (Area ar in mod.moduleAreasObjects)
             {

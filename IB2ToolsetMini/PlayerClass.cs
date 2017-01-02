@@ -21,6 +21,7 @@ namespace IB2ToolsetMini
         private string _description = "";
         private int _startingHP = 10;
         private int _startingSP = 20;
+        private string _modifierFromSPRelevantAttribute = "intelligence";
         private int _hpPerLevelUp = 10;
         private int _spPerLevelUp = 20;
         private int _hpRegenTimeNeeded = 0;
@@ -110,6 +111,12 @@ namespace IB2ToolsetMini
             {
                 _startingSP = value;
             }
+        }
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("name of attribute that is used for sp calculation for this class, eg intelligence or wisdom")]
+        public string modifierFromSPRelevantAttribute
+        {
+            get { return _modifierFromSPRelevantAttribute; }
+            set { _modifierFromSPRelevantAttribute = value; }
         }
         [CategoryAttribute("02 - Stat Development"), DescriptionAttribute("HP received at each level up after level one")]
         public int hpPerLevelUp
