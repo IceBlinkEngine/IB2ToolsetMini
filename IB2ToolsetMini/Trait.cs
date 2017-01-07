@@ -8,6 +8,7 @@ using System.IO;
 using System.Drawing;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 //using IceBlink;
 
 namespace IB2ToolsetMini
@@ -25,12 +26,20 @@ namespace IB2ToolsetMini
         private string _useableInSituation = "Always";
         private string _spriteFilename = "none";
         private string _spriteEndingFilename = "none";
+        private string _traitStartSound = "none";
+        private string _traitEndSound = "none";
         private int _costSP = 0;
         private string _traitTargetType = "Enemy";
         private string _traitEffectType = "Damage";
+        private bool _isUsedForCombatSquareEffect = false;
+        private AreaOfEffectShape _aoeShape = AreaOfEffectShape.Circle;
         private int _aoeRadius = 0;
         private int _range = 0;
         private string _traitScript = "none";
+        private bool _isPassive = true; //passive traits are on all the time like two attack, cleave, evasion, etc. non-passive (or active) traits are used like spells (think power attack, remove trap, etc.)
+        private bool _usesTurnToActivate = true; //some traits are meant to be used in the same turn such as Power Attack and Set Trap
+        private List<EffectTagForDropDownList> _traitEffectTagList = new List<EffectTagForDropDownList>();
+        private List<EffectTagForDropDownList> _removeEffectTagList = new List<EffectTagForDropDownList>();
         #endregion
 
         #region Properties  
@@ -131,6 +140,20 @@ namespace IB2ToolsetMini
                 _spriteEndingFilename = value;
             }
         }
+        [Browsable(true), TypeConverter(typeof(SoundConverter))]
+        [CategoryAttribute("01- Main"), DescriptionAttribute("Filename of sound to play when the trait starts (no extension)")]
+        public string traitStartSound
+        {
+            get { return _traitStartSound; }
+            set { _traitStartSound = value; }
+        }
+        [Browsable(true), TypeConverter(typeof(SoundConverter))]
+        [CategoryAttribute("01- Main"), DescriptionAttribute("Filename of sound to play when the trait ends (no extension)")]
+        public string traitEndSound
+        {
+            get { return _traitEndSound; }
+            set { _traitEndSound = value; }
+        }
         [CategoryAttribute("01 - Main"), DescriptionAttribute("How much SP this Trait costs")]
         public int costSP
         {
@@ -167,6 +190,31 @@ namespace IB2ToolsetMini
                 _traitEffectType = value;
             }
         }
+        [CategoryAttribute("02 - Target"), DescriptionAttribute("Does this trait apply effects to combat squares?")]
+        public bool isUsedForCombatSquareEffect
+        {
+            get
+            {
+                return _isUsedForCombatSquareEffect;
+            }
+            set
+            {
+                _isUsedForCombatSquareEffect = value;
+            }
+        }
+        [CategoryAttribute("02 - Target"), DescriptionAttribute("the shape of the AoE")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AreaOfEffectShape aoeShape
+        {
+            get
+            {
+                return _aoeShape;
+            }
+            set
+            {
+                _aoeShape = value;
+            }
+        }
         [CategoryAttribute("02 - Target"), DescriptionAttribute("the radius of the AoE")]
         public int aoeRadius
         {
@@ -196,6 +244,30 @@ namespace IB2ToolsetMini
         {
             get { return _traitScript; }
             set { _traitScript = value; }
+        }
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("if true, the trait is always on...if false, the trait is used like a spell and must be activated.")]
+        public bool isPassive
+        {
+            get { return _isPassive; }
+            set { _isPassive = value; }
+        }
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("if true, the use of this trait in combat will consume that player's turn. If false, the player will get to use this trait and continue their turn. Some traits are meant to be used in the same turn such as Power Attack and Set Trap.")]
+        public bool usesTurnToActivate
+        {
+            get { return _usesTurnToActivate; }
+            set { _usesTurnToActivate = value; }
+        }
+        [CategoryAttribute("05 - Trait/Effect System"), DescriptionAttribute("List of EffectTags that will be used for this trait.")]
+        public List<EffectTagForDropDownList> traitEffectTagList
+        {
+            get { return _traitEffectTagList; }
+            set { _traitEffectTagList = value; }
+        }
+        [CategoryAttribute("05 - Trait/Effect System"), DescriptionAttribute("List of EffectTags that will be removed from the target when this trait is used (used for dispell magic, free action, neutralize poison, etc.)")]
+        public List<EffectTagForDropDownList> removeEffectTagList
+        {
+            get { return _removeEffectTagList; }
+            set { _removeEffectTagList = value; }
         }
         #endregion
 
