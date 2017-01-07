@@ -32,6 +32,8 @@ namespace IB2ToolsetMini
         private int[] _baseWillAtLevel = new int[] { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
         private int[] _baseReflexAtLevel = new int[] { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
         private int[] _babTable = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        private int[] _traitsToLearnAtLevelTable = new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        private int[] _spellsToLearnAtLevelTable = new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         private int[] _xpTable = new int[] { 0, 200, 400, 800, 1600, 3200, 6500, 12500, 25000, 50000 };
         private List<ItemRefs> _itemsAllowed = new List<ItemRefs>();
         private SortableBindingList<TraitAllowed> _traitsAllowed = new SortableBindingList<TraitAllowed>();
@@ -231,7 +233,32 @@ namespace IB2ToolsetMini
             {
                 _xpTable = value;
             }
-        }        
+        }
+        [CategoryAttribute("02 - Stat Development"), DescriptionAttribute("define how many spells can be learned at each level...depends on if there are any available to learn.")]
+        public int[] spellsToLearnAtLevelTable
+        {
+            get
+            {
+                return _spellsToLearnAtLevelTable;
+            }
+            set
+            {
+                _spellsToLearnAtLevelTable = value;
+            }
+        }
+
+        [CategoryAttribute("02 - Stat Development"), DescriptionAttribute("define how many traits can be learned at each level...depends on if there are any available to learn.")]
+        public int[] traitsToLearnAtLevelTable
+        {
+            get
+            {
+                return _traitsToLearnAtLevelTable;
+            }
+            set
+            {
+                _traitsToLearnAtLevelTable = value;
+            }
+        }
         [CategoryAttribute("03 - Allowed"), DescriptionAttribute("A list of items that the class can use"), Browsable(false), ReadOnly(true)]
         public List<ItemRefs> itemsAllowed
         {

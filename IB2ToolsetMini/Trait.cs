@@ -116,6 +116,7 @@ namespace IB2ToolsetMini
             get { return _useableInSituation; }
             set { _useableInSituation = value; }
         }
+        [Browsable(true), TypeConverter(typeof(SpriteConverter))]
         [CategoryAttribute("01 - Main"), DescriptionAttribute("Sprite to use for the effect (Sprite Filename with extension)")]
         public string spriteFilename
         {
@@ -128,6 +129,7 @@ namespace IB2ToolsetMini
                 _spriteFilename = value;
             }
         }
+        [Browsable(true), TypeConverter(typeof(SpriteConverter))]
         [CategoryAttribute("01 - Main"), DescriptionAttribute("Sprite to use for the ending effect (Sprite Filename with extension)")]
         public string spriteEndingFilename
         {

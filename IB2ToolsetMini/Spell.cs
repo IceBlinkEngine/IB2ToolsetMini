@@ -42,6 +42,7 @@ namespace IB2ToolsetMini
         private int _range = 0;
         private string _spellScript = "none";
         private string _spellEffectTag = "none";
+        private List<EffectTagForDropDownList> _spellEffectTagList = new List<EffectTagForDropDownList>();
         private List<EffectTagForDropDownList> _removeEffectTagList = new List<EffectTagForDropDownList>();
         #endregion
 
@@ -238,6 +239,12 @@ namespace IB2ToolsetMini
         {
             get { return _spellEffectTag; }
             set { _spellEffectTag = value; }
+        }
+        [CategoryAttribute("05 - Spell/Effect System"), DescriptionAttribute("List of EffectTags that will be used for this spell.")]
+        public List<EffectTagForDropDownList> spellEffectTagList
+        {
+            get { return _spellEffectTagList; }
+            set { _spellEffectTagList = value; }
         }
         [CategoryAttribute("05 - Spell/Effect System"), DescriptionAttribute("List of EffectTags that will be removed from the target when this spell is used (used for dispell magic, free action, neutralize poison, etc.)")]
         public List<EffectTagForDropDownList> removeEffectTagList
