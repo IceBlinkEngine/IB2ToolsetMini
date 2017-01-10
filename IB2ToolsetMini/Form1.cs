@@ -221,14 +221,131 @@ namespace IB2ToolsetMini
 
         #region File Handling
         private void openModule(string filename)
-        {            
-            //mod = mod.loadModuleFile(filename);
-            //if (mod == null)
-            //{
-            //    MessageBox.Show("returned a null module");
-            //}
-
+        {
             //new method
+            try
+            {
+                //used for opening the entire module files
+                using (StreamReader sr = File.OpenText(filename))
+                {
+                    string s = "";
+                    string keyword = "";
+                    mod.moduleImageDataList.Clear();
+                    resourcesBitmapList.Clear();
+                    ImageData imd;
+                    mod.moduleAreasObjects.Clear();
+                    Area ar;
+                    mod.moduleEncountersList.Clear();
+                    Encounter enc;
+                    mod.moduleConvoList.Clear();
+                    Convo cnv;
+
+                    for (int i = 0; i < 99999; i++)
+                    {
+                        s = sr.ReadLine();
+
+                        #region Look for keyword line
+                        if (s == null)
+                        {
+                            break;
+                        }
+                        else if (s.Equals("END"))
+                        {
+                            break;
+                        }
+                        else if (s.Equals(""))
+                        {
+                            continue;
+                        }
+                        else if (s.Equals("MODULEINFO"))
+                        {
+                            keyword = "MODULEINFO";
+                            continue;
+                        }
+                        else if (s.Equals("TITLEIMAGE"))
+                        {
+                            keyword = "TITLEIMAGE";
+                            continue;
+                        }
+                        else if (s.Equals("MODULE"))
+                        {
+                            keyword = "MODULE";
+                            continue;
+                        }
+                        else if (s.Equals("AREAS"))
+                        {
+                            keyword = "AREAS";
+                            continue;
+                        }
+                        else if (s.Equals("ENCOUNTERS"))
+                        {
+                            keyword = "ENCOUNTERS";
+                            continue;
+                        }
+                        else if (s.Equals("CONVOS"))
+                        {
+                            keyword = "CONVOS";
+                            continue;
+                        }
+                        else if (s.Equals("IMAGES"))
+                        {
+                            keyword = "IMAGES";
+                            continue;
+                        }
+                        #endregion
+
+                        #region Process line if not a keyword line
+                        if (keyword.Equals("MODULEINFO"))
+                        {
+                            continue;
+                        }
+                        else if (keyword.Equals("TITLEIMAGE"))
+                        {
+                            imd = (ImageData)JsonConvert.DeserializeObject(s, typeof(ImageData));
+                            mod.moduleImageDataList.Add(imd);
+                            resourcesBitmapList.Add(imd.name, bsc.ConvertImageDataToBitmap(imd));
+                        }
+                        else if (keyword.Equals("MODULE"))
+                        {
+                            mod = (Module)JsonConvert.DeserializeObject(s, typeof(Module));
+                        }
+                        else if (keyword.Equals("AREAS"))
+                        {
+                            ar = (Area)JsonConvert.DeserializeObject(s, typeof(Area));
+                            mod.moduleAreasObjects.Add(ar);
+                        }
+                        else if (keyword.Equals("ENCOUNTERS"))
+                        {
+                            enc = (Encounter)JsonConvert.DeserializeObject(s, typeof(Encounter));
+                            mod.moduleEncountersList.Add(enc);
+                        }
+                        else if (keyword.Equals("CONVOS"))
+                        {
+                            cnv = (Convo)JsonConvert.DeserializeObject(s, typeof(Convo));
+                            mod.moduleConvoList.Add(cnv);
+                        }
+                        else if (keyword.Equals("IMAGES"))
+                        {
+                            imd = (ImageData)JsonConvert.DeserializeObject(s, typeof(ImageData));
+                            if (!mod.moduleImageDataList.Contains(imd))
+                            {
+                                mod.moduleImageDataList.Add(imd);
+                            }
+                            if (!resourcesBitmapList.ContainsKey(imd.name))
+                            {
+                                resourcesBitmapList.Add(imd.name, bsc.ConvertImageDataToBitmap(imd));
+                            }                            
+                        }
+                        #endregion
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to read Module for " + filename + ": " + ex.ToString());
+            }
+
+            /* OLD WAY
             using (StreamReader sr = File.OpenText(filename))
             {
                 string s = "";
@@ -303,7 +420,7 @@ namespace IB2ToolsetMini
                     resourcesBitmapList.Add(imd.name, bsc.ConvertImageDataToBitmap(imd));
                 }
             }
-
+            */
             //frmAreas.lbxAreas.DataSource = null;
             //frmAreas.lbxAreas.DataSource = mod.moduleAreasObjects;
             //frmAreas.lbxAreas.DisplayMember = "Filename";
@@ -814,6 +931,11 @@ namespace IB2ToolsetMini
                 }
                 //mod.VersionIB = game.IBVersion;
                 //mod.saveModuleFile(fullPathFilename, tsBtnJSON.Checked);
+                //save module info
+                saveModuleInfo(mod, fullPathFilename);
+                //save title image
+                saveTitleImage(mod, fullPathFilename);
+                //save mod
                 saveModule(mod, fullPathFilename);
                 //save areas
                 saveAreas(mod, fullPathFilename);
@@ -874,9 +996,35 @@ namespace IB2ToolsetMini
             }
             catch { MessageBox.Show("failed to createFiles"); }
         }
+        public void saveModuleInfo(Module mod, string moduleFullPathFilename)
+        {
+            File.WriteAllText(moduleFullPathFilename, "MODULEINFO" + Environment.NewLine);
+            //create ModuleInfo object
+            ModuleInfo modinfo = new ModuleInfo();
+            modinfo.moduleName = mod.moduleName;
+            modinfo.moduleLabelName = mod.moduleLabelName;
+            modinfo.moduleVersion = mod.moduleVersion;
+            modinfo.moduleDescription = mod.moduleDescription;
+            modinfo.titleImageName = mod.titleImageName;
+            string output = JsonConvert.SerializeObject(modinfo, Formatting.None);
+            File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
+        }
+        public void saveTitleImage(Module mod, string moduleFullPathFilename)
+        {
+            File.AppendAllText(moduleFullPathFilename, "TITLEIMAGE" + Environment.NewLine);            
+            foreach (ImageData imd in mod.moduleImageDataList)
+            {
+                //save out title image if one exists in the imagelist
+                if (imd.name.Equals(mod.titleImageName))
+                {
+                    string output = JsonConvert.SerializeObject(imd, Formatting.None);
+                    File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);
+                }                
+            }
+        }
         public void saveModule(Module mod, string moduleFullPathFilename)
         {
-            File.WriteAllText(moduleFullPathFilename, "MODULE" + Environment.NewLine);
+            File.AppendAllText(moduleFullPathFilename, "MODULE" + Environment.NewLine);
             string output = JsonConvert.SerializeObject(mod, Formatting.None);
             File.AppendAllText(moduleFullPathFilename, output + Environment.NewLine);            
         }

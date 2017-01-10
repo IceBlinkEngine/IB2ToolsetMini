@@ -221,6 +221,7 @@
     <Compile Include="ModuleEditor.Designer.cs">
       <DependentUpon>ModuleEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuleInfo.cs" />
     <Compile Include="ModuleNameDialog.cs">
       <SubType>Form</SubType>
     </Compile>
