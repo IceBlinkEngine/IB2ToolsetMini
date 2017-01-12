@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using WeifenLuo.WinFormsUI.Docking;
 using Newtonsoft.Json;
+using System.Drawing.Drawing2D;
 
 namespace IB2ToolsetMini
 {
@@ -1965,7 +1966,7 @@ namespace IB2ToolsetMini
         private void tsBtnResetDropDowns_Click(object sender, EventArgs e)
         {
             refreshDropDownLists();
-            addPrefix();
+            //addPrefix();
         }
         private void tsBtnDataCheck_Click(object sender, EventArgs e)
         {
@@ -2056,7 +2057,7 @@ namespace IB2ToolsetMini
         }
         public void addPrefix()
         {
-            foreach (Convo c in mod.moduleConvoList)
+            /*foreach (Convo c in mod.moduleConvoList)
             {
                 if ((c.NpcPortraitBitmap != "") && (!c.NpcPortraitBitmap.StartsWith("ptr_")) && (!c.NpcPortraitBitmap.StartsWith("nar_")))
                 {
@@ -2065,7 +2066,7 @@ namespace IB2ToolsetMini
                     c.NpcPortraitBitmap = "ptr_" + c.NpcPortraitBitmap;
                 }
                 addPrefixToConvoNodeImage(c.subNodes[0]);
-            }
+            }*/
             
             /*foreach (Area ar in mod.moduleAreasObjects)
             {
@@ -2119,6 +2120,7 @@ namespace IB2ToolsetMini
         }
         public List<string> graphics_needed = new List<string>();
         public List<string> tiles_needed = new List<string>();
+
         private void convertAnIB2ModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Ask for a module file/folder location
@@ -2197,14 +2199,26 @@ namespace IB2ToolsetMini
                     {
                         sp.range = (int)Math.Round((double)(sp.range / 2), MidpointRounding.AwayFromZero);
                         if (sp.range == 0) { sp.range = 1; }
+                        addToGraphicsList(sp.spellImage);
+                        addToGraphicsList(sp.spellImage + "_off");
+                        addToGraphicsList(sp.spriteFilename);
+                        addToGraphicsList(sp.spriteEndingFilename);
                     }
                     modIBmini.moduleTraitsList = loadTraitsFile(directory + "\\data\\traits.json");
                     foreach (Trait tr in modIBmini.moduleTraitsList)
                     {
                         tr.range = (int)Math.Round((double)(tr.range / 2), MidpointRounding.AwayFromZero);
                         if (tr.range == 0) { tr.range = 1; }
+                        addToGraphicsList(tr.traitImage);
+                        addToGraphicsList(tr.traitImage + "_off");
+                        addToGraphicsList(tr.spriteFilename);
+                        addToGraphicsList(tr.spriteEndingFilename);
                     }
                     modIBmini.moduleEffectsList = loadEffectsFile(directory + "\\data\\effects.json");
+                    foreach (Effect ef in modIBmini.moduleEffectsList)
+                    {
+                        addToGraphicsList(ef.spriteFilename);
+                    }
 
                     //LOAD all areas, convos, ibscripts, and encounters and convert to new format as needed
                     ImportAreas(modIBmini, directory);
@@ -2230,7 +2244,7 @@ namespace IB2ToolsetMini
                         }
                     }
                     ImportConvos(modIBmini, directory);
-                    //TODO add portrait images to the graphics needed list
+                    //add portrait images to the graphics needed list
                     foreach (Convo cnv in modIBmini.moduleConvoList)
                     {
                         addToGraphicsList(cnv.NpcPortraitBitmap);
@@ -2346,7 +2360,8 @@ namespace IB2ToolsetMini
                     }
                     if (File.Exists(originalFolderPath + "\\graphics\\" + file))
                     {
-                        File.Copy(originalFolderPath + "\\graphics\\" + file, folderPath + "\\graphics\\" + file, true);
+                        //File.Copy(originalFolderPath + "\\graphics\\" + file, folderPath + "\\graphics\\" + file, true);
+                        ResizeToIBminiIfNeeded((new Bitmap(originalFolderPath + "\\graphics\\" + file))).Save(folderPath + "\\graphics\\" + file);
                     }
                     else
                     {
@@ -2370,7 +2385,8 @@ namespace IB2ToolsetMini
                     }
                     if (File.Exists(originalFolderPath + "\\tiles\\" + file))
                     {
-                        File.Copy(originalFolderPath + "\\tiles\\" + file, folderPath + "\\tiles\\" + file, true);
+                        //File.Copy(originalFolderPath + "\\tiles\\" + file, folderPath + "\\tiles\\" + file, true);
+                        ResizeToIBminiIfNeeded((new Bitmap(originalFolderPath + "\\tiles\\" + file))).Save(folderPath + "\\tiles\\" + file);
                     }
                     else
                     {
@@ -2385,6 +2401,76 @@ namespace IB2ToolsetMini
 
             MessageBox.Show("All graphics and tile files used have been copied to a folder called '_GraphicsUsed' in the module folder. Verify that the files match the '_IB2ConversionSummary.txt' list.");
         }
+        public Bitmap ResizeToIBminiIfNeeded(Bitmap b)
+        {
+            Bitmap returnBitmap = new Bitmap(48, 48);
+            Rectangle source = new Rectangle(0, 0, b.Width, b.Height);
+            Rectangle target = new Rectangle(0, 0, 48, 48);
+            //50x50 (48x48), 100x100 (48x48), 100x200 (48x96), 110x170 (55x85), 200x50 (192x48), 600x100 (192x48), 200x200 (96x96), 200x400(96x192), 400x200 (200x100)
+            if ((b.Width == 100) && (b.Height == 100))
+            {
+                returnBitmap = new Bitmap(48, 48);
+                target = new Rectangle(0, 0, 48, 48);
+            }
+            else if ((b.Width == 50) && (b.Height == 50))
+            {
+                returnBitmap = new Bitmap(48, 48);
+                target = new Rectangle(0, 0, 48, 48);
+            }
+            else if ((b.Width == 100) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(48, 96);
+                target = new Rectangle(0, 0, 48, 96);
+            }
+            else if ((b.Width == 110) && (b.Height == 170))
+            {
+                returnBitmap = new Bitmap(55, 85);
+                target = new Rectangle(0, 0, 55, 85);
+            }
+            else if ((b.Width == 200) && (b.Height == 50))
+            {
+                returnBitmap = new Bitmap(192, 48);
+                target = new Rectangle(0, 0, 192, 48);
+            }
+            else if ((b.Width == 600) && (b.Height == 150))
+            {
+                returnBitmap = new Bitmap(192, 48);
+                target = new Rectangle(0, 0, 192, 48);
+            }
+            else if ((b.Width == 200) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(96, 96);
+                target = new Rectangle(0, 0, 96, 96);
+            }
+            else if ((b.Width == 200) && (b.Height == 400))
+            {
+                returnBitmap = new Bitmap(96, 192);
+                target = new Rectangle(0, 0, 96, 192);
+            }
+            else if ((b.Width == 400) && (b.Height == 200))
+            {
+                returnBitmap = new Bitmap(200, 100);
+                target = new Rectangle(0, 0, 200, 100);
+            }
+            else if ((b.Width == 800) && (b.Height == 400))
+            {
+                returnBitmap = new Bitmap(200, 100);
+                target = new Rectangle(0, 0, 200, 100);
+            }
+            else //odd size or already IBmini size
+            {
+                return b;
+            }
+
+            using (Graphics g = Graphics.FromImage(returnBitmap))
+            {
+                g.InterpolationMode = InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = PixelOffsetMode.Half;
+                g.DrawImage((Image)b, target, source, GraphicsUnit.Pixel);
+            }
+            return returnBitmap;
+        }
+        
         public void addToGraphicsList(string toAdd)
         {
             if (!graphics_needed.Contains(toAdd))
