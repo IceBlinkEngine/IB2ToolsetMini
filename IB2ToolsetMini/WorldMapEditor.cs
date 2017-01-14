@@ -75,7 +75,7 @@ namespace IB2ToolsetMini
             prntForm = p;
             area = prntForm.mod.moduleAreasObjects[prntForm._selectedLbxAreaIndex];
             resetTileToBePlacedSettings();            
-            createTileImageButtons();            
+            createTileImageButtons("t_");            
         }
         private void WorldMapEditor_Load(object sender, EventArgs e)
         {
@@ -121,15 +121,34 @@ namespace IB2ToolsetMini
                 //GDI device = Graphics.FromImage(surface);
             }
         }
-        private void createTileImageButtons()
+        private void createTileImageButtons(string filter)
         {
             try
             {
+                //create list of tile prefixes
+                //loop through list and create buttons using name of prefix for btn.Text
+                this.flTileFilters.Controls.Clear();
+                foreach (string f in prntForm.tilePrefixFilterList)
+                {
+                    Button btnTileFilter = new Button();
+                    btnTileFilter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+                    btnTileFilter.FlatAppearance.BorderSize = 2;
+                    btnTileFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+                    btnTileFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+                    btnTileFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                    btnTileFilter.Size = new System.Drawing.Size(52, 25);
+                    btnTileFilter.Text = f;
+                    btnTileFilter.UseVisualStyleBackColor = true;
+                    btnTileFilter.Click += new System.EventHandler(this.btnTileFilter_Click);
+                    this.flTileFilters.Controls.Add(btnTileFilter);
+                }
+                //resize groupbox4 and change start y location of panel3
+                                
                 this.flPanelTab1.Controls.Clear();
                 //tileList.Clear();
                 foreach (ImageData imd in mod.moduleImageDataList)
                 {
-                    if (!imd.name.StartsWith("t_"))
+                    if (!imd.name.StartsWith(filter))
                     {
                         continue;
                     }
@@ -152,7 +171,10 @@ namespace IB2ToolsetMini
                 }
                 foreach (string f in Directory.GetFiles(prntForm._mainDirectory + "\\default\\NewModule\\tiles\\", "*.png"))
                 {
-                    if (!Path.GetFileName(f).StartsWith("t_")) { continue; }
+                    if (!Path.GetFileName(f).StartsWith(filter))
+                    {
+                        continue;
+                    }
                     string filename = Path.GetFullPath(f);
                     using (Bitmap bit = new Bitmap(filename))
                     {
@@ -1843,6 +1865,11 @@ namespace IB2ToolsetMini
             prntForm.selectedLevelMapPropTag = "";
             prntForm.CreatureSelected = false;
             prntForm.PropSelected = false;
+        }
+        private void btnTileFilter_Click(object sender, EventArgs e)
+        {
+            Button selectBtn = (Button)sender;
+            createTileImageButtons(selectBtn.Text);
         }
         private void rbtnInfo_CheckedChanged(object sender, EventArgs e)
         {

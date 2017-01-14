@@ -68,7 +68,7 @@ namespace IB2ToolsetMini
             mod = m;
             prntForm = p;
             thisEnc = prntForm.mod.moduleEncountersList[prntForm._selectedLbxEncounterIndex];
-            createTileImageButtons();            
+            createTileImageButtons("t_");            
             refreshCmbItems();
             refreshLbxItems();
             refreshGoldDrop();
@@ -173,15 +173,33 @@ namespace IB2ToolsetMini
                 commonBitmapList.Add(imd.name, ConvertGDIBitmapToD2D(prntForm.bsc.ConvertImageDataToBitmap(imd)));
             }
         }
-        private void createTileImageButtons()
+        private void createTileImageButtons(string filter)
         {
             try
             {
+                //create list of tile prefixes
+                //loop through list and create buttons using name of prefix for btn.Text
+                this.flTileFilters.Controls.Clear();
+                foreach (string f in prntForm.tilePrefixFilterList)
+                {
+                    Button btnTileFilter = new Button();
+                    btnTileFilter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+                    btnTileFilter.FlatAppearance.BorderSize = 2;
+                    btnTileFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+                    btnTileFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+                    btnTileFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                    btnTileFilter.Size = new System.Drawing.Size(52, 25);
+                    btnTileFilter.Text = f;
+                    btnTileFilter.UseVisualStyleBackColor = true;
+                    btnTileFilter.Click += new System.EventHandler(this.btnTileFilter_Click);
+                    this.flTileFilters.Controls.Add(btnTileFilter);
+                }
+
                 this.flPanelTab1.Controls.Clear();
                 //tileList.Clear();
                 foreach (ImageData imd in mod.moduleImageDataList)
                 {
-                    if (!imd.name.StartsWith("t_"))
+                    if (!imd.name.StartsWith(filter))
                     {
                         continue;
                     }
@@ -204,7 +222,7 @@ namespace IB2ToolsetMini
                 }
                 foreach (string f in Directory.GetFiles(prntForm._mainDirectory + "\\default\\NewModule\\tiles\\", "*.png"))
                 {
-                    if (!Path.GetFileName(f).StartsWith("t_")) { continue; }
+                    if (!Path.GetFileName(f).StartsWith(filter)) { continue; }
                     string filename = Path.GetFullPath(f);
                     using (Bitmap bit = new Bitmap(filename))
                     {
@@ -1771,6 +1789,11 @@ namespace IB2ToolsetMini
             rbtnPaintTile.Checked = true;
             ResetAllToFalse();
             tileSelected = true;
+        }
+        private void btnTileFilter_Click(object sender, EventArgs e)
+        {
+            Button selectBtn = (Button)sender;
+            createTileImageButtons(selectBtn.Text);
         }
         private void EncounterEditor_FormClosing(object sender, FormClosingEventArgs e)
         {

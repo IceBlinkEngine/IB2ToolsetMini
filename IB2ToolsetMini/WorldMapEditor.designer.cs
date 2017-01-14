@@ -77,13 +77,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerRenderLoop = new System.Windows.Forms.Timer(this.components);
-            this.panelNoScrollOnFocus1 = new IB2ToolsetMini.PanelNoScrollOnFocus();
-            this.panelView = new System.Windows.Forms.Panel();
             this.gbMoveProp = new System.Windows.Forms.GroupBox();
             this.btnMovePropDown = new System.Windows.Forms.Button();
             this.btnMovePropUp = new System.Windows.Forms.Button();
             this.btnMovePropLeft = new System.Windows.Forms.Button();
             this.btnMovePropRight = new System.Windows.Forms.Button();
+            this.flTileFilters = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlFilters = new System.Windows.Forms.Panel();
+            this.panelNoScrollOnFocus1 = new IB2ToolsetMini.PanelNoScrollOnFocus();
+            this.panelView = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -93,8 +95,9 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbMapSize.SuspendLayout();
-            this.panelNoScrollOnFocus1.SuspendLayout();
             this.gbMoveProp.SuspendLayout();
+            this.pnlFilters.SuspendLayout();
+            this.panelNoScrollOnFocus1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFillWithSelected
@@ -113,9 +116,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.AutoScroll = true;
             this.panel3.Controls.Add(this.flPanelTab1);
-            this.panel3.Location = new System.Drawing.Point(1028, 12);
+            this.panel3.Location = new System.Drawing.Point(1028, 178);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(140, 713);
+            this.panel3.Size = new System.Drawing.Size(140, 554);
             this.panel3.TabIndex = 68;
             // 
             // flPanelTab1
@@ -619,34 +622,6 @@
             this.timerRenderLoop.Interval = 16;
             this.timerRenderLoop.Tick += new System.EventHandler(this.timerRenderLoop_Tick);
             // 
-            // panelNoScrollOnFocus1
-            // 
-            this.panelNoScrollOnFocus1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelNoScrollOnFocus1.AutoScroll = true;
-            this.panelNoScrollOnFocus1.BackColor = System.Drawing.Color.Black;
-            this.panelNoScrollOnFocus1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelNoScrollOnFocus1.Controls.Add(this.panelView);
-            this.panelNoScrollOnFocus1.Location = new System.Drawing.Point(260, 12);
-            this.panelNoScrollOnFocus1.Name = "panelNoScrollOnFocus1";
-            this.panelNoScrollOnFocus1.Size = new System.Drawing.Size(765, 713);
-            this.panelNoScrollOnFocus1.TabIndex = 77;
-            // 
-            // panelView
-            // 
-            this.panelView.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelView.ContextMenuStrip = this.contextMenuStrip1;
-            this.panelView.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.panelView.Location = new System.Drawing.Point(-2, -2);
-            this.panelView.Name = "panelView";
-            this.panelView.Size = new System.Drawing.Size(5000, 5000);
-            this.panelView.TabIndex = 16;
-            this.panelView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelView_MouseClick);
-            this.panelView.MouseEnter += new System.EventHandler(this.panelView_MouseEnter);
-            this.panelView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelView_MouseMove);
-            this.panelView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panelView_PreviewKeyDown);
-            // 
             // gbMoveProp
             // 
             this.gbMoveProp.Controls.Add(this.btnMovePropDown);
@@ -700,11 +675,59 @@
             this.btnMovePropRight.UseVisualStyleBackColor = true;
             this.btnMovePropRight.Click += new System.EventHandler(this.btnMovePropRight_Click);
             // 
+            // flTileFilters
+            // 
+            this.flTileFilters.Location = new System.Drawing.Point(3, 5);
+            this.flTileFilters.Name = "flTileFilters";
+            this.flTileFilters.Size = new System.Drawing.Size(118, 300);
+            this.flTileFilters.TabIndex = 0;
+            // 
+            // pnlFilters
+            // 
+            this.pnlFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlFilters.AutoScroll = true;
+            this.pnlFilters.Controls.Add(this.flTileFilters);
+            this.pnlFilters.Location = new System.Drawing.Point(1028, 12);
+            this.pnlFilters.MaximumSize = new System.Drawing.Size(140, 160);
+            this.pnlFilters.MinimumSize = new System.Drawing.Size(140, 160);
+            this.pnlFilters.Name = "pnlFilters";
+            this.pnlFilters.Size = new System.Drawing.Size(140, 160);
+            this.pnlFilters.TabIndex = 69;
+            // 
+            // panelNoScrollOnFocus1
+            // 
+            this.panelNoScrollOnFocus1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelNoScrollOnFocus1.AutoScroll = true;
+            this.panelNoScrollOnFocus1.BackColor = System.Drawing.Color.Black;
+            this.panelNoScrollOnFocus1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelNoScrollOnFocus1.Controls.Add(this.panelView);
+            this.panelNoScrollOnFocus1.Location = new System.Drawing.Point(260, 12);
+            this.panelNoScrollOnFocus1.Name = "panelNoScrollOnFocus1";
+            this.panelNoScrollOnFocus1.Size = new System.Drawing.Size(765, 713);
+            this.panelNoScrollOnFocus1.TabIndex = 77;
+            // 
+            // panelView
+            // 
+            this.panelView.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelView.ContextMenuStrip = this.contextMenuStrip1;
+            this.panelView.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.panelView.Location = new System.Drawing.Point(-2, -2);
+            this.panelView.Name = "panelView";
+            this.panelView.Size = new System.Drawing.Size(5000, 5000);
+            this.panelView.TabIndex = 16;
+            this.panelView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelView_MouseClick);
+            this.panelView.MouseEnter += new System.EventHandler(this.panelView_MouseEnter);
+            this.panelView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelView_MouseMove);
+            this.panelView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panelView_PreviewKeyDown);
+            // 
             // WorldMapEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 737);
+            this.Controls.Add(this.pnlFilters);
             this.Controls.Add(this.gbMoveProp);
             this.Controls.Add(this.panelNoScrollOnFocus1);
             this.Controls.Add(this.gbMapSize);
@@ -735,8 +758,9 @@
             this.groupBox2.ResumeLayout(false);
             this.gbMapSize.ResumeLayout(false);
             this.gbMapSize.PerformLayout();
-            this.panelNoScrollOnFocus1.ResumeLayout(false);
             this.gbMoveProp.ResumeLayout(false);
+            this.pnlFilters.ResumeLayout(false);
+            this.panelNoScrollOnFocus1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -798,6 +822,8 @@
         private System.Windows.Forms.Button btnMovePropUp;
         private System.Windows.Forms.Button btnMovePropLeft;
         private System.Windows.Forms.Button btnMovePropRight;
+        private System.Windows.Forms.FlowLayoutPanel flTileFilters;
+        private System.Windows.Forms.Panel pnlFilters;
     }
 }
 

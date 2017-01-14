@@ -20,7 +20,7 @@ namespace IB2ToolsetMini
         public Module mod = new Module();
         public BitmapStringConversion bsc;
         public int tileSizeInPixels = 48;
-        public int standardTokenSize = 24;
+        public int standardTokenSize = 48;
         public Dictionary<string, Bitmap> resourcesBitmapList = new Dictionary<string, Bitmap>();
         public List<string> itemsParentNodeList = new List<string>();
         public List<string> creaturesParentNodeList = new List<string>();
@@ -28,6 +28,7 @@ namespace IB2ToolsetMini
         public List<string> scriptList = new List<string>();
         public List<Condition> copiedConditionalsList = new List<Condition>();
         public List<Action> copiedActionsList = new List<Action>();
+        public List<string> tilePrefixFilterList = new List<string>();
         public string selectedEncounterCreatureTag = "";
         public string selectedEncounterPropTag = "";
         public string selectedEncounterTriggerTag = "";
@@ -625,28 +626,62 @@ namespace IB2ToolsetMini
                         it.attackRange = 1;
                     }
                 }
-                //openCreatures(directory + "\\data\\creatures.json");
                 frmBlueprints.UpdateTreeViewCreatures();
                 loadCreatureSprites();
-                //openItems(directory + "\\data\\items.json");
                 frmBlueprints.UpdateTreeViewItems();
                 loadItemSprites();
-                //openContainers(directory + "\\data\\containers.json");
                 frmContainers.refreshListBoxContainers();
-                //openShops(directory + "\\data\\shops.json");
-                //openEncounters(directory + "\\data\\encounters.json");
                 frmEncounters.refreshListBoxEncounters();
-                //openProps(directory + "\\data\\props.json");
                 frmBlueprints.UpdateTreeViewProps();
                 loadPropSprites();
-                //openJournal(directory + "\\data\\journal.json");
-                //openPlayerClasses(directory + "\\data\\playerClasses.json");
-                //openRaces(directory + "\\data\\races.json");
-                //openSpells(directory + "\\data\\spells.json");
-                //openTraits(directory + "\\data\\traits.json");
-                //openEffects(directory + "\\data\\effects.json");
                 refreshDropDownLists();
                 this.Text = "IceBlink 2 Mini Toolset - " + mod.moduleLabelName;
+                createTilePrefixFilterList();
+            }
+        }
+        public void createTilePrefixFilterList()
+        {
+            tilePrefixFilterList.Clear();
+            tilePrefixFilterList.Add("t_");
+            try
+            {
+                foreach (ImageData imd in mod.moduleImageDataList)
+                {
+                    if (!imd.name.StartsWith("t_"))
+                    {
+                        continue;
+                    }
+                    string[] split = imd.name.Split('_');
+                    if (split.Length > 2)
+                    {
+                        string s = "t_" + split[1];
+                        if (!tilePrefixFilterList.Contains(s))
+                        {
+                            tilePrefixFilterList.Add(s);
+                        }                        
+                    }
+                }
+                foreach (string f in Directory.GetFiles(_mainDirectory + "\\default\\NewModule\\tiles\\", "*.png"))
+                {
+                    if (!Path.GetFileName(f).StartsWith("t_"))
+                    {
+                        continue;
+                    }
+                    string filename = Path.GetFileNameWithoutExtension(f);
+                    string[] split = filename.Split('_');
+                    if (split.Length > 2)
+                    {
+                        string s = "t_" + split[1];
+                        if (!tilePrefixFilterList.Contains(s))
+                        {
+                            tilePrefixFilterList.Add(s);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error: " + ex.ToString());
             }
         }
         public void refreshDropDownLists()
