@@ -2860,5 +2860,114 @@ namespace IB2ToolsetMini
             NWNtoIBmini convertNWN = new NWNtoIBmini(this);
             convertNWN.ShowDialog();
         }
+
+        private void tsBtnChangePrefix_Click(object sender, EventArgs e)
+        {
+            readPrefixChangeFile();
+        }
+
+        public void readPrefixChangeFile()
+        {
+            string[] lines = File.ReadAllLines(_mainDirectory + "\\prefix_change.txt");
+            foreach (string line in lines)
+            {
+                if (line.Trim(' ').StartsWith("//"))
+                {
+                    continue;
+                }
+                string[] name = line.Split(',');
+                if (name.Length > 1)
+                {
+                    switchGraphicsFilenames(name[0].Trim(' '), name[1].Trim(' '));
+                }                
+            }
+        }
+        public void switchGraphicsFilenames(string oldname, string newname)
+        {
+            //iterate through each line and get old name and new name
+            foreach (Creature crt in mod.moduleCreaturesList)
+            {
+                if (crt.cr_projSpriteFilename.Equals(oldname)) { crt.cr_projSpriteFilename = newname; }
+                if (crt.cr_spriteEndingFilename.Equals(oldname)) { crt.cr_spriteEndingFilename = newname; }
+                if (crt.cr_tokenFilename.Equals(oldname)) { crt.cr_tokenFilename = newname; }
+            }
+            foreach (Item it in mod.moduleItemsList)
+            {
+                if (it.projectileSpriteFilename.Equals(oldname)) { it.projectileSpriteFilename = newname; }
+                if (it.spriteEndingFilename.Equals(oldname)) { it.spriteEndingFilename = newname; }
+                if (it.itemImage.Equals(oldname)) { it.itemImage = newname; }
+            }
+            //add prop images to the graphics needed list
+            foreach (Prop prp in mod.modulePropsList)
+            {
+                if (prp.ImageFileName.Equals(oldname)) { prp.ImageFileName = newname; }
+            }
+            foreach (Area ar in mod.moduleAreasObjects)
+            {
+                for(int i = 0; i < ar.Layer1Filename.Count; i++)
+                {
+                    if (ar.Layer1Filename[i].Equals(oldname)) { ar.Layer1Filename[i] = newname; }
+                }
+                for (int i = 0; i < ar.Layer2Filename.Count; i++)
+                {
+                    if (ar.Layer2Filename[i].Equals(oldname)) { ar.Layer2Filename[i] = newname; }
+                }
+                for (int i = 0; i < ar.Layer3Filename.Count; i++)
+                {
+                    if (ar.Layer3Filename[i].Equals(oldname)) { ar.Layer3Filename[i] = newname; }
+                }
+                //add prop images to the graphics needed list
+                foreach (Prop prp in ar.Props)
+                {
+                    if (prp.ImageFileName.Equals(oldname)) { prp.ImageFileName = newname; }
+                }
+            }            
+            foreach (Encounter enc in mod.moduleEncountersList)
+            {
+                for (int i = 0; i < enc.Layer1Filename.Count; i++)
+                {
+                    if (enc.Layer1Filename[i].Equals(oldname)) { enc.Layer1Filename[i] = newname; }
+                }
+                for (int i = 0; i < enc.Layer2Filename.Count; i++)
+                {
+                    if (enc.Layer2Filename[i].Equals(oldname)) { enc.Layer2Filename[i] = newname; }
+                }
+                for (int i = 0; i < enc.Layer3Filename.Count; i++)
+                {
+                    if (enc.Layer3Filename[i].Equals(oldname)) { enc.Layer3Filename[i] = newname; }
+                }
+                foreach (Prop prp in enc.propsList)
+                {
+                    if (prp.ImageFileName.Equals(oldname)) { prp.ImageFileName = newname; }
+                }
+            }
+            foreach (Convo cnv in mod.moduleConvoList)
+            {
+                if (cnv.NpcPortraitBitmap.Equals(oldname)) { cnv.NpcPortraitBitmap = newname; }
+                foreach (ContentNode subNode in cnv.subNodes)
+                {
+                    switchAllNodePortraits(subNode, oldname, newname);
+                    if (subNode.NodePortraitBitmap.Equals(oldname)) { subNode.NodePortraitBitmap = newname; }
+                }
+            }
+            //go through convos, items, area tiles, encounter tiles, 
+        }
+        public ContentNode switchAllNodePortraits(ContentNode node, string oldname, string newname)
+        {
+            ContentNode tempNode = null;
+            if (node != null)
+            {
+                if (node.NodePortraitBitmap.Equals(oldname)) { node.NodePortraitBitmap = newname; }
+            }
+            foreach (ContentNode subNode in node.subNodes)
+            {
+                tempNode = switchAllNodePortraits(subNode, oldname, newname);
+                if (tempNode != null)
+                {
+                    return tempNode;
+                }
+            }
+            return tempNode;
+        }
     }
 }

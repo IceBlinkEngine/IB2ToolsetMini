@@ -79,6 +79,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tilesUsedInModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertAnIB2ModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertANWNModuleToIBminiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wizardsEditorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moduleEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mergerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +100,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.convertANWNModuleToIBminiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsBtnChangePrefix = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +115,8 @@
             this.tsbSaveIncremental,
             this.toolStripSeparator4,
             this.tsBtnResetDropDowns,
-            this.tsBtnDataCheck});
+            this.tsBtnDataCheck,
+            this.tsBtnChangePrefix});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(817, 27);
@@ -401,6 +403,13 @@
             this.convertAnIB2ModuleToolStripMenuItem.Text = "Convert an IB2 module";
             this.convertAnIB2ModuleToolStripMenuItem.Click += new System.EventHandler(this.convertAnIB2ModuleToolStripMenuItem_Click);
             // 
+            // convertANWNModuleToIBminiToolStripMenuItem
+            // 
+            this.convertANWNModuleToIBminiToolStripMenuItem.Name = "convertANWNModuleToIBminiToolStripMenuItem";
+            this.convertANWNModuleToIBminiToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.convertANWNModuleToIBminiToolStripMenuItem.Text = "Convert a NWN module to IBmini";
+            this.convertANWNModuleToIBminiToolStripMenuItem.Click += new System.EventHandler(this.convertANWNModuleToIBminiToolStripMenuItem_Click);
+            // 
             // wizardsEditorsToolStripMenuItem
             // 
             this.wizardsEditorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -581,12 +590,17 @@
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // convertANWNModuleToIBminiToolStripMenuItem
+            // tsBtnChangePrefix
             // 
-            this.convertANWNModuleToIBminiToolStripMenuItem.Name = "convertANWNModuleToIBminiToolStripMenuItem";
-            this.convertANWNModuleToIBminiToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
-            this.convertANWNModuleToIBminiToolStripMenuItem.Text = "Convert a NWN module to IBmini";
-            this.convertANWNModuleToIBminiToolStripMenuItem.Click += new System.EventHandler(this.convertANWNModuleToIBminiToolStripMenuItem_Click);
+            this.tsBtnChangePrefix.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tsBtnChangePrefix.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsBtnChangePrefix.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnChangePrefix.Name = "tsBtnChangePrefix";
+            this.tsBtnChangePrefix.Size = new System.Drawing.Size(138, 24);
+            this.tsBtnChangePrefix.Text = "Update Graphics Names";
+            this.tsBtnChangePrefix.ToolTipText = "Runs the name changes from the \'prefix_change.txt\' file swapping any image name. " +
+    "See the \'prefix_change.txt\' file for more info.";
+            this.tsBtnChangePrefix.Click += new System.EventHandler(this.tsBtnChangePrefix_Click);
             // 
             // ParentForm
             // 
@@ -670,6 +684,7 @@
         private System.Windows.Forms.ToolStripMenuItem convertAnIB2ModuleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moduleEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem convertANWNModuleToIBminiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsBtnChangePrefix;
     }
 }
 
