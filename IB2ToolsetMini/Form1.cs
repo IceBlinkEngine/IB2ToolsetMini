@@ -654,7 +654,7 @@ namespace IB2ToolsetMini
                     string[] split = imd.name.Split('_');
                     if (split.Length > 2)
                     {
-                        string s = "t_" + split[1];
+                        string s = "t_" + split[1] + "_";
                         if (!tilePrefixFilterList.Contains(s))
                         {
                             tilePrefixFilterList.Add(s);
@@ -671,7 +671,7 @@ namespace IB2ToolsetMini
                     string[] split = filename.Split('_');
                     if (split.Length > 2)
                     {
-                        string s = "t_" + split[1];
+                        string s = "t_" + split[1] + "_";
                         if (!tilePrefixFilterList.Contains(s))
                         {
                             tilePrefixFilterList.Add(s);
@@ -2864,6 +2864,7 @@ namespace IB2ToolsetMini
         private void tsBtnChangePrefix_Click(object sender, EventArgs e)
         {
             readPrefixChangeFile();
+            MessageBox.Show("Finished swapping names.");
         }
 
         public void readPrefixChangeFile()

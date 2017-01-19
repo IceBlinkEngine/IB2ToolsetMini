@@ -265,7 +265,110 @@ namespace IB2ToolsetMini
         #region Methods
         public void loadMergeModule(string modfilepath)
         {
-            using (StreamReader sr = File.OpenText(modfilepath))
+            //new method
+            try
+            {
+                //used for opening the entire module files
+                using (StreamReader sr = File.OpenText(modfilepath))
+                {
+                    string s = "";
+                    string keyword = "";
+                    mergeMod.moduleImageDataList.Clear();
+                    mergeMod.moduleAreasObjects.Clear();
+                    Area ar;
+                    mergeMod.moduleEncountersList.Clear();
+                    Encounter enc;
+                    mergeMod.moduleConvoList.Clear();
+                    Convo cnv;
+
+                    for (int i = 0; i < 99999; i++)
+                    {
+                        s = sr.ReadLine();
+
+                        #region Look for keyword line
+                        if (s == null)
+                        {
+                            break;
+                        }
+                        else if (s.Equals("END"))
+                        {
+                            break;
+                        }
+                        else if (s.Equals(""))
+                        {
+                            continue;
+                        }
+                        else if (s.Equals("MODULEINFO"))
+                        {
+                            keyword = "MODULEINFO";
+                            continue;
+                        }
+                        else if (s.Equals("TITLEIMAGE"))
+                        {
+                            keyword = "TITLEIMAGE";
+                            continue;
+                        }
+                        else if (s.Equals("MODULE"))
+                        {
+                            keyword = "MODULE";
+                            continue;
+                        }
+                        else if (s.Equals("AREAS"))
+                        {
+                            keyword = "AREAS";
+                            continue;
+                        }
+                        else if (s.Equals("ENCOUNTERS"))
+                        {
+                            keyword = "ENCOUNTERS";
+                            continue;
+                        }
+                        else if (s.Equals("CONVOS"))
+                        {
+                            keyword = "CONVOS";
+                            continue;
+                        }
+                        else if (s.Equals("IMAGES"))
+                        {
+                            keyword = "IMAGES";
+                            continue;
+                        }
+                        #endregion
+
+                        #region Process line if not a keyword line
+                        if (keyword.Equals("MODULEINFO"))
+                        {
+                            continue;
+                        }
+                        else if (keyword.Equals("MODULE"))
+                        {
+                            mergeMod = (Module)JsonConvert.DeserializeObject(s, typeof(Module));
+                        }
+                        else if (keyword.Equals("AREAS"))
+                        {
+                            ar = (Area)JsonConvert.DeserializeObject(s, typeof(Area));
+                            mergeMod.moduleAreasObjects.Add(ar);
+                        }
+                        else if (keyword.Equals("ENCOUNTERS"))
+                        {
+                            enc = (Encounter)JsonConvert.DeserializeObject(s, typeof(Encounter));
+                            mergeMod.moduleEncountersList.Add(enc);
+                        }
+                        else if (keyword.Equals("CONVOS"))
+                        {
+                            cnv = (Convo)JsonConvert.DeserializeObject(s, typeof(Convo));
+                            mergeMod.moduleConvoList.Add(cnv);
+                        }
+                        #endregion
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to read Module for " + modfilepath + ": " + ex.ToString());
+            }
+
+            /*using (StreamReader sr = File.OpenText(modfilepath))
             {
                 string s = "";
                 s = sr.ReadLine();
@@ -325,7 +428,7 @@ namespace IB2ToolsetMini
                 }
                 //Read in the images
                 mergeMod.moduleImageDataList.Clear();
-            }
+            }*/
         }
         private void refreshMainListBox()
         {

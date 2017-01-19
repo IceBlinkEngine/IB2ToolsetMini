@@ -84,7 +84,7 @@ namespace IB2ToolsetMini
                 btnNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
                 btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                 btnNew.Name = kvp.Key;
-                btnNew.Size = new System.Drawing.Size(kvp.Value.Width * 2, kvp.Value.Height * 2);
+                btnNew.Size = new System.Drawing.Size(kvp.Value.Width, kvp.Value.Height);
                 btnNew.TabIndex = 1;
                 btnNew.Text = kvp.Key;
                 btnNew.UseVisualStyleBackColor = true;
