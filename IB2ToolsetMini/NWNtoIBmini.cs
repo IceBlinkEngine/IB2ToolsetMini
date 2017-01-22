@@ -982,10 +982,10 @@ namespace IB2ToolsetMini
                 area.Layer1Filename.Add("t_f_grass");
                 area.Layer1Rotate.Add(0);
                 area.Layer1Mirror.Add(0);
-                area.Layer2Filename.Add("t_blank");
+                area.Layer2Filename.Add("t_a_blank");
                 area.Layer2Rotate.Add(0);
                 area.Layer2Mirror.Add(0);
-                area.Layer3Filename.Add("t_blank");
+                area.Layer3Filename.Add("t_a_blank");
                 area.Layer3Rotate.Add(0);
                 area.Layer3Mirror.Add(0);
                 area.Walkable.Add(1);

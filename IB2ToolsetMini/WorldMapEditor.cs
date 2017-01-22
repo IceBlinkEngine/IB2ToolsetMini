@@ -248,7 +248,7 @@ namespace IB2ToolsetMini
                                         tile.Layer0Filename = area.sourceBitmapName + tileCounter.ToString();
                                     }
                                     catch { }
-                                    if ((tile.Layer0Filename != null) && (tile.Layer0Filename != "") && tile.Layer0Filename != "t_blank")
+                                    if ((tile.Layer0Filename != null) && (tile.Layer0Filename != "") && tile.Layer0Filename != "t_a_blank")
                                     {
                                         if (area.isPNGMap)
                                         {
@@ -1470,7 +1470,7 @@ namespace IB2ToolsetMini
                     for (int x = 0; x < area.MapSizeX; x++)
                     {                        
                         string tile = area.Layer1Filename[y * area.MapSizeX + x];
-                        if (!tile.Equals("t_blank"))
+                        if (!tile.Equals("t_a_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
                             if (scalerX == 0) { scalerX = 1.0f; }
@@ -1492,7 +1492,7 @@ namespace IB2ToolsetMini
                     for (int x = 0; x < area.MapSizeX; x++)
                     {
                         string tile = area.Layer2Filename[y * area.MapSizeX + x];
-                        if (!tile.Equals("t_blank"))
+                        if (!tile.Equals("t_a_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
                             if (scalerX == 0) { scalerX = 1.0f; }
@@ -1514,7 +1514,7 @@ namespace IB2ToolsetMini
                     for (int x = 0; x < area.MapSizeX; x++)
                     {
                         string tile = area.Layer3Filename[y * area.MapSizeX + x];
-                        if (!tile.Equals("t_blank"))
+                        if (!tile.Equals("t_a_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
                             if (scalerX == 0) { scalerX = 1.0f; }
@@ -1750,10 +1750,10 @@ namespace IB2ToolsetMini
                 area.Layer1Filename.Add("t_f_grass");
                 area.Layer1Rotate.Add(0);
                 area.Layer1Mirror.Add(0);
-                area.Layer2Filename.Add("t_blank");
+                area.Layer2Filename.Add("t_a_blank");
                 area.Layer2Rotate.Add(0);
                 area.Layer2Mirror.Add(0);
-                area.Layer3Filename.Add("t_blank");
+                area.Layer3Filename.Add("t_a_blank");
                 area.Layer3Rotate.Add(0);
                 area.Layer3Mirror.Add(0);
                 area.Walkable.Add(1);
@@ -2043,10 +2043,10 @@ namespace IB2ToolsetMini
                 area.Layer1Filename.Insert(i, "t_f_grass");
                 area.Layer1Rotate.Insert(i, 0);
                 area.Layer1Mirror.Insert(i, 0);
-                area.Layer2Filename.Insert(i, "t_blank");
+                area.Layer2Filename.Insert(i, "t_a_blank");
                 area.Layer2Rotate.Insert(i, 0);
                 area.Layer2Mirror.Insert(i, 0);
-                area.Layer3Filename.Insert(i, "t_blank");
+                area.Layer3Filename.Insert(i, "t_a_blank");
                 area.Layer3Rotate.Insert(i, 0);
                 area.Layer3Mirror.Insert(i, 0);
                 area.Walkable.Insert(i, 1);
@@ -2112,10 +2112,10 @@ namespace IB2ToolsetMini
                 area.Layer1Filename.Insert(i+1, "t_f_grass");
                 area.Layer1Rotate.Insert(i+1, 0);
                 area.Layer1Mirror.Insert(i+1, 0);
-                area.Layer2Filename.Insert(i+1, "t_blank");
+                area.Layer2Filename.Insert(i+1, "t_a_blank");
                 area.Layer2Rotate.Insert(i+1, 0);
                 area.Layer2Mirror.Insert(i+1, 0);
-                area.Layer3Filename.Insert(i + 1, "t_blank");
+                area.Layer3Filename.Insert(i + 1, "t_a_blank");
                 area.Layer3Rotate.Insert(i + 1, 0);
                 area.Layer3Mirror.Insert(i + 1, 0);
                 area.Walkable.Insert(i+1, 1);
@@ -2158,10 +2158,10 @@ namespace IB2ToolsetMini
                 area.Layer1Filename.Insert(0, "t_f_grass");
                 area.Layer1Rotate.Insert(0, 0);
                 area.Layer1Mirror.Insert(0, 0);
-                area.Layer2Filename.Insert(0, "t_blank");
+                area.Layer2Filename.Insert(0, "t_a_blank");
                 area.Layer2Rotate.Insert(0, 0);
                 area.Layer2Mirror.Insert(0, 0);
-                area.Layer3Filename.Insert(0, "t_blank");
+                area.Layer3Filename.Insert(0, "t_a_blank");
                 area.Layer3Rotate.Insert(0, 0);
                 area.Layer3Mirror.Insert(0, 0);
                 area.Walkable.Insert(0, 1);
@@ -2225,10 +2225,10 @@ namespace IB2ToolsetMini
                 area.Layer1Filename.Add("t_f_grass");
                 area.Layer1Rotate.Add(0);
                 area.Layer1Mirror.Add(0);
-                area.Layer2Filename.Add("t_blank");
+                area.Layer2Filename.Add("t_a_blank");
                 area.Layer2Rotate.Add(0);
                 area.Layer2Mirror.Add(0);
-                area.Layer3Filename.Add("t_blank");
+                area.Layer3Filename.Add("t_a_blank");
                 area.Layer3Rotate.Add(0);
                 area.Layer3Mirror.Add(0);
                 area.Walkable.Add(1);

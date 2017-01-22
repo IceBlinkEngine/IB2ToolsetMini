@@ -1366,7 +1366,7 @@ namespace IB2ToolsetMini
                     for (int x = 0; x < thisEnc.MapSizeX; x++)
                     {
                         string tile = thisEnc.Layer1Filename[y * thisEnc.MapSizeX + x];
-                        if (!tile.Equals("t_blank"))
+                        if (!tile.Equals("t_a_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
                             if (scalerX == 0) { scalerX = 1.0f; }
@@ -1389,7 +1389,7 @@ namespace IB2ToolsetMini
                     {
                         //TileEnc tile = thisEnc.encounterTiles[y * thisEnc.MapSizeX + x];
                         string tile = thisEnc.Layer2Filename[y * thisEnc.MapSizeX + x];
-                        if (!tile.Equals("t_blank"))
+                        if (!tile.Equals("t_a_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
                             if (scalerX == 0) { scalerX = 1.0f; }
@@ -1412,7 +1412,7 @@ namespace IB2ToolsetMini
                     {
                         //TileEnc tile = thisEnc.encounterTiles[y * thisEnc.MapSizeX + x];
                         string tile = thisEnc.Layer3Filename[y * thisEnc.MapSizeX + x];
-                        if (!tile.Equals("t_blank"))
+                        if (!tile.Equals("t_a_blank"))
                         {
                             float scalerX = GetFromBitmapList(tile).PixelSize.Width / prntForm.tileSizeInPixels;
                             if (scalerX == 0) { scalerX = 1.0f; }
@@ -1645,10 +1645,10 @@ namespace IB2ToolsetMini
                 thisEnc.Layer1Filename.Add("t_grass");
                 thisEnc.Layer1Rotate.Add(0);
                 thisEnc.Layer1Mirror.Add(0);
-                thisEnc.Layer2Filename.Add("t_blank");
+                thisEnc.Layer2Filename.Add("t_a_blank");
                 thisEnc.Layer2Rotate.Add(0);
                 thisEnc.Layer2Mirror.Add(0);
-                thisEnc.Layer3Filename.Add("t_blank");
+                thisEnc.Layer3Filename.Add("t_a_blank");
                 thisEnc.Layer3Rotate.Add(0);
                 thisEnc.Layer3Mirror.Add(0);
                 thisEnc.Walkable.Add(1);
@@ -1686,10 +1686,10 @@ namespace IB2ToolsetMini
                 thisEnc.Layer1Filename.Add("t_grass");
                 thisEnc.Layer1Rotate.Add(0);
                 thisEnc.Layer1Mirror.Add(0);
-                thisEnc.Layer2Filename.Add("t_blank");
+                thisEnc.Layer2Filename.Add("t_a_blank");
                 thisEnc.Layer2Rotate.Add(0);
                 thisEnc.Layer2Mirror.Add(0);
-                thisEnc.Layer3Filename.Add("t_blank");
+                thisEnc.Layer3Filename.Add("t_a_blank");
                 thisEnc.Layer3Rotate.Add(0);
                 thisEnc.Layer3Mirror.Add(0);
                 thisEnc.Walkable.Add(1);
@@ -1990,10 +1990,10 @@ namespace IB2ToolsetMini
                 thisEnc.Layer1Filename.Insert(i, "t_grass");
                 thisEnc.Layer1Rotate.Insert(i, 0);
                 thisEnc.Layer1Mirror.Insert(i, 0);
-                thisEnc.Layer2Filename.Insert(i, "t_blank");
+                thisEnc.Layer2Filename.Insert(i, "t_a_blank");
                 thisEnc.Layer2Rotate.Insert(i, 0);
                 thisEnc.Layer2Mirror.Insert(i, 0);
-                thisEnc.Layer3Filename.Insert(i, "t_blank");
+                thisEnc.Layer3Filename.Insert(i, "t_a_blank");
                 thisEnc.Layer3Rotate.Insert(i, 0);
                 thisEnc.Layer3Mirror.Insert(i, 0);
                 thisEnc.Walkable.Insert(i, 1);
@@ -2073,10 +2073,10 @@ namespace IB2ToolsetMini
                 thisEnc.Layer1Filename.Insert(i + 1, "t_grass");
                 thisEnc.Layer1Rotate.Insert(i + 1, 0);
                 thisEnc.Layer1Mirror.Insert(i + 1, 0);
-                thisEnc.Layer2Filename.Insert(i + 1, "t_blank");
+                thisEnc.Layer2Filename.Insert(i + 1, "t_a_blank");
                 thisEnc.Layer2Rotate.Insert(i + 1, 0);
                 thisEnc.Layer2Mirror.Insert(i + 1, 0);
-                thisEnc.Layer3Filename.Insert(i + 1, "t_blank");
+                thisEnc.Layer3Filename.Insert(i + 1, "t_a_blank");
                 thisEnc.Layer3Rotate.Insert(i + 1, 0);
                 thisEnc.Layer3Mirror.Insert(i + 1, 0);
                 thisEnc.Walkable.Insert(i + 1, 1);
@@ -2117,10 +2117,10 @@ namespace IB2ToolsetMini
                 thisEnc.Layer1Filename.Insert(0, "t_grass");
                 thisEnc.Layer1Rotate.Insert(0, 0);
                 thisEnc.Layer1Mirror.Insert(0, 0);
-                thisEnc.Layer2Filename.Insert(0, "t_blank");
+                thisEnc.Layer2Filename.Insert(0, "t_a_blank");
                 thisEnc.Layer2Rotate.Insert(0, 0);
                 thisEnc.Layer2Mirror.Insert(0, 0);
-                thisEnc.Layer3Filename.Insert(0, "t_blank");
+                thisEnc.Layer3Filename.Insert(0, "t_a_blank");
                 thisEnc.Layer3Rotate.Insert(0, 0);
                 thisEnc.Layer3Mirror.Insert(0, 0);
                 thisEnc.Walkable.Insert(0, 1);
@@ -2198,10 +2198,10 @@ namespace IB2ToolsetMini
                 thisEnc.Layer1Filename.Add("t_grass");
                 thisEnc.Layer1Rotate.Add(0);
                 thisEnc.Layer1Mirror.Add(0);
-                thisEnc.Layer2Filename.Add("t_blank");
+                thisEnc.Layer2Filename.Add("t_a_blank");
                 thisEnc.Layer2Rotate.Add(0);
                 thisEnc.Layer2Mirror.Add(0);
-                thisEnc.Layer3Filename.Add("t_blank");
+                thisEnc.Layer3Filename.Add("t_a_blank");
                 thisEnc.Layer3Rotate.Add(0);
                 thisEnc.Layer3Mirror.Add(0);
                 thisEnc.Walkable.Add(1);
