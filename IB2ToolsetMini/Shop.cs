@@ -16,6 +16,8 @@ namespace IB2ToolsetMini
     {
         private string _shopTag = "newShopTag";
         private string _shopName = "newShopName";
+        private int _buybackPercent = 70;
+        private int _sellPercent = 100;
         private List<ItemRefs> _shopItemRefs = new List<ItemRefs>();
 
         public string shopTag
@@ -27,6 +29,16 @@ namespace IB2ToolsetMini
         {
             get { return _shopName; }
             set { _shopName = value; }
+        }
+        public int buybackPercent
+        {
+            get { return _buybackPercent; }
+            set { _buybackPercent = value; }
+        }
+        public int sellPercent
+        {
+            get { return _sellPercent; }
+            set { _sellPercent = value; }
         }
         public List<ItemRefs> shopItemRefs
         {

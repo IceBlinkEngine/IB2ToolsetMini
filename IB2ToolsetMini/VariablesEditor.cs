@@ -72,7 +72,10 @@ namespace IB2ToolsetMini
         {
             if (lbxGlobals.Items.Count > 0)
             {
-                mod.ModuleGlobalListItems[lbxGlobals.SelectedIndex].GlobalNotes = txtGlobalNotes.Text;
+                if (lbxGlobals.SelectedIndex >= 0)
+                {
+                    mod.ModuleGlobalListItems[lbxGlobals.SelectedIndex].GlobalNotes = txtGlobalNotes.Text;
+                }
             }
         }
         private void btnRemoveGlobal_Click(object sender, EventArgs e)

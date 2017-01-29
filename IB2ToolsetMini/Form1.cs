@@ -107,18 +107,6 @@ namespace IB2ToolsetMini
             }
 
             openModule(_mainDirectory + "\\default\\NewModule\\NewModule.mod");
-            //openCreatures(_mainDirectory + "\\default\\NewModule\\data\\creatures.json");
-            //openItems(_mainDirectory + "\\default\\NewModule\\data\\items.json");
-            //openProps(_mainDirectory + "\\default\\NewModule\\data\\props.json");
-            //openJournal(_mainDirectory + "\\default\\NewModule\\data\\journal.json");
-            //openPlayerClasses(_mainDirectory + "\\default\\NewModule\\data\\playerClasses.json");
-            //openRaces(_mainDirectory + "\\default\\NewModule\\data\\races.json");
-            //openSkills(_mainDirectory + "\\data\\NewModule\\data\\" + mod.SkillsFileName);
-            //openSpells(_mainDirectory + "\\default\\NewModule\\data\\spells.json");
-            //openTraits(_mainDirectory + "\\default\\NewModule\\data\\traits.json");
-            //openEffects(_mainDirectory + "\\default\\NewModule\\data\\effects.json");
-            //game.errorLog("Starting IceBlink Toolset");
-
             frmBlueprints.UpdateTreeViewCreatures();
             loadCreatureSprites();
             frmBlueprints.UpdateTreeViewItems();
@@ -128,8 +116,8 @@ namespace IB2ToolsetMini
             frmBlueprints.UpdateTreeViewProps();
             loadPropSprites();
             refreshDropDownLists();
-
-            //saveAsTemp();
+            this.Text = "IceBlink 2 Mini Toolset - " + mod.moduleLabelName;
+            createTilePrefixFilterList();
 
             //fill all lists
             DropdownStringLists.aiTypeStringList = new List<string> { "BasicAttacker", "GeneralCaster" };
