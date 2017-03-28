@@ -445,6 +445,11 @@ namespace IB2ToolsetMini
                 prntForm.lastSelectedPropNodeName = tvProps.SelectedNode.Name;
                 prntForm.logText(prntForm.selectedEncounterPropTag);
                 prntForm.logText(Environment.NewLine);
+                Prop prp = GetProp(tvProps.SelectedNode.Name);
+                if (prp != null)
+                {
+                    prp.PassInParentForm(prntForm);
+                }                
             }
             refreshPropertiesProps();
             prntForm.refreshIconProps();
@@ -463,6 +468,11 @@ namespace IB2ToolsetMini
                 prntForm.lastSelectedPropNodeName = tvProps.SelectedNode.Name;
                 prntForm.logText(prntForm.selectedEncounterPropTag);
                 prntForm.logText(Environment.NewLine);
+                Prop prp = GetProp(tvProps.SelectedNode.Name);
+                if (prp != null)
+                {
+                    prp.PassInParentForm(prntForm);
+                }
             }
             refreshPropertiesProps();
             prntForm.refreshIconProps();
