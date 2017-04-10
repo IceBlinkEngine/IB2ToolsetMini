@@ -268,6 +268,13 @@ namespace IB2ToolsetMini
         public Spell DeepCopy()
         {
             Spell other = (Spell)this.MemberwiseClone();
+
+            other.spellEffectTagList = new List<EffectTagForDropDownList>();
+            foreach (EffectTagForDropDownList s in this.spellEffectTagList)
+            {
+                other.spellEffectTagList.Add(s);
+            }
+
             other.removeEffectTagList = new List<EffectTagForDropDownList>();
             foreach (EffectTagForDropDownList s in this.removeEffectTagList)
             {
