@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="Coordinate.cs" />
     <Compile Include="Creature.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="DataCheck.cs" />
     <Compile Include="DlgSyncStruct.cs" />
     <Compile Include="Effect.cs" />

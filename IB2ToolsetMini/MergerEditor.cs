@@ -30,11 +30,11 @@ namespace IB2ToolsetMini
         {
             if (lbxImport.SelectedIndex >= 0)
             {
-                if (cmbDataType.SelectedIndex == 0) //Class
+                /*if (cmbDataType.SelectedIndex == 0) //Class
                 {
-                    if (!classExists(mergeMod.modulePlayerClassList[lbxImport.SelectedIndex]))
+                    if (!classExists(mergeMod.dataPlayerClassList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.modulePlayerClassList.Add(mergeMod.modulePlayerClassList[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.datafile.dataPlayerClassList.Add(mergeMod.dataPlayerClassList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
@@ -74,12 +74,12 @@ namespace IB2ToolsetMini
                         refreshImportListBox();
                         refreshMainListBox();
                     }
-                }
-                else if (cmbDataType.SelectedIndex == 5) //Creature
+                }*/
+                if (cmbDataType.SelectedIndex == 5) //Creature
                 {
                     if (!creatureExists(mergeMod.moduleCreaturesList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleCreaturesList.Add(mergeMod.moduleCreaturesList[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.allCreaturesList.Add(mergeMod.moduleCreaturesList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
@@ -88,7 +88,7 @@ namespace IB2ToolsetMini
                 {
                     if (!itemExists(mergeMod.moduleItemsList[lbxImport.SelectedIndex]))
                     {
-                        prntForm.mod.moduleItemsList.Add(mergeMod.moduleItemsList[lbxImport.SelectedIndex].DeepCopy());
+                        prntForm.allItemsList.Add(mergeMod.moduleItemsList[lbxImport.SelectedIndex].DeepCopy());
                         refreshImportListBox();
                         refreshMainListBox();
                     }
@@ -166,31 +166,31 @@ namespace IB2ToolsetMini
             {
                 if (cmbDataType.SelectedIndex == 0) //Class
                 {
-                    pgMain.SelectedObject = prntForm.mod.modulePlayerClassList[lbxMain.SelectedIndex];
+                    pgMain.SelectedObject = prntForm.datafile.dataPlayerClassList[lbxMain.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 1) //Race
                 {
-                    pgMain.SelectedObject = prntForm.mod.moduleRacesList[lbxMain.SelectedIndex];
+                    pgMain.SelectedObject = prntForm.datafile.dataRacesList[lbxMain.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 2) //Spell
                 {
-                    pgMain.SelectedObject = prntForm.mod.moduleSpellsList[lbxMain.SelectedIndex];
+                    pgMain.SelectedObject = prntForm.datafile.dataSpellsList[lbxMain.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 3) //Trait
                 {
-                    pgMain.SelectedObject = prntForm.mod.moduleTraitsList[lbxMain.SelectedIndex];
+                    pgMain.SelectedObject = prntForm.datafile.dataTraitsList[lbxMain.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 4) //Effect
                 {
-                    pgMain.SelectedObject = prntForm.mod.moduleEffectsList[lbxMain.SelectedIndex];
+                    pgMain.SelectedObject = prntForm.datafile.dataEffectsList[lbxMain.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 5) //Creature
                 {
-                    pgMain.SelectedObject = prntForm.mod.moduleCreaturesList[lbxMain.SelectedIndex];
+                    pgMain.SelectedObject = prntForm.allCreaturesList[lbxMain.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 6) //Item
                 {
-                    pgMain.SelectedObject = prntForm.mod.moduleItemsList[lbxMain.SelectedIndex];
+                    pgMain.SelectedObject = prntForm.allItemsList[lbxMain.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 7) //Areas
                 {
@@ -214,9 +214,9 @@ namespace IB2ToolsetMini
         {
             if (lbxImport.SelectedIndex >= 0)
             {
-                if (cmbDataType.SelectedIndex == 0) //Class
+                /*if (cmbDataType.SelectedIndex == 0) //Class
                 {
-                    pgImport.SelectedObject = mergeMod.modulePlayerClassList[lbxImport.SelectedIndex];
+                    pgImport.SelectedObject = mergedatafile.dataPlayerClassList[lbxImport.SelectedIndex];
                 }
                 else if (cmbDataType.SelectedIndex == 1) //Race
                 {
@@ -233,8 +233,8 @@ namespace IB2ToolsetMini
                 else if (cmbDataType.SelectedIndex == 4) //Effect
                 {
                     pgImport.SelectedObject = mergeMod.moduleEffectsList[lbxImport.SelectedIndex];
-                }
-                else if (cmbDataType.SelectedIndex == 5) //Creature
+                }*/
+                if (cmbDataType.SelectedIndex == 5) //Creature
                 {
                     pgImport.SelectedObject = mergeMod.moduleCreaturesList[lbxImport.SelectedIndex];
                 }
@@ -436,7 +436,7 @@ namespace IB2ToolsetMini
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.mod.modulePlayerClassList;
+                lbxMain.DataSource = prntForm.datafile.dataPlayerClassList;
                 lbxMain.DisplayMember = "name";
                 lbxMain.EndUpdate();
             }
@@ -444,7 +444,7 @@ namespace IB2ToolsetMini
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.mod.moduleRacesList;
+                lbxMain.DataSource = prntForm.datafile.dataRacesList;
                 lbxMain.DisplayMember = "name";
                 lbxMain.EndUpdate();
             }
@@ -452,7 +452,7 @@ namespace IB2ToolsetMini
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.mod.moduleSpellsList;
+                lbxMain.DataSource = prntForm.datafile.dataSpellsList;
                 lbxMain.DisplayMember = "name";
                 lbxMain.EndUpdate();
             }
@@ -460,7 +460,7 @@ namespace IB2ToolsetMini
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.mod.moduleTraitsList;
+                lbxMain.DataSource = prntForm.datafile.dataTraitsList;
                 lbxMain.DisplayMember = "name";
                 lbxMain.EndUpdate();
             }
@@ -468,7 +468,7 @@ namespace IB2ToolsetMini
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.mod.moduleEffectsList;
+                lbxMain.DataSource = prntForm.datafile.dataEffectsList;
                 lbxMain.DisplayMember = "name";
                 lbxMain.EndUpdate();
             }
@@ -476,7 +476,7 @@ namespace IB2ToolsetMini
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.mod.moduleCreaturesList;
+                lbxMain.DataSource = prntForm.allCreaturesList;
                 lbxMain.DisplayMember = "cr_name";
                 lbxMain.EndUpdate();
             }
@@ -484,7 +484,7 @@ namespace IB2ToolsetMini
             {
                 lbxMain.BeginUpdate();
                 lbxMain.DataSource = null;
-                lbxMain.DataSource = prntForm.mod.moduleItemsList;
+                lbxMain.DataSource = prntForm.allItemsList;
                 lbxMain.DisplayMember = "name";
                 lbxMain.EndUpdate();
             }
@@ -523,11 +523,11 @@ namespace IB2ToolsetMini
         }
         private void refreshImportListBox()
         {
-            if (cmbDataType.SelectedIndex == 0) //Class
+            /*if (cmbDataType.SelectedIndex == 0) //Class
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
-                lbxImport.DataSource = mergeMod.modulePlayerClassList;
+                lbxImport.DataSource = mergedatafile.dataPlayerClassList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
@@ -562,8 +562,8 @@ namespace IB2ToolsetMini
                 lbxImport.DataSource = mergeMod.moduleEffectsList;
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
-            }
-            else if (cmbDataType.SelectedIndex == 5) //Creature
+            }*/
+            if (cmbDataType.SelectedIndex == 0) //Creature
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
@@ -571,7 +571,7 @@ namespace IB2ToolsetMini
                 lbxImport.DisplayMember = "cr_name";
                 lbxImport.EndUpdate();
             }
-            else if (cmbDataType.SelectedIndex == 6) //Item
+            else if (cmbDataType.SelectedIndex == 1) //Item
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
@@ -579,7 +579,7 @@ namespace IB2ToolsetMini
                 lbxImport.DisplayMember = "name";
                 lbxImport.EndUpdate();
             }
-            else if (cmbDataType.SelectedIndex == 7) //Areas
+            else if (cmbDataType.SelectedIndex == 2) //Areas
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
@@ -587,7 +587,7 @@ namespace IB2ToolsetMini
                 lbxImport.DisplayMember = "Filename";
                 lbxImport.EndUpdate();
             }
-            else if (cmbDataType.SelectedIndex == 8) //Convos
+            else if (cmbDataType.SelectedIndex == 3) //Convos
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
@@ -595,7 +595,7 @@ namespace IB2ToolsetMini
                 lbxImport.DisplayMember = "ConvoFileName";
                 lbxImport.EndUpdate();
             }
-            else if (cmbDataType.SelectedIndex == 9) //Encounters
+            else if (cmbDataType.SelectedIndex == 4) //Encounters
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
@@ -603,7 +603,7 @@ namespace IB2ToolsetMini
                 lbxImport.DisplayMember = "encounterName";
                 lbxImport.EndUpdate();
             }
-            else if (cmbDataType.SelectedIndex == 10) //IBScripts
+            else if (cmbDataType.SelectedIndex == 5) //IBScripts
             {
                 lbxImport.BeginUpdate();
                 lbxImport.DataSource = null;
@@ -614,7 +614,7 @@ namespace IB2ToolsetMini
         }        
         private bool classExists(PlayerClass itImp)
         {
-            foreach (PlayerClass it in prntForm.mod.modulePlayerClassList)
+            foreach (PlayerClass it in prntForm.datafile.dataPlayerClassList)
             {
                 if (it.tag == itImp.tag)
                 {
@@ -625,7 +625,7 @@ namespace IB2ToolsetMini
         }
         private bool raceExists(Race itImp)
         {
-            foreach (Race it in prntForm.mod.moduleRacesList)
+            foreach (Race it in prntForm.datafile.dataRacesList)
             {
                 if (it.tag == itImp.tag)
                 {
@@ -636,7 +636,7 @@ namespace IB2ToolsetMini
         }
         private bool spellExists(Spell itImp)
         {
-            foreach (Spell it in prntForm.mod.moduleSpellsList)
+            foreach (Spell it in prntForm.datafile.dataSpellsList)
             {
                 if (it.tag == itImp.tag)
                 {
@@ -647,7 +647,7 @@ namespace IB2ToolsetMini
         }
         private bool traitExists(Trait itImp)
         {
-            foreach (Trait it in prntForm.mod.moduleTraitsList)
+            foreach (Trait it in prntForm.datafile.dataTraitsList)
             {
                 if (it.tag == itImp.tag)
                 {
@@ -658,7 +658,7 @@ namespace IB2ToolsetMini
         }
         private bool effectExists(Effect itImp)
         {
-            foreach (Effect it in prntForm.mod.moduleEffectsList)
+            foreach (Effect it in prntForm.datafile.dataEffectsList)
             {
                 if (it.tag == itImp.tag)
                 {
@@ -669,7 +669,7 @@ namespace IB2ToolsetMini
         }
         private bool creatureExists(Creature itImp)
         {
-            foreach (Creature it in prntForm.mod.moduleCreaturesList)
+            foreach (Creature it in prntForm.allCreaturesList)
             {
                 if (it.cr_resref == itImp.cr_resref)
                 {
@@ -680,7 +680,7 @@ namespace IB2ToolsetMini
         }
         private bool itemExists(Item itImp)
         {
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.resref == itImp.resref)
                 {

@@ -34,12 +34,16 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbKnownSpells = new System.Windows.Forms.GroupBox();
             this.cbxKnownSpells = new System.Windows.Forms.CheckedListBox();
+            this.gbUsableByClass = new System.Windows.Forms.GroupBox();
+            this.cbxUsableByClass = new System.Windows.Forms.CheckedListBox();
             this.gbCreatureIconSelect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.gbKnownSpells.SuspendLayout();
+            this.gbUsableByClass.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbCreatureIconSelect
@@ -85,13 +89,14 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.gbUsableByClass);
             this.splitContainer1.Panel1.Controls.Add(this.gbCreatureIconSelect);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gbKnownSpells);
-            this.splitContainer1.Size = new System.Drawing.Size(196, 500);
-            this.splitContainer1.SplitterDistance = 222;
+            this.splitContainer1.Size = new System.Drawing.Size(202, 732);
+            this.splitContainer1.SplitterDistance = 411;
             this.splitContainer1.TabIndex = 45;
             // 
             // gbKnownSpells
@@ -100,7 +105,7 @@
             this.gbKnownSpells.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbKnownSpells.Location = new System.Drawing.Point(0, 0);
             this.gbKnownSpells.Name = "gbKnownSpells";
-            this.gbKnownSpells.Size = new System.Drawing.Size(196, 274);
+            this.gbKnownSpells.Size = new System.Drawing.Size(202, 317);
             this.gbKnownSpells.TabIndex = 4;
             this.gbKnownSpells.TabStop = false;
             this.gbKnownSpells.Text = "Known Spells";
@@ -110,18 +115,40 @@
             this.cbxKnownSpells.CheckOnClick = true;
             this.cbxKnownSpells.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxKnownSpells.FormattingEnabled = true;
-            this.cbxKnownSpells.Location = new System.Drawing.Point(3, 16);
+            this.cbxKnownSpells.Location = new System.Drawing.Point(3, 19);
             this.cbxKnownSpells.Name = "cbxKnownSpells";
             this.cbxKnownSpells.ScrollAlwaysVisible = true;
-            this.cbxKnownSpells.Size = new System.Drawing.Size(190, 255);
+            this.cbxKnownSpells.Size = new System.Drawing.Size(196, 295);
             this.cbxKnownSpells.TabIndex = 1;
             this.cbxKnownSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cbxKnownSpells_ItemCheck);
             // 
+            // gbUsableByClass
+            // 
+            this.gbUsableByClass.Controls.Add(this.cbxUsableByClass);
+            this.gbUsableByClass.Location = new System.Drawing.Point(3, 223);
+            this.gbUsableByClass.Name = "gbUsableByClass";
+            this.gbUsableByClass.Size = new System.Drawing.Size(193, 185);
+            this.gbUsableByClass.TabIndex = 45;
+            this.gbUsableByClass.TabStop = false;
+            this.gbUsableByClass.Text = "Usable by Class";
+            // 
+            // cbxUsableByClass
+            // 
+            this.cbxUsableByClass.CheckOnClick = true;
+            this.cbxUsableByClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxUsableByClass.FormattingEnabled = true;
+            this.cbxUsableByClass.Location = new System.Drawing.Point(3, 19);
+            this.cbxUsableByClass.Name = "cbxUsableByClass";
+            this.cbxUsableByClass.ScrollAlwaysVisible = true;
+            this.cbxUsableByClass.Size = new System.Drawing.Size(187, 163);
+            this.cbxUsableByClass.TabIndex = 1;
+            this.cbxUsableByClass.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cbxUsableByClass_ItemCheck);
+            // 
             // IconSprite
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(196, 500);
+            this.ClientSize = new System.Drawing.Size(202, 732);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HideOnClose = true;
@@ -131,8 +158,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.gbKnownSpells.ResumeLayout(false);
+            this.gbUsableByClass.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -145,6 +174,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.CheckedListBox cbxKnownSpells;
         public System.Windows.Forms.GroupBox gbKnownSpells;
-
+        public System.Windows.Forms.GroupBox gbUsableByClass;
+        private System.Windows.Forms.CheckedListBox cbxUsableByClass;
     }
 }

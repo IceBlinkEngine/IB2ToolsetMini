@@ -352,7 +352,7 @@ namespace IB2ToolsetMini
         {
             itemsHeadList.Clear();
             itemsHeadList.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Head")
                 {
@@ -362,7 +362,7 @@ namespace IB2ToolsetMini
             
             itemsNeckList.Clear();
             itemsNeckList.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Neck")
                 {
@@ -372,7 +372,7 @@ namespace IB2ToolsetMini
 
             itemsBodyList.Clear();
             itemsBodyList.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Armor")
                 {
@@ -382,7 +382,7 @@ namespace IB2ToolsetMini
 
             itemsMainHandList.Clear();
             itemsMainHandList.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if ((it.category == "Melee") || (it.category == "Ranged"))
                 {
@@ -392,7 +392,7 @@ namespace IB2ToolsetMini
 
             itemsOffHandList.Clear();
             itemsOffHandList.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Shield")
                 {
@@ -402,7 +402,7 @@ namespace IB2ToolsetMini
 
             itemsRing1List.Clear();
             itemsRing1List.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Ring")
                 {
@@ -412,7 +412,7 @@ namespace IB2ToolsetMini
 
             itemsRing2List.Clear();
             itemsRing2List.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Ring")
                 {
@@ -422,7 +422,7 @@ namespace IB2ToolsetMini
 
             itemsFeetList.Clear();
             itemsFeetList.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Feet")
                 {
@@ -432,7 +432,7 @@ namespace IB2ToolsetMini
 
             itemsAmmoList.Clear();
             itemsAmmoList.Add(new ItemRefs());
-            foreach (Item it in prntForm.mod.moduleItemsList)
+            foreach (Item it in prntForm.allItemsList)
             {
                 if (it.category == "Ammo")
                 {
@@ -541,7 +541,7 @@ namespace IB2ToolsetMini
         {
             cbxKnownSpells.BeginUpdate();
             cbxKnownSpells.DataSource = null;
-            cbxKnownSpells.DataSource = prntForm.mod.moduleSpellsList;
+            cbxKnownSpells.DataSource = prntForm.datafile.dataSpellsList;
             cbxKnownSpells.DisplayMember = "name";
             cbxKnownSpells.EndUpdate();
 
@@ -566,7 +566,7 @@ namespace IB2ToolsetMini
         {
             cbxKnownTraits.BeginUpdate();
             cbxKnownTraits.DataSource = null;
-            cbxKnownTraits.DataSource = prntForm.mod.moduleTraitsList;
+            cbxKnownTraits.DataSource = prntForm.datafile.dataTraitsList;
             cbxKnownTraits.DisplayMember = "name";
             cbxKnownTraits.EndUpdate();
 

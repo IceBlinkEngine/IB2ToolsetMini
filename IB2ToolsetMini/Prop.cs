@@ -20,7 +20,7 @@ namespace IB2ToolsetMini
         public Bitmap propBitmap;
         [JsonIgnore]
         public ParentForm prntForm;
-
+        private bool _moduleProp = false;
         private int _LocationX = 0;
         private int _LocationY = 0;
         private string _ImageFileName = "blank";
@@ -68,6 +68,18 @@ namespace IB2ToolsetMini
         #endregion
 
         #region Properties
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("Can only change this in 'Advanced Mode'.")]
+        public bool moduleProp
+        {
+            get
+            {
+                return _moduleProp;
+            }
+            set
+            {
+                _moduleProp = value; ;
+            }
+        }
         [CategoryAttribute("01 - Main"), DescriptionAttribute("Current X location on map.")]
         public int LocationX
         {

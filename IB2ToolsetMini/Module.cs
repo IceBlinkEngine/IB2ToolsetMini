@@ -37,11 +37,11 @@ namespace IB2ToolsetMini
         public List<Creature> moduleCreaturesList = new List<Creature>();
         public List<Prop> modulePropsList = new List<Prop>();
         public List<JournalQuest> moduleJournal = new List<JournalQuest>();
-        public List<PlayerClass> modulePlayerClassList = new List<PlayerClass>();
-        public List<Race> moduleRacesList = new List<Race>();
-        public List<Spell> moduleSpellsList = new List<Spell>();
-        public List<Trait> moduleTraitsList = new List<Trait>();
-        public List<Effect> moduleEffectsList = new List<Effect>();
+        //public List<PlayerClass> modulePlayerClassList = new List<PlayerClass>();
+        //public List<Race> moduleRacesList = new List<Race>();
+        //public List<Spell> moduleSpellsList = new List<Spell>();
+        //public List<Trait> moduleTraitsList = new List<Trait>();
+        //public List<Effect> moduleEffectsList = new List<Effect>();
         public List<IBScript> moduleIBScriptList = new List<IBScript>();
 
         [JsonIgnore]

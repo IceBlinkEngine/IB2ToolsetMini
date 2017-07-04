@@ -31,7 +31,7 @@ namespace IB2ToolsetMini
         private void ShopEditor_Load(object sender, EventArgs e)
         {
             cmbItems.DataSource = null;
-            cmbItems.DataSource = prntForm.mod.moduleItemsList;
+            cmbItems.DataSource = prntForm.allItemsList;
             cmbItems.DisplayMember = "name";
             refreshLbxItems();
             refreshListBox();
@@ -91,7 +91,7 @@ namespace IB2ToolsetMini
             {
                 try
                 {
-                    Item it = prntForm.mod.moduleItemsList[cmbItems.SelectedIndex];
+                    Item it = prntForm.allItemsList[cmbItems.SelectedIndex];
                     ItemRefs newIR = prntForm.createItemRefsFromItem(it);
                     prntForm.mod.moduleShopsList[selectedLbxIndex].shopItemRefs.Add(newIR);
                 }

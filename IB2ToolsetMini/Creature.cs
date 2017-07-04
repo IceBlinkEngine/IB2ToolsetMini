@@ -31,7 +31,7 @@ namespace IB2ToolsetMini
         #region Fields
         [JsonIgnore]
         public Bitmap creatureIconBitmap;
-
+        private bool _moduleCreature = false;
         private string _tokenFilename = "blank";
         public bool combatFacingLeft = true;
         public int combatLocX = 0;
@@ -81,10 +81,22 @@ namespace IB2ToolsetMini
         private string _onDeathIBScriptParms = ""; 
         private List<string> _knownSpellsTags = new List<string>();
 	    public List<Effect> cr_effectsList = new List<Effect>();
-        
+
         #endregion
 
         #region Properties
+        [CategoryAttribute("00 - Main"), DescriptionAttribute("Can only change this in 'Advanced Mode'.")]
+        public bool moduleCreature
+        {
+            get
+            {
+                return _moduleCreature;
+            }
+            set
+            {
+                _moduleCreature = value; ;
+            }
+        }
         [CategoryAttribute("00 - Main"), DescriptionAttribute("Token Filename of the Creature"), ReadOnly(true)]
         public string cr_tokenFilename
         {

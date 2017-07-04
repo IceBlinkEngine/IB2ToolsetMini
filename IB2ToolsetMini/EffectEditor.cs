@@ -31,17 +31,17 @@ namespace IB2ToolsetMini
         {
             lbxEffects.BeginUpdate();
             lbxEffects.DataSource = null;
-            lbxEffects.DataSource = prntForm.mod.moduleEffectsList;
+            lbxEffects.DataSource = prntForm.datafile.dataEffectsList;
             lbxEffects.DisplayMember = "EffectName";
             lbxEffects.EndUpdate();
         }
         private void lbxEffects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
                 selectedLbxIndex = lbxEffects.SelectedIndex;
                 lbxEffects.SelectedIndex = selectedLbxIndex;
-                propertyGrid1.SelectedObject = prntForm.mod.moduleEffectsList[selectedLbxIndex];
+                propertyGrid1.SelectedObject = prntForm.datafile.dataEffectsList[selectedLbxIndex];
                 refreshGroupBoxes();
             }
         }
@@ -54,7 +54,7 @@ namespace IB2ToolsetMini
             Effect newE = new Effect();
             newE.name = "newEffect";
             newE.tag = "newEffectTag_" + prntForm.mod.nextIdNumber.ToString();
-            prntForm.mod.moduleEffectsList.Add(newE);
+            prntForm.datafile.dataEffectsList.Add(newE);
             refreshListBox();
         }
         private void btnRemoveEffect_Click_1(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace IB2ToolsetMini
                     // The Remove button was clicked.
                     int selectedIndex = lbxEffects.SelectedIndex;
                     //mod.ModuleContainersList.containers.RemoveAt(selectedIndex);
-                    prntForm.mod.moduleEffectsList.RemoveAt(selectedIndex);
+                    prntForm.datafile.dataEffectsList.RemoveAt(selectedIndex);
                 }
                 catch { }
                 selectedLbxIndex = 0;
@@ -76,23 +76,23 @@ namespace IB2ToolsetMini
         }
         private void btnDuplicateEffect_Click_1(object sender, EventArgs e)
         {
-            Effect newCopy = prntForm.mod.moduleEffectsList[selectedLbxIndex].DeepCopy();
+            Effect newCopy = prntForm.datafile.dataEffectsList[selectedLbxIndex].DeepCopy();
             newCopy.tag = "newEffectTag_" + prntForm.mod.nextIdNumber.ToString();
-            prntForm.mod.moduleEffectsList.Add(newCopy);
+            prntForm.datafile.dataEffectsList.Add(newCopy);
             refreshListBox();
         }
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            prntForm.mod.moduleEffectsList = prntForm.mod.moduleEffectsList.OrderBy(o => o.name).ToList();
+            prntForm.datafile.dataEffectsList = prntForm.datafile.dataEffectsList.OrderBy(o => o.name).ToList();
             refreshListBox();
         }
 
         public void refreshGroupBoxes()
         {
-            if (prntForm.mod.moduleEffectsList != null)
+            if (prntForm.datafile.dataEffectsList != null)
             {
-                Effect ef = prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex];
+                Effect ef = prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex];
                 numDamActionA.Value = ef.damNumOfDice;
                 numDamActionB.Value = ef.damDie;
                 numDamActionC.Value = ef.damAdder;
@@ -115,116 +115,116 @@ namespace IB2ToolsetMini
         //Damage Action
         private void numDamActionA_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damNumOfDice = (int)numDamActionA.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damNumOfDice = (int)numDamActionA.Value;
             }
         }
         private void numDamActionB_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damDie = (int)numDamActionB.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damDie = (int)numDamActionB.Value;
             }
         }
         private void numDamActionC_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damAdder = (int)numDamActionC.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damAdder = (int)numDamActionC.Value;
             }
         }
         private void numDamActionD_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damAttacksEveryNLevels = (int)numDamActionD.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damAttacksEveryNLevels = (int)numDamActionD.Value;
             }
         }
         private void numDamActionE_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damAttacksAfterLevelN = (int)numDamActionE.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damAttacksAfterLevelN = (int)numDamActionE.Value;
             }
         }
         private void numDamActionF_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damAttacksUpToNLevelsTotal = (int)numDamActionF.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damAttacksUpToNLevelsTotal = (int)numDamActionF.Value;
             }
         }
         //Damage Number of Actions
         private void numDamNumActionsA_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacks = (int)numDamNumActionsA.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacks = (int)numDamNumActionsA.Value;
             }
         }
         private void numDamNumActionsB_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacksForEveryNLevels = (int)numDamNumActionsB.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacksForEveryNLevels = (int)numDamNumActionsB.Value;
             }
         }
         private void numDamNumActionsC_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacksAfterLevelN = (int)numDamNumActionsC.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacksAfterLevelN = (int)numDamNumActionsC.Value;
             }
         }
         private void numDamNumActionsD_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacksUpToNAttacksTotal = (int)numDamNumActionsD.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].damNumberOfAttacksUpToNAttacksTotal = (int)numDamNumActionsD.Value;
             }
         }
         //Heal Action
         private void numHealActionA_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].healNumOfDice = (int)numHealActionA.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].healNumOfDice = (int)numHealActionA.Value;
             }
         }
         private void numHealActionB_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].healDie = (int)numHealActionB.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].healDie = (int)numHealActionB.Value;
             }
         }
         private void numHealActionC_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].healAdder = (int)numHealActionC.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].healAdder = (int)numHealActionC.Value;
             }
         }
         private void numHealActionD_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].healActionsEveryNLevels = (int)numHealActionD.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].healActionsEveryNLevels = (int)numHealActionD.Value;
             }
         }
         private void numHealActionE_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].healActionsAfterLevelN = (int)numHealActionE.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].healActionsAfterLevelN = (int)numHealActionE.Value;
             }
         }
         private void numHealActionF_ValueChanged(object sender, EventArgs e)
         {
-            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.mod.moduleEffectsList != null))
+            if ((lbxEffects.SelectedIndex >= 0) && (prntForm.datafile.dataEffectsList != null))
             {
-                prntForm.mod.moduleEffectsList[lbxEffects.SelectedIndex].healActionsUpToNLevelsTotal = (int)numHealActionF.Value;
+                prntForm.datafile.dataEffectsList[lbxEffects.SelectedIndex].healActionsUpToNLevelsTotal = (int)numHealActionF.Value;
             }
         }
     }

@@ -37,7 +37,7 @@ namespace IB2ToolsetMini
 
         public void CheckCasterNoKnownSpells()
         {
-            foreach (Creature crt in frm.mod.moduleCreaturesList)
+            foreach (Creature crt in frm.allCreaturesList)
             {
                 if ((crt.cr_ai == "GeneralCaster") && (crt.knownSpellsTags.Count == 0))
                 {
@@ -58,9 +58,9 @@ namespace IB2ToolsetMini
         public void CheckDuplicateTagsOrResRef()
         {
             //check creatures, items, props, containers, shops, encounters, races, classes, spells, traits, journal
-            foreach (Creature crt in frm.mod.moduleCreaturesList)
+            foreach (Creature crt in frm.allCreaturesList)
             {
-                foreach (Creature crtck in frm.mod.moduleCreaturesList)
+                foreach (Creature crtck in frm.allCreaturesList)
                 {
                     if ((crt != crtck) && (crt.cr_tag.Equals(crtck.cr_tag)))
                     {
@@ -72,9 +72,9 @@ namespace IB2ToolsetMini
                     }
                 }
             }
-            foreach (Item crt in frm.mod.moduleItemsList)
+            foreach (Item crt in frm.allItemsList)
             {
-                foreach (Item crtck in frm.mod.moduleItemsList)
+                foreach (Item crtck in frm.allItemsList)
                 {
                     if ((crt != crtck) && (crt.tag.Equals(crtck.tag)))
                     {
@@ -86,9 +86,9 @@ namespace IB2ToolsetMini
                     }
                 }
             }
-            foreach (Prop it in frm.mod.modulePropsList)
+            foreach (Prop it in frm.allPropsList)
             {
-                foreach (Prop itck in frm.mod.modulePropsList)
+                foreach (Prop itck in frm.allPropsList)
                 {
                     if ((it != itck) && (it.PropTag.Equals(itck.PropTag)))
                     {
@@ -126,9 +126,9 @@ namespace IB2ToolsetMini
                     }
                 }
             }
-            foreach (Race it in frm.mod.moduleRacesList)
+            foreach (Race it in frm.datafile.dataRacesList)
             {
-                foreach (Race itck in frm.mod.moduleRacesList)
+                foreach (Race itck in frm.datafile.dataRacesList)
                 {
                     if ((it != itck) && (it.tag.Equals(itck.tag)))
                     {
@@ -136,9 +136,9 @@ namespace IB2ToolsetMini
                     }
                 }
             }
-            foreach (PlayerClass it in frm.mod.modulePlayerClassList)
+            foreach (PlayerClass it in frm.datafile.dataPlayerClassList)
             {
-                foreach (PlayerClass itck in frm.mod.modulePlayerClassList)
+                foreach (PlayerClass itck in frm.datafile.dataPlayerClassList)
                 {
                     if ((it != itck) && (it.tag.Equals(itck.tag)))
                     {
@@ -146,9 +146,9 @@ namespace IB2ToolsetMini
                     }
                 }
             }
-            foreach (Spell it in frm.mod.moduleSpellsList)
+            foreach (Spell it in frm.datafile.dataSpellsList)
             {
-                foreach (Spell itck in frm.mod.moduleSpellsList)
+                foreach (Spell itck in frm.datafile.dataSpellsList)
                 {
                     if ((it != itck) && (it.tag.Equals(itck.tag)))
                     {
@@ -156,9 +156,9 @@ namespace IB2ToolsetMini
                     }
                 }
             }
-            foreach (Trait it in frm.mod.moduleTraitsList)
+            foreach (Trait it in frm.datafile.dataTraitsList)
             {
-                foreach (Trait itck in frm.mod.moduleTraitsList)
+                foreach (Trait itck in frm.datafile.dataTraitsList)
                 {
                     if ((it != itck) && (it.tag.Equals(itck.tag)))
                     {

@@ -24,6 +24,8 @@ namespace IB2ToolsetMini
         #region Fields
         [JsonIgnore]
         public Bitmap itemIconBitmap;
+        private bool _moduleItem = false;
+        public List<string> classesAllowed = new List<string>();
         private string _armorWeightType = "Light"; //Light, Medium, Heavy           
         private string _itemImage = "blank";
         private string _name = "none"; //item name    
@@ -92,7 +94,19 @@ namespace IB2ToolsetMini
         private bool _isRation = false;
         #endregion
 
-        #region Properties        
+        #region Properties  
+        [CategoryAttribute("01 - Main"), DescriptionAttribute("Can only change this in 'Advanced Mode'.")]
+        public bool moduleItem
+        {
+            get
+            {
+                return _moduleItem;
+            }
+            set
+            {
+                _moduleItem = value; ;
+            }
+        }
         [CategoryAttribute("01 - Main"), DescriptionAttribute("Name of the Item")]
         public string name
         {
@@ -698,6 +712,11 @@ namespace IB2ToolsetMini
         public Item DeepCopy()
         {
             Item other = (Item)this.MemberwiseClone();
+            other.classesAllowed = new List<string>();
+            foreach (string s in this.classesAllowed)
+            {
+                other.classesAllowed.Add(s);
+            }
             return other;
         }
     }

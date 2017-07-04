@@ -18,6 +18,10 @@ namespace IB2ToolsetMini
     {
         public string _mainDirectory;
         public Module mod = new Module();
+        public Data datafile = new Data();
+        public List<Item> allItemsList = new List<Item>();
+        public List<Creature> allCreaturesList = new List<Creature>();
+        public List<Prop> allPropsList = new List<Prop>();
         public BitmapStringConversion bsc;
         public int tileSizeInPixels = 48;
         public int standardTokenSize = 48;
@@ -418,12 +422,207 @@ namespace IB2ToolsetMini
             frmConversations.refreshListBoxConvos();
             //REMOVEfrmLogicTree.refreshListBoxLogicTrees();
             frmIBScript.refreshListBoxIBScripts();
+            if (File.Exists("data.json"))
+            {
+                this.datafile = this.datafile.loadDataFile("data.json");
+            }
+            //ITEMS
+            allItemsList.Clear();
+            foreach(Item it in datafile.dataItemsList)
+            {
+                allItemsList.Add(it.DeepCopy());
+            }
+            foreach (Item it in mod.moduleItemsList)
+            {
+                bool foundOne = false;
+                foreach (Item it2 in datafile.dataItemsList)
+                {
+                    if (it.resref == it2.resref)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    it.moduleItem = true;
+                    allItemsList.Add(it.DeepCopy());
+                }
+            }
+            //CREATURES
+            allCreaturesList.Clear();
+            foreach (Creature it in datafile.dataCreaturesList)
+            {
+                allCreaturesList.Add(it.DeepCopy());
+            }
+            foreach (Creature it in mod.moduleCreaturesList)
+            {
+                bool foundOne = false;
+                foreach (Creature it2 in this.datafile.dataCreaturesList)
+                {
+                    if (it.cr_resref == it2.cr_resref)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    it.moduleCreature = true;
+                    allCreaturesList.Add(it.DeepCopy());
+                }                
+            }
+            //PROPS
+            allPropsList.Clear();
+            foreach (Prop it in datafile.dataPropsList)
+            {
+                allPropsList.Add(it.DeepCopy());
+            }
+            foreach (Prop it in mod.modulePropsList)
+            {
+                bool foundOne = false;
+                foreach (Prop it2 in this.datafile.dataPropsList)
+                {
+                    if (it.PropTag == it2.PropTag)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    it.moduleProp = true;
+                    allPropsList.Add(it.DeepCopy());
+                }                
+            }
+
+            //Add data to datafile
+            /*
+            foreach (Item it in mod.moduleItemsList)
+            {
+                bool foundOne = false;
+                foreach (Item it2 in this.datafile.dataItemsList)
+                {
+                    if (it.resref == it2.resref)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataItemsList.Add(it.DeepCopy());
+                }                
+            }
+            foreach (Creature it in mod.moduleCreaturesList)
+            {
+                bool foundOne = false;
+                foreach (Creature it2 in this.datafile.dataCreaturesList)
+                {
+                    if (it.cr_resref == it2.cr_resref)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataCreaturesList.Add(it.DeepCopy());
+                }
+            }
+            foreach (Prop it in mod.modulePropsList)
+            {
+                bool foundOne = false;
+                foreach (Prop it2 in this.datafile.dataPropsList)
+                {
+                    if (it.PropTag == it2.PropTag)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataPropsList.Add(it.DeepCopy());
+                }                
+            }
+            foreach (PlayerClass it in datafile.dataPlayerClassList)
+            {
+                bool foundOne = false;
+                foreach (PlayerClass it2 in this.datafile.dataPlayerClassList)
+                {
+                    if (it.tag == it2.tag)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataPlayerClassList.Add(it.DeepCopy());
+                }
+            }
+            foreach (Race it in datafile.dataRacesList)
+            {
+                bool foundOne = false;
+                foreach (Race it2 in this.datafile.dataRacesList)
+                {
+                    if (it.tag == it2.tag)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataRacesList.Add(it.DeepCopy());
+                }
+            }
+            foreach (Effect it in datafile.dataEffectsList)
+            {
+                bool foundOne = false;
+                foreach (Effect it2 in this.datafile.dataEffectsList)
+                {
+                    if (it.tag == it2.tag)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataEffectsList.Add(it.DeepCopy());
+                }
+            }
+            foreach (Spell it in mod.moduleSpellsList)
+            {
+                bool foundOne = false;
+                foreach (Spell it2 in this.datafile.dataSpellsList)
+                {
+                    if (it.tag == it2.tag)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataSpellsList.Add(it.DeepCopy());
+                }
+            }
+            foreach (Trait it in mod.moduleTraitsList)
+            {
+                bool foundOne = false;
+                foreach (Trait it2 in this.datafile.dataTraitsList)
+                {
+                    if (it.tag == it2.tag)
+                    {
+                        foundOne = true;
+                    }
+                }
+                if (!foundOne)
+                {
+                    this.datafile.dataTraitsList.Add(it.DeepCopy());
+                }
+            }
+            */
+            //this.datafile.saveDataFile("data.json", true);
         }
         private void openCreatures(string filename)
         {
             if (File.Exists(filename))
             {
-                mod.moduleCreaturesList.Clear();
+                allCreaturesList.Clear();
                 //mod.moduleCreaturesList = loadCreaturesFile(filename);
             }
             else
@@ -435,7 +634,7 @@ namespace IB2ToolsetMini
         }
         private void loadCreatureSprites()
         {
-            foreach (Creature crt in mod.moduleCreaturesList)
+            foreach (Creature crt in allCreaturesList)
             {
                 crt.LoadCreatureBitmap(this);                
             }     
@@ -444,7 +643,7 @@ namespace IB2ToolsetMini
         {
             if (File.Exists(filename))
             {
-                mod.moduleItemsList.Clear();
+                allItemsList.Clear();
                 //mod.moduleItemsList = loadItemsFile(filename);
             }
             else
@@ -456,7 +655,7 @@ namespace IB2ToolsetMini
         }
         private void loadItemSprites()
         {
-            foreach (Item it in mod.moduleItemsList)
+            foreach (Item it in allItemsList)
             {
                 it.LoadItemBitmap(this);
             }
@@ -465,7 +664,7 @@ namespace IB2ToolsetMini
         {
             if (File.Exists(filename))
             {
-                mod.modulePropsList.Clear();
+                allPropsList.Clear();
                 //mod.modulePropsList = loadPropsFile(filename);
             }
             else
@@ -477,7 +676,7 @@ namespace IB2ToolsetMini
         }
         private void loadPropSprites()
         {
-            foreach (Prop prp in mod.modulePropsList)
+            foreach (Prop prp in allPropsList)
             {
                 prp.LoadPropBitmap(this);
             }
@@ -536,7 +735,7 @@ namespace IB2ToolsetMini
         {
             if (File.Exists(filename))
             {
-                mod.moduleEffectsList.Clear();
+                //mod.moduleEffectsList.Clear();
                 //mod.moduleEffectsList = loadEffectsFile(filename);
             }
             else
@@ -548,8 +747,8 @@ namespace IB2ToolsetMini
         {
             if (File.Exists(filename))
             {
-                mod.modulePlayerClassList.Clear();
-                //mod.modulePlayerClassList = loadPlayerClassesFile(filename);
+                datafile.dataPlayerClassList.Clear();
+                //datafile.dataPlayerClassList = loadPlayerClassesFile(filename);
             }
             else
             {
@@ -560,8 +759,8 @@ namespace IB2ToolsetMini
         {
             if (File.Exists(filename))
             {
-                mod.moduleRacesList.Clear();
-                //mod.moduleRacesList = loadRacesFile(filename);
+                datafile.dataRacesList.Clear();
+                //datafile.dataRacesList = loadRacesFile(filename);
             }
             else
             {
@@ -572,7 +771,7 @@ namespace IB2ToolsetMini
         {
             if (File.Exists(filename))
             {
-                mod.moduleSpellsList.Clear();
+                datafile.dataSpellsList.Clear();
                 //mod.moduleSpellsList = loadSpellsFile(filename);
             }
             else
@@ -584,7 +783,7 @@ namespace IB2ToolsetMini
         {
             if (File.Exists(filename))
             {
-                mod.moduleTraitsList.Clear();
+                datafile.dataTraitsList.Clear();
                 //mod.moduleTraitsList = loadTraitsFile(filename);
             }
             else
@@ -607,7 +806,7 @@ namespace IB2ToolsetMini
                 string filename = Path.GetFullPath(openFileDialog1.FileName);
                 string directory = Path.GetDirectoryName(openFileDialog1.FileName);
                 openModule(filename);
-                foreach (Item it in mod.moduleItemsList)
+                foreach (Item it in allItemsList)
                 {
                     if (it.attackRange == 0)
                     {
@@ -763,7 +962,7 @@ namespace IB2ToolsetMini
         public void loadPlayerClassesTagsList()
         {
             DropdownStringLists.playerClassTagsTypeStringList = new List<string>();
-            foreach (PlayerClass pcl in this.mod.modulePlayerClassList)
+            foreach (PlayerClass pcl in this.datafile.dataPlayerClassList)
             {
                 DropdownStringLists.playerClassTagsTypeStringList.Add(pcl.tag);
             }
@@ -771,7 +970,7 @@ namespace IB2ToolsetMini
         public void loadRacesTagsList()
         {
             DropdownStringLists.raceTagsTypeStringList = new List<string>();
-            foreach (Race rc in this.mod.moduleRacesList)
+            foreach (Race rc in this.datafile.dataRacesList)
             {
                 DropdownStringLists.raceTagsTypeStringList.Add(rc.tag);
             }
@@ -780,7 +979,7 @@ namespace IB2ToolsetMini
         {
             DropdownStringLists.spellTagsTypeStringList = new List<string>();
             DropdownStringLists.spellTagsTypeStringList.Add("none");
-            foreach (Spell sp in this.mod.moduleSpellsList)
+            foreach (Spell sp in this.datafile.dataSpellsList)
             {
                 DropdownStringLists.spellTagsTypeStringList.Add(sp.tag);
             }
@@ -789,7 +988,7 @@ namespace IB2ToolsetMini
         {
             DropdownStringLists.effectTagsTypeStringList = new List<string>();
             DropdownStringLists.effectTagsTypeStringList.Add("none");
-            foreach (Effect ef in this.mod.moduleEffectsList)
+            foreach (Effect ef in this.datafile.dataEffectsList)
             {
                 DropdownStringLists.effectTagsTypeStringList.Add(ef.tag);
             }
@@ -936,7 +1135,7 @@ namespace IB2ToolsetMini
             try
             {
                 //clean up the spellsAllowed and traitsAllowed
-                foreach (PlayerClass pcls in mod.modulePlayerClassList)
+                foreach (PlayerClass pcls in datafile.dataPlayerClassList)
                 {
                     for (int i = pcls.spellsAllowed.Count - 1; i >= 0; i--)
                     {
@@ -959,6 +1158,31 @@ namespace IB2ToolsetMini
                 saveModuleInfo(mod, fullPathFilename);
                 //save title image
                 saveTitleImage(mod, fullPathFilename);
+                //fill module items, creatures, props
+                mod.moduleItemsList.Clear();
+                foreach (Item it in allItemsList)
+                {
+                    if (it.moduleItem)
+                    {
+                        mod.moduleItemsList.Add(it.DeepCopy());
+                    }
+                }
+                mod.moduleCreaturesList.Clear();
+                foreach (Creature it in allCreaturesList)
+                {
+                    if (it.moduleCreature)
+                    {
+                        mod.moduleCreaturesList.Add(it.DeepCopy());
+                    }
+                }
+                mod.modulePropsList.Clear();
+                foreach (Prop it in allPropsList)
+                {
+                    if (it.moduleProp)
+                    {
+                        mod.modulePropsList.Add(it.DeepCopy());
+                    }
+                }
                 //save mod
                 saveModule(mod, fullPathFilename);
                 //save areas
@@ -969,6 +1193,35 @@ namespace IB2ToolsetMini
                 saveConvos(mod, fullPathFilename);
                 //save images
                 saveImages(mod, fullPathFilename);
+
+                //fill datafile items, creatures, props
+                datafile.dataItemsList.Clear();
+                foreach (Item it in allItemsList)
+                {
+                    if (!it.moduleItem)
+                    {
+                        datafile.dataItemsList.Add(it.DeepCopy());
+                    }
+                }
+                datafile.dataCreaturesList.Clear();
+                foreach (Creature it in allCreaturesList)
+                {
+                    if (!it.moduleCreature)
+                    {
+                        datafile.dataCreaturesList.Add(it.DeepCopy());
+                    }
+                }
+                datafile.dataPropsList.Clear();
+                foreach (Prop it in allPropsList)
+                {
+                    if (!it.moduleProp)
+                    {
+                        datafile.dataPropsList.Add(it.DeepCopy());
+                    }
+                }
+                //save data file
+                this.datafile.saveDataFile("data.json", true);
+
                 //saveCreaturesFile(fullPathDirectory + "\\data\\creatures.json");
                 //saveItemsFile(fullPathDirectory + "\\data\\items.json");
                 //saveContainersFile(fullPathDirectory + "\\data\\containers.json");
@@ -1496,7 +1749,7 @@ namespace IB2ToolsetMini
                 try
                 {
                     string _nodeTag = frmBlueprints.tvCreatures.SelectedNode.Name;
-                    iconBitmap = (Bitmap)mod.moduleCreaturesList[frmBlueprints.GetCreatureIndex(_nodeTag)].creatureIconBitmap.Clone();
+                    iconBitmap = (Bitmap)allCreaturesList[frmBlueprints.GetCreatureIndex(_nodeTag)].creatureIconBitmap.Clone();
                     frmIconSprite.pbIcon.BackgroundImage = (Image)iconBitmap;
                     if (iconBitmap == null) { MessageBox.Show("returned a null icon bitmap"); }
                 }
@@ -1511,9 +1764,9 @@ namespace IB2ToolsetMini
             string name = GetImageFilename(prefixlist);
             if (name != "none")
             {
-                mod.moduleCreaturesList[frmBlueprints.GetCreatureIndex(_nodeTag)].cr_tokenFilename = name;
+                allCreaturesList[frmBlueprints.GetCreatureIndex(_nodeTag)].cr_tokenFilename = name;
             }
-            mod.moduleCreaturesList[frmBlueprints.GetCreatureIndex(_nodeTag)].LoadCreatureBitmap(this);
+            allCreaturesList[frmBlueprints.GetCreatureIndex(_nodeTag)].LoadCreatureBitmap(this);
             refreshIconCreatures();
             /*using (var sel = new SpriteSelector(game, mod))
             {
@@ -1562,7 +1815,7 @@ namespace IB2ToolsetMini
                 try
                 {
                     string _nodeTag = frmBlueprints.tvItems.SelectedNode.Name;
-                    iconBitmap = (Bitmap)mod.moduleItemsList[frmBlueprints.GetItemIndex(_nodeTag)].itemIconBitmap.Clone();
+                    iconBitmap = (Bitmap)allItemsList[frmBlueprints.GetItemIndex(_nodeTag)].itemIconBitmap.Clone();
                     frmIconSprite.pbIcon.BackgroundImage = (Image)iconBitmap;
                     if (iconBitmap == null) { MessageBox.Show("returned a null icon bitmap"); }
                 }
@@ -1577,9 +1830,9 @@ namespace IB2ToolsetMini
             string name = GetImageFilename(prefixlist);
             if (name != "none")
             {
-                mod.moduleItemsList[frmBlueprints.GetItemIndex(_nodeTag)].itemImage = name;
+                allItemsList[frmBlueprints.GetItemIndex(_nodeTag)].itemImage = name;
             }
-            mod.moduleItemsList[frmBlueprints.GetItemIndex(_nodeTag)].LoadItemBitmap(this);
+            allItemsList[frmBlueprints.GetItemIndex(_nodeTag)].LoadItemBitmap(this);
             refreshIconItems();
             /*using (var sel = new ItemImageSelector(game, mod))
             {
@@ -1644,7 +1897,7 @@ namespace IB2ToolsetMini
                 try
                 {
                     string _nodeTag = frmBlueprints.tvProps.SelectedNode.Name;
-                    iconBitmap = (Bitmap)mod.modulePropsList[frmBlueprints.GetPropIndex(_nodeTag)].propBitmap.Clone();
+                    iconBitmap = (Bitmap)allPropsList[frmBlueprints.GetPropIndex(_nodeTag)].propBitmap.Clone();
                     frmIconSprite.pbIcon.BackgroundImage = (Image)iconBitmap;
                     if (iconBitmap == null) { MessageBox.Show("returned a null icon bitmap"); }
                 }
@@ -1660,9 +1913,9 @@ namespace IB2ToolsetMini
             string name = GetImageFilename(prefixlist);
             if (name != "none")
             {
-                mod.modulePropsList[frmBlueprints.GetPropIndex(_nodeTag)].ImageFileName = name;
+                allPropsList[frmBlueprints.GetPropIndex(_nodeTag)].ImageFileName = name;
             }
-            mod.modulePropsList[frmBlueprints.GetPropIndex(_nodeTag)].LoadPropBitmap(this);
+            allPropsList[frmBlueprints.GetPropIndex(_nodeTag)].LoadPropBitmap(this);
             refreshIconProps();
             /*using (var sel = new PropSpriteSelector(game, mod))
             {
@@ -1708,7 +1961,7 @@ namespace IB2ToolsetMini
         }
         public Creature getCreature(string name)
         {
-            foreach (Creature cr in mod.moduleCreaturesList)
+            foreach (Creature cr in allCreaturesList)
             {
                 if (cr.cr_name == name) return cr;
             }
@@ -1716,7 +1969,7 @@ namespace IB2ToolsetMini
         }
         public Creature getCreatureByTag(string tag)
         {
-            foreach (Creature crtag in mod.moduleCreaturesList)
+            foreach (Creature crtag in allCreaturesList)
             {
                 if (crtag.cr_tag == tag) return crtag;
             }
@@ -1724,7 +1977,7 @@ namespace IB2ToolsetMini
         }
         public Creature getCreatureByResRef(string resref)
         {
-            foreach (Creature crt in mod.moduleCreaturesList)
+            foreach (Creature crt in allCreaturesList)
             {
                 if (crt.cr_resref == resref) return crt;
             }
@@ -1745,7 +1998,7 @@ namespace IB2ToolsetMini
         }
         public Item getItem(string name)
         {
-            foreach (Item it in mod.moduleItemsList)
+            foreach (Item it in allItemsList)
             {
                 if (it.name == name) return it;
             }
@@ -1753,7 +2006,7 @@ namespace IB2ToolsetMini
         }
         public Item getItemByTag(string tag)
         {
-            foreach (Item it in mod.moduleItemsList)
+            foreach (Item it in allItemsList)
             {
                 if (it.tag == tag) return it;
             }
@@ -1828,7 +2081,7 @@ namespace IB2ToolsetMini
         }
         public Prop getPropByTag(string tag)
         {
-            foreach (Prop it in mod.modulePropsList)
+            foreach (Prop it in allPropsList)
             {
                 if (it.PropTag == tag) return it;
             }
@@ -1878,7 +2131,7 @@ namespace IB2ToolsetMini
         }
         public PlayerClass getPlayerClassByTag(string tag)
         {
-            foreach (PlayerClass ts in mod.modulePlayerClassList)
+            foreach (PlayerClass ts in datafile.dataPlayerClassList)
             {
                 if (ts.tag == tag) return ts;
             }
@@ -1899,7 +2152,7 @@ namespace IB2ToolsetMini
         }
         public Race getRaceByTag(string tag)
         {
-            foreach (Race ts in mod.moduleRacesList)
+            foreach (Race ts in datafile.dataRacesList)
             {
                 if (ts.tag == tag) return ts;
             }
@@ -1920,7 +2173,7 @@ namespace IB2ToolsetMini
         }
         public Spell getSpellByTag(string tag)
         {
-            foreach (Spell s in mod.moduleSpellsList)
+            foreach (Spell s in datafile.dataSpellsList)
             {
                 if (s.tag == tag) return s;
             }
@@ -1928,7 +2181,7 @@ namespace IB2ToolsetMini
         }
         public Spell getSpellByName(string name)
         {
-            foreach (Spell s in mod.moduleSpellsList)
+            foreach (Spell s in datafile.dataSpellsList)
             {
                 if (s.name == name) return s;
             }
@@ -1949,7 +2202,7 @@ namespace IB2ToolsetMini
         }
         public Trait getTraitByTag(string tag)
         {
-            foreach (Trait ts in mod.moduleTraitsList)
+            foreach (Trait ts in datafile.dataTraitsList)
             {
                 if (ts.tag == tag) return ts;
             }
@@ -1957,7 +2210,7 @@ namespace IB2ToolsetMini
         }
         public Trait getTraitByName(string name)
         {
-            foreach (Trait ts in mod.moduleTraitsList)
+            foreach (Trait ts in datafile.dataTraitsList)
             {
                 if (ts.name == name) return ts;
             }
@@ -1978,7 +2231,7 @@ namespace IB2ToolsetMini
         }
         public Effect getEffectByTag(string tag)
         {
-            foreach (Effect ef in mod.moduleEffectsList)
+            foreach (Effect ef in datafile.dataEffectsList)
             {
                 if (ef.tag == tag) return ef;
             }
@@ -2210,15 +2463,15 @@ namespace IB2ToolsetMini
                         addToGraphicsList(prp.ImageFileName);
                     }
                     modIBmini.moduleJournal = loadJournalFile(directory + "\\data\\journal.json");
-                    modIBmini.modulePlayerClassList = loadPlayerClassesFile(directory + "\\data\\playerClasses.json");
-                    modIBmini.moduleRacesList = loadRacesFile(directory + "\\data\\races.json");
-                    foreach (Race rce in modIBmini.moduleRacesList)
+                    datafile.dataPlayerClassList = loadPlayerClassesFile(directory + "\\data\\playerClasses.json");
+                    datafile.dataRacesList = loadRacesFile(directory + "\\data\\races.json");
+                    foreach (Race rce in datafile.dataRacesList)
                     {
                         rce.MoveDistanceLightArmor = (int)Math.Round((double)(rce.MoveDistanceLightArmor / 2), MidpointRounding.AwayFromZero);
                         rce.MoveDistanceMediumHeavyArmor = (int)Math.Round((double)(rce.MoveDistanceMediumHeavyArmor / 2), MidpointRounding.AwayFromZero);
                     }
-                    modIBmini.moduleSpellsList = loadSpellsFile(directory + "\\data\\spells.json");
-                    foreach (Spell sp in modIBmini.moduleSpellsList)
+                    datafile.dataSpellsList = loadSpellsFile(directory + "\\data\\spells.json");
+                    foreach (Spell sp in datafile.dataSpellsList)
                     {
                         sp.range = (int)Math.Round((double)(sp.range / 2), MidpointRounding.AwayFromZero);
                         if (sp.range == 0) { sp.range = 1; }
@@ -2227,8 +2480,8 @@ namespace IB2ToolsetMini
                         addToGraphicsList(sp.spriteFilename);
                         addToGraphicsList(sp.spriteEndingFilename);
                     }
-                    modIBmini.moduleTraitsList = loadTraitsFile(directory + "\\data\\traits.json");
-                    foreach (Trait tr in modIBmini.moduleTraitsList)
+                    datafile.dataTraitsList = loadTraitsFile(directory + "\\data\\traits.json");
+                    foreach (Trait tr in datafile.dataTraitsList)
                     {
                         tr.range = (int)Math.Round((double)(tr.range / 2), MidpointRounding.AwayFromZero);
                         if (tr.range == 0) { tr.range = 1; }
@@ -2237,8 +2490,8 @@ namespace IB2ToolsetMini
                         addToGraphicsList(tr.spriteFilename);
                         addToGraphicsList(tr.spriteEndingFilename);
                     }
-                    modIBmini.moduleEffectsList = loadEffectsFile(directory + "\\data\\effects.json");
-                    foreach (Effect ef in modIBmini.moduleEffectsList)
+                    datafile.dataEffectsList = loadEffectsFile(directory + "\\data\\effects.json");
+                    foreach (Effect ef in datafile.dataEffectsList)
                     {
                         addToGraphicsList(ef.spriteFilename);
                     }
@@ -2874,20 +3127,20 @@ namespace IB2ToolsetMini
         public void switchGraphicsFilenames(string oldname, string newname)
         {
             //iterate through each line and get old name and new name
-            foreach (Creature crt in mod.moduleCreaturesList)
+            foreach (Creature crt in allCreaturesList)
             {
                 if (crt.cr_projSpriteFilename.Equals(oldname)) { crt.cr_projSpriteFilename = newname; }
                 if (crt.cr_spriteEndingFilename.Equals(oldname)) { crt.cr_spriteEndingFilename = newname; }
                 if (crt.cr_tokenFilename.Equals(oldname)) { crt.cr_tokenFilename = newname; }
             }
-            foreach (Item it in mod.moduleItemsList)
+            foreach (Item it in allItemsList)
             {
                 if (it.projectileSpriteFilename.Equals(oldname)) { it.projectileSpriteFilename = newname; }
                 if (it.spriteEndingFilename.Equals(oldname)) { it.spriteEndingFilename = newname; }
                 if (it.itemImage.Equals(oldname)) { it.itemImage = newname; }
             }
             //add prop images to the graphics needed list
-            foreach (Prop prp in mod.modulePropsList)
+            foreach (Prop prp in allPropsList)
             {
                 if (prp.ImageFileName.Equals(oldname)) { prp.ImageFileName = newname; }
             }

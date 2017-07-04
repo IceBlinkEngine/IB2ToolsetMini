@@ -97,7 +97,7 @@ namespace IB2ToolsetMini
         {
             cmbItems.BeginUpdate();
             cmbItems.DataSource = null;
-            cmbItems.DataSource = prntForm.mod.moduleItemsList;
+            cmbItems.DataSource = prntForm.allItemsList;
             cmbItems.DisplayMember = "name";
             cmbItems.EndUpdate();
         }
@@ -757,8 +757,8 @@ namespace IB2ToolsetMini
                     {
                         CreatureRefs crtRef = new CreatureRefs();
                         string _nodeTag = prntForm.frmBlueprints.tvCreatures.SelectedNode.Name;
-                        crtRef.creatureResRef = prntForm.mod.moduleCreaturesList[prntForm.frmBlueprints.GetCreatureIndex(_nodeTag)].cr_resref;
-                        crtRef.creatureTag = prntForm.mod.moduleCreaturesList[prntForm.frmBlueprints.GetCreatureIndex(_nodeTag)].cr_tag + "_" + prntForm.mod.nextIdNumber;
+                        crtRef.creatureResRef = prntForm.allCreaturesList[prntForm.frmBlueprints.GetCreatureIndex(_nodeTag)].cr_resref;
+                        crtRef.creatureTag = prntForm.allCreaturesList[prntForm.frmBlueprints.GetCreatureIndex(_nodeTag)].cr_tag + "_" + prntForm.mod.nextIdNumber;
                         crtRef.creatureStartLocationX = gridX;
                         crtRef.creatureStartLocationY = gridY;
                         thisEnc.encounterCreatureRefsList.Add(crtRef);
@@ -1738,7 +1738,7 @@ namespace IB2ToolsetMini
         {
             try
             {
-                Item it = prntForm.mod.moduleItemsList[cmbItems.SelectedIndex];
+                Item it = prntForm.allItemsList[cmbItems.SelectedIndex];
                 ItemRefs newIR = prntForm.createItemRefsFromItem(it);
                 thisEnc.encounterInventoryRefsList.Add(newIR);
                 refreshLbxItems();

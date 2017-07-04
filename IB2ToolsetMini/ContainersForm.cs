@@ -152,7 +152,7 @@ namespace IB2ToolsetMini
         private void EditContainer()
         {
             IB2ToolsetMini.Container selectedCont = prntForm.mod.moduleContainersList[prntForm._selectedLbxContainerIndex];
-            ContainerEditor cont = new ContainerEditor(prntForm.mod.moduleItemsList, selectedCont, prntForm);
+            ContainerEditor cont = new ContainerEditor(prntForm.allItemsList, selectedCont, prntForm);
             cont.ShowDialog();
         }
     }

@@ -31,7 +31,7 @@ namespace IB2ToolsetMini
         {
             lbxTraits.BeginUpdate();
             lbxTraits.DataSource = null;
-            lbxTraits.DataSource = prntForm.mod.moduleTraitsList;
+            lbxTraits.DataSource = prntForm.datafile.dataTraitsList;
             lbxTraits.DisplayMember = "name";
             lbxTraits.EndUpdate();
         }
@@ -40,7 +40,7 @@ namespace IB2ToolsetMini
             Trait newTS = new Trait();
             newTS.name = "newTrait";
             newTS.tag = "newTraitTag_" + prntForm.mod.nextIdNumber.ToString();
-            prntForm.mod.moduleTraitsList.Add(newTS);
+            prntForm.datafile.dataTraitsList.Add(newTS);
             refreshListBox();
         }
         private void btnRemoveTrait_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace IB2ToolsetMini
                     // The Remove button was clicked.
                     int selectedIndex = lbxTraits.SelectedIndex;
                     //mod.ModuleContainersList.containers.RemoveAt(selectedIndex);
-                    prntForm.mod.moduleTraitsList.RemoveAt(selectedIndex);
+                    prntForm.datafile.dataTraitsList.RemoveAt(selectedIndex);
                 }
                 catch { }
                 selectedLbxIndex = 0;
@@ -62,18 +62,18 @@ namespace IB2ToolsetMini
         }        
         private void btnDuplicateTrait_Click(object sender, EventArgs e)
         {
-            Trait newCopy = prntForm.mod.moduleTraitsList[selectedLbxIndex].DeepCopy();
+            Trait newCopy = prntForm.datafile.dataTraitsList[selectedLbxIndex].DeepCopy();
             newCopy.tag = "newTraitTag_" + prntForm.mod.nextIdNumber.ToString();
-            prntForm.mod.moduleTraitsList.Add(newCopy);
+            prntForm.datafile.dataTraitsList.Add(newCopy);
             refreshListBox();
         }
         private void lbxTraits_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if ((lbxTraits.SelectedIndex >= 0) && (prntForm.mod.moduleTraitsList != null))
+            if ((lbxTraits.SelectedIndex >= 0) && (prntForm.datafile.dataTraitsList != null))
             {
                 selectedLbxIndex = lbxTraits.SelectedIndex;
                 lbxTraits.SelectedIndex = selectedLbxIndex;
-                propertyGrid1.SelectedObject = prntForm.mod.moduleTraitsList[selectedLbxIndex];
+                propertyGrid1.SelectedObject = prntForm.datafile.dataTraitsList[selectedLbxIndex];
             }
         } 
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
@@ -83,9 +83,9 @@ namespace IB2ToolsetMini
         private void checkForNewTraits()
         {
             bool foundOne = false;
-            foreach (PlayerClass cl in prntForm.mod.modulePlayerClassList)
+            foreach (PlayerClass cl in prntForm.datafile.dataPlayerClassList)
             {
-                foreach (Trait tr in prntForm.mod.moduleTraitsList)
+                foreach (Trait tr in prntForm.datafile.dataTraitsList)
                 {
                     foreach (TraitAllowed ta in cl.traitsAllowed)
                     {
@@ -112,11 +112,11 @@ namespace IB2ToolsetMini
         private void checkForDeletedTraits()
         {
             bool foundOne = false;
-            foreach (PlayerClass cl in prntForm.mod.modulePlayerClassList)
+            foreach (PlayerClass cl in prntForm.datafile.dataPlayerClassList)
             {
                 for (int i = cl.traitsAllowed.Count - 1; i >= 0; i--)
                 {
-                    foreach (Trait tr in prntForm.mod.moduleTraitsList)
+                    foreach (Trait tr in prntForm.datafile.dataTraitsList)
                     {
                         if (tr.tag == cl.traitsAllowed[i].tag)
                         {
@@ -143,7 +143,7 @@ namespace IB2ToolsetMini
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            prntForm.mod.moduleTraitsList = prntForm.mod.moduleTraitsList.OrderBy(o => o.name).ToList();
+            prntForm.datafile.dataTraitsList = prntForm.datafile.dataTraitsList.OrderBy(o => o.name).ToList();
             refreshListBox();
         }       
     }
