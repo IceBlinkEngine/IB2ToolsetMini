@@ -86,6 +86,14 @@ namespace IB2ToolsetMini
             {
                 childNode = parentNode.Nodes.Add(i.cr_name);
                 childNode.Name = i.cr_tag;
+                if (i.moduleCreature)
+                {
+                    childNode.ForeColor = Color.Green;
+                }
+                else
+                {
+                    childNode.ForeColor = Color.Red;
+                }
             }
         }
         private void refreshPropertiesCreatures()
@@ -102,17 +110,20 @@ namespace IB2ToolsetMini
                         {
                             //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = false;
                             prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = true;
+                            btnRemoveCreature.Enabled = false;
                         }
                         else
                         {
                             //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
                             prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                            btnRemoveCreature.Enabled = true;
                         }
                     }
                     else
                     {
                         //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
                         prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                        btnRemoveCreature.Enabled = true;
                     }
                 }
             }
@@ -184,7 +195,10 @@ namespace IB2ToolsetMini
         {
             Creature newCreature = new Creature();
             newCreature.cr_parentNodeName = "New Category";
-            newCreature.cr_tag = "newTag_" + prntForm.mod.nextIdNumber;
+            int nextId = prntForm.mod.nextIdNumber;
+            newCreature.cr_tag = "newTag_" + nextId;
+            newCreature.cr_resref = "newResRef_" + nextId;
+            newCreature.moduleCreature = true;
             prntForm.nodeCount++;
             prntForm.allCreaturesList.Add(newCreature);
             UpdateTreeViewCreatures();
@@ -221,7 +235,10 @@ namespace IB2ToolsetMini
                 {
                     string _nodeTag = tvCreatures.SelectedNode.Name;
                     Creature newCreature = prntForm.allCreaturesList[GetCreatureIndex(_nodeTag)].DeepCopy();
-                    newCreature.cr_tag = "newTag_" + prntForm.mod.nextIdNumber;
+                    int nextId = prntForm.mod.nextIdNumber;
+                    newCreature.cr_tag = "newTag_" + nextId;
+                    newCreature.cr_resref = "newResRef_" + nextId;
+                    newCreature.moduleCreature = true;
                     prntForm.allCreaturesList.Add(newCreature);
                     UpdateTreeViewCreatures();
                 }
@@ -279,6 +296,14 @@ namespace IB2ToolsetMini
             {
                 childNode = parentNode.Nodes.Add(i.name);
                 childNode.Name = i.tag;
+                if (i.moduleItem)
+                {
+                    childNode.ForeColor = Color.Green;
+                }
+                else
+                {
+                    childNode.ForeColor = Color.Red;
+                }
             }
         }
         private void refreshPropertiesItems()
@@ -295,17 +320,20 @@ namespace IB2ToolsetMini
                         {
                             //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = false;
                             prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = true;
+                            btnRemoveItem.Enabled = false;
                         }
                         else
                         {
                             //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
                             prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                            btnRemoveItem.Enabled = true;
                         }
                     }
                     else
                     {
                         //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
                         prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                        btnRemoveItem.Enabled = true;
                     }
                 }
             }
@@ -359,7 +387,10 @@ namespace IB2ToolsetMini
             Item newItem = new Item();
             newItem.name = "new item";
             newItem.ItemCategoryName = "New Category";
-            newItem.tag = "newTag_" + prntForm.mod.nextIdNumber;
+            int nextId = prntForm.mod.nextIdNumber;
+            newItem.tag = "newTag_" + nextId;
+            newItem.resref = "newResRef_" + nextId;
+            newItem.moduleItem = true;
             prntForm.nodeCount++;
             prntForm.allItemsList.Add(newItem);
             UpdateTreeViewItems();
@@ -390,7 +421,10 @@ namespace IB2ToolsetMini
                 {
                     string _nodeTag = tvItems.SelectedNode.Name;
                     Item newItem = prntForm.allItemsList[GetItemIndex(_nodeTag)].DeepCopy();
-                    newItem.tag = "newTag_" + prntForm.mod.nextIdNumber;
+                    int nextId = prntForm.mod.nextIdNumber;
+                    newItem.tag = "newTag_" + nextId;
+                    newItem.resref = "newResRef_" + nextId;
+                    newItem.moduleItem = true;
                     prntForm.allItemsList.Add(newItem);
                     UpdateTreeViewItems();
                 }
@@ -448,6 +482,14 @@ namespace IB2ToolsetMini
             {
                 childNode = parentNode.Nodes.Add(pr.PropName);
                 childNode.Name = pr.PropTag;
+                if (pr.moduleProp)
+                {
+                    childNode.ForeColor = Color.Green;
+                }
+                else
+                {
+                    childNode.ForeColor = Color.Red;
+                }
             }
         }
         private void refreshPropertiesProps()
@@ -464,17 +506,20 @@ namespace IB2ToolsetMini
                         {
                             //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = false;
                             prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = true;
+                            btnRemoveProp.Enabled = false;
                         }
                         else
                         {
                             //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
                             prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                            btnRemoveProp.Enabled = true;
                         }
                     }
                     else
                     {
                         //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
                         prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                        btnRemoveProp.Enabled = true;
                     }
                 }
             }
@@ -554,6 +599,7 @@ namespace IB2ToolsetMini
             newProp.PropName = "newProp";
             newProp.PropCategoryName = "New Category";
             newProp.PropTag = "newPropTag_" + prntForm.mod.nextIdNumber;
+            newProp.moduleProp = true;
             prntForm.nodeCount++;
             prntForm.allPropsList.Add(newProp);
             UpdateTreeViewProps();
@@ -585,6 +631,7 @@ namespace IB2ToolsetMini
                     string _nodeTag = tvProps.SelectedNode.Name;
                     Prop newProp = prntForm.allPropsList[GetPropIndex(_nodeTag)].DeepCopy();
                     newProp.PropTag = "newPropTag_" + prntForm.mod.nextIdNumber;
+                    newProp.moduleProp = true;
                     prntForm.allPropsList.Add(newProp);
                     UpdateTreeViewProps();
                 }
