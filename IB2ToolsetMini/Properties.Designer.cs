@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.propertyGrid1 = new ReadOnlyPropertyGrid(); //System.Windows.Forms.PropertyGrid();
             this.SuspendLayout();
             // 
             // propertyGrid1
@@ -57,7 +57,7 @@
 
         #endregion
 
-        public System.Windows.Forms.PropertyGrid propertyGrid1;
-
+        //public System.Windows.Forms.PropertyGrid propertyGrid1;
+        public ReadOnlyPropertyGrid propertyGrid1;
     }
 }

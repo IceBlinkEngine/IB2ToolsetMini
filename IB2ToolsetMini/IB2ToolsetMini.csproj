@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IB2ToolsetMini</RootNamespace>
-    <AssemblyName>IB2ToolsetMini</AssemblyName>
+    <AssemblyName>IceBlinkBasic_Toolset</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -270,6 +270,9 @@
     <Compile Include="RacesEditor.Designer.cs">
       <DependentUpon>RacesEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReadOnlyPropertyGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RenameDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +302,7 @@
     <Compile Include="SpellEditor.Designer.cs">
       <DependentUpon>SpellEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="StringForDropDownList.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileBitmapNamePair.cs" />
     <Compile Include="TileEnc.cs" />

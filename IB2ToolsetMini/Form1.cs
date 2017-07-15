@@ -70,6 +70,7 @@ namespace IB2ToolsetMini
         public ContainersForm frmContainers;
         public LogForm frmLog;
         public bool m_bSaveLayout = true;
+        public bool advancedMode = false;
 
 
         public ParentForm()
@@ -120,7 +121,7 @@ namespace IB2ToolsetMini
             frmBlueprints.UpdateTreeViewProps();
             loadPropSprites();
             refreshDropDownLists();
-            this.Text = "IceBlink 2 Mini Toolset - " + mod.moduleLabelName;
+            this.Text = "IceBlinkBasic Toolset - " + mod.moduleLabelName;
             createTilePrefixFilterList();
 
             //fill all lists
@@ -422,9 +423,13 @@ namespace IB2ToolsetMini
             frmConversations.refreshListBoxConvos();
             //REMOVEfrmLogicTree.refreshListBoxLogicTrees();
             frmIBScript.refreshListBoxIBScripts();
-            if (File.Exists("data.json"))
+            if (File.Exists(_mainDirectory + "\\override\\data.json"))
             {
-                this.datafile = this.datafile.loadDataFile("data.json");
+                this.datafile = this.datafile.loadDataFile(_mainDirectory + "\\override\\data.json");
+            }
+            else if (File.Exists(_mainDirectory + "\\default\\NewModule\\data\\data.json"))
+            {
+                this.datafile = this.datafile.loadDataFile(_mainDirectory + "\\default\\NewModule\\data\\data.json");
             }
             //ITEMS
             allItemsList.Clear();
@@ -822,7 +827,7 @@ namespace IB2ToolsetMini
                 frmBlueprints.UpdateTreeViewProps();
                 loadPropSprites();
                 refreshDropDownLists();
-                this.Text = "IceBlink 2 Mini Toolset - " + mod.moduleLabelName;
+                this.Text = "IceBlinkBasic Toolset - " + mod.moduleLabelName;
                 createTilePrefixFilterList();
             }
         }
@@ -1219,8 +1224,22 @@ namespace IB2ToolsetMini
                         datafile.dataPropsList.Add(it.DeepCopy());
                     }
                 }
-                //save data file
-                this.datafile.saveDataFile("data.json", true);
+
+                try
+                {
+                    string directory = _mainDirectory + "\\override";
+                    if (!Directory.Exists(directory)) // if folder does not exist, create it and copy contents from previous folder
+                    {
+                        createDirectory(directory);                        
+                    }
+                    //save data file
+                    this.datafile.saveDataFile(_mainDirectory + "\\override\\data.json", true);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("failed to save 'data.json' to 'override' directory: " + e.ToString());
+                }
+                
 
                 //saveCreaturesFile(fullPathDirectory + "\\data\\creatures.json");
                 //saveItemsFile(fullPathDirectory + "\\data\\items.json");
@@ -3210,6 +3229,30 @@ namespace IB2ToolsetMini
                 }
             }
             return tempNode;
+        }
+
+        private void tsBtnAdvancedMode_Click(object sender, EventArgs e)
+        {
+            if (tsBtnAdvancedMode.CheckState == CheckState.Unchecked)
+            {
+                advancedMode = false;
+                playerClassEditorToolStripMenuItem.Visible = false;
+                raceEditorToolStripMenuItem.Visible = false;
+                spellEditorToolStripMenuItem.Visible = false;
+                traitEditorToolStripMenuItem.Visible = false;
+                effectEditorToolStripMenuItem.Visible = false;
+                tsBtnAdvancedMode.Text = "Standard Mode";
+            }
+            else if (tsBtnAdvancedMode.CheckState == CheckState.Checked)
+            {
+                advancedMode = true;
+                playerClassEditorToolStripMenuItem.Visible = true;
+                raceEditorToolStripMenuItem.Visible = true;
+                spellEditorToolStripMenuItem.Visible = true;
+                traitEditorToolStripMenuItem.Visible = true;
+                effectEditorToolStripMenuItem.Visible = true;
+                tsBtnAdvancedMode.Text = "Advanced Mode";
+            }
         }
     }
 }

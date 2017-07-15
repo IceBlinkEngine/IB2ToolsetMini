@@ -14,6 +14,7 @@ namespace IB2ToolsetMini
         private int _moduleVersion = 1;
         public string saveName = "empty";
         private string _defaultPlayerFilename = "drin.json";
+        private List<StringForDropDownList> _defaultPlayerFilenameList = new List<StringForDropDownList>();
         private bool _mustUsePreMadePC = false;
         private int _numberOfPlayerMadePcsAllowed = 1;
         private int maxPartySize = 6;
@@ -146,6 +147,12 @@ namespace IB2ToolsetMini
         {
             get { return _defaultPlayerFilename; }
             set { _defaultPlayerFilename = value; }
+        }
+        [CategoryAttribute("03 - Player and Party"), DescriptionAttribute("If 'defaultPlayerFilename' field is set to '' or 'none' then this list is used. Filename(s) of the Player(s) to use as the default starting PC (Party) or the forced pre-made PC (Party) if that flag (mustUsePreMadePC) is true.")]
+        public List<StringForDropDownList> defaultPlayerFilenameList
+        {
+            get { return _defaultPlayerFilenameList; }
+            set { _defaultPlayerFilenameList = value; }
         }
         [CategoryAttribute("03 - Player and Party"), DescriptionAttribute("Set this flag to true if you only want the player to use the pre-made PC identified in defaultPlayerFilename property. The player will not be given an option to create a character.")]
         public bool mustUsePreMadePC

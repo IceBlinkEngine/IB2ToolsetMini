@@ -94,6 +94,27 @@ namespace IB2ToolsetMini
             {
                 string _nodeTag = tvCreatures.SelectedNode.Name;
                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = GetCreature(_nodeTag);
+                if (GetCreature(_nodeTag) != null)
+                {
+                    if (!GetCreature(_nodeTag).moduleCreature)
+                    {
+                        if (!prntForm.advancedMode)
+                        {
+                            //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = false;
+                            prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = true;
+                        }
+                        else
+                        {
+                            //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
+                            prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                        }
+                    }
+                    else
+                    {
+                        //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
+                        prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                    }
+                }
             }
         }
         public Creature GetCreature(string _nodeTag)
@@ -266,6 +287,27 @@ namespace IB2ToolsetMini
             {
                 string _nodeTag = tvItems.SelectedNode.Name;
                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = GetItem(_nodeTag);
+                if (GetItem(_nodeTag) != null)
+                {
+                    if (!GetItem(_nodeTag).moduleItem)
+                    {
+                        if (!prntForm.advancedMode)
+                        {
+                            //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = false;
+                            prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = true;
+                        }
+                        else
+                        {
+                            //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
+                            prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                        }
+                    }
+                    else
+                    {
+                        //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
+                        prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                    }
+                }
             }
         }
         public Item GetItem(string _nodeTag)
@@ -414,6 +456,27 @@ namespace IB2ToolsetMini
             {
                 string _nodeTag = tvProps.SelectedNode.Name;
                 prntForm.frmIceBlinkProperties.propertyGrid1.SelectedObject = GetProp(_nodeTag);
+                if (GetProp(_nodeTag) != null)
+                {
+                    if (!GetProp(_nodeTag).moduleProp)
+                    {
+                        if (!prntForm.advancedMode)
+                        {
+                            //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = false;
+                            prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = true;
+                        }
+                        else
+                        {
+                            //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
+                            prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                        }
+                    }
+                    else
+                    {
+                        //prntForm.frmIceBlinkProperties.propertyGrid1.Enabled = true;
+                        prntForm.frmIceBlinkProperties.propertyGrid1.ReadOnly = false;
+                    }
+                }
             }
         }
         public Prop GetProp(string _nodeTag)
