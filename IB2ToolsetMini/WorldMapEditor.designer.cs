@@ -102,9 +102,9 @@
             // 
             // btnFillWithSelected
             // 
-            this.btnFillWithSelected.Location = new System.Drawing.Point(16, 178);
+            this.btnFillWithSelected.Location = new System.Drawing.Point(14, 198);
             this.btnFillWithSelected.Name = "btnFillWithSelected";
-            this.btnFillWithSelected.Size = new System.Drawing.Size(86, 39);
+            this.btnFillWithSelected.Size = new System.Drawing.Size(139, 55);
             this.btnFillWithSelected.TabIndex = 17;
             this.btnFillWithSelected.Text = "Fill Map with Selected Tile";
             this.btnFillWithSelected.UseVisualStyleBackColor = true;
@@ -116,25 +116,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.AutoScroll = true;
             this.panel3.Controls.Add(this.flPanelTab1);
-            this.panel3.Location = new System.Drawing.Point(1028, 178);
+            this.panel3.Location = new System.Drawing.Point(1103, 332);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(140, 554);
+            this.panel3.Size = new System.Drawing.Size(190, 550);
             this.panel3.TabIndex = 68;
             // 
             // flPanelTab1
             // 
-            this.flPanelTab1.Location = new System.Drawing.Point(3, 3);
+            this.flPanelTab1.Location = new System.Drawing.Point(3, 5);
             this.flPanelTab1.Name = "flPanelTab1";
-            this.flPanelTab1.Size = new System.Drawing.Size(118, 25000);
+            this.flPanelTab1.Size = new System.Drawing.Size(160, 25000);
             this.flPanelTab1.TabIndex = 0;
             // 
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.panel1);
-            this.groupBox6.Location = new System.Drawing.Point(16, 225);
+            this.groupBox6.Location = new System.Drawing.Point(14, 259);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(86, 81);
+            this.groupBox6.Size = new System.Drawing.Size(138, 101);
             this.groupBox6.TabIndex = 69;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Selected Tile";
@@ -142,7 +142,7 @@
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(18, 19);
+            this.panel1.Location = new System.Drawing.Point(42, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(50, 50);
             this.panel1.TabIndex = 7;
@@ -153,9 +153,9 @@
             this.groupBox7.Controls.Add(this.radioButton3);
             this.groupBox7.Controls.Add(this.radioButton1);
             this.groupBox7.Controls.Add(this.radioButton2);
-            this.groupBox7.Location = new System.Drawing.Point(17, 15);
+            this.groupBox7.Location = new System.Drawing.Point(14, 15);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(86, 72);
+            this.groupBox7.Size = new System.Drawing.Size(139, 85);
             this.groupBox7.TabIndex = 70;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Edit Layer";
@@ -163,9 +163,9 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(11, 48);
+            this.radioButton3.Location = new System.Drawing.Point(11, 59);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(60, 17);
+            this.radioButton3.Size = new System.Drawing.Size(77, 21);
             this.radioButton3.TabIndex = 6;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Layer 3";
@@ -174,9 +174,9 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(11, 14);
+            this.radioButton1.Location = new System.Drawing.Point(11, 16);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(60, 17);
+            this.radioButton1.Size = new System.Drawing.Size(77, 21);
             this.radioButton1.TabIndex = 4;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Layer 1";
@@ -185,9 +185,9 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(11, 31);
+            this.radioButton2.Location = new System.Drawing.Point(11, 38);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
+            this.radioButton2.Size = new System.Drawing.Size(77, 21);
             this.radioButton2.TabIndex = 5;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Layer 2";
@@ -199,9 +199,9 @@
             this.groupBox8.Controls.Add(this.checkBox3);
             this.groupBox8.Controls.Add(this.checkBox1);
             this.groupBox8.Controls.Add(this.checkBox2);
-            this.groupBox8.Location = new System.Drawing.Point(17, 93);
+            this.groupBox8.Location = new System.Drawing.Point(14, 104);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(86, 75);
+            this.groupBox8.Size = new System.Drawing.Size(139, 85);
             this.groupBox8.TabIndex = 71;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Show";
@@ -209,9 +209,9 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(10, 50);
+            this.checkBox3.Location = new System.Drawing.Point(10, 60);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(61, 17);
+            this.checkBox3.Size = new System.Drawing.Size(78, 21);
             this.checkBox3.TabIndex = 4;
             this.checkBox3.Text = "Layer 3";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -219,9 +219,9 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(10, 16);
+            this.checkBox1.Location = new System.Drawing.Point(10, 17);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 17);
+            this.checkBox1.Size = new System.Drawing.Size(78, 21);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "Layer 1";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -230,9 +230,9 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(10, 33);
+            this.checkBox2.Location = new System.Drawing.Point(10, 38);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(61, 17);
+            this.checkBox2.Size = new System.Drawing.Size(78, 21);
             this.checkBox2.TabIndex = 3;
             this.checkBox2.Text = "Layer 2";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -245,9 +245,9 @@
             this.groupBox9.Controls.Add(this.groupBox7);
             this.groupBox9.Controls.Add(this.groupBox6);
             this.groupBox9.Controls.Add(this.btnFillWithSelected);
-            this.groupBox9.Location = new System.Drawing.Point(136, 5);
+            this.groupBox9.Location = new System.Drawing.Point(192, 5);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(118, 372);
+            this.groupBox9.Size = new System.Drawing.Size(168, 451);
             this.groupBox9.TabIndex = 72;
             this.groupBox9.TabStop = false;
             // 
@@ -256,9 +256,9 @@
             this.groupBox3.Controls.Add(this.rbtnZoom5x);
             this.groupBox3.Controls.Add(this.rbtnZoom2x);
             this.groupBox3.Controls.Add(this.rbtnZoom1x);
-            this.groupBox3.Location = new System.Drawing.Point(14, 312);
+            this.groupBox3.Location = new System.Drawing.Point(14, 366);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(90, 52);
+            this.groupBox3.Size = new System.Drawing.Size(138, 75);
             this.groupBox3.TabIndex = 72;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "zoom";
@@ -267,12 +267,13 @@
             // 
             this.rbtnZoom5x.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnZoom5x.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnZoom5x.Location = new System.Drawing.Point(59, 19);
+            this.rbtnZoom5x.Location = new System.Drawing.Point(88, 25);
             this.rbtnZoom5x.Name = "rbtnZoom5x";
-            this.rbtnZoom5x.Size = new System.Drawing.Size(28, 27);
+            this.rbtnZoom5x.Size = new System.Drawing.Size(40, 40);
             this.rbtnZoom5x.TabIndex = 2;
             this.rbtnZoom5x.TabStop = true;
             this.rbtnZoom5x.Text = "5X";
+            this.rbtnZoom5x.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnZoom5x.UseVisualStyleBackColor = true;
             this.rbtnZoom5x.CheckedChanged += new System.EventHandler(this.rbtnZoom5x_CheckedChanged);
             // 
@@ -280,12 +281,13 @@
             // 
             this.rbtnZoom2x.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnZoom2x.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnZoom2x.Location = new System.Drawing.Point(31, 19);
+            this.rbtnZoom2x.Location = new System.Drawing.Point(47, 25);
             this.rbtnZoom2x.Name = "rbtnZoom2x";
-            this.rbtnZoom2x.Size = new System.Drawing.Size(28, 27);
+            this.rbtnZoom2x.Size = new System.Drawing.Size(40, 40);
             this.rbtnZoom2x.TabIndex = 1;
             this.rbtnZoom2x.TabStop = true;
             this.rbtnZoom2x.Text = "2X";
+            this.rbtnZoom2x.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnZoom2x.UseVisualStyleBackColor = true;
             this.rbtnZoom2x.CheckedChanged += new System.EventHandler(this.rbtnZoom2x_CheckedChanged);
             // 
@@ -293,12 +295,13 @@
             // 
             this.rbtnZoom1x.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnZoom1x.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnZoom1x.Location = new System.Drawing.Point(3, 19);
+            this.rbtnZoom1x.Location = new System.Drawing.Point(7, 25);
             this.rbtnZoom1x.Name = "rbtnZoom1x";
-            this.rbtnZoom1x.Size = new System.Drawing.Size(28, 27);
+            this.rbtnZoom1x.Size = new System.Drawing.Size(40, 40);
             this.rbtnZoom1x.TabIndex = 0;
             this.rbtnZoom1x.TabStop = true;
             this.rbtnZoom1x.Text = "1X";
+            this.rbtnZoom1x.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnZoom1x.UseVisualStyleBackColor = true;
             this.rbtnZoom1x.CheckedChanged += new System.EventHandler(this.rbtnZoom1x_CheckedChanged);
             // 
@@ -306,9 +309,9 @@
             // 
             this.rbtnLoS.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnLoS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnLoS.Location = new System.Drawing.Point(9, 303);
+            this.rbtnLoS.Location = new System.Drawing.Point(9, 373);
             this.rbtnLoS.Name = "rbtnLoS";
-            this.rbtnLoS.Size = new System.Drawing.Size(103, 45);
+            this.rbtnLoS.Size = new System.Drawing.Size(158, 65);
             this.rbtnLoS.TabIndex = 5;
             this.rbtnLoS.TabStop = true;
             this.rbtnLoS.Text = "Toggle\r\nLine-of-Sight";
@@ -322,7 +325,7 @@
             this.rbtnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnInfo.Location = new System.Drawing.Point(9, 17);
             this.rbtnInfo.Name = "rbtnInfo";
-            this.rbtnInfo.Size = new System.Drawing.Size(103, 30);
+            this.rbtnInfo.Size = new System.Drawing.Size(158, 30);
             this.rbtnInfo.TabIndex = 4;
             this.rbtnInfo.TabStop = true;
             this.rbtnInfo.Text = "INFO";
@@ -334,9 +337,9 @@
             // 
             this.rbtnWalkable.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnWalkable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnWalkable.Location = new System.Drawing.Point(9, 250);
+            this.rbtnWalkable.Location = new System.Drawing.Point(9, 300);
             this.rbtnWalkable.Name = "rbtnWalkable";
-            this.rbtnWalkable.Size = new System.Drawing.Size(103, 45);
+            this.rbtnWalkable.Size = new System.Drawing.Size(158, 65);
             this.rbtnWalkable.TabIndex = 3;
             this.rbtnWalkable.TabStop = true;
             this.rbtnWalkable.Text = "Toggle\r\nWalkable";
@@ -347,9 +350,9 @@
             // btnProperties
             // 
             this.btnProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProperties.Location = new System.Drawing.Point(142, 525);
+            this.btnProperties.Location = new System.Drawing.Point(192, 617);
             this.btnProperties.Name = "btnProperties";
-            this.btnProperties.Size = new System.Drawing.Size(106, 47);
+            this.btnProperties.Size = new System.Drawing.Size(168, 54);
             this.btnProperties.TabIndex = 76;
             this.btnProperties.Text = "Area Properties";
             this.btnProperties.UseVisualStyleBackColor = true;
@@ -357,9 +360,9 @@
             // 
             // lblMouseInfo
             // 
-            this.lblMouseInfo.Location = new System.Drawing.Point(134, 580);
+            this.lblMouseInfo.Location = new System.Drawing.Point(192, 674);
             this.lblMouseInfo.Name = "lblMouseInfo";
-            this.lblMouseInfo.Size = new System.Drawing.Size(121, 63);
+            this.lblMouseInfo.Size = new System.Drawing.Size(168, 101);
             this.lblMouseInfo.TabIndex = 73;
             this.lblMouseInfo.Text = "CURSOR/GRID";
             // 
@@ -367,9 +370,9 @@
             // 
             this.groupBox1.Controls.Add(this.btnRemoveSelectedObject);
             this.groupBox1.Controls.Add(this.txtSelectedIconInfo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 424);
+            this.groupBox1.Location = new System.Drawing.Point(12, 505);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(118, 142);
+            this.groupBox1.Size = new System.Drawing.Size(174, 146);
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Object Info";
@@ -379,7 +382,7 @@
             this.btnRemoveSelectedObject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveSelectedObject.Location = new System.Drawing.Point(6, 74);
             this.btnRemoveSelectedObject.Name = "btnRemoveSelectedObject";
-            this.btnRemoveSelectedObject.Size = new System.Drawing.Size(106, 61);
+            this.btnRemoveSelectedObject.Size = new System.Drawing.Size(160, 67);
             this.btnRemoveSelectedObject.TabIndex = 1;
             this.btnRemoveSelectedObject.Text = "Remove Last Selected Object";
             this.btnRemoveSelectedObject.UseVisualStyleBackColor = true;
@@ -390,7 +393,7 @@
             this.txtSelectedIconInfo.Location = new System.Drawing.Point(6, 19);
             this.txtSelectedIconInfo.Multiline = true;
             this.txtSelectedIconInfo.Name = "txtSelectedIconInfo";
-            this.txtSelectedIconInfo.Size = new System.Drawing.Size(106, 54);
+            this.txtSelectedIconInfo.Size = new System.Drawing.Size(160, 54);
             this.txtSelectedIconInfo.TabIndex = 0;
             // 
             // groupBox2
@@ -403,7 +406,7 @@
             this.groupBox2.Controls.Add(this.rbtnPaintTrigger);
             this.groupBox2.Location = new System.Drawing.Point(12, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(118, 364);
+            this.groupBox2.Size = new System.Drawing.Size(174, 450);
             this.groupBox2.TabIndex = 75;
             this.groupBox2.TabStop = false;
             // 
@@ -411,9 +414,9 @@
             // 
             this.rbtnPaintTile.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnPaintTile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnPaintTile.Location = new System.Drawing.Point(9, 53);
+            this.rbtnPaintTile.Location = new System.Drawing.Point(9, 56);
             this.rbtnPaintTile.Name = "rbtnPaintTile";
-            this.rbtnPaintTile.Size = new System.Drawing.Size(103, 45);
+            this.rbtnPaintTile.Size = new System.Drawing.Size(158, 57);
             this.rbtnPaintTile.TabIndex = 6;
             this.rbtnPaintTile.TabStop = true;
             this.rbtnPaintTile.Text = "Paint\r\nTiles";
@@ -425,9 +428,9 @@
             // 
             this.rbtnEditTrigger.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnEditTrigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnEditTrigger.Location = new System.Drawing.Point(9, 175);
+            this.rbtnEditTrigger.Location = new System.Drawing.Point(9, 210);
             this.rbtnEditTrigger.Name = "rbtnEditTrigger";
-            this.rbtnEditTrigger.Size = new System.Drawing.Size(103, 65);
+            this.rbtnEditTrigger.Size = new System.Drawing.Size(158, 80);
             this.rbtnEditTrigger.TabIndex = 2;
             this.rbtnEditTrigger.TabStop = true;
             this.rbtnEditTrigger.Text = "Edit Last\r\nSelected\r\nTrigger";
@@ -439,9 +442,9 @@
             // 
             this.rbtnPaintTrigger.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnPaintTrigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnPaintTrigger.Location = new System.Drawing.Point(9, 106);
+            this.rbtnPaintTrigger.Location = new System.Drawing.Point(9, 121);
             this.rbtnPaintTrigger.Name = "rbtnPaintTrigger";
-            this.rbtnPaintTrigger.Size = new System.Drawing.Size(103, 61);
+            this.rbtnPaintTrigger.Size = new System.Drawing.Size(158, 80);
             this.rbtnPaintTrigger.TabIndex = 0;
             this.rbtnPaintTrigger.TabStop = true;
             this.rbtnPaintTrigger.Text = "Paint\r\nNew\r\nTrigger";
@@ -451,6 +454,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -462,10 +466,10 @@
             this.chkGrid.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.chkGrid.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
             this.chkGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkGrid.Location = new System.Drawing.Point(21, 384);
+            this.chkGrid.Location = new System.Drawing.Point(21, 459);
             this.chkGrid.Margin = new System.Windows.Forms.Padding(0);
             this.chkGrid.Name = "chkGrid";
-            this.chkGrid.Size = new System.Drawing.Size(103, 28);
+            this.chkGrid.Size = new System.Drawing.Size(157, 35);
             this.chkGrid.TabIndex = 78;
             this.chkGrid.Text = "SHOW GRID";
             this.chkGrid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -486,16 +490,16 @@
             this.gbMapSize.Controls.Add(this.btnMinusLeftX);
             this.gbMapSize.Controls.Add(this.label2);
             this.gbMapSize.Controls.Add(this.label1);
-            this.gbMapSize.Location = new System.Drawing.Point(136, 383);
+            this.gbMapSize.Location = new System.Drawing.Point(192, 475);
             this.gbMapSize.Name = "gbMapSize";
-            this.gbMapSize.Size = new System.Drawing.Size(118, 131);
+            this.gbMapSize.Size = new System.Drawing.Size(168, 131);
             this.gbMapSize.TabIndex = 79;
             this.gbMapSize.TabStop = false;
             this.gbMapSize.Text = "Map Size (squares)";
             // 
             // btnMinusBottumY
             // 
-            this.btnMinusBottumY.Location = new System.Drawing.Point(60, 97);
+            this.btnMinusBottumY.Location = new System.Drawing.Point(83, 97);
             this.btnMinusBottumY.Name = "btnMinusBottumY";
             this.btnMinusBottumY.Size = new System.Drawing.Size(25, 25);
             this.btnMinusBottumY.TabIndex = 13;
@@ -505,7 +509,7 @@
             // 
             // btnPlusBottumY
             // 
-            this.btnPlusBottumY.Location = new System.Drawing.Point(35, 97);
+            this.btnPlusBottumY.Location = new System.Drawing.Point(58, 97);
             this.btnPlusBottumY.Name = "btnPlusBottumY";
             this.btnPlusBottumY.Size = new System.Drawing.Size(25, 25);
             this.btnPlusBottumY.TabIndex = 12;
@@ -515,7 +519,7 @@
             // 
             // btnMinusTopY
             // 
-            this.btnMinusTopY.Location = new System.Drawing.Point(60, 19);
+            this.btnMinusTopY.Location = new System.Drawing.Point(83, 19);
             this.btnMinusTopY.Name = "btnMinusTopY";
             this.btnMinusTopY.Size = new System.Drawing.Size(25, 25);
             this.btnMinusTopY.TabIndex = 11;
@@ -525,7 +529,7 @@
             // 
             // btnPlusTopY
             // 
-            this.btnPlusTopY.Location = new System.Drawing.Point(35, 19);
+            this.btnPlusTopY.Location = new System.Drawing.Point(58, 19);
             this.btnPlusTopY.Name = "btnPlusTopY";
             this.btnPlusTopY.Size = new System.Drawing.Size(25, 25);
             this.btnPlusTopY.TabIndex = 10;
@@ -536,7 +540,7 @@
             // lblMapSizeY
             // 
             this.lblMapSizeY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMapSizeY.Location = new System.Drawing.Point(61, 70);
+            this.lblMapSizeY.Location = new System.Drawing.Point(84, 70);
             this.lblMapSizeY.Name = "lblMapSizeY";
             this.lblMapSizeY.Size = new System.Drawing.Size(28, 24);
             this.lblMapSizeY.TabIndex = 9;
@@ -546,7 +550,7 @@
             // lblMapSizeX
             // 
             this.lblMapSizeX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMapSizeX.Location = new System.Drawing.Point(30, 70);
+            this.lblMapSizeX.Location = new System.Drawing.Point(53, 70);
             this.lblMapSizeX.Name = "lblMapSizeX";
             this.lblMapSizeX.Size = new System.Drawing.Size(28, 24);
             this.lblMapSizeX.TabIndex = 8;
@@ -555,7 +559,7 @@
             // 
             // btnPlusLeftX
             // 
-            this.btnPlusLeftX.Location = new System.Drawing.Point(3, 49);
+            this.btnPlusLeftX.Location = new System.Drawing.Point(26, 49);
             this.btnPlusLeftX.Name = "btnPlusLeftX";
             this.btnPlusLeftX.Size = new System.Drawing.Size(25, 25);
             this.btnPlusLeftX.TabIndex = 7;
@@ -565,7 +569,7 @@
             // 
             // btnPlusRightX
             // 
-            this.btnPlusRightX.Location = new System.Drawing.Point(91, 49);
+            this.btnPlusRightX.Location = new System.Drawing.Point(114, 49);
             this.btnPlusRightX.Name = "btnPlusRightX";
             this.btnPlusRightX.Size = new System.Drawing.Size(25, 25);
             this.btnPlusRightX.TabIndex = 6;
@@ -575,7 +579,7 @@
             // 
             // btnMinusRightX
             // 
-            this.btnMinusRightX.Location = new System.Drawing.Point(91, 74);
+            this.btnMinusRightX.Location = new System.Drawing.Point(114, 74);
             this.btnMinusRightX.Name = "btnMinusRightX";
             this.btnMinusRightX.Size = new System.Drawing.Size(25, 25);
             this.btnMinusRightX.TabIndex = 5;
@@ -585,7 +589,7 @@
             // 
             // btnMinusLeftX
             // 
-            this.btnMinusLeftX.Location = new System.Drawing.Point(3, 74);
+            this.btnMinusLeftX.Location = new System.Drawing.Point(26, 74);
             this.btnMinusLeftX.Name = "btnMinusLeftX";
             this.btnMinusLeftX.Size = new System.Drawing.Size(25, 25);
             this.btnMinusLeftX.TabIndex = 4;
@@ -597,9 +601,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(64, 47);
+            this.label2.Location = new System.Drawing.Point(87, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 24);
+            this.label2.Size = new System.Drawing.Size(29, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "Y";
             // 
@@ -607,9 +611,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 46);
+            this.label1.Location = new System.Drawing.Point(54, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 24);
+            this.label1.Size = new System.Drawing.Size(30, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "X";
             // 
@@ -628,18 +632,18 @@
             this.gbMoveProp.Controls.Add(this.btnMovePropUp);
             this.gbMoveProp.Controls.Add(this.btnMovePropLeft);
             this.gbMoveProp.Controls.Add(this.btnMovePropRight);
-            this.gbMoveProp.Location = new System.Drawing.Point(12, 572);
+            this.gbMoveProp.Location = new System.Drawing.Point(12, 658);
             this.gbMoveProp.Name = "gbMoveProp";
-            this.gbMoveProp.Size = new System.Drawing.Size(118, 131);
+            this.gbMoveProp.Size = new System.Drawing.Size(174, 131);
             this.gbMoveProp.TabIndex = 80;
             this.gbMoveProp.TabStop = false;
             this.gbMoveProp.Text = "Move Selected Prop";
             // 
             // btnMovePropDown
             // 
-            this.btnMovePropDown.Location = new System.Drawing.Point(44, 85);
+            this.btnMovePropDown.Location = new System.Drawing.Point(70, 89);
             this.btnMovePropDown.Name = "btnMovePropDown";
-            this.btnMovePropDown.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropDown.Size = new System.Drawing.Size(35, 35);
             this.btnMovePropDown.TabIndex = 12;
             this.btnMovePropDown.Text = "\\/";
             this.btnMovePropDown.UseVisualStyleBackColor = true;
@@ -647,9 +651,9 @@
             // 
             // btnMovePropUp
             // 
-            this.btnMovePropUp.Location = new System.Drawing.Point(43, 19);
+            this.btnMovePropUp.Location = new System.Drawing.Point(70, 19);
             this.btnMovePropUp.Name = "btnMovePropUp";
-            this.btnMovePropUp.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropUp.Size = new System.Drawing.Size(35, 35);
             this.btnMovePropUp.TabIndex = 10;
             this.btnMovePropUp.Text = "/\\";
             this.btnMovePropUp.UseVisualStyleBackColor = true;
@@ -657,9 +661,9 @@
             // 
             // btnMovePropLeft
             // 
-            this.btnMovePropLeft.Location = new System.Drawing.Point(11, 51);
+            this.btnMovePropLeft.Location = new System.Drawing.Point(31, 54);
             this.btnMovePropLeft.Name = "btnMovePropLeft";
-            this.btnMovePropLeft.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropLeft.Size = new System.Drawing.Size(35, 35);
             this.btnMovePropLeft.TabIndex = 7;
             this.btnMovePropLeft.Text = "<";
             this.btnMovePropLeft.UseVisualStyleBackColor = true;
@@ -667,9 +671,9 @@
             // 
             // btnMovePropRight
             // 
-            this.btnMovePropRight.Location = new System.Drawing.Point(77, 51);
+            this.btnMovePropRight.Location = new System.Drawing.Point(108, 54);
             this.btnMovePropRight.Name = "btnMovePropRight";
-            this.btnMovePropRight.Size = new System.Drawing.Size(30, 30);
+            this.btnMovePropRight.Size = new System.Drawing.Size(35, 35);
             this.btnMovePropRight.TabIndex = 6;
             this.btnMovePropRight.Text = ">";
             this.btnMovePropRight.UseVisualStyleBackColor = true;
@@ -679,7 +683,7 @@
             // 
             this.flTileFilters.Location = new System.Drawing.Point(3, 5);
             this.flTileFilters.Name = "flTileFilters";
-            this.flTileFilters.Size = new System.Drawing.Size(118, 300);
+            this.flTileFilters.Size = new System.Drawing.Size(160, 380);
             this.flTileFilters.TabIndex = 0;
             // 
             // pnlFilters
@@ -687,11 +691,11 @@
             this.pnlFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFilters.AutoScroll = true;
             this.pnlFilters.Controls.Add(this.flTileFilters);
-            this.pnlFilters.Location = new System.Drawing.Point(1028, 12);
-            this.pnlFilters.MaximumSize = new System.Drawing.Size(140, 160);
-            this.pnlFilters.MinimumSize = new System.Drawing.Size(140, 160);
+            this.pnlFilters.Location = new System.Drawing.Point(1103, 12);
+            this.pnlFilters.MaximumSize = new System.Drawing.Size(190, 310);
+            this.pnlFilters.MinimumSize = new System.Drawing.Size(190, 310);
             this.pnlFilters.Name = "pnlFilters";
-            this.pnlFilters.Size = new System.Drawing.Size(140, 160);
+            this.pnlFilters.Size = new System.Drawing.Size(190, 310);
             this.pnlFilters.TabIndex = 69;
             // 
             // panelNoScrollOnFocus1
@@ -703,9 +707,9 @@
             this.panelNoScrollOnFocus1.BackColor = System.Drawing.Color.Black;
             this.panelNoScrollOnFocus1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelNoScrollOnFocus1.Controls.Add(this.panelView);
-            this.panelNoScrollOnFocus1.Location = new System.Drawing.Point(260, 12);
+            this.panelNoScrollOnFocus1.Location = new System.Drawing.Point(370, 12);
             this.panelNoScrollOnFocus1.Name = "panelNoScrollOnFocus1";
-            this.panelNoScrollOnFocus1.Size = new System.Drawing.Size(765, 713);
+            this.panelNoScrollOnFocus1.Size = new System.Drawing.Size(727, 870);
             this.panelNoScrollOnFocus1.TabIndex = 77;
             // 
             // panelView
@@ -724,9 +728,9 @@
             // 
             // WorldMapEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 737);
+            this.ClientSize = new System.Drawing.Size(1299, 894);
             this.Controls.Add(this.pnlFilters);
             this.Controls.Add(this.gbMoveProp);
             this.Controls.Add(this.panelNoScrollOnFocus1);

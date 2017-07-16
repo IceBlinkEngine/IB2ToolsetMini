@@ -136,8 +136,46 @@ namespace IB2ToolsetMini
                     btnTileFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
                     btnTileFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
                     btnTileFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    btnTileFilter.Size = new System.Drawing.Size(52, 25);
+                    btnTileFilter.Size = new System.Drawing.Size(52, 40);
+                    //btnTileFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     btnTileFilter.Text = f;
+                    if (f.StartsWith("t_es_"))
+                    {
+                        btnTileFilter.Text = "Elderin Stone";
+                    }
+                    else if (f.StartsWith("t_hw_"))
+                    {
+                        btnTileFilter.Text = "Hearkenwold";
+                    }
+                    else if (f.StartsWith("t_w_"))
+                    {
+                        btnTileFilter.Text = "Walls";
+                    }
+                    else if (f.StartsWith("t_f_"))
+                    {
+                        btnTileFilter.Text = "Floors";
+                    }
+                    else if (f.StartsWith("t_fc_"))
+                    {
+                        btnTileFilter.Text = "FRUA";
+                    }
+                    else if (f.StartsWith("t_a_"))
+                    {
+                        btnTileFilter.Text = "MISC";
+                    }
+                    else if (f.StartsWith("t_n_"))
+                    {
+                        btnTileFilter.Text = "Nature";
+                    }
+                    else if (f.StartsWith("t_m_"))
+                    {
+                        btnTileFilter.Text = "Man Made";
+                    }
+                    else if (f.StartsWith("t_"))
+                    {
+                        btnTileFilter.Text = "All";
+                    }
+                    btnTileFilter.Tag = f;
                     btnTileFilter.UseVisualStyleBackColor = true;
                     btnTileFilter.Click += new System.EventHandler(this.btnTileFilter_Click);
                     this.flTileFilters.Controls.Add(btnTileFilter);
@@ -1869,7 +1907,7 @@ namespace IB2ToolsetMini
         private void btnTileFilter_Click(object sender, EventArgs e)
         {
             Button selectBtn = (Button)sender;
-            createTileImageButtons(selectBtn.Text);
+            createTileImageButtons((string)selectBtn.Tag);
         }
         private void rbtnInfo_CheckedChanged(object sender, EventArgs e)
         {

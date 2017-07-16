@@ -108,9 +108,9 @@
             // 
             // btnFillWithSelected
             // 
-            this.btnFillWithSelected.Location = new System.Drawing.Point(16, 177);
+            this.btnFillWithSelected.Location = new System.Drawing.Point(14, 198);
             this.btnFillWithSelected.Name = "btnFillWithSelected";
-            this.btnFillWithSelected.Size = new System.Drawing.Size(86, 39);
+            this.btnFillWithSelected.Size = new System.Drawing.Size(139, 55);
             this.btnFillWithSelected.TabIndex = 17;
             this.btnFillWithSelected.Text = "Fill Map with Selected Tile";
             this.btnFillWithSelected.UseVisualStyleBackColor = true;
@@ -122,16 +122,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.AutoScroll = true;
             this.panel3.Controls.Add(this.flPanelTab1);
-            this.panel3.Location = new System.Drawing.Point(1028, 178);
+            this.panel3.Location = new System.Drawing.Point(1129, 327);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(140, 554);
+            this.panel3.Size = new System.Drawing.Size(190, 354);
             this.panel3.TabIndex = 68;
             // 
             // flPanelTab1
             // 
             this.flPanelTab1.Location = new System.Drawing.Point(3, 3);
             this.flPanelTab1.Name = "flPanelTab1";
-            this.flPanelTab1.Size = new System.Drawing.Size(118, 25000);
+            this.flPanelTab1.Size = new System.Drawing.Size(160, 25000);
             this.flPanelTab1.TabIndex = 0;
             this.flPanelTab1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.flPanelTab1_MouseClick);
             // 
@@ -139,9 +139,9 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.panel1);
-            this.groupBox6.Location = new System.Drawing.Point(16, 222);
+            this.groupBox6.Location = new System.Drawing.Point(14, 259);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(86, 81);
+            this.groupBox6.Size = new System.Drawing.Size(138, 101);
             this.groupBox6.TabIndex = 69;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Selected Tile";
@@ -149,7 +149,7 @@
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(18, 19);
+            this.panel1.Location = new System.Drawing.Point(42, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(50, 50);
             this.panel1.TabIndex = 7;
@@ -160,9 +160,9 @@
             this.groupBox7.Controls.Add(this.radioButton3);
             this.groupBox7.Controls.Add(this.radioButton1);
             this.groupBox7.Controls.Add(this.radioButton2);
-            this.groupBox7.Location = new System.Drawing.Point(17, 15);
+            this.groupBox7.Location = new System.Drawing.Point(14, 15);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(86, 75);
+            this.groupBox7.Size = new System.Drawing.Size(139, 85);
             this.groupBox7.TabIndex = 70;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Edit Layer";
@@ -170,9 +170,9 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(10, 50);
+            this.radioButton3.Location = new System.Drawing.Point(11, 59);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(60, 17);
+            this.radioButton3.Size = new System.Drawing.Size(77, 21);
             this.radioButton3.TabIndex = 6;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Layer 3";
@@ -181,9 +181,9 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(10, 15);
+            this.radioButton1.Location = new System.Drawing.Point(11, 16);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(60, 17);
+            this.radioButton1.Size = new System.Drawing.Size(77, 21);
             this.radioButton1.TabIndex = 4;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Layer 1";
@@ -192,9 +192,9 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(10, 33);
+            this.radioButton2.Location = new System.Drawing.Point(11, 38);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
+            this.radioButton2.Size = new System.Drawing.Size(77, 21);
             this.radioButton2.TabIndex = 5;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Layer 2";
@@ -206,9 +206,9 @@
             this.groupBox8.Controls.Add(this.checkBox3);
             this.groupBox8.Controls.Add(this.checkBox1);
             this.groupBox8.Controls.Add(this.checkBox2);
-            this.groupBox8.Location = new System.Drawing.Point(17, 96);
+            this.groupBox8.Location = new System.Drawing.Point(14, 104);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(86, 75);
+            this.groupBox8.Size = new System.Drawing.Size(139, 85);
             this.groupBox8.TabIndex = 71;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Show";
@@ -216,9 +216,9 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(10, 52);
+            this.checkBox3.Location = new System.Drawing.Point(10, 60);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(61, 17);
+            this.checkBox3.Size = new System.Drawing.Size(78, 21);
             this.checkBox3.TabIndex = 4;
             this.checkBox3.Text = "Layer 3";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -226,9 +226,9 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(10, 18);
+            this.checkBox1.Location = new System.Drawing.Point(10, 17);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 17);
+            this.checkBox1.Size = new System.Drawing.Size(78, 21);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "Layer 1";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -237,9 +237,9 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(10, 35);
+            this.checkBox2.Location = new System.Drawing.Point(10, 38);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(61, 17);
+            this.checkBox2.Size = new System.Drawing.Size(78, 21);
             this.checkBox2.TabIndex = 3;
             this.checkBox2.Text = "Layer 2";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -251,9 +251,9 @@
             this.groupBox9.Controls.Add(this.groupBox7);
             this.groupBox9.Controls.Add(this.groupBox6);
             this.groupBox9.Controls.Add(this.btnFillWithSelected);
-            this.groupBox9.Location = new System.Drawing.Point(136, 5);
+            this.groupBox9.Location = new System.Drawing.Point(192, 5);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(118, 313);
+            this.groupBox9.Size = new System.Drawing.Size(168, 370);
             this.groupBox9.TabIndex = 72;
             this.groupBox9.TabStop = false;
             // 
@@ -261,9 +261,9 @@
             // 
             this.rbtnLoS.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnLoS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnLoS.Location = new System.Drawing.Point(9, 303);
+            this.rbtnLoS.Location = new System.Drawing.Point(9, 373);
             this.rbtnLoS.Name = "rbtnLoS";
-            this.rbtnLoS.Size = new System.Drawing.Size(103, 45);
+            this.rbtnLoS.Size = new System.Drawing.Size(158, 65);
             this.rbtnLoS.TabIndex = 5;
             this.rbtnLoS.TabStop = true;
             this.rbtnLoS.Text = "Toggle\r\nLine-of-Sight";
@@ -277,7 +277,7 @@
             this.rbtnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnInfo.Location = new System.Drawing.Point(9, 17);
             this.rbtnInfo.Name = "rbtnInfo";
-            this.rbtnInfo.Size = new System.Drawing.Size(103, 30);
+            this.rbtnInfo.Size = new System.Drawing.Size(158, 30);
             this.rbtnInfo.TabIndex = 4;
             this.rbtnInfo.TabStop = true;
             this.rbtnInfo.Text = "INFO";
@@ -289,9 +289,9 @@
             // 
             this.rbtnWalkable.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnWalkable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnWalkable.Location = new System.Drawing.Point(9, 250);
+            this.rbtnWalkable.Location = new System.Drawing.Point(9, 300);
             this.rbtnWalkable.Name = "rbtnWalkable";
-            this.rbtnWalkable.Size = new System.Drawing.Size(103, 45);
+            this.rbtnWalkable.Size = new System.Drawing.Size(158, 65);
             this.rbtnWalkable.TabIndex = 3;
             this.rbtnWalkable.TabStop = true;
             this.rbtnWalkable.Text = "Toggle\r\nWalkable";
@@ -302,9 +302,9 @@
             // btnProperties
             // 
             this.btnProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProperties.Location = new System.Drawing.Point(142, 516);
+            this.btnProperties.Location = new System.Drawing.Point(192, 580);
             this.btnProperties.Name = "btnProperties";
-            this.btnProperties.Size = new System.Drawing.Size(106, 48);
+            this.btnProperties.Size = new System.Drawing.Size(168, 48);
             this.btnProperties.TabIndex = 76;
             this.btnProperties.Text = "Area Properties";
             this.btnProperties.UseVisualStyleBackColor = true;
@@ -312,9 +312,9 @@
             // 
             // lblMouseInfo
             // 
-            this.lblMouseInfo.Location = new System.Drawing.Point(139, 574);
+            this.lblMouseInfo.Location = new System.Drawing.Point(192, 638);
             this.lblMouseInfo.Name = "lblMouseInfo";
-            this.lblMouseInfo.Size = new System.Drawing.Size(109, 44);
+            this.lblMouseInfo.Size = new System.Drawing.Size(153, 44);
             this.lblMouseInfo.TabIndex = 73;
             this.lblMouseInfo.Text = "CURSOR/GRID";
             // 
@@ -322,9 +322,9 @@
             // 
             this.groupBox1.Controls.Add(this.btnRemoveSelectedObject);
             this.groupBox1.Controls.Add(this.txtSelectedIconInfo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 420);
+            this.groupBox1.Location = new System.Drawing.Point(12, 505);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(118, 142);
+            this.groupBox1.Size = new System.Drawing.Size(174, 146);
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Object Info";
@@ -334,7 +334,7 @@
             this.btnRemoveSelectedObject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveSelectedObject.Location = new System.Drawing.Point(6, 74);
             this.btnRemoveSelectedObject.Name = "btnRemoveSelectedObject";
-            this.btnRemoveSelectedObject.Size = new System.Drawing.Size(106, 61);
+            this.btnRemoveSelectedObject.Size = new System.Drawing.Size(160, 67);
             this.btnRemoveSelectedObject.TabIndex = 1;
             this.btnRemoveSelectedObject.Text = "Remove Last Selected Object";
             this.btnRemoveSelectedObject.UseVisualStyleBackColor = true;
@@ -345,7 +345,7 @@
             this.txtSelectedIconInfo.Location = new System.Drawing.Point(6, 19);
             this.txtSelectedIconInfo.Multiline = true;
             this.txtSelectedIconInfo.Name = "txtSelectedIconInfo";
-            this.txtSelectedIconInfo.Size = new System.Drawing.Size(106, 54);
+            this.txtSelectedIconInfo.Size = new System.Drawing.Size(160, 54);
             this.txtSelectedIconInfo.TabIndex = 0;
             // 
             // groupBox2
@@ -358,7 +358,7 @@
             this.groupBox2.Controls.Add(this.rbtnPaintTrigger);
             this.groupBox2.Location = new System.Drawing.Point(12, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(118, 364);
+            this.groupBox2.Size = new System.Drawing.Size(174, 450);
             this.groupBox2.TabIndex = 75;
             this.groupBox2.TabStop = false;
             // 
@@ -366,9 +366,9 @@
             // 
             this.rbtnPaintTile.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnPaintTile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnPaintTile.Location = new System.Drawing.Point(9, 53);
+            this.rbtnPaintTile.Location = new System.Drawing.Point(9, 56);
             this.rbtnPaintTile.Name = "rbtnPaintTile";
-            this.rbtnPaintTile.Size = new System.Drawing.Size(103, 45);
+            this.rbtnPaintTile.Size = new System.Drawing.Size(158, 57);
             this.rbtnPaintTile.TabIndex = 6;
             this.rbtnPaintTile.TabStop = true;
             this.rbtnPaintTile.Text = "Paint\r\nTiles";
@@ -380,9 +380,9 @@
             // 
             this.rbtnEditTrigger.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnEditTrigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnEditTrigger.Location = new System.Drawing.Point(9, 175);
+            this.rbtnEditTrigger.Location = new System.Drawing.Point(9, 210);
             this.rbtnEditTrigger.Name = "rbtnEditTrigger";
-            this.rbtnEditTrigger.Size = new System.Drawing.Size(103, 65);
+            this.rbtnEditTrigger.Size = new System.Drawing.Size(158, 80);
             this.rbtnEditTrigger.TabIndex = 2;
             this.rbtnEditTrigger.TabStop = true;
             this.rbtnEditTrigger.Text = "Edit Last\r\nSelected\r\nTrigger";
@@ -394,9 +394,9 @@
             // 
             this.rbtnPaintTrigger.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbtnPaintTrigger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnPaintTrigger.Location = new System.Drawing.Point(9, 106);
+            this.rbtnPaintTrigger.Location = new System.Drawing.Point(9, 121);
             this.rbtnPaintTrigger.Name = "rbtnPaintTrigger";
-            this.rbtnPaintTrigger.Size = new System.Drawing.Size(103, 61);
+            this.rbtnPaintTrigger.Size = new System.Drawing.Size(158, 80);
             this.rbtnPaintTrigger.TabIndex = 0;
             this.rbtnPaintTrigger.TabStop = true;
             this.rbtnPaintTrigger.Text = "Paint\r\nNew\r\nTrigger";
@@ -406,6 +406,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -417,10 +418,10 @@
             this.chkGrid.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.chkGrid.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
             this.chkGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkGrid.Location = new System.Drawing.Point(21, 380);
+            this.chkGrid.Location = new System.Drawing.Point(21, 459);
             this.chkGrid.Margin = new System.Windows.Forms.Padding(0);
             this.chkGrid.Name = "chkGrid";
-            this.chkGrid.Size = new System.Drawing.Size(103, 28);
+            this.chkGrid.Size = new System.Drawing.Size(158, 35);
             this.chkGrid.TabIndex = 78;
             this.chkGrid.Text = "SHOW GRID";
             this.chkGrid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -442,9 +443,9 @@
             this.gbMapSize.Controls.Add(this.btnMinusLeftX);
             this.gbMapSize.Controls.Add(this.label2);
             this.gbMapSize.Controls.Add(this.label1);
-            this.gbMapSize.Location = new System.Drawing.Point(136, 325);
+            this.gbMapSize.Location = new System.Drawing.Point(192, 386);
             this.gbMapSize.Name = "gbMapSize";
-            this.gbMapSize.Size = new System.Drawing.Size(118, 185);
+            this.gbMapSize.Size = new System.Drawing.Size(168, 185);
             this.gbMapSize.TabIndex = 79;
             this.gbMapSize.TabStop = false;
             this.gbMapSize.Text = "Map Size (squares)";
@@ -453,7 +454,7 @@
             // 
             this.lblMapSizeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMapSizeError.ForeColor = System.Drawing.Color.Red;
-            this.lblMapSizeError.Location = new System.Drawing.Point(3, 126);
+            this.lblMapSizeError.Location = new System.Drawing.Point(27, 126);
             this.lblMapSizeError.Name = "lblMapSizeError";
             this.lblMapSizeError.Size = new System.Drawing.Size(109, 57);
             this.lblMapSizeError.TabIndex = 74;
@@ -462,7 +463,7 @@
             // 
             // btnMinusBottumY
             // 
-            this.btnMinusBottumY.Location = new System.Drawing.Point(60, 97);
+            this.btnMinusBottumY.Location = new System.Drawing.Point(84, 97);
             this.btnMinusBottumY.Name = "btnMinusBottumY";
             this.btnMinusBottumY.Size = new System.Drawing.Size(25, 25);
             this.btnMinusBottumY.TabIndex = 13;
@@ -472,7 +473,7 @@
             // 
             // btnPlusBottumY
             // 
-            this.btnPlusBottumY.Location = new System.Drawing.Point(35, 97);
+            this.btnPlusBottumY.Location = new System.Drawing.Point(59, 97);
             this.btnPlusBottumY.Name = "btnPlusBottumY";
             this.btnPlusBottumY.Size = new System.Drawing.Size(25, 25);
             this.btnPlusBottumY.TabIndex = 12;
@@ -482,7 +483,7 @@
             // 
             // btnMinusTopY
             // 
-            this.btnMinusTopY.Location = new System.Drawing.Point(60, 19);
+            this.btnMinusTopY.Location = new System.Drawing.Point(84, 19);
             this.btnMinusTopY.Name = "btnMinusTopY";
             this.btnMinusTopY.Size = new System.Drawing.Size(25, 25);
             this.btnMinusTopY.TabIndex = 11;
@@ -492,7 +493,7 @@
             // 
             // btnPlusTopY
             // 
-            this.btnPlusTopY.Location = new System.Drawing.Point(35, 19);
+            this.btnPlusTopY.Location = new System.Drawing.Point(59, 19);
             this.btnPlusTopY.Name = "btnPlusTopY";
             this.btnPlusTopY.Size = new System.Drawing.Size(25, 25);
             this.btnPlusTopY.TabIndex = 10;
@@ -503,7 +504,7 @@
             // lblMapSizeY
             // 
             this.lblMapSizeY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMapSizeY.Location = new System.Drawing.Point(61, 70);
+            this.lblMapSizeY.Location = new System.Drawing.Point(85, 70);
             this.lblMapSizeY.Name = "lblMapSizeY";
             this.lblMapSizeY.Size = new System.Drawing.Size(28, 24);
             this.lblMapSizeY.TabIndex = 9;
@@ -513,7 +514,7 @@
             // lblMapSizeX
             // 
             this.lblMapSizeX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMapSizeX.Location = new System.Drawing.Point(30, 70);
+            this.lblMapSizeX.Location = new System.Drawing.Point(54, 70);
             this.lblMapSizeX.Name = "lblMapSizeX";
             this.lblMapSizeX.Size = new System.Drawing.Size(28, 24);
             this.lblMapSizeX.TabIndex = 8;
@@ -522,7 +523,7 @@
             // 
             // btnPlusLeftX
             // 
-            this.btnPlusLeftX.Location = new System.Drawing.Point(3, 49);
+            this.btnPlusLeftX.Location = new System.Drawing.Point(27, 49);
             this.btnPlusLeftX.Name = "btnPlusLeftX";
             this.btnPlusLeftX.Size = new System.Drawing.Size(25, 25);
             this.btnPlusLeftX.TabIndex = 7;
@@ -532,7 +533,7 @@
             // 
             // btnPlusRightX
             // 
-            this.btnPlusRightX.Location = new System.Drawing.Point(91, 49);
+            this.btnPlusRightX.Location = new System.Drawing.Point(115, 49);
             this.btnPlusRightX.Name = "btnPlusRightX";
             this.btnPlusRightX.Size = new System.Drawing.Size(25, 25);
             this.btnPlusRightX.TabIndex = 6;
@@ -542,7 +543,7 @@
             // 
             // btnMinusRightX
             // 
-            this.btnMinusRightX.Location = new System.Drawing.Point(91, 74);
+            this.btnMinusRightX.Location = new System.Drawing.Point(115, 74);
             this.btnMinusRightX.Name = "btnMinusRightX";
             this.btnMinusRightX.Size = new System.Drawing.Size(25, 25);
             this.btnMinusRightX.TabIndex = 5;
@@ -552,7 +553,7 @@
             // 
             // btnMinusLeftX
             // 
-            this.btnMinusLeftX.Location = new System.Drawing.Point(3, 74);
+            this.btnMinusLeftX.Location = new System.Drawing.Point(27, 74);
             this.btnMinusLeftX.Name = "btnMinusLeftX";
             this.btnMinusLeftX.Size = new System.Drawing.Size(25, 25);
             this.btnMinusLeftX.TabIndex = 4;
@@ -564,9 +565,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(64, 47);
+            this.label2.Location = new System.Drawing.Point(88, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 24);
+            this.label2.Size = new System.Drawing.Size(29, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "Y";
             // 
@@ -574,9 +575,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 46);
+            this.label1.Location = new System.Drawing.Point(55, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 24);
+            this.label1.Size = new System.Drawing.Size(30, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "X";
             // 
@@ -587,9 +588,9 @@
             this.groupBox10.Controls.Add(this.btnDeleteCreatures);
             this.groupBox10.Controls.Add(this.btnDeletePCs);
             this.groupBox10.Controls.Add(this.groupBox5);
-            this.groupBox10.Location = new System.Drawing.Point(260, 543);
+            this.groupBox10.Location = new System.Drawing.Point(373, 564);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(361, 70);
+            this.groupBox10.Size = new System.Drawing.Size(361, 87);
             this.groupBox10.TabIndex = 82;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Objects";
@@ -598,7 +599,7 @@
             // 
             this.btnPlacePCs.Location = new System.Drawing.Point(6, 19);
             this.btnPlacePCs.Name = "btnPlacePCs";
-            this.btnPlacePCs.Size = new System.Drawing.Size(86, 39);
+            this.btnPlacePCs.Size = new System.Drawing.Size(86, 60);
             this.btnPlacePCs.TabIndex = 28;
             this.btnPlacePCs.Text = "Place PCs";
             this.btnPlacePCs.UseVisualStyleBackColor = true;
@@ -608,7 +609,7 @@
             // 
             this.btnDeleteCreatures.Location = new System.Drawing.Point(190, 19);
             this.btnDeleteCreatures.Name = "btnDeleteCreatures";
-            this.btnDeleteCreatures.Size = new System.Drawing.Size(86, 39);
+            this.btnDeleteCreatures.Size = new System.Drawing.Size(86, 60);
             this.btnDeleteCreatures.TabIndex = 30;
             this.btnDeleteCreatures.Text = "Clear Creatures";
             this.btnDeleteCreatures.UseVisualStyleBackColor = true;
@@ -618,7 +619,7 @@
             // 
             this.btnDeletePCs.Location = new System.Drawing.Point(98, 19);
             this.btnDeletePCs.Name = "btnDeletePCs";
-            this.btnDeletePCs.Size = new System.Drawing.Size(86, 39);
+            this.btnDeletePCs.Size = new System.Drawing.Size(86, 60);
             this.btnDeletePCs.TabIndex = 29;
             this.btnDeletePCs.Text = "Clear PCs";
             this.btnDeletePCs.UseVisualStyleBackColor = true;
@@ -644,7 +645,7 @@
             0,
             0});
             this.numGold.Name = "numGold";
-            this.numGold.Size = new System.Drawing.Size(62, 29);
+            this.numGold.Size = new System.Drawing.Size(62, 34);
             this.numGold.TabIndex = 0;
             this.numGold.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numGold.ThousandsSeparator = true;
@@ -663,9 +664,9 @@
             this.groupBox4.Controls.Add(this.lbxItems);
             this.groupBox4.Controls.Add(this.btnAddItems);
             this.groupBox4.Controls.Add(this.btnRemoveItems);
-            this.groupBox4.Location = new System.Drawing.Point(640, 543);
+            this.groupBox4.Location = new System.Drawing.Point(746, 564);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(306, 117);
+            this.groupBox4.Size = new System.Drawing.Size(377, 117);
             this.groupBox4.TabIndex = 83;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Encounter Drop Items";
@@ -674,9 +675,9 @@
             // 
             this.cmbItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItems.FormattingEnabled = true;
-            this.cmbItems.Location = new System.Drawing.Point(12, 45);
+            this.cmbItems.Location = new System.Drawing.Point(12, 53);
             this.cmbItems.Name = "cmbItems";
-            this.cmbItems.Size = new System.Drawing.Size(138, 21);
+            this.cmbItems.Size = new System.Drawing.Size(138, 25);
             this.cmbItems.TabIndex = 67;
             // 
             // label3
@@ -684,24 +685,25 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 26);
+            this.label3.Size = new System.Drawing.Size(186, 34);
             this.label3.TabIndex = 62;
             this.label3.Text = "Select an Item to Add to the \r\nEncounter drop items:";
             // 
             // lbxItems
             // 
             this.lbxItems.FormattingEnabled = true;
-            this.lbxItems.Location = new System.Drawing.Point(157, 16);
+            this.lbxItems.ItemHeight = 17;
+            this.lbxItems.Location = new System.Drawing.Point(201, 17);
             this.lbxItems.Name = "lbxItems";
             this.lbxItems.ScrollAlwaysVisible = true;
-            this.lbxItems.Size = new System.Drawing.Size(138, 95);
+            this.lbxItems.Size = new System.Drawing.Size(163, 89);
             this.lbxItems.TabIndex = 39;
             // 
             // btnAddItems
             // 
-            this.btnAddItems.Location = new System.Drawing.Point(12, 73);
+            this.btnAddItems.Location = new System.Drawing.Point(12, 81);
             this.btnAddItems.Name = "btnAddItems";
-            this.btnAddItems.Size = new System.Drawing.Size(58, 23);
+            this.btnAddItems.Size = new System.Drawing.Size(58, 33);
             this.btnAddItems.TabIndex = 40;
             this.btnAddItems.Text = "Add";
             this.btnAddItems.UseVisualStyleBackColor = true;
@@ -709,9 +711,9 @@
             // 
             // btnRemoveItems
             // 
-            this.btnRemoveItems.Location = new System.Drawing.Point(76, 73);
+            this.btnRemoveItems.Location = new System.Drawing.Point(76, 81);
             this.btnRemoveItems.Name = "btnRemoveItems";
-            this.btnRemoveItems.Size = new System.Drawing.Size(74, 23);
+            this.btnRemoveItems.Size = new System.Drawing.Size(74, 33);
             this.btnRemoveItems.TabIndex = 41;
             this.btnRemoveItems.Text = "Remove";
             this.btnRemoveItems.UseVisualStyleBackColor = true;
@@ -730,7 +732,7 @@
             // 
             this.flTileFilters.Location = new System.Drawing.Point(3, 5);
             this.flTileFilters.Name = "flTileFilters";
-            this.flTileFilters.Size = new System.Drawing.Size(118, 300);
+            this.flTileFilters.Size = new System.Drawing.Size(160, 380);
             this.flTileFilters.TabIndex = 0;
             // 
             // pnlFilters
@@ -738,11 +740,11 @@
             this.pnlFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFilters.AutoScroll = true;
             this.pnlFilters.Controls.Add(this.flTileFilters);
-            this.pnlFilters.Location = new System.Drawing.Point(1028, 12);
-            this.pnlFilters.MaximumSize = new System.Drawing.Size(140, 160);
-            this.pnlFilters.MinimumSize = new System.Drawing.Size(140, 160);
+            this.pnlFilters.Location = new System.Drawing.Point(1129, 12);
+            this.pnlFilters.MaximumSize = new System.Drawing.Size(190, 310);
+            this.pnlFilters.MinimumSize = new System.Drawing.Size(190, 310);
             this.pnlFilters.Name = "pnlFilters";
-            this.pnlFilters.Size = new System.Drawing.Size(140, 160);
+            this.pnlFilters.Size = new System.Drawing.Size(190, 310);
             this.pnlFilters.TabIndex = 69;
             // 
             // panelNoScrollOnFocus1
@@ -754,9 +756,9 @@
             this.panelNoScrollOnFocus1.BackColor = System.Drawing.Color.Black;
             this.panelNoScrollOnFocus1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelNoScrollOnFocus1.Controls.Add(this.panelView);
-            this.panelNoScrollOnFocus1.Location = new System.Drawing.Point(260, 12);
+            this.panelNoScrollOnFocus1.Location = new System.Drawing.Point(370, 12);
             this.panelNoScrollOnFocus1.Name = "panelNoScrollOnFocus1";
-            this.panelNoScrollOnFocus1.Size = new System.Drawing.Size(765, 525);
+            this.panelNoScrollOnFocus1.Size = new System.Drawing.Size(753, 546);
             this.panelNoScrollOnFocus1.TabIndex = 77;
             // 
             // panelView
@@ -777,9 +779,9 @@
             // 
             // EncounterEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 668);
+            this.ClientSize = new System.Drawing.Size(1328, 689);
             this.Controls.Add(this.pnlFilters);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox10);
@@ -815,8 +817,8 @@
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numGold)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            this.pnlFilters.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.pnlFilters.ResumeLayout(false);
             this.panelNoScrollOnFocus1.ResumeLayout(false);
             this.ResumeLayout(false);
 
