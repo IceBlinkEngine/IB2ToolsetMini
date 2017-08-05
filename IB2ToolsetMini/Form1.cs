@@ -2330,6 +2330,35 @@ namespace IB2ToolsetMini
             }            
 
             MessageBox.Show("A list of tiles has been created and placed in the module folder.");
+
+            //create a folder GraphicsUsed/tiles and copy the tiles into it
+            Directory.CreateDirectory(this._mainDirectory + "\\modules\\" + mod.moduleName + "_TilesUsed\\");
+            foreach (string s in tilenames)
+            {
+                try
+                {
+                    string file = s;
+                    if (!file.EndsWith(".png"))
+                    {
+                        file += ".png";
+                    }
+                    if (File.Exists(this._mainDirectory + "\\default\\NewModule\\tiles\\" + file))
+                    {
+                        File.Copy(this._mainDirectory + "\\default\\NewModule\\tiles\\" + file, this._mainDirectory + "\\modules\\" + mod.moduleName + "_TilesUsed\\" + file, true);
+                        //ResizeToIBminiIfNeeded((new Bitmap(originalFolderPath + "\\tiles\\" + file))).Save(folderPath + "\\tiles\\" + file);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to find and copy file: " + s);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to copy file: s  " + ex.ToString());
+                }
+            }
+
+            MessageBox.Show("All tile files used have been copied to a folder called '_TilesUsed' in the module folder. Verify that the files match the '_tiles_used_list.txt' list.");
         }
 
         public void addPrefixToConvoNodeImage(ContentNode node)

@@ -55,6 +55,8 @@
             this.tsBtnResetDropDowns = new System.Windows.Forms.ToolStripButton();
             this.tsBtnDataCheck = new System.Windows.Forms.ToolStripButton();
             this.tsBtnChangePrefix = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsBtnAdvancedMode = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,16 +85,16 @@
             this.convertANWNModuleToIBminiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wizardsEditorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moduleEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mergerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rulesEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.journalEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerClassEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raceEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.effectEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spellEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traitEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mergerEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -101,8 +103,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsBtnAdvancedMode = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -215,6 +215,25 @@
     "See the \'prefix_change.txt\' file for more info.";
             this.tsBtnChangePrefix.Click += new System.EventHandler(this.tsBtnChangePrefix_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsBtnAdvancedMode
+            // 
+            this.tsBtnAdvancedMode.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsBtnAdvancedMode.BackColor = System.Drawing.Color.Transparent;
+            this.tsBtnAdvancedMode.CheckOnClick = true;
+            this.tsBtnAdvancedMode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsBtnAdvancedMode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnAdvancedMode.Name = "tsBtnAdvancedMode";
+            this.tsBtnAdvancedMode.Size = new System.Drawing.Size(116, 24);
+            this.tsBtnAdvancedMode.Text = "Standard Mode";
+            this.tsBtnAdvancedMode.ToolTipText = "Switch between standard and advanced mode. Advanced mode should only be used by t" +
+    "hose who know what it is used for. Use at your own risk :-)";
+            this.tsBtnAdvancedMode.Click += new System.EventHandler(this.tsBtnAdvancedMode_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -250,21 +269,21 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -272,19 +291,19 @@
             // 
             this.saveAsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(170, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -456,13 +475,6 @@
             this.moduleEditorToolStripMenuItem.Text = "Module Editor";
             this.moduleEditorToolStripMenuItem.Click += new System.EventHandler(this.moduleEditorToolStripMenuItem_Click);
             // 
-            // mergerEditorToolStripMenuItem
-            // 
-            this.mergerEditorToolStripMenuItem.Name = "mergerEditorToolStripMenuItem";
-            this.mergerEditorToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
-            this.mergerEditorToolStripMenuItem.Text = "Merger Editor";
-            this.mergerEditorToolStripMenuItem.Click += new System.EventHandler(this.mergerEditorToolStripMenuItem_Click);
-            // 
             // rulesEditorToolStripMenuItem
             // 
             this.rulesEditorToolStripMenuItem.Name = "rulesEditorToolStripMenuItem";
@@ -484,6 +496,13 @@
             this.shopToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
             this.shopToolStripMenuItem.Text = "Shop Editor";
             this.shopToolStripMenuItem.Click += new System.EventHandler(this.shopToolStripMenuItem_Click);
+            // 
+            // playerEditorToolStripMenuItem
+            // 
+            this.playerEditorToolStripMenuItem.Name = "playerEditorToolStripMenuItem";
+            this.playerEditorToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
+            this.playerEditorToolStripMenuItem.Text = "Player Editor";
+            this.playerEditorToolStripMenuItem.Click += new System.EventHandler(this.playerEditorToolStripMenuItem_Click);
             // 
             // playerClassEditorToolStripMenuItem
             // 
@@ -525,12 +544,12 @@
             this.traitEditorToolStripMenuItem.Visible = false;
             this.traitEditorToolStripMenuItem.Click += new System.EventHandler(this.traitEditorToolStripMenuItem_Click);
             // 
-            // playerEditorToolStripMenuItem
+            // mergerEditorToolStripMenuItem
             // 
-            this.playerEditorToolStripMenuItem.Name = "playerEditorToolStripMenuItem";
-            this.playerEditorToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
-            this.playerEditorToolStripMenuItem.Text = "Player Editor";
-            this.playerEditorToolStripMenuItem.Click += new System.EventHandler(this.playerEditorToolStripMenuItem_Click);
+            this.mergerEditorToolStripMenuItem.Name = "mergerEditorToolStripMenuItem";
+            this.mergerEditorToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
+            this.mergerEditorToolStripMenuItem.Text = "Merger Editor";
+            this.mergerEditorToolStripMenuItem.Click += new System.EventHandler(this.mergerEditorToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -543,7 +562,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -559,7 +578,7 @@
             // 
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel1.Location = new System.Drawing.Point(0, 28);
-            this.dockPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dockPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(1089, 512);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
@@ -620,25 +639,6 @@
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // tsBtnAdvancedMode
-            // 
-            this.tsBtnAdvancedMode.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsBtnAdvancedMode.BackColor = System.Drawing.Color.Transparent;
-            this.tsBtnAdvancedMode.CheckOnClick = true;
-            this.tsBtnAdvancedMode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsBtnAdvancedMode.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnAdvancedMode.Name = "tsBtnAdvancedMode";
-            this.tsBtnAdvancedMode.Size = new System.Drawing.Size(116, 24);
-            this.tsBtnAdvancedMode.Text = "Standard Mode";
-            this.tsBtnAdvancedMode.ToolTipText = "Switch between standard and advanced mode. Advanced mode should only be used by t" +
-    "hose who know what it is used for. Use at your own risk :-)";
-            this.tsBtnAdvancedMode.Click += new System.EventHandler(this.tsBtnAdvancedMode_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
-            // 
             // ParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -651,7 +651,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ParentForm";
             this.Text = "IceBlinkBasic Toolset";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParentForm_FormClosing);
